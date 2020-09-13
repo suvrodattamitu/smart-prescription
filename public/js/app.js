@@ -2043,6 +2043,50 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -20209,6 +20253,85 @@ var staticRenderFns = [
             )
           ])
         ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "basic-form-area mg-b-15" }, [
+        _c("div", { staticClass: "container-fluid" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-lg-7 col-md-7 col-sm-7 col-xs-12" }, [
+              _c("div", { staticClass: "sparkline8-list mt-b-30" }, [
+                _c("div", { staticClass: "sparkline8-hd" }, [
+                  _c("div", { staticClass: "main-sparkline8-hd" }, [
+                    _c("h1", [_vm._v("Add a medical test")])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "sparkline8-graph" }, [
+                  _c("div", { staticClass: "basic-login-form-ad" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "col-lg-12 col-md-12 col-sm-6 col-xs-12"
+                        },
+                        [
+                          _c("div", { staticClass: "basic-login-inner" }, [
+                            _c("form", { attrs: { action: "#" } }, [
+                              _c("div", { staticClass: "form-group-inner" }, [
+                                _c("label", [_vm._v("Name")]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    placeholder: "Enter test name"
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "form-group-inner" }, [
+                                _c("label", [_vm._v("Description")]),
+                                _vm._v(" "),
+                                _c("textarea", {
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    name: "",
+                                    id: "",
+                                    cols: "83",
+                                    rows: "10",
+                                    placeholder: "Enter description"
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "login-btn-inner" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "inline-remember-me" },
+                                  [
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass:
+                                          "btn btn-sm btn-primary pull-left login-submit-cs",
+                                        attrs: { type: "submit" }
+                                      },
+                                      [_vm._v("Save")]
+                                    )
+                                  ]
+                                )
+                              ])
+                            ])
+                          ])
+                        ]
+                      )
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
       ])
     ])
   }
@@ -36402,8 +36525,8 @@ var routes = [{
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\laragon\www\smart-prescription\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! E:\laragon\www\smart-prescription\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! E:\smart-prescription\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! E:\smart-prescription\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
