@@ -5,4 +5,20 @@
 @import 'variables';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// @import '~bootstrap/scss/bootstrap';
+
+.btn-space{
+    margin-right:3px;
+}
+
+.inline-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:0;
+    margin:0;
+
+    .btn-cls{
+        margin-right: 10px;
+    }
+}

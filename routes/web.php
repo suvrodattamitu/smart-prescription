@@ -12,6 +12,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//medical tests
+Route::post('/save-test','SmartPrescription\MedicalTestController@addTest');
+Route::get('/tests','SmartPrescription\MedicalTestController@allTests');
+
+Route::post('/save-group','SmartPrescription\MedicineGroupController@addGroup');
+
 Auth::routes();
 Route::get('/', function () {
     return view('app');
@@ -19,5 +26,5 @@ Route::get('/', function () {
 
 Route::get('/{any}', function(){
     return view('app');
-})->where('any', '.*');
+})->middleware('auth')->where('any', '.*');
 

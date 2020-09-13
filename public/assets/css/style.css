@@ -817,7 +817,7 @@ ul.setting-panel-list li{
 }
 .menu-setting-wrap.menu-setting-wrap-bg .nav-tabs>li.active>a, .menu-setting-wrap.menu-setting-wrap-bg .nav-tabs>li.active>a:focus, .menu-setting-wrap.menu-setting-wrap-bg .nav-tabs>li.active>a:hover
  .notes-img {
-    background: #e12503;
+    background: #f5f5f5;
 }
 .breadcome-list {
     padding-top: 20px;
@@ -825,9 +825,9 @@ ul.setting-panel-list li{
     background: #fff;
     padding-left: 20px;
     padding-right: 20px;
-    /* margin-bottom: 30px;
-    margin-top: 20px; */
-    margin:20px -13px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    /* margin:10px -13px; */
 }
 .sr-input-func {
     position: relative;
