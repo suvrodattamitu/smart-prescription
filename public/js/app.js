@@ -1986,6 +1986,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('hello from dashboard');
@@ -2007,6 +2014,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -2024,6 +2060,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -2037,6 +2102,35 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -19775,99 +19869,247 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-3 col-md-6" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "stat-widget-five" }, [
-              _c("div", { staticClass: "stat-icon dib flat-color-1" }, [
-                _c("i", { staticClass: "pe-7s-cash" })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "stat-content" }, [
-                _c("div", { staticClass: "text-left dib" }, [
-                  _c("div", { staticClass: "stat-text" }, [
-                    _vm._v("$"),
-                    _c("span", { staticClass: "count" }, [_vm._v("23569")])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "stat-heading" }, [
-                    _vm._v("Revenue")
+    return _c("div", [
+      _c("div", { staticClass: "breadcome-area" }, [
+        _c("div", { staticClass: "container-fluid" }, [
+          _c("div", { staticClass: "row" }, [
+            _c(
+              "div",
+              { staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12" },
+              [
+                _c("div", { staticClass: "breadcome-list" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "breadcome-heading" }, [
+                          _c(
+                            "form",
+                            {
+                              staticClass: "sr-input-func",
+                              attrs: { role: "search" }
+                            },
+                            [
+                              _c("input", {
+                                staticClass: "search-int form-control",
+                                attrs: {
+                                  type: "text",
+                                  placeholder: "Search..."
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("a", { attrs: { href: "#" } }, [
+                                _c("i", { staticClass: "fa fa-search" })
+                              ])
+                            ]
+                          )
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
+                      [
+                        _c("ul", { staticClass: "breadcome-menu" }, [
+                          _c("li", [
+                            _c("a", { attrs: { href: "#" } }, [_vm._v("Home")]),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "bread-slash" }, [
+                              _vm._v("/")
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("li", [
+                            _c("span", { staticClass: "bread-blod" }, [
+                              _vm._v("Dashboard V.1")
+                            ])
+                          ])
+                        ])
+                      ]
+                    )
                   ])
                 ])
-              ])
-            ])
+              ]
+            )
           ])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-lg-3 col-md-6" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "stat-widget-five" }, [
-              _c("div", { staticClass: "stat-icon dib flat-color-2" }, [
-                _c("i", { staticClass: "pe-7s-cart" })
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-6 col-xs-12" }, [
+          _c("div", { staticClass: "analytics-sparkle-line reso-mg-b-30" }, [
+            _c("div", { staticClass: "analytics-content" }, [
+              _c("h5", [_vm._v("Computer Technologies")]),
+              _vm._v(" "),
+              _c("h2", [
+                _vm._v("$"),
+                _c("span", { staticClass: "counter" }, [_vm._v("5000")]),
+                _vm._v(" "),
+                _c("span", { staticClass: "tuition-fees" }, [
+                  _vm._v("Tuition Fees")
+                ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "stat-content" }, [
-                _c("div", { staticClass: "text-left dib" }, [
-                  _c("div", { staticClass: "stat-text" }, [
-                    _c("span", { staticClass: "count" }, [_vm._v("3435")])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "stat-heading" }, [_vm._v("Sales")])
-                ])
+              _c("span", { staticClass: "text-success" }, [_vm._v("20%")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "progress m-b-0" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "progress-bar progress-bar-success",
+                    staticStyle: { width: "20%" },
+                    attrs: {
+                      role: "progressbar",
+                      "aria-valuenow": "50",
+                      "aria-valuemin": "0",
+                      "aria-valuemax": "100"
+                    }
+                  },
+                  [
+                    _c("span", { staticClass: "sr-only" }, [
+                      _vm._v("20% Complete")
+                    ])
+                  ]
+                )
               ])
             ])
           ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-3 col-md-6" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "stat-widget-five" }, [
-              _c("div", { staticClass: "stat-icon dib flat-color-3" }, [
-                _c("i", { staticClass: "pe-7s-browser" })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-6 col-xs-12" }, [
+          _c("div", { staticClass: "analytics-sparkle-line reso-mg-b-30" }, [
+            _c("div", { staticClass: "analytics-content" }, [
+              _c("h5", [_vm._v("Accounting Technologies")]),
+              _vm._v(" "),
+              _c("h2", [
+                _vm._v("$"),
+                _c("span", { staticClass: "counter" }, [_vm._v("3000")]),
+                _vm._v(" "),
+                _c("span", { staticClass: "tuition-fees" }, [
+                  _vm._v("Tuition Fees")
+                ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "stat-content" }, [
-                _c("div", { staticClass: "text-left dib" }, [
-                  _c("div", { staticClass: "stat-text" }, [
-                    _c("span", { staticClass: "count" }, [_vm._v("349")])
-                  ]),
+              _c("span", { staticClass: "text-danger" }, [_vm._v("30%")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "progress m-b-0" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "progress-bar progress-bar-danger",
+                    staticStyle: { width: "30%" },
+                    attrs: {
+                      role: "progressbar",
+                      "aria-valuenow": "50",
+                      "aria-valuemin": "0",
+                      "aria-valuemax": "100"
+                    }
+                  },
+                  [
+                    _c("span", { staticClass: "sr-only" }, [
+                      _vm._v("230% Complete")
+                    ])
+                  ]
+                )
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-6 col-xs-12" }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "analytics-sparkle-line reso-mg-b-30 table-mg-t-pro dk-res-t-pro-30"
+            },
+            [
+              _c("div", { staticClass: "analytics-content" }, [
+                _c("h5", [_vm._v("Electrical Engineering")]),
+                _vm._v(" "),
+                _c("h2", [
+                  _vm._v("$"),
+                  _c("span", { staticClass: "counter" }, [_vm._v("2000")]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "stat-heading" }, [
-                    _vm._v("Templates")
+                  _c("span", { staticClass: "tuition-fees" }, [
+                    _vm._v("Tuition Fees")
                   ])
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "text-info" }, [_vm._v("60%")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "progress m-b-0" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "progress-bar progress-bar-info",
+                      staticStyle: { width: "60%" },
+                      attrs: {
+                        role: "progressbar",
+                        "aria-valuenow": "50",
+                        "aria-valuemin": "0",
+                        "aria-valuemax": "100"
+                      }
+                    },
+                    [
+                      _c("span", { staticClass: "sr-only" }, [
+                        _vm._v("20% Complete")
+                      ])
+                    ]
+                  )
                 ])
               ])
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-3 col-md-6" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "stat-widget-five" }, [
-              _c("div", { staticClass: "stat-icon dib flat-color-4" }, [
-                _c("i", { staticClass: "pe-7s-users" })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "stat-content" }, [
-                _c("div", { staticClass: "text-left dib" }, [
-                  _c("div", { staticClass: "stat-text" }, [
-                    _c("span", { staticClass: "count" }, [_vm._v("2986")])
-                  ]),
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-6 col-xs-12" }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "analytics-sparkle-line table-mg-t-pro dk-res-t-pro-30"
+            },
+            [
+              _c("div", { staticClass: "analytics-content" }, [
+                _c("h5", [_vm._v("Chemical Engineering")]),
+                _vm._v(" "),
+                _c("h2", [
+                  _vm._v("$"),
+                  _c("span", { staticClass: "counter" }, [_vm._v("3500")]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "stat-heading" }, [
-                    _vm._v("Clients")
+                  _c("span", { staticClass: "tuition-fees" }, [
+                    _vm._v("Tuition Fees")
                   ])
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "text-inverse" }, [_vm._v("80%")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "progress m-b-0" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "progress-bar progress-bar-inverse",
+                      staticStyle: { width: "80%" },
+                      attrs: {
+                        role: "progressbar",
+                        "aria-valuenow": "50",
+                        "aria-valuemin": "0",
+                        "aria-valuemax": "100"
+                      }
+                    },
+                    [
+                      _c("span", { staticClass: "sr-only" }, [
+                        _vm._v("230% Complete")
+                      ])
+                    ]
+                  )
                 ])
               ])
-            ])
-          ])
+            ]
+          )
         ])
       ])
     ])
@@ -19894,9 +20136,83 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("Hello1")])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("div", { staticClass: "breadcome-area" }, [
+        _c("div", { staticClass: "container-fluid" }, [
+          _c("div", { staticClass: "row" }, [
+            _c(
+              "div",
+              { staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12" },
+              [
+                _c("div", { staticClass: "breadcome-list" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "breadcome-heading" }, [
+                          _c(
+                            "form",
+                            {
+                              staticClass: "sr-input-func",
+                              attrs: { role: "search" }
+                            },
+                            [
+                              _c("input", {
+                                staticClass: "search-int form-control",
+                                attrs: {
+                                  type: "text",
+                                  placeholder: "Search..."
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("a", { attrs: { href: "#" } }, [
+                                _c("i", { staticClass: "fa fa-search" })
+                              ])
+                            ]
+                          )
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
+                      [
+                        _c("ul", { staticClass: "breadcome-menu" }, [
+                          _c("li", [
+                            _c("a", { attrs: { href: "#" } }, [_vm._v("Home")]),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "bread-slash" }, [
+                              _vm._v("/")
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("li", [
+                            _c("span", { staticClass: "bread-blod" }, [
+                              _vm._v("Dashboard V.1")
+                            ])
+                          ])
+                        ])
+                      ]
+                    )
+                  ])
+                ])
+              ]
+            )
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -19918,9 +20234,83 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("Hello2")])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("div", { staticClass: "breadcome-area" }, [
+        _c("div", { staticClass: "container-fluid" }, [
+          _c("div", { staticClass: "row" }, [
+            _c(
+              "div",
+              { staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12" },
+              [
+                _c("div", { staticClass: "breadcome-list" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "breadcome-heading" }, [
+                          _c(
+                            "form",
+                            {
+                              staticClass: "sr-input-func",
+                              attrs: { role: "search" }
+                            },
+                            [
+                              _c("input", {
+                                staticClass: "search-int form-control",
+                                attrs: {
+                                  type: "text",
+                                  placeholder: "Search..."
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("a", { attrs: { href: "#" } }, [
+                                _c("i", { staticClass: "fa fa-search" })
+                              ])
+                            ]
+                          )
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
+                      [
+                        _c("ul", { staticClass: "breadcome-menu" }, [
+                          _c("li", [
+                            _c("a", { attrs: { href: "#" } }, [_vm._v("Home")]),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "bread-slash" }, [
+                              _vm._v("/")
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("li", [
+                            _c("span", { staticClass: "bread-blod" }, [
+                              _vm._v("Dashboard V.1")
+                            ])
+                          ])
+                        ])
+                      ]
+                    )
+                  ])
+                ])
+              ]
+            )
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -19942,9 +20332,83 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("Hello")])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("div", { staticClass: "breadcome-area" }, [
+        _c("div", { staticClass: "container-fluid" }, [
+          _c("div", { staticClass: "row" }, [
+            _c(
+              "div",
+              { staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12" },
+              [
+                _c("div", { staticClass: "breadcome-list" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "breadcome-heading" }, [
+                          _c(
+                            "form",
+                            {
+                              staticClass: "sr-input-func",
+                              attrs: { role: "search" }
+                            },
+                            [
+                              _c("input", {
+                                staticClass: "search-int form-control",
+                                attrs: {
+                                  type: "text",
+                                  placeholder: "Search..."
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("a", { attrs: { href: "#" } }, [
+                                _c("i", { staticClass: "fa fa-search" })
+                              ])
+                            ]
+                          )
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
+                      [
+                        _c("ul", { staticClass: "breadcome-menu" }, [
+                          _c("li", [
+                            _c("a", { attrs: { href: "#" } }, [_vm._v("Home")]),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "bread-slash" }, [
+                              _vm._v("/")
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("li", [
+                            _c("span", { staticClass: "bread-blod" }, [
+                              _vm._v("Dashboard V.1")
+                            ])
+                          ])
+                        ])
+                      ]
+                    )
+                  ])
+                ])
+              ]
+            )
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -35895,7 +36359,7 @@ var routes = [{
   path: '/all-tests',
   component: _pages_medical_tests_AllTests__WEBPACK_IMPORTED_MODULE_3__["default"],
   meta: {
-    title: 'All Test'
+    title: 'All Tests'
   }
 }, //medical-groups
 {
@@ -35938,8 +36402,8 @@ var routes = [{
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\smart-prescription\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! E:\smart-prescription\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! E:\laragon\www\smart-prescription\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! E:\laragon\www\smart-prescription\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

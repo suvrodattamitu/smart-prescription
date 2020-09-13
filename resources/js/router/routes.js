@@ -33,7 +33,7 @@ export const routes = [
 	{
 		path:'/all-tests',
 		component:AllTests,
-		meta: {title: 'All Test'},
+		meta: {title: 'All Tests'},
 
 	},
 
