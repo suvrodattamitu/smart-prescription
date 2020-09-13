@@ -8,25 +8,30 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+import VueRouter from 'vue-router';
+Vue.use(VueRouter);
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+//import all routes here
+import {routes} from './router/routes';
+//make all routes inside this 
+const router = new VueRouter({
+    routes ,
+    mode:'history',
+    scrollBehavior() {
+      return {x: 0, y: 0};
+    },
+});
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+router.beforeEach((to, from, next) => {
+    document.title = to.meta.title + ' || Smart Prescription'
+    next()
+});
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+import MasterApp from './MasterApp';
+
+Vue.component('master-app', MasterApp);
 
 const app = new Vue({
-    el: '#app',
+    el: '#smart-prescription',
+    router,
 });
