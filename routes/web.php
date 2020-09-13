@@ -16,3 +16,8 @@ Auth::routes();
 Route::get('/', function () {
     return view('app');
 })->middleware('auth');
+
+Route::get('/{any}', function(){
+    return view('app');
+})->where('any', '.*');
+

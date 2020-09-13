@@ -74,6 +74,15 @@ jQuery(document).ready(function($) {
 		});
 	});
 
+	$('.dropdown-menu').on('click', function(event) {
+		event.stopPropagation();
+	});
+
+	// $(window).on('click', function() {
+	// 	//$('.dropdown-menu').addClass('show');
+	// 	$('.dropdown-menu').slideUp();
+	// });
+
 
 	// Load Resize 
 	$(window).on("load resize", function(event) { 
