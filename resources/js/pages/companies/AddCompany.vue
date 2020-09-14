@@ -36,7 +36,7 @@
                         
                         <div class="sparkline8-hd">
                             <div class="main-sparkline8-hd">
-                                <h1>Add a medical test</h1>
+                                <h1>Add Company</h1>
                             </div>
                         </div>
                         <div class="sparkline8-graph">
@@ -59,7 +59,7 @@
                                                 </div>
                                                 <div class="login-btn-inner">
                                                     <div class="inline-remember-me">
-                                                        <button class="btn btn-sm btn-primary pull-left login-submit-cs" type="submit" @click.prevent="addTest">Save</button>
+                                                        <button class="btn btn-sm btn-primary pull-left login-submit-cs" type="submit" @click.prevent="addCompany">Save</button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -91,7 +91,7 @@ export default {
 
     methods: {
 
-        addTest() {
+        addCompany() {
 
             let data = {
                 'name': this.name,
@@ -100,12 +100,12 @@ export default {
 
             let that = this;
 
-            axios.post('/save-test',data)
+            axios.post('/save-company',data)
                 .then(function (response) {
-                    that.$router.push('/all-tests');
+                    that.$router.push('/all-companies');
                     Toast.fire({
                         icon: 'success',
-                        title: 'Medical Test added successfully!!!'
+                        title: 'Company added successfully!!!'
                     })
                 })
                 .catch(function (error) {

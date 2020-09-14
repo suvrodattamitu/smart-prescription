@@ -36,7 +36,7 @@
                         
                         <div class="sparkline8-hd">
                             <div class="main-sparkline8-hd">
-                                <h1>Add a medical test</h1>
+                                <h1>Edit Company</h1>
                             </div>
                         </div>
                         <div class="sparkline8-graph">
@@ -59,7 +59,7 @@
                                                 </div>
                                                 <div class="login-btn-inner">
                                                     <div class="inline-remember-me">
-                                                        <button class="btn btn-sm btn-primary pull-left login-submit-cs" type="submit" @click.prevent="addTest">Save</button>
+                                                        <button class="btn btn-sm btn-primary pull-left login-submit-cs" type="submit" @click.prevent="updateCompany">Update</button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -91,22 +91,39 @@ export default {
 
     methods: {
 
-        addTest() {
+        getCompany() {
+
+            let id = this.$route.params.id;
+            let that = this;
+            axios.get('/company/'+id)
+                .then(function (response) {
+
+                    that.name = response.data.company.name;
+                    that.description = response.data.company.description;
+
+                })
+
+        },
+
+        updateCompany() {
 
             let data = {
+                'id': this.$route.params.id,
                 'name': this.name,
                 'description': this.description
             }
 
             let that = this;
 
-            axios.post('/save-test',data)
+            axios.post('/update-company',data)
                 .then(function (response) {
-                    that.$router.push('/all-tests');
+
+                    that.$router.push('/all-companies');
                     Toast.fire({
                         icon: 'success',
-                        title: 'Medical Test added successfully!!!'
+                        title: 'Company updated successfully!!!'
                     })
+
                 })
                 .catch(function (error) {
 
@@ -116,6 +133,12 @@ export default {
                 });
 
         }
+
+    },
+
+    mounted() {
+
+        this.getCompany();
 
     }
 }

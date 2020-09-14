@@ -111,7 +111,7 @@ export default {
                     that.$router.push('/all-types');
                     Toast.fire({
                         icon: 'success',
-                        title: 'Medical type updated successfully!!!'
+                        title: 'Medicine type updated successfully!!!'
                     })
 
                 })

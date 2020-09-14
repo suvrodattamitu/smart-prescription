@@ -12,6 +12,10 @@ import AddType from '../pages/medicine-type/AddType'
 import EditType from '../pages/medicine-type/EditType'
 import AllTypes from '../pages/medicine-type/AllTypes'
 
+import AddCompany from '../pages/companies/AddCompany'
+import EditCompany from '../pages/companies/EditCompany'
+import AllCompanies from '../pages/companies/AllCompanies'
+
 export const routes = [
 
 	{
@@ -61,7 +65,7 @@ export const routes = [
 
 	},
 
-	//medical-type
+	//medicine-type
 	{
 		path:'/add-type',
 		component:AddType,
@@ -78,6 +82,26 @@ export const routes = [
 		path:'/all-types',
 		component:AllTypes,
 		meta: {title: 'All Types'},
+
+	},
+
+	//companies
+	{
+		path:'/add-company',
+		component:AddCompany,
+		meta: {title: 'Add Company'},
+
+	},
+	{
+		path:'/edit-company/:id',
+		component:EditCompany,
+		meta: {title: 'Edit Company'},
+
+	},
+	{
+		path:'/all-companies',
+		component:AllCompanies,
+		meta: {title: 'All Companies'},
 
 	},
 

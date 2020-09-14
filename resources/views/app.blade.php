@@ -116,6 +116,18 @@
                             </li>
 
                             <li>
+                                <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Company</span></a>
+                                <ul class="submenu-angle" aria-expanded="false">
+                                    <li>
+                                        <router-link to="/all-companies"><span class="mini-sub-pro">All Companies</span></router-link>
+                                    </li>
+                                    <li>
+                                        <router-link to="/add-company"><span class="mini-sub-pro">Add Company</span></router-link>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
                                 <a title="Landing Page" href="events.html" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Event</span></a>
                             </li>
                             <li>
