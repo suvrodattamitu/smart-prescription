@@ -27,6 +27,16 @@ Route::get('/group/{id}','SmartPrescription\MedicineGroupController@editGroup');
 Route::post('/update-group','SmartPrescription\MedicineGroupController@updateGroup');
 Route::delete('/delete-group/{id}','SmartPrescription\MedicineGroupController@deleteGroup');
 
+//medicine types
+Route::post('/save-type','SmartPrescription\MedicineTypeController@addType');
+Route::get('/types','SmartPrescription\MedicineTypeController@allTypes');
+Route::get('/type/{id}','SmartPrescription\MedicineTypeController@editType');
+Route::post('/update-type','SmartPrescription\MedicineTypeController@updateType');
+Route::delete('/delete-type/{id}','SmartPrescription\MedicineTypeController@deleteType');
+
+
+
+
 Auth::routes();
 Route::get('/', function () {
     return view('app');

@@ -8,6 +8,10 @@ import AddGroup from '../pages/medicine-groups/AddGroup'
 import EditGroup from '../pages/medicine-groups/EditGroup'
 import AllGroups from '../pages/medicine-groups/AllGroups'
 
+import AddType from '../pages/medicine-type/AddType'
+import EditType from '../pages/medicine-type/EditType'
+import AllTypes from '../pages/medicine-type/AllTypes'
+
 export const routes = [
 
 	{
@@ -53,7 +57,27 @@ export const routes = [
 	{
 		path:'/all-groups',
 		component:AllGroups,
-		meta: {title: 'All Group'},
+		meta: {title: 'All Groups'},
+
+	},
+
+	//medical-type
+	{
+		path:'/add-type',
+		component:AddType,
+		meta: {title: 'Add Type'},
+
+	},
+	{
+		path:'/edit-type/:id',
+		component:EditType,
+		meta: {title: 'Edit Type'},
+
+	},
+	{
+		path:'/all-types',
+		component:AllTypes,
+		meta: {title: 'All Types'},
 
 	},
 
