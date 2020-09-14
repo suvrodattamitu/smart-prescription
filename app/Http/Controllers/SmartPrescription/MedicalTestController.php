@@ -16,7 +16,7 @@ class MedicalTestController extends Controller
 
         return response()->json([
             'message'           => 'success',
-            'medicine_tests'    => $allTests
+            'medical_tests'    => $allTests
         ],200);
 
     }
@@ -48,5 +48,53 @@ class MedicalTestController extends Controller
             
         }
         
+    }
+
+    public function editTest( $id ) {
+
+        $medicalTest = MedicalTest::where('id',$id)->first();
+        return response()->json([
+            'message'   => 'success',
+            'medical_test'   => $medicalTest
+        ],200);
+
+    }
+
+    public function updateTest( Request $reqeust ) {
+
+        try {
+
+            $reqeust->validate([
+                'name'          => 'required',
+                'description'   => 'required'
+            ]);
+
+            MedicalTest::where('id',$reqeust->id)->update([
+                'name'          => $reqeust->name,
+                'description'   => $reqeust->description,
+            ]);
+
+            return response()->json([
+                'message'   => 'success',
+            ],200);
+
+        }catch (ValidationException $exception) {
+            
+            return response()->json([
+                'message'   => 'error',
+                'errors'    => $exception->getMessage()
+            ],423);
+            
+        }
+        
+    }
+
+    public function deleteTest($id) {
+
+        MedicalTest::where('id',$id)->delete();
+        return response()->json([
+            'message'   => 'success',
+        ],200);
+
     }
 }

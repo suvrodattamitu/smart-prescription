@@ -22,14 +22,45 @@ const router = new VueRouter({
     },
 });
 
+//sweat alert
+import Swal from 'sweetalert2'
+window.Swal = Swal;
+
+
+const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: 'btn btn-success',
+      cancelButton: 'btn btn-danger'
+    },
+    buttonsStyling: false
+})
+
+window.swalWithBootstrapButtons = swalWithBootstrapButtons;
+
+// const Toast = Swal.mixin({
+//     toast: true,
+//     position: 'top-end',
+//     showConfirmButton: false,
+//     timer: 3000,
+//     timerProgressBar: true,
+//     onOpen: (toast) => {
+//         toast.addEventListen­er('mouseenter', Swal.stopTimer)
+//         toast.addEventListen­er('mouseleave', Swal.resumeTimer)
+//     }
+// })
+
+// window.Toast = Toast;
+
+//const Swal = require('sweetalert2')
+
 router.beforeEach((to, from, next) => {
     document.title = to.meta.title + ' || Smart Prescription'
     next()
 });
 
-import MasterApp from './MasterApp';
+import MasterApp from './MasterApp'
 
-Vue.component('master-app', MasterApp);
+Vue.component('master-app', MasterApp)
 
 const app = new Vue({
     el: '#smart-prescription',

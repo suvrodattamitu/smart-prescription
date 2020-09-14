@@ -44,7 +44,7 @@
                             </div>
                             <div class="sparkline11-graph">
                                 <div class="static-table-list">
-                                    <table class="table sparkle-table" v-if="medicine_tests.length">
+                                    <table class="table sparkle-table" v-if="medical_tests.length">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -56,15 +56,15 @@
                                         </thead>
                                         <tbody>
 
-                                            <tr v-for="(test,index) in medicine_tests" :key="index">
+                                            <tr v-for="(test,index) in medical_tests" :key="index">
                                                 <td>{{ index+1 }}</td>
                                                 <td><span class="pie"> {{ test.name }} </span></td>
                                                 <td>{{ test.description }}</td>
                                                 <td>{{ test.created_at }}</td>
                                                 <td>
                                                     <div class="inline-remember-me">
-                                                        <a  href="#" class="pull-left btn btn-info login-submit-cs btn-space" type="submit"><i class="fa fa-pencil"></i></a>
-                                                        <a  href="#" class="pull-left btn btn-danger login-submit-cs" type="submit"><i class="fa fa-trash"></i></a>
+                                                        <a  @click.prevent="editTest(test.id)" href="#" class="pull-left btn btn-info login-submit-cs btn-space" type="submit"><i class="fa fa-pencil"></i></a>
+                                                        <a @click.prevent="deleteConfirmation(test.id)" href="#" class="pull-left btn btn-danger login-submit-cs" type="submit"><i class="fa fa-trash"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -91,7 +91,8 @@ export default {
     
     data() {
         return {
-            medicine_tests: []
+            medical_tests: [],
+            selected_test_id: ''
         }
     },
 
@@ -102,10 +103,57 @@ export default {
             let that = this;
             axios.get('/tests')
                 .then(function (response) {
-                    that.medicine_tests = response.data.medicine_tests;
+                    that.medical_tests = response.data.medical_tests;
                     console.log(response.data);
                 })
 
+        },
+
+        editTest( id ) {
+
+            this.$router.push('/edit-test/'+id);
+
+        },
+
+        deleteTest() {
+
+            let id = this.selected_test_id;
+            let that = this;
+
+            axios.delete('/delete-test/'+id)
+                .then(function (response) {
+                    that.selected_test_id = '';
+                    that.getAllTests();
+                })
+
+        },
+
+        deleteConfirmation( id ) {
+
+            this.selected_test_id = id;
+            let that = this;
+
+            swalWithBootstrapButtons.fire({
+                title: 'Do you want to delete the selected test?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Delete',
+                cancelButtonText: 'Cancel',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    that.deleteTest();
+
+                    console.log('delete now')
+                    // swalWithBootstrapButtons.fire(
+                    // 'Deleted!',
+                    // 'Your file has been deleted.',
+                    // 'success'
+                    // )
+                } 
+            })
         }
 
     },

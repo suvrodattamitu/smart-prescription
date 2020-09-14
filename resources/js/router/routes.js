@@ -25,7 +25,7 @@ export const routes = [
 
 	},
 	{
-		path:'/edit-test',
+		path:'/edit-test/:id',
 		component:EditTest,
 		meta: {title: 'Edit Test'},
 

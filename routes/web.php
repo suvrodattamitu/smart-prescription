@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 //medical tests
 Route::post('/save-test','SmartPrescription\MedicalTestController@addTest');
 Route::get('/tests','SmartPrescription\MedicalTestController@allTests');
+Route::delete('/delete-test/{id}','SmartPrescription\MedicalTestController@deleteTest');
+Route::get('/test/{id}','SmartPrescription\MedicalTestController@editTest');
+Route::post('/update-test','SmartPrescription\MedicalTestController@updateTest');
 
 Route::post('/save-group','SmartPrescription\MedicineGroupController@addGroup');
 
