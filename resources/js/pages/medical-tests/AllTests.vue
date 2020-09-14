@@ -59,8 +59,8 @@
                                             <tr v-for="(test,index) in medical_tests" :key="index">
                                                 <td>{{ index+1 }}</td>
                                                 <td><span class="pie"> {{ test.name }} </span></td>
-                                                <td>{{ test.description }}</td>
-                                                <td>{{ test.created_at }}</td>
+                                                <td>{{ test.description | shortLength(50,"...")}}</td>
+                                                <td>{{ test.created_at  | timeformat}}</td>
                                                 <td>
                                                     <div class="inline-remember-me">
                                                         <a  @click.prevent="editTest(test.id)" href="#" class="pull-left btn btn-info login-submit-cs btn-space" type="submit"><i class="fa fa-pencil"></i></a>
@@ -124,6 +124,13 @@ export default {
                 .then(function (response) {
                     that.selected_test_id = '';
                     that.getAllTests();
+
+                    that.$router.push('/all-tests');
+                    Toast.fire({
+                        icon: 'warning',
+                        title: 'Medical test deleted successfully!!!'
+                    })
+
                 })
 
         },
@@ -146,7 +153,7 @@ export default {
 
                     that.deleteTest();
 
-                    console.log('delete now')
+                   // console.log('delete now')
                     // swalWithBootstrapButtons.fire(
                     // 'Deleted!',
                     // 'Your file has been deleted.',

@@ -37,21 +37,24 @@ const swalWithBootstrapButtons = Swal.mixin({
 
 window.swalWithBootstrapButtons = swalWithBootstrapButtons;
 
-// const Toast = Swal.mixin({
-//     toast: true,
-//     position: 'top-end',
-//     showConfirmButton: false,
-//     timer: 3000,
-//     timerProgressBar: true,
-//     onOpen: (toast) => {
-//         toast.addEventListen­er('mouseenter', Swal.stopTimer)
-//         toast.addEventListen­er('mouseleave', Swal.resumeTimer)
-//     }
-// })
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    onOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+})
 
-// window.Toast = Toast;
+window.Toast = Toast;
 
-//const Swal = require('sweetalert2')
+
+//importing filters.js for using momentjs and others
+import {filters} from './filter/filters.js'
+
 
 router.beforeEach((to, from, next) => {
     document.title = to.meta.title + ' || Smart Prescription'

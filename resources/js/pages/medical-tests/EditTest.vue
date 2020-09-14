@@ -117,7 +117,13 @@ export default {
 
             axios.post('/update-test',data)
                 .then(function (response) {
+
                     that.$router.push('/all-tests');
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Medical test updated successfully!!!'
+                    })
+
                 })
                 .catch(function (error) {
 

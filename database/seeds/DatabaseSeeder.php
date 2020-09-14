@@ -1,16 +1,15 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Model\MedicalTest;
+use App\User;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
+    
     public function run()
     {
-        // $this->call(UserSeeder::class);
+        factory(App\User::class)->create();
+        factory(MedicalTest::class,10)->create();
     }
 }
