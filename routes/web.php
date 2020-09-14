@@ -20,7 +20,12 @@ Route::delete('/delete-test/{id}','SmartPrescription\MedicalTestController@delet
 Route::get('/test/{id}','SmartPrescription\MedicalTestController@editTest');
 Route::post('/update-test','SmartPrescription\MedicalTestController@updateTest');
 
+//medicine groups
 Route::post('/save-group','SmartPrescription\MedicineGroupController@addGroup');
+Route::get('/groups','SmartPrescription\MedicineGroupController@allGroups');
+Route::get('/group/{id}','SmartPrescription\MedicineGroupController@editGroup');
+Route::post('/update-group','SmartPrescription\MedicineGroupController@updateGroup');
+Route::delete('/delete-group/{id}','SmartPrescription\MedicineGroupController@deleteGroup');
 
 Auth::routes();
 Route::get('/', function () {

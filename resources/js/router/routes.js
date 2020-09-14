@@ -45,7 +45,7 @@ export const routes = [
 
 	},
 	{
-		path:'/edit-group',
+		path:'/edit-group/:id',
 		component:EditGroup,
 		meta: {title: 'Edit Group'},
 

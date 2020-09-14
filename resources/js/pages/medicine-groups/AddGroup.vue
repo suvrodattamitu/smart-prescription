@@ -48,18 +48,18 @@
 
                                                 <div class="form-group-inner">
                                                     <label>Name</label>
-                                                    <input type="text" v-model="name" class="form-control" placeholder="Enter test name" />
-                                                    <!-- <p class="text-danger" v-if="errors.name">{{ errors.name[0] }}</p> -->
+                                                    <input type="text" v-model="name" class="form-control" placeholder="Enter group name" />
+                                                    <p class="text-danger" v-if="errors.name">{{ errors.name[0] }}</p>
                                                 </div>
 
                                                 <div class="form-group-inner">
                                                     <label>Description</label>
                                                     <textarea class="form-control" v-model="description" cols="83" rows="10" placeholder="Enter description"></textarea>
-                                                    <!-- <p class="text-danger" v-if="errors.description">{{ errors.description[0] }}</p> -->
+                                                    <p class="text-danger" v-if="errors.description">{{ errors.description[0] }}</p>
                                                 </div>
                                                 <div class="login-btn-inner">
                                                     <div class="inline-remember-me">
-                                                        <button class="btn btn-sm btn-primary pull-left login-submit-cs" type="submit" @click.prevent="addMedicine">Save</button>
+                                                        <button class="btn btn-sm btn-primary pull-left login-submit-cs" type="submit" @click.prevent="addGroup">Save</button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -91,7 +91,7 @@ export default {
 
     methods: {
 
-        addMedicine() {
+        addGroup() {
 
             let data = {
                 'name': this.name,
@@ -100,9 +100,9 @@ export default {
 
             let that = this;
 
-            axios.post('/save-medicine',data)
+            axios.post('/save-group',data)
                 .then(function (response) {
-                    that.$router.push('/all-medicines');
+                    that.$router.push('/all-groups');
                 })
                 .catch(function (error) {
 

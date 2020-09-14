@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <div class="breadcome-area">
             <div class="container-fluid">
                 <div class="row">
@@ -44,7 +43,7 @@
                             </div>
                             <div class="sparkline11-graph">
                                 <div class="static-table-list">
-                                    <table class="table sparkle-table" v-if="medicine_tests.length">
+                                    <table class="table sparkle-table" v-if="medicine_groups.length">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -56,15 +55,15 @@
                                         </thead>
                                         <tbody>
 
-                                            <tr v-for="(test,index) in medicine_tests" :key="index">
+                                            <tr v-for="(group,index) in medicine_groups" :key="index">
                                                 <td>{{ index+1 }}</td>
-                                                <td><span class="pie"> {{ test.name }} </span></td>
-                                                <td>{{ test.description }}</td>
-                                                <td>{{ test.created_at }}</td>
+                                                <td><span class="pie"> {{ group.name }} </span></td>
+                                                <td>{{ group.description }}</td>
+                                                <td>{{ group.created_at }}</td>
                                                 <td>
                                                     <div class="inline-remember-me">
-                                                        <a  href="#" class="pull-left btn btn-info login-submit-cs btn-space" type="submit"><i class="fa fa-pencil"></i></a>
-                                                        <a  href="#" class="pull-left btn btn-danger login-submit-cs" type="submit"><i class="fa fa-trash"></i></a>
+                                                        <a  @click.prevent="editGroup(group.id)" href="#" class="pull-left btn btn-info login-submit-cs btn-space" type="submit"><i class="fa fa-pencil"></i></a>
+                                                        <a @click.prevent="deleteConfirmation(group.id)" href="#" class="pull-left btn btn-danger login-submit-cs" type="submit"><i class="fa fa-trash"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -91,28 +90,77 @@ export default {
     
     data() {
         return {
-            medicine_tests: []
+            medicine_groups: [],
+            selected_group_id: ''
         }
     },
 
     methods: {
 
-        getAllTests() {
+        getAllGroups() {
 
             let that = this;
-            axios.get('/tests')
+            axios.get('/groups')
                 .then(function (response) {
-                    that.medicine_tests = response.data.medicine_tests;
+                    that.medicine_groups = response.data.medicine_groups;
                     console.log(response.data);
                 })
 
-        }
+        },
 
+        editGroup( id ) {
+
+            this.$router.push('/edit-group/'+id);
+
+        },
+        
+        deleteGroup() {
+
+            let id = this.selected_group_id;
+            let that = this;
+
+            axios.delete('/delete-group/'+id)
+                .then(function (response) {
+                    that.selected_group_id = '';
+                    that.getAllGroups();
+
+                    that.$router.push('/all-groups');
+                    Toast.fire({
+                        icon: 'warning',
+                        title: 'Medicine group deleted successfully!!!'
+                    })
+
+                })
+
+        },
+
+        deleteConfirmation( id ) {
+
+            this.selected_group_id = id;
+            let that = this;
+
+            swalWithBootstrapButtons.fire({
+                title: 'Do you want to delete the selected group?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Delete',
+                cancelButtonText: 'Cancel',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    that.deleteGroup();
+
+                } 
+            })
+        }
+    
     },
 
     mounted() {
 
-        //this.getAllTests();
+        this.getAllGroups();
 
     }
 }
