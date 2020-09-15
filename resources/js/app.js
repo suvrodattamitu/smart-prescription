@@ -11,6 +11,9 @@ window.Vue = require('vue');
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
+import vSelect from "vue-select";
+Vue.component("v-select", vSelect);
+
 //import all routes here
 import {routes} from './router/routes';
 //make all routes inside this 

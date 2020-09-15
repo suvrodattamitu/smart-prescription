@@ -153,12 +153,6 @@ export default {
 
                     that.deleteTest();
 
-                   // console.log('delete now')
-                    // swalWithBootstrapButtons.fire(
-                    // 'Deleted!',
-                    // 'Your file has been deleted.',
-                    // 'success'
-                    // )
                 } 
             })
         }

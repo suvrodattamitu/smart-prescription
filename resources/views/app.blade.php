@@ -140,6 +140,18 @@
                             </li>
 
                             <li>
+                                <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Medicines</span></a>
+                                <ul class="submenu-angle" aria-expanded="false">
+                                    <li>
+                                        <router-link to="/all-medicines"><span class="mini-sub-pro">All Medicines</span></router-link>
+                                    </li>
+                                    <li>
+                                        <router-link to="/add-medicine"><span class="mini-sub-pro">Add Medicine</span></router-link>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
                                 <a title="Landing Page" href="events.html" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Event</span></a>
                             </li>
                             <li>

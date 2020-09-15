@@ -20,6 +20,10 @@ import AddPatient from '../pages/patients/AddPatient'
 import EditPatient from '../pages/patients/EditPatient'
 import AllPatients from '../pages/patients/AllPatients'
 
+import AddMedicine from '../pages/medicines/AddMedicine'
+import EditMedicine from '../pages/medicines/EditMedicine'
+import AllMedicines from '../pages/medicines/AllMedicines'
+
 export const routes = [
 
 	{
@@ -126,6 +130,26 @@ export const routes = [
 		path:'/all-patients',
 		component:AllPatients,
 		meta: {title: 'All Patients'},
+
+	},
+
+	//medicines
+	{
+		path:'/add-medicine',
+		component:AddMedicine,
+		meta: {title: 'Add Medicine'},
+
+	},
+	{
+		path:'/edit-medicine/:id',
+		component:EditMedicine,
+		meta: {title: 'Edit Medicine'},
+
+	},
+	{
+		path:'/all-medicines',
+		component:AllMedicines,
+		meta: {title: 'All Medicines'},
 
 	},
 

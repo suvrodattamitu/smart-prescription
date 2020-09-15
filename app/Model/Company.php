@@ -8,4 +8,8 @@ class Company extends Model
 {
     protected $table = 'companies';
     protected $fillable = ['name','description'];
+
+    public function medicines(){
+        return $this->hasMany('App\Model\Medicine');
+    }
 }

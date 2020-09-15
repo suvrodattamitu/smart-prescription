@@ -41,14 +41,20 @@ Route::get('/company/{id}','SmartPrescription\CompanyController@editCompany');
 Route::post('/update-company','SmartPrescription\CompanyController@updateCompany');
 Route::delete('/delete-company/{id}','SmartPrescription\CompanyController@deleteCompany');
 
-////patient
+//patient
 Route::post('/save-patient','SmartPrescription\PatientController@addPatient');
 Route::get('/patients','SmartPrescription\PatientController@allPatients');
 Route::get('/patient/{id}','SmartPrescription\PatientController@editPatient');
 Route::post('/update-patient','SmartPrescription\PatientController@updatePatient');
 Route::delete('/delete-patient/{id}','SmartPrescription\PatientController@deletePatient');
 
-
+//medicines
+Route::get('/get-additional-medicine-data','SmartPrescription\MedicineController@getAdditionalMedicineData');
+Route::post('/save-medicine','SmartPrescription\MedicineController@addMedicine');
+Route::get('/medicines','SmartPrescription\MedicineController@allMedicines');
+Route::get('/medicine/{id}','SmartPrescription\MedicineController@editMedicine');
+Route::post('/update-medicine','SmartPrescription\MedicineController@updateMedicine');
+Route::delete('/delete-medicine/{id}','SmartPrescription\MedicineController@deleteMedicine');
 
 Auth::routes();
 Route::get('/',function () {
