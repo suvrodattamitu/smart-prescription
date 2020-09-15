@@ -16,9 +16,9 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <ul class="breadcome-menu">
-                                        <li><a href="#">Home</a> <span class="bread-slash">/</span>
+                                        <li><router-link to="/">Home</router-link> <span class="bread-slash">/</span>
                                         </li>
-                                        <li><span class="bread-blod">Dashboard V.1</span>
+                                        <li><span class="bread-blod">All Patients</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -38,32 +38,39 @@
                         <div class="sparkline11-list mt-b-30">
                             <div class="sparkline11-hd">
                                 <div class="main-sparkline11-hd">
-                                    <h1>All Medicine Groups</h1>
+                                    <h1>All Medicine Types</h1>
                                 </div>
                             </div>
                             <div class="sparkline11-graph">
                                 <div class="static-table-list">
-                                    <table class="table sparkle-table" v-if="medicine_groups.length">
+                                    <table class="table sparkle-table" v-if="patients.length">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
+                                                <th>VisitingNo</th>
+                                                <th>RegiNo</th>
                                                 <th>Name</th>
-                                                <th>Description</th>
+                                                <th>Age</th>
+                                                <th>Address</th>
                                                 <th>Created At</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
 
-                                            <tr v-for="(group,index) in medicine_groups" :key="index">
+                                            <tr v-for="(patient,index) in patients" :key="index">
                                                 <td>{{ index+1 }}</td>
-                                                <td><span class="pie"> {{ group.name }} </span></td>
-                                                <td>{{ group.description | shortLength(50,"...")}}</td>
-                                                <td>{{ group.created_at | timeformat}}</td>
+                                                <td>{{ patient.visiting_no }}</td>
+                                                <td>{{ patient.regi_no }}</td>
+                                                <td>{{ patient.name }}</td>
+                                                <td>{{ patient.age }}</td>
+                                                <td>{{ patient.address }}</td>
+                                                <td>{{ patient.created_at | timeformat }}</td>
                                                 <td>
                                                     <div class="inline-remember-me">
-                                                        <a  @click.prevent="editGroup(group.id)" href="#" class="pull-left btn btn-info login-submit-cs btn-space" type="submit"><i class="fa fa-pencil"></i></a>
-                                                        <a @click.prevent="deleteConfirmation(group.id)" href="#" class="pull-left btn btn-danger login-submit-cs" type="submit"><i class="fa fa-trash"></i></a>
+                                                        <a  @click.prevent="editPatient(patient.id)" href="#" class="pull-left btn btn-info login-submit-cs btn-space" type="submit"><i class="fa fa-pencil"></i></a>
+                                                        <a  @click.prevent="" href="#" class="pull-left btn btn-success login-submit-cs btn-space" type="submit"><i class="fa fa-eye"></i></a>
+                                                        <a @click.prevent="deleteConfirmation(patient.id)" href="#" class="pull-left btn btn-danger login-submit-cs" type="submit"><i class="fa fa-trash"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -90,44 +97,44 @@ export default {
     
     data() {
         return {
-            medicine_groups: [],
-            selected_group_id: ''
+            patients: [],
+            selected_patient_id: ''
         }
     },
 
     methods: {
 
-        getAllGroups() {
+        getAllPatients() {
 
             let that = this;
-            axios.get('/groups')
+            axios.get('/patients')
                 .then(function (response) {
-                    that.medicine_groups = response.data.medicine_groups;
+                    that.patients = response.data.patients;
                     console.log(response.data);
                 })
 
         },
 
-        editGroup( id ) {
+        editPatient( id ) {
 
-            this.$router.push('/edit-group/'+id);
+            this.$router.push('/edit-patient/'+id);
 
         },
         
-        deleteGroup() {
+        deletePatient() {
 
-            let id = this.selected_group_id;
+            let id = this.selected_patient_id;
             let that = this;
 
-            axios.delete('/delete-group/'+id)
+            axios.delete('/delete-patient/'+id)
                 .then(function (response) {
-                    that.selected_group_id = '';
-                    that.getAllGroups();
+                    that.selected_patient_id = '';
+                    that.getAllPatients();
 
-                    that.$router.push('/all-groups');
+                    that.$router.push('/all-patients');
                     Toast.fire({
                         icon: 'warning',
-                        title: 'Medicine group deleted successfully!!!'
+                        title: 'Patiernt deleted successfully!!!'
                     })
 
                 })
@@ -136,11 +143,11 @@ export default {
 
         deleteConfirmation( id ) {
 
-            this.selected_group_id = id;
+            this.selected_patient_id = id;
             let that = this;
 
             swalWithBootstrapButtons.fire({
-                title: 'Do you want to delete the selected group?',
+                title: 'Do you want to delete the selected patient?',
                 text: "You won't be able to revert this!",
                 icon: 'warning',
                 showCancelButton: true,
@@ -150,7 +157,7 @@ export default {
             }).then((result) => {
                 if (result.isConfirmed) {
 
-                    that.deleteGroup();
+                    that.deletePatient();
 
                 } 
             })
@@ -160,7 +167,7 @@ export default {
 
     mounted() {
 
-        this.getAllGroups();
+        this.getAllPatients();
 
     }
 }

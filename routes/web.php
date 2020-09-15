@@ -27,12 +27,28 @@ Route::get('/group/{id}','SmartPrescription\MedicineGroupController@editGroup');
 Route::post('/update-group','SmartPrescription\MedicineGroupController@updateGroup');
 Route::delete('/delete-group/{id}','SmartPrescription\MedicineGroupController@deleteGroup');
 
+//medicine types
+Route::post('/save-type','SmartPrescription\MedicineTypeController@addType');
+Route::get('/types','SmartPrescription\MedicineTypeController@allTypes');
+Route::get('/type/{id}','SmartPrescription\MedicineTypeController@editType');
+Route::post('/update-type','SmartPrescription\MedicineTypeController@updateType');
+Route::delete('/delete-type/{id}','SmartPrescription\MedicineTypeController@deleteType');
+
 //companies
 Route::post('/save-company','SmartPrescription\CompanyController@addCompany');
 Route::get('/companies','SmartPrescription\CompanyController@allCompanies');
 Route::get('/company/{id}','SmartPrescription\CompanyController@editCompany');
 Route::post('/update-company','SmartPrescription\CompanyController@updateCompany');
 Route::delete('/delete-company/{id}','SmartPrescription\CompanyController@deleteCompany');
+
+////patient
+Route::post('/save-patient','SmartPrescription\PatientController@addPatient');
+Route::get('/patients','SmartPrescription\PatientController@allPatients');
+Route::get('/patient/{id}','SmartPrescription\PatientController@editPatient');
+Route::post('/update-patient','SmartPrescription\PatientController@updatePatient');
+Route::delete('/delete-patient/{id}','SmartPrescription\PatientController@deletePatient');
+
+
 
 Auth::routes();
 Route::get('/',function () {

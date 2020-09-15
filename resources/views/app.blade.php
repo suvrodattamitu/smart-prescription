@@ -116,13 +116,25 @@
                             </li>
 
                             <li>
-                                <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Company</span></a>
+                                <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Companies</span></a>
                                 <ul class="submenu-angle" aria-expanded="false">
                                     <li>
                                         <router-link to="/all-companies"><span class="mini-sub-pro">All Companies</span></router-link>
                                     </li>
                                     <li>
                                         <router-link to="/add-company"><span class="mini-sub-pro">Add Company</span></router-link>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Patients</span></a>
+                                <ul class="submenu-angle" aria-expanded="false">
+                                    <li>
+                                        <router-link to="/all-patients"><span class="mini-sub-pro">All Patients</span></router-link>
+                                    </li>
+                                    <li>
+                                        <router-link to="/add-patient"><span class="mini-sub-pro">Add Patient</span></router-link>
                                     </li>
                                 </ul>
                             </li>

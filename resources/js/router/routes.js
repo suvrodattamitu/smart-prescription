@@ -16,6 +16,10 @@ import AddCompany from '../pages/companies/AddCompany'
 import EditCompany from '../pages/companies/EditCompany'
 import AllCompanies from '../pages/companies/AllCompanies'
 
+import AddPatient from '../pages/patients/AddPatient'
+import EditPatient from '../pages/patients/EditPatient'
+import AllPatients from '../pages/patients/AllPatients'
+
 export const routes = [
 
 	{
@@ -102,6 +106,26 @@ export const routes = [
 		path:'/all-companies',
 		component:AllCompanies,
 		meta: {title: 'All Companies'},
+
+	},
+
+	//patients
+	{
+		path:'/add-patient',
+		component:AddPatient,
+		meta: {title: 'Add Patient'},
+
+	},
+	{
+		path:'/edit-patient/:id',
+		component:EditPatient,
+		meta: {title: 'Edit Patient'},
+
+	},
+	{
+		path:'/all-patients',
+		component:AllPatients,
+		meta: {title: 'All Patients'},
 
 	},
 
