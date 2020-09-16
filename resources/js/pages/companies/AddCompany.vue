@@ -16,9 +16,9 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <ul class="breadcome-menu">
-                                        <li><a href="#">Home</a> <span class="bread-slash">/</span>
+                                        <li><router-link to="/">Home</router-link> <span class="bread-slash">/</span>
                                         </li>
-                                        <li><span class="bread-blod">Dashboard V.1</span>
+                                        <li><span class="bread-blod">Add Company</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -37,12 +37,15 @@
                         <div class="sparkline8-hd">
                             <div class="main-sparkline8-hd">
                                 <h1>Add Company</h1>
+                                <div class="add-product">
+                                       <router-link to="/all-companies">All Companies</router-link>
+                                </div>
                             </div>
                         </div>
                         <div class="sparkline8-graph">
                             <div class="basic-login-form-ad">
                                 <div class="row">
-                                    <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="basic-login-inner">
                                             <form action="#">
 

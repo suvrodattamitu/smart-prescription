@@ -16,9 +16,9 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <ul class="breadcome-menu">
-                                        <li><a href="#">Home</a> <span class="bread-slash">/</span>
+                                        <li><router-link to="/">Home</router-link> <span class="bread-slash">/</span>
                                         </li>
-                                        <li><span class="bread-blod">Dashboard V.1</span>
+                                        <li><span class="bread-blod">All Medicine Types</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -34,11 +34,14 @@
             <div class="container-fluid">
               
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="sparkline11-list mt-b-30">
                             <div class="sparkline11-hd">
                                 <div class="main-sparkline11-hd">
                                     <h1>All Medicine Types</h1>
+                                    <div class="add-product">
+                                       <router-link to="/add-type">Add Medicine Type</router-link>
+                                    </div>
                                 </div>
                             </div>
                             <div class="sparkline11-graph">

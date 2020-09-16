@@ -38,7 +38,7 @@
 
                             <h4>All Medicines</h4>
                             <div class="add-product">
-                                <a href="/add-medicine">Add Medicine</a>
+                                <router-link to="/add-medicine">Add Medicine</router-link>
                             </div>
                             <div class="asset-inner">
                                 <table v-if="medicines.length">
