@@ -24,6 +24,8 @@ import AddMedicine from '../pages/medicines/AddMedicine'
 import EditMedicine from '../pages/medicines/EditMedicine'
 import AllMedicines from '../pages/medicines/AllMedicines'
 
+import Profile from '../pages/profile/Profile';
+
 export const routes = [
 
 	{
@@ -152,6 +154,13 @@ export const routes = [
 		meta: {title: 'All Medicines'},
 
 	},
+
+	//profile
+	{
+		path:'/profile',
+		component:Profile,
+		meta:{title: 'Profile'}
+	}
 
 
 ];

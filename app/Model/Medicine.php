@@ -6,19 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Medicine extends Model
 {
-    
-    protected $table = 'medicines';
-    protected $fillable = ['name','description','group_id','type_id','company_id'];
 
-    public function type(){
+    protected $table = 'medicines';
+    protected $fillable = ['name', 'description', 'group_id', 'type_id', 'company_id'];
+
+    public function type()
+    {
         return $this->belongsTo('App\Model\MedicineType');
     }
 
-    public function group(){
+    public function group()
+    {
         return $this->belongsTo('App\Model\MedicineGroup');
     }
 
-    public function company(){
+    public function company()
+    {
         return $this->belongsTo('App\Model\Company');
     }
 

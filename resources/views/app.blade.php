@@ -580,7 +580,7 @@
                                                     <a href="#"><span class="edu-icon edu-home-admin author-log-ic"></span>My Account</a>
                                                     </li>
                                                     <li>
-                                                    <a href="#"><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</a>
+                                                    <router-link to="/profile"><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</router-link>
                                                     </li>
                                                     <li>
                                                     <a href="#"><span class="edu-icon edu-money author-log-ic"></span>User Billing</a>
