@@ -586,7 +586,7 @@
                                                     <a href="#"><span class="edu-icon edu-money author-log-ic"></span>User Billing</a>
                                                     </li>
                                                     <li>
-                                                    <a href="#"><span class="edu-icon edu-settings author-log-ic"></span>Settings</a>
+                                                    <router-link to="/settings" ><span class="edu-icon edu-settings author-log-ic"></span>Settings</router-link>
                                                     </li>
                                                     <li>
                                                     <a href="{{ route('logout') }}"

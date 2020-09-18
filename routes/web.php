@@ -49,6 +49,9 @@ Route::delete('/delete-medicine/{id}', 'SmartPrescription\MedicineController@del
 Route::get('/get-profile', 'SmartPrescription\ProfileController@getProfile');
 Route::post('/update-profile', 'SmartPrescription\ProfileController@updateProfile');
 
+//settings
+Route::post('/change-password','SmartPrescription\SettingsController@changePassword');
+
 Auth::routes();
 Route::get('/', function () {
     return view('app');

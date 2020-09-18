@@ -26,6 +26,8 @@ import AllMedicines from '../pages/medicines/AllMedicines'
 
 import Profile from '../pages/profile/Profile';
 
+import Settings from '../pages/settings/Settings'
+
 export const routes = [
 
 	{
@@ -160,7 +162,15 @@ export const routes = [
 		path:'/profile',
 		component:Profile,
 		meta:{title: 'Profile'}
-	}
+	},
+
+	//settings
+	{
+		path:'/settings',
+		component:Settings,
+		meta: {title: 'Settings'},
+
+	},
 
 
 ];
