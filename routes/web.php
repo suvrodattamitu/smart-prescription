@@ -53,7 +53,7 @@ Route::post('/update-profile', 'SmartPrescription\ProfileController@updateProfil
 Route::post('/change-password','SmartPrescription\SettingsController@changePassword');
 
 //prescriptions 
-Route::post('/patient-details/{patient_id}','SmartPrescription\PrescriptionController@patientDetails');
+Route::get('/patient-details/{patient_id}','SmartPrescription\PrescriptionController@patientDetails');
 Route::post('/add-prescription/{patient_id}','SmartPrescription\PrescriptionController@addPrescription');
 
 Auth::routes();

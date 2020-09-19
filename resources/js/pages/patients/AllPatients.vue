@@ -55,6 +55,7 @@
                                                 <th>Name</th>
                                                 <th>Age</th>
                                                 <th>Address</th>
+                                                <th>Prescribe</th>
                                                 <th>Created At</th>
                                                 <th>Actions</th>
                                             </tr>
@@ -68,6 +69,8 @@
                                                 <td>{{ patient.name }}</td>
                                                 <td>{{ patient.age }}</td>
                                                 <td>{{ patient.address }}</td>
+                                                <td><a @click.prevent="prescribeNow(patient.id)" href="#" class="pull-left btn btn-info login-submit-cs" type="submit">Prescribe</a>
+                                                    <!-- <a @click.prevent="prescribeNow(patient.id)" href="#" class="pull-left btn btn-info login-submit-cs" type="submit"><i class="fa fa-check-circle"></i> Prescribed</a> --></td>
                                                 <td>{{ patient.created_at | timeformat }}</td>
                                                 <td>
                                                     <div class="inline-remember-me">
@@ -164,7 +167,11 @@ export default {
 
                 } 
             })
-        }
+        },
+
+        prescribeNow(patient_id) {
+            this.$router.push('/prescribe/'+patient_id);
+        },
     
     },
 
