@@ -143,17 +143,18 @@
                                             <div class="row">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="devit-card-custom">
+                                                        <span class="text-danger" v-if="errors.match_password">{{ errors.match_password[0] }}</span>
                                                         <div class="form-group">
                                                             <input type="text" v-model="current_password" class="form-control" placeholder="Current Password">
-                                                            <p class="text-danger" v-if="errors.current_password">{{ errors.current_password[0] }}</p>
+                                                            <span class="text-danger" v-if="errors.current_password">{{ errors.current_password[0] }}</span>
                                                         </div>
                                                          <div class="form-group">
                                                             <input type="text" v-model="new_password" class="form-control" placeholder="Type A New Password">
-                                                            <p class="text-danger" v-if="errors.new_password">{{ errors.new_password[0] }}</p>
+                                                            <span class="text-danger" v-if="errors.new_password">{{ errors.new_password[0] }}</span>
                                                         </div>
                                                         <div class="form-group">
                                                             <input type="text" v-model="confirm_password" class="form-control" placeholder="Confirm Password">
-                                                            <p class="text-danger" v-if="errors.confirm_password">{{ errors.confirm_password[0] }}</p>
+                                                            <span class="text-danger" v-if="errors.confirm_password">{{ errors.confirm_password[0] }}</span>
                                                         </div>
                                                         <a @click.prevent="changePassword" type="submit" class="btn btn-primary waves-effect waves-light">Change</a>
                                                     </div>

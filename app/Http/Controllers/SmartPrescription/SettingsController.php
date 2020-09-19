@@ -23,17 +23,17 @@ class SettingsController extends Controller
                 $pass = Hash::make($request->current_password);
 
                 if ($request->new_password != $request->confirm_password) {
-                    return response()->json([
-                        'message'   => 'error',
-                        'error'     =>  'Your new password and confirm password does not match. Please try again.'
-                    ],423);
+                    $error = \Illuminate\Validation\ValidationException::withMessages([
+                        'match_password' => ['Your new password and confirm password does not match. Please try again.'],
+                    ]);
+                    throw $error;
                 }
 
                 if (!Hash::check($request->current_password, Auth::user()->password)) {
-                    return response()->json([
-                        'message'   => 'error',
-                        'error'     =>  'Your current password does not matches with the password you provided. Please try again.'
-                    ],423);
+                    $error = \Illuminate\Validation\ValidationException::withMessages([
+                        'match_password' => ['Your current password does not matches with the password you provided. Please try again.'],
+                    ]);
+                    throw $error;
                 }
 
                 
