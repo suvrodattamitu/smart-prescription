@@ -21,11 +21,12 @@ class CreatePrescriptionMedicineDetailsTable extends Migration
             $table->foreign('type_id')->references('id')->on('medicine_types')->onDelete('cascade');
             $table->unsignedBigInteger('medicine_id')->index();
             $table->foreign('medicine_id')->references('id')->on('medicines')->onDelete('cascade');
-            $table->string('eating_time')->nullable();//breakfast lunch dinner
+            $table->string('eating_time_breakfast')->nullable();//breakfast lunch dinner
+            $table->string('eating_time_lunch')->nullable();//breakfast lunch dinner
+            $table->string('eating_time_dinner')->nullable();//breakfast lunch dinner
             $table->string('eating_term')->nullable();//b a
             $table->string('days')->nullable(); //10
             $table->string('duration')->nullable(); //days/months/years/continue
-            $table->string('medical_test_name')->nullable();
             $table->timestamps();
         });
     }
