@@ -17,7 +17,7 @@ class CreatePrescriptionMedicalTestDetailsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('prescription_id')->index();
             $table->foreign('prescription_id')->references('id')->on('prescriptions')->onDelete('cascade');
-            $table->unsignedBigInteger('medical_test_id')->index();
+            $table->unsignedBigInteger('medical_test_id')->nullable()->index();
             $table->foreign('medical_test_id')->references('id')->on('medical_tests')->onDelete('cascade');
             $table->text('description')->nullable();
             $table->timestamps();

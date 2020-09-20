@@ -6,6 +6,7 @@ use App\Model\Patient;
 use App\Model\Company;
 use App\Model\MedicineType;
 use App\Model\MedicineGroup;
+use App\Model\Medicine;
 use App\User;
 
 class DatabaseSeeder extends Seeder
@@ -19,5 +20,6 @@ class DatabaseSeeder extends Seeder
         factory(Company::class,10)->create();
         factory(MedicineType::class,10)->create();
         factory(MedicineGroup::class,10)->create();
+        factory(Medicine::class,10)->create();
     }
 }

@@ -17,9 +17,9 @@ class CreatePrescriptionMedicineDetailsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('prescription_id')->index();
             $table->foreign('prescription_id')->references('id')->on('prescriptions')->onDelete('cascade');
-            $table->unsignedBigInteger('type_id')->index();
+            $table->unsignedBigInteger('type_id')->nullable()->index();
             $table->foreign('type_id')->references('id')->on('medicine_types')->onDelete('cascade');
-            $table->unsignedBigInteger('medicine_id')->index();
+            $table->unsignedBigInteger('medicine_id')->nullable()->index();
             $table->foreign('medicine_id')->references('id')->on('medicines')->onDelete('cascade');
             $table->boolean('eating_time_breakfast')->default(0);//breakfast lunch dinner
             $table->boolean('eating_time_lunch')->default(0);//breakfast lunch dinner

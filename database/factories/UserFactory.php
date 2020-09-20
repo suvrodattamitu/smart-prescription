@@ -8,6 +8,7 @@ use App\Model\Patient;
 use App\Model\Company;
 use App\Model\MedicineType;
 use App\Model\MedicineGroup;
+use App\Model\Medicine;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
@@ -81,5 +82,17 @@ $factory->define(MedicineGroup::class, function (Faker $faker) {
         
         'name' => $faker->name,
         'description' => $faker->paragraphs(1,true),
+    ];
+});
+
+$factory->define(Medicine::class, function (Faker $faker) {
+    return [
+
+        'name'          => $faker->name,
+        'group_id'      => rand(1,10),
+        'type_id'       => rand(1,10),
+        'company_id'    => rand(1,10),
+        'description'   => $faker->sentence,
+        
     ];
 });
