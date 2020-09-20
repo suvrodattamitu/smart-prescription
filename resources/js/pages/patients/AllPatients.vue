@@ -56,7 +56,7 @@
                                                 <th>Age</th>
                                                 <th>Address</th>
                                                 <th>Prescribe</th>
-                                                <th>Created At</th>
+                                                <th>Prescriptions</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
@@ -70,7 +70,7 @@
                                                 <td>{{ patient.age }}</td>
                                                 <td>{{ patient.address }}</td>
                                                 <td><a @click.prevent="prescribeNow(patient.id)" href="#" class="pull-left btn btn-info login-submit-cs" type="submit">Prescribe</a>
-                                                <td><router-link :to="'/all-prescriptions/'+patient.id" @click.prevent="prescribeNow(patient.id)" href="#" class="pull-left btn btn-info login-submit-cs" type="submit">All Prescription</router-link>
+                                                <td><router-link :to="'/all-prescriptions/'+patient.id" type="submit" class="btn btn-info">View</router-link>
                                                  
                                                     <!-- <a @click.prevent="prescribeNow(patient.id)" href="#" class="pull-left btn btn-info login-submit-cs" type="submit"><i class="fa fa-check-circle"></i> Prescribed</a> --></td>
                                                 <td>{{ patient.created_at | timeformat }}</td>

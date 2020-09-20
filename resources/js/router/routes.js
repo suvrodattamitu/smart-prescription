@@ -30,6 +30,8 @@ import Settings from '../pages/settings/Settings';
 
 import Prescription from '../pages/Prescription'
 
+import AllPrescriptions from '../pages/prescription/AllPrescriptions'
+
 export const routes = [
 
 	{
@@ -179,6 +181,14 @@ export const routes = [
 		path:'/prescribe/:id',
 		component:Prescription,
 		meta: {title: 'Prescription'},
+
+	},
+
+	//prescription
+	{
+		path:'/all-prescriptions/:id',
+		component:AllPrescriptions,
+		meta: {title: 'All Prescriptions'},
 
 	},
 	

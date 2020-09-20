@@ -57,7 +57,7 @@ Route::get('/patient-details/{patient_id}','SmartPrescription\PrescriptionContro
 Route::post('/add-prescription/{patient_id}','SmartPrescription\PrescriptionController@addPrescription');
 Route::get('/find-medicine','SmartPrescription\PrescriptionController@findMedicine');
 Route::get('/get-prescription/{prescription_id}','SmartPrescription\PrescriptionController@getPrescriptionByPrescriptionId');
-// Route::get('/get-prescription/{patient_id}','SmartPrescription\PrescriptionController@getPrescriptionsByPatientId');
+Route::get('/prescriptions/{patient_id}','SmartPrescription\PrescriptionController@getPrescriptionsByPatientId');
 
 Auth::routes();
 Route::get('/', function () {

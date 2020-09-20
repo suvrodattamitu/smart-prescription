@@ -23,15 +23,15 @@ class PrescriptionController extends Controller
 
     }
 
-    // public function getPrescriptionsByPatientId($patientId) {
+    public function getPrescriptionsByPatientId($patientId) {
 
-    //     $prescriptions = Patient::where('id',$patientId)->with('prescriptions','medical_tests')->first();
-    //     return response()->json([
-    //         'message'       => 'success',
-    //         'prescription'  => $prescriptions
-    //     ]);
+        $patient = Patient::where('id',$patientId)->with('prescriptions')->first();
+        return response()->json([
+            'message'       => 'success',
+            'patient'  => $patient
+        ]);
 
-    // }
+    }
 
     public function patientDetails($patientId) {
 
