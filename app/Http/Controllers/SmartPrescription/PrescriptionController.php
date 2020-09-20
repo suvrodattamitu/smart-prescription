@@ -26,7 +26,7 @@ class PrescriptionController extends Controller
 
     public function addPrescription( Request $request,$patientId ) {
 
-        return $request->all();
+        //return $request->all();
 
         //add data to prescription table first
         $prescriptionId = Prescription::create([
@@ -39,23 +39,25 @@ class PrescriptionController extends Controller
         foreach($request->medical_tests as $test ) {
             PrescriptionMedicalTestDetail::create([
                 'prescription_id'   => $prescriptionId,
-                'medical_test_id'   => $test->medical_test_id,
-                'description'       => $test->description
+                'medical_test_id'   => $test['medical_test_id'],
+                'description'       => $test['description']
             ]);
         }
 
         //add data to prescription_medicine_details table
-        PrescriptionMedicineDetail::create([
-            'prescription_id'       => $prescriptionId,
-            'type_id'               => $request->type_id,
-            'medicine_id'           => $request->medicine_id,
-            'eating_time_breakfast' => $request->eating_time_breakfast,
-            'eating_time_lunch'     => $request->eating_time_lunch,
-            'eating_time_dinner'    => $request->eating_time_dinner,
-            'eating_term'           => $request->eating_term,
-            'days'                  => $request->days,
-            'duration'              => $request->duration,
-        ]);
+        foreach ($request->medicine_details as $medicine_detail) {
+            PrescriptionMedicineDetail::create([
+                'prescription_id'       => $prescriptionId,
+                'type_id'               => $medicine_detail['type_id'],
+                'medicine_id'           => $medicine_detail['medicine_id'],
+                'eating_time_breakfast' => ($medicine_detail['eating_time_breakfast']) ? $medicine_detail['eating_time_breakfast'] : 0,
+                'eating_time_lunch'     => ($medicine_detail['eating_time_lunch']) ? $medicine_detail['eating_time_lunch'] : 0,
+                'eating_time_dinner'    => ($medicine_detail['eating_time_dinner']) ? $medicine_detail['eating_time_dinner'] : 0,
+                'eating_term'           => $medicine_detail['eating_term'],
+                'days'                  => $medicine_detail['days'],
+                'duration'              => $medicine_detail['duration'],
+            ]);
+        }
 
         return response()->json([
             'message'   => 'Prescription added successfully!!'

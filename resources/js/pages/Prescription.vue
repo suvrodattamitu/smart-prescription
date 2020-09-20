@@ -173,28 +173,31 @@
                         <form action="#">
                           <div class="form-group-inner">
                             
-                            <div style="float:left" class="col-lg-3 col-md-12 col-sm-12 col-xs-12 pull-left">
+                            <div style="float:left" class="col-lg-4 col-md-12 col-sm-12 col-xs-12 pull-left">
                               
-                              <select name="gender" class v-model="medicine_details_row.type_id">
-                                <option value>Medicine type</option>
-                                <option value="0">TypeOne</option>
-                                <option value="1">TypeTwo</option>
-                              </select>
-                             
-                              <!-- <input
+                              <input
                                 type="text"
+                                style="display:inline;height:22px;border-radius:2px; padding:5px; border: 1px solid #000;"
                                 @input="onChange"
-                                v-model="medicine_details_row.medicine_id"
+                                v-model="medicine_details_row.medicine_name"
                                 @keydown.down="onArrowDown"
                                 @keydown.up="onArrowUp"
                                 @keydown.enter="onEnter"
+                                @click="selectedRow(medicine_details_row)"
+                                placeholder="Medicine Name"
                               />
 
-                              <ul
-                                v-show="isOpen"
+                              <select name="medicine_type" class v-model="medicine_details_row.type_id" style="display:inline">
+                                <option value>Medicine type</option>
+                                <option value="1">TypeOne</option>
+                                <option value="2">TypeTwo</option>
+                              </select>
+                              <ul v-if="medicines.length"
+                                v-show="medicine_details_row.isOpen"
                                 class="autocomplete-results"
                               >
                                 <li
+                                  
                                   v-for="(medicine, index) in medicines"
                                   :key="index"
                                   @click="setResult(medicine)"
@@ -203,11 +206,20 @@
                                 >
                                   {{ medicine.name }}
                                 </li>
-                              </ul> -->
+                                
+                              </ul>
+
+                              <ul v-else>
+                               
+                                <li>
+                                  <p>No results found!</p>
+                                </li>
+                                
+                              </ul>
 
                             </div>
                             
-                            <div style="float:left" class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                            <div style="float:left" class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
                               <span style="margin-left:15px">
                                 <label
                                   style="margin-right: 8px; font-size:15px; font-weight:normal;"
@@ -251,7 +263,7 @@
                                 v-model="medicine_details_row.days"
                                 type="text"
                                 placeholder="Days/Months"
-                                style="width:70px; height:21px; border-radius:2px; padding:5px; border: 1px solid #000;"
+                                style="width:70px; height:22px; border-radius:2px; padding:5px; border: 1px solid #000;"
                               />
                               <select name="gender" class  v-model="medicine_details_row.duration">
                                 <option value>Select</option>
@@ -259,6 +271,15 @@
                                 <option value="1">Months</option>
                                 <option value="2">Continue</option>
                               </select>
+                              <a
+                                type="button"
+                                class="pull-right"
+                                style="cursor:pointer;"
+                                v-if="index"
+                                @click.prevent="deleteMedicineDetailsRow(index)"
+                              >
+                                <i class="fa fa-trash" style="color:red;font-size:18px;"></i>
+                              </a>
                             </div>
 
                           </div>
@@ -319,8 +340,8 @@
                               v-model="row.medical_test_id"
                             >
                               <option value>Medical Test</option>
-                              <option value="0">TypeOne</option>
-                              <option value="1">TypeTwo</option>
+                              <option value="1">TypeOne</option>
+                              <option value="2">TypeTwo</option>
                             </select>
                             <br />
                             <textarea
@@ -371,6 +392,7 @@
                               id
                               cols="30"
                               rows="5"
+                              v-model="suggestion"
                               placeholder="Enter the suggestions"
                             ></textarea>
                             <!-- <p class="text-danger" v-if="errors.gender">{{ errors.gender[0] }}</p> -->
@@ -405,7 +427,7 @@ export default {
     return {
       patient_details: {},
       medical_tests_rows: [{ medical_test_id: "", description: "" }],
-      medicine_details_rows: [{type_id:'',medicine_id:'',medicine_name:'',eating_time_breakfast:'',eating_time_lunch:'',eating_time_dinner:'',eating_term:'',days:'',duration:''}],
+      medicine_details_rows: [{type_id:'',medicine_id:'',medicine_name:'',eating_time_breakfast:'',eating_time_lunch:'',eating_time_dinner:'',eating_term:'',days:'',duration:'',isOpen:false}],
 
       //search medicine
       isOpen: false,
@@ -413,6 +435,9 @@ export default {
       search: '',
       isLoading: false,
       arrowCounter: -1,
+      selected_row:{},
+
+      suggestion: ''
 
     };
   },
@@ -422,7 +447,7 @@ export default {
 
   methods: {
     addMedicineDetailsRow() {
-      this.medicine_details_rows.push({type_id:'',medicine_id:'',medicine_name:'',eating_time_breakfast:'',eating_time_lunch:'',eating_time_dinner:'',eating_term:'',days:'',duration:''});
+      this.medicine_details_rows.push({type_id:'',medicine_id:'',medicine_name:'',eating_time_breakfast:'',eating_time_lunch:'',eating_time_dinner:'',eating_term:'',days:'',duration:'',isOpen:false});
     },
     deleteMedicineDetailsRow(index) {
       this.medicine_details_rows.splice(index, 1);
@@ -446,22 +471,28 @@ export default {
       this.medical_tests_rows.splice(index, 1);
     },
 
+    selectedRow(row) {
+      this.selected_row = row;
+    },
+
     savePrescription() {
 
       console.log(this.medicine_details_rows);
-      // let data = {
-      //   'medical_tests': this.medical_tests_rows,
-      // };
+      let data = {
+        'medical_tests': this.medical_tests_rows,
+        'medicine_details': this.medicine_details_rows,
+        'suggestion': this.suggestion
+      };
 
-      // axios
-      //   .post("/add-prescription/"+ this.$route.params.id, data)
-      //   .then(function (response) {
-      //     console.log(response);
-      //   })
-      //   .catch(function (error) {
-      //     //that.errors = error.response.data.errors;
-      //     console.log(error.response.data);
-      //   });
+      axios
+        .post("/add-prescription/"+ this.$route.params.id, data)
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          //that.errors = error.response.data.errors;
+          console.log(error.response.data);
+        });
     },
 
     //search medicine
@@ -482,11 +513,13 @@ export default {
     },
     setResult(medicine) {
       //this.search = result;
-      this.isOpen = false;
+      this.selected_row.isOpen = false;
+      this.selected_row.medicine_name = medicine.name;
+      this.selected_row.medicine_id= medicine.id;
     },
     onChange(evt) {
 
-      console.log(evt.target.value);
+      console.log(evt.target);
 
       let data = {
         'name' : evt.target.value 
@@ -496,7 +529,7 @@ export default {
       axios.post("/find-medicine",data)
       .then(function (response) {
         that.medicines = response.data.medicines;
-        that.isOpen = true;
+        that.selected_row.isOpen = true;
         console.log(response);
       })
       .catch(function (error) {
