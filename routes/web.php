@@ -55,7 +55,9 @@ Route::post('/change-password','SmartPrescription\SettingsController@changePassw
 //prescriptions 
 Route::get('/patient-details/{patient_id}','SmartPrescription\PrescriptionController@patientDetails');
 Route::post('/add-prescription/{patient_id}','SmartPrescription\PrescriptionController@addPrescription');
-Route::post('/find-medicine','SmartPrescription\PrescriptionController@findMedicine');
+Route::get('/find-medicine','SmartPrescription\PrescriptionController@findMedicine');
+Route::get('/get-prescription/{prescription_id}','SmartPrescription\PrescriptionController@getPrescriptionByPrescriptionId');
+// Route::get('/get-prescription/{patient_id}','SmartPrescription\PrescriptionController@getPrescriptionsByPatientId');
 
 Auth::routes();
 Route::get('/', function () {

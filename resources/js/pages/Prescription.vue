@@ -260,12 +260,13 @@
 
                             <div style="float:left" class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                               <input
+                              :disabled="medicine_details_row.duration=='2'?true:false"
                                 v-model="medicine_details_row.days"
                                 type="text"
                                 placeholder="Days/Months"
                                 style="width:70px; height:22px; border-radius:2px; padding:5px; border: 1px solid #000;"
                               />
-                              <select name="gender" class  v-model="medicine_details_row.duration">
+                              <select name="gender" class  v-model="medicine_details_row.duration" @change="selectedRow(medicine_details_row)">
                                 <option value>Select</option>
                                 <option value="0">Days</option>
                                 <option value="1">Months</option>
@@ -473,6 +474,9 @@ export default {
 
     selectedRow(row) {
       this.selected_row = row;
+      if( row.duration === '2' ) {
+        this.selected_row.days = '';
+      }
     },
 
     savePrescription() {

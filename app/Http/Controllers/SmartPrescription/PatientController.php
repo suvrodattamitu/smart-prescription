@@ -43,6 +43,7 @@ class PatientController extends Controller
                 'c_c'  => $reqeust->c_c,
                 'on_exam'  => $reqeust->on_exam,
                 'p_a_exam'  => $reqeust->p_a_exam,
+                'is_prescribed' => 0,
             ]);
 
             return response()->json([

@@ -28,6 +28,7 @@ class CreatePatientsTable extends Migration
             $table->string('c_c');
             $table->string('on_exam');
             $table->string('p_a_exam')->nullable();
+            $table->boolean('is_prescribed')->nullable();
             $table->timestamps(); 
         });
     }
