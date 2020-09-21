@@ -37,6 +37,7 @@
 
     <link rel="stylesheet" href="{{ asset( 'assets/css/metisMenu/metisMenu.min.css') }}">
     <link rel="stylesheet" href="{{ asset( 'assets/css/metisMenu/metisMenu-vertical.css') }}">
+    <link rel="stylesheet" href="{{ asset( 'assets/css/modals.css') }}">
 
     <!-- <link rel="stylesheet" href="{{ asset( 'assets/css') }}/calendar/fullcalendar.min.css">
     <link rel="stylesheet" href="{{ asset( 'assets/css') }}/calendar/fullcalendar.print.min.css"> -->

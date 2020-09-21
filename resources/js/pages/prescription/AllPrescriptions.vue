@@ -72,11 +72,12 @@
                                     </tr>
 
                                     <tr v-for="(prescription,index) in patient.prescriptions" :key="index">
-                                        <td>{{ index+1 }}</td>
+                                        <td>Prescription No. {{ index+1 }}</td>
                                         <td>{{ prescription.created_at | timeformat}}</td>
                                         <td>
-                                            <button data-toggle="tooltip" title="Edit" class="pd-setting-ed" @click="editMedicine(medicine.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                            <button data-toggle="tooltip" title="Trash" class="pd-setting-ed" @click="deleteConfirmation(medicine.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="modal" data-target="#PrimaryModalalert" title="Edit" class="pd-setting-ed" @click="viewPrescription(prescription.id)"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                                            <button title="Edit" class="pd-setting-ed" @click="editMedicine(prescription.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button title="Trash" class="pd-setting-ed" @click="deleteConfirmation(prescription.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                         </td>
                                     </tr>
                                     
@@ -84,9 +85,59 @@
                                 <h4 v-else>No data found!!</h4>
                             </div>
                             
+                            
+
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-10 col-md-12 col-sm-10 col-xs-12">
+                <!-- <a class="Primary mg-b-10" href="#" >Primary</a> -->
+                
+                <div id="PrimaryModalalert" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="width=100%!important;">
+                            <div class="modal-close-area modal-close-df">
+                                <a class="close" data-dismiss="modal" href="#"><i class="fa fa-close"></i></a>
+                            </div>
+                            <div class="modal-body">
+                                <i class="educate-icon educate-checked modal-check-pro"></i>
+                                
+                                <h2>Medicines</h2>
+
+                                 <table class="table" v-if="selected_prescription.prescription_medicines && selected_prescription.prescription_medicines.length">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">No.</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Type</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="(medicine,index) in selected_prescription.prescription_medicines" :key="index">
+                                            <td>{{index+1}}</td>
+                                            <td>{{ medicine.name }}</td>
+                                            <td>{{ medicine.type }}</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+
+                                <p>The Modal plugin is a dialog box/popup window that is displayed on top of the current page</p>
+
+                            </div>
+
+                            <div class="modal-footer">
+                                <a data-dismiss="modal" href="#">Cancel</a>
+                                <!-- <a href="#">Process</a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -99,11 +150,22 @@ export default {
     data() {
         return {
             patient: {},
-            prescriptions: ''
+            prescriptions: '',
+
+            selected_prescription:{},
         }
     },
 
     methods: {
+
+        viewPrescription(prescription_id) {
+            let that = this;
+            axios.get('/get-prescription/'+prescription_id)
+                .then(function (response) {
+                    that.selected_prescription = response.data.prescription;
+                    console.log(response.data);
+                })
+        },
 
         getPrescriptionsByPatientId() {
 
@@ -111,7 +173,7 @@ export default {
 
             axios.get('/prescriptions/'+this.$route.params.id)
                 .then(function (response) {
-                      that.patient = response.data.patient;
+                    that.patient = response.data.patient;
                     console.log(response.data.patient);
                 })
 

@@ -20,7 +20,7 @@
 	opacity:1;
 }
 .modal-close-area a{
-	    color: #fff;
+	color: #fff;
     font-size: 16px;
     background: #006DF0;
     height: 30px;
@@ -107,8 +107,8 @@
 #fullwidth .modal-dialog{
 	width:1170px;
 }
-#Customwidth .modal-dialog{
-	width:700px;
+.modal-dialog{
+	width: 80% !important;;
 }
 #FullColor .modal-content{
 	background:#03a9f4;
