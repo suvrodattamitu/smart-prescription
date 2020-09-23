@@ -25,4 +25,11 @@ class Medicine extends Model
         return $this->belongsTo('App\Model\Company');
     }
 
+    // public function med_pres()
+    // {
+    //     return $this->hasMany('App\Model\PrescriptionMedicineDetail','medicine_id');
+    // }
+
+
+
 }

@@ -15,7 +15,7 @@ class PrescriptionController extends Controller
 {
     public function getPrescriptionByPrescriptionId($prescriptionId) {
         
-        $prescription = Prescription::where('id',$prescriptionId)->with('patient','prescription_tests','prescription_medicines')->first();
+        $prescription = Prescription::where('id',$prescriptionId)->with('patient','prescription_tests.test','prescription_medicines.medicine')->first();
         return response()->json([
             'message'       => 'success',
             'prescription'  => $prescription

@@ -61,7 +61,7 @@
                             <br>
                             <h4>Prescription(s)</h4>
                             <div class="add-product">
-                                <router-link to="/add-medicine">All Prescription</router-link>
+                                <router-link :to="'/prescribe/'+this.$route.params.id">Add Prescription</router-link>
                             </div>
                             <div class="asset-inner">
                                 <table v-if="patient.prescriptions && patient.prescriptions.length">
@@ -103,28 +103,94 @@
                             <div class="modal-close-area modal-close-df">
                                 <a class="close" data-dismiss="modal" href="#"><i class="fa fa-close"></i></a>
                             </div>
+                            
                             <div class="modal-body">
-                                <i class="educate-icon educate-checked modal-check-pro"></i>
+                                <!-- <i class="educate-icon educate-checked modal-check-pro"></i> -->
+                                <h4>Patient Details</h4>
+                            
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Address</th>
+                                            <th scope="col">Mobile</th>
+                                            <th scope="col">Age</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr style="text-align:left;">
+                                            <td>{{patient.name}}</td>
+                                            <td>{{ patient.height }}</td>
+                                            <td>{{ patient.mobile }}</td>
+                                            <td>{{ patient.age }}</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            
                                 
-                                <h2>Medicines</h2>
+                                <h4>Medicines</h4>
 
                                  <table class="table" v-if="selected_prescription.prescription_medicines && selected_prescription.prescription_medicines.length">
                                     <thead>
                                         <tr>
                                             <th scope="col">No.</th>
                                             <th scope="col">Name</th>
-                                            <th scope="col">Type</th>
+                                            <th scope="col">Breakfast/Lunch/Dinner</th>
+                                            <th scope="col">Time</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="(medicine,index) in selected_prescription.prescription_medicines" :key="index">
+                                        <tr style="text-align:left;" v-for="(prescription_medicine,index) in selected_prescription.prescription_medicines" :key="index">
                                             <td>{{index+1}}</td>
-                                            <td>{{ medicine.name }}</td>
-                                            <td>{{ medicine.type }}</td>
+                                            <td>{{ prescription_medicine.medicine.name }}</td>
+                                            <td>
+                                                <span v-if="prescription_medicine.eating_time_breakfast == 1">Yes/</span>
+                                                <span v-else>No/</span>
+
+                                                <span v-if="prescription_medicine.eating_time_lunch == 1">Yes/</span>
+                                                <span v-else>No/</span>
+
+                                                <span v-if="prescription_medicine.eating_time_dinner == 1">Yes</span>
+                                                <span v-else>No</span>
+                                                <span v-if="prescription_medicine.eating_term == 0">=(Before)</span>
+                                                <span v-else-if="prescription_medicine.eating_term == 1">=(After)</span>
+                                                <span v-else>=(Anytime)</span>
+                                            </td>
+                                            <td>
+                                                <span v-if="prescription_medicine.days"> {{ prescription_medicine.days }} </span>
+
+                                                <span v-if="prescription_medicine.duration == 0"> day(s)</span>
+                                                <span v-else-if="prescription_medicine.duration == 1"> month(s)</span>
+                                                <span v-else> continue...</span>
+                                            </td>
                                         </tr>
                                         
                                     </tbody>
                                 </table>
+
+                                <h4>Medical Test</h4>
+
+                                 <table class="table" v-if="selected_prescription.prescription_tests && selected_prescription.prescription_tests.length">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">No.</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr style="text-align:left;" v-for="(prescription_tests,index) in selected_prescription.prescription_tests" :key="index">
+                                            <td>{{index+1}}</td>
+                                            <td>{{ prescription_tests.test.name }}</td>
+                                            <td>{{ prescription_tests.test.description }}</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+
+                                <h4>Suggestions</h4>
+                                <p>{{ selected_prescription.suggestion }}</p>
 
                                 <p>The Modal plugin is a dialog box/popup window that is displayed on top of the current page</p>
 
@@ -163,7 +229,7 @@ export default {
             axios.get('/get-prescription/'+prescription_id)
                 .then(function (response) {
                     that.selected_prescription = response.data.prescription;
-                    console.log(response.data);
+                    console.log(response.data.prescription);
                 })
         },
 
@@ -174,7 +240,7 @@ export default {
             axios.get('/prescriptions/'+this.$route.params.id)
                 .then(function (response) {
                     that.patient = response.data.patient;
-                    console.log(response.data.patient);
+                    // console.log(response.data.patient);
                 })
 
         },

@@ -197,7 +197,7 @@
                                 class="autocomplete-results"
                               >
                                 <li
-                                  
+                                  style="cursor:pointer"
                                   v-for="(medicine, index) in medicines"
                                   :key="index"
                                   @click="setResult(medicine)"
@@ -250,7 +250,7 @@
                                   <input class="radio-checked" v-model="medicine_details_row.eating_term" value="0" name="eating_time" checked type="radio" />
                                 </label>
                                 <label
-                                  style="margin-right:  5px; font-size: 15px; font-weight:normal"
+                                  style="font-size: 15px; font-weight:normal"
                                 >
                                   After Meal
                                   <input class="radio-checked" v-model="medicine_details_row.eating_term" value="1" name="eating_time" type="radio" />
@@ -480,7 +480,7 @@ export default {
     },
 
     savePrescription() {
-
+      let that = this
       console.log(this.medicine_details_rows);
       let data = {
         'medical_tests': this.medical_tests_rows,
@@ -491,7 +491,12 @@ export default {
       axios
         .post("/add-prescription/"+ this.$route.params.id, data)
         .then(function (response) {
-          console.log(response);
+            console.log(response);
+            that.$router.push('/all-prescriptions/'+that.$route.params.id);
+            Toast.fire({
+                icon: 'success',
+                title: 'Prescription added successfully!!!'
+            })
         })
         .catch(function (error) {
           //that.errors = error.response.data.errors;

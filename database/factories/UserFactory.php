@@ -58,6 +58,7 @@ $factory->define(Patient::class, function (Faker $faker) {
         'c_c'              => $faker->sentence,
         'on_exam'          => $faker->sentence,
         'p_a_exam'         => $faker->sentence,
+        'is_prescribed'    => 0,
         
     ];
 });

@@ -17,5 +17,9 @@ class MedicineType extends Model
     public function medicines(){
         return $this->hasMany('App\Model\Medicine');
     }
+    
+    public function pres_medicine_details(){
+        return $this->belongsTo('App\Model\PrescriptionMedicineDetail');
+    }
 
 }
