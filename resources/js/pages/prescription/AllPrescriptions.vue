@@ -183,7 +183,7 @@
                                         <tr style="text-align:left;" v-for="(prescription_tests,index) in selected_prescription.prescription_tests" :key="index">
                                             <td>{{index+1}}</td>
                                             <td>{{ prescription_tests.test.name }}</td>
-                                            <td>{{ prescription_tests.test.description }}</td>
+                                            <td>{{ prescription_tests.description }}</td>
                                         </tr>
                                         
                                     </tbody>

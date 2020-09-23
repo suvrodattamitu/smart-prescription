@@ -15,7 +15,7 @@ class PrescriptionMedicineDetail extends Model
     }
 
     public function medicine() {
-        return $this->belongsTo('App\Model\Medicine','id');
+        return $this->belongsTo('App\Model\Medicine');
     }
 
 

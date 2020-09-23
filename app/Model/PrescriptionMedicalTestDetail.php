@@ -14,7 +14,7 @@ class PrescriptionMedicalTestDetail extends Model
     }
 
     public function test() {
-        return $this->belongsTo('App\Model\MedicalTest','id');
+        return $this->belongsTo('App\Model\MedicalTest','medical_test_id');
     }
 
 }

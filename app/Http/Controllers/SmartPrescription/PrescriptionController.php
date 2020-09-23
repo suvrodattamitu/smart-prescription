@@ -69,7 +69,6 @@ class PrescriptionController extends Controller
             if ($medicine_detail['medicine_id']) {
                 PrescriptionMedicineDetail::create([
                     'prescription_id'       => $prescriptionId,
-                    'type_id'               => $medicine_detail['type_id'],
                     'medicine_id'           => $medicine_detail['medicine_id'],
                     'eating_time_breakfast' => ($medicine_detail['eating_time_breakfast']) ? $medicine_detail['eating_time_breakfast'] : 0,
                     'eating_time_lunch'     => ($medicine_detail['eating_time_lunch']) ? $medicine_detail['eating_time_lunch'] : 0,
@@ -92,7 +91,7 @@ class PrescriptionController extends Controller
     }
 
     public function findMedicine( Request $request ) {
-        $medicines = Medicine::where('name','like','%'.$request->name.'%')->get();
+        $medicines = Medicine::where('name','like','%'.$request->name.'%')->with('type')->get();
         return response()->json([
             'message'   => 'success',
             'medicines'  => $medicines

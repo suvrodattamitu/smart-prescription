@@ -187,11 +187,11 @@
                                 placeholder="Medicine Name"
                               />
 
-                              <select name="medicine_type" class v-model="medicine_details_row.type_id" style="display:inline">
-                                <option value>Medicine type</option>
-                                <option value="1">TypeOne</option>
-                                <option value="2">TypeTwo</option>
-                              </select>
+                              <!-- <select name="medicine_type" class v-model="medicine_details_row.type_id" style="display:inline; width:130px!important;">
+                                <option  value>Medicine type</option>
+                                <option v-for="(type,index) in medicine_types" :value="type.id" :key="index" style="font-size:10px;">{{ type.name }}</option>
+                                
+                              </select> -->
                               <ul v-if="medicines.length"
                                 v-show="medicine_details_row.isOpen"
                                 class="autocomplete-results"
@@ -204,7 +204,12 @@
                                   class="autocomplete-result"
                                   :class="{ 'is-active': index === arrowCounter }"
                                 >
-                                  {{ medicine.name }}
+                                  <span>{{ medicine.name }}</span> 
+                                  <small>[ {{ medicine.type.name }} ]</small>
+
+                                  <!-- <span  v-for="(type,index) in medicine_types"  :key="index">
+                                      <small v-if="medicine.type_id == type.id">[ {{ type.name }} ]</small>
+                                  </span> -->
                                 </li>
                                 
                               </ul>
@@ -340,9 +345,9 @@
                               class="form-control"
                               v-model="row.medical_test_id"
                             >
-                              <option value>Medical Test</option>
-                              <option value="1">TypeOne</option>
-                              <option value="2">TypeTwo</option>
+                              <option value disabled>Select Test</option>
+                              <option v-for="(test,index) in tests" :key="index" :value="test.id">{{ test.name }}</option>
+                              <!-- <option value="2">TypeTwo</option> -->
                             </select>
                             <br />
                             <textarea
@@ -427,8 +432,10 @@ export default {
   data() {
     return {
       patient_details: {},
+      // medicine_types: [],
+      tests:[],
       medical_tests_rows: [{ medical_test_id: "", description: "" }],
-      medicine_details_rows: [{type_id:'',medicine_id:'',medicine_name:'',eating_time_breakfast:'',eating_time_lunch:'',eating_time_dinner:'',eating_term:'',days:'',duration:'',isOpen:false}],
+      medicine_details_rows: [{medicine_id:'',medicine_name:'',eating_time_breakfast:'',eating_time_lunch:'',eating_time_dinner:'',eating_term:'',days:'',duration:'',isOpen:false}],
 
       //search medicine
       isOpen: false,
@@ -444,11 +451,13 @@ export default {
   },
   mounted() {
     this.getPatientDetails();
+    // this.getMedicineTypes();
+    this.getMedicalTests();
   },
 
   methods: {
     addMedicineDetailsRow() {
-      this.medicine_details_rows.push({type_id:'',medicine_id:'',medicine_name:'',eating_time_breakfast:'',eating_time_lunch:'',eating_time_dinner:'',eating_term:'',days:'',duration:'',isOpen:false});
+      this.medicine_details_rows.push({medicine_id:'',medicine_name:'',eating_time_breakfast:'',eating_time_lunch:'',eating_time_dinner:'',eating_term:'',days:'',duration:'',isOpen:false});
     },
     deleteMedicineDetailsRow(index) {
       this.medicine_details_rows.splice(index, 1);
@@ -462,6 +471,24 @@ export default {
           that.patient_details = response.data.patient_details;
           console.log(response.data);
         });
+    },
+
+    // getMedicineTypes(){
+    //   let that = this;
+    //   axios.get('/types')
+    //     .then(function (response) {
+    //         that.medicine_types = response.data.medicine_types;
+    //         // console.log(response.data);
+    //     })
+    // },
+
+    getMedicalTests(){
+      let that = this;
+      axios.get('/tests')
+        .then(function (response) {
+            that.tests = response.data.medical_tests;
+            // console.log(response.data);
+        })
     },
 
     addTestRow() {
