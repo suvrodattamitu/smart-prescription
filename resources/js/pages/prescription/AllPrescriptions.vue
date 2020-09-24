@@ -76,7 +76,8 @@
                                         <td>{{ prescription.created_at | timeformat}}</td>
                                         <td>
                                             <button data-toggle="modal" data-target="#PrimaryModalalert" title="Edit" class="pd-setting-ed" @click="viewPrescription(prescription.id)"><i class="fa fa-eye" aria-hidden="true"></i></button>
-                                            <button title="Edit" class="pd-setting-ed" @click="editMedicine(prescription.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <button data-toggle="modal" data-target="#editPrescriptionModal" class="pd-setting-ed" @click="editPrescription(prescription.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <!-- <button title="Edit" class="pd-setting-ed" @click="editMedicine(prescription.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button> -->
                                             <button title="Trash" class="pd-setting-ed" @click="deleteConfirmation(prescription.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                         </td>
                                     </tr>
@@ -207,30 +208,65 @@
             </div>
         </div>
 
+        <div class="row" v-if="showEditModal">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">                
+                <div id="editPrescriptionModal" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+                    <div class="modal-dialog" style="width:98%!important">
+                        <div class="modal-content">
+                            <div class="modal-close-area modal-close-df">
+                                <a class="close" data-dismiss="modal" href="#" @click.prevent="hideEditModal">
+                                    <i class="fa fa-close"></i>
+                                </a>
+                            </div>
+                            
+                            <div class="modal-body">
+                                
+                                <edit-prescription :prescription_id="prescription_id"></edit-prescription>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </template>
 
 <script>
+
+import EditPrescription from '../prescription/EditPrescription';
+
 export default {
+
+    components: {
+        EditPrescription
+    },
     
     data() {
         return {
             patient: {},
             prescriptions: '',
-
             selected_prescription:{},
+            showEditModal: false,
+            prescription_id:''
         }
     },
 
     methods: {
 
         viewPrescription(prescription_id) {
-            let that = this;
-            axios.get('/get-prescription/'+prescription_id)
-                .then(function (response) {
-                    that.selected_prescription = response.data.prescription;
-                    console.log(response.data.prescription);
-                })
+
+            this.prescription_id = prescription_id;
+
+            // let that = this;
+            // axios.get('/get-prescription/'+prescription_id)
+            //     .then(function (response) {
+            //         that.selected_prescription = response.data.prescription;
+            //         that.showEditModal = true;
+            //         //console.log(response.data.prescription);
+            //     })
         },
 
         getPrescriptionsByPatientId() {
@@ -291,8 +327,16 @@ export default {
 
                 } 
             })
-        }
+        },
 
+        editPrescription(prescription_id) {
+            this.showEditModal = true;
+            this.viewPrescription(prescription_id);
+        },
+
+        hideEditModal() {
+            this.showEditModal = false;
+        },
     },
 
     mounted() {

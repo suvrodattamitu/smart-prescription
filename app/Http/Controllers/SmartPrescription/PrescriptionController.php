@@ -90,6 +90,48 @@ class PrescriptionController extends Controller
 
     }
 
+    public function updatePrescription( Request $request,$prescriptionId ) {
+
+        //update data to prescription table first
+        Prescription::where('id',$prescriptionId)->update([
+            'suggestion' => $request->suggestion
+        ]);
+        
+        PrescriptionMedicalTestDetail::where('prescription_id',$prescriptionId)->delete();
+        foreach($request->medical_tests as $test ) {
+            if ($test['medical_test_id']) {
+                PrescriptionMedicalTestDetail::create([
+                    'prescription_id'   => $prescriptionId,
+                    'medical_test_id'   => $test['medical_test_id'],
+                    'description'       => $test['description']
+                ]);
+            }
+        }
+
+        //add data to prescription_medicine_details table
+        PrescriptionMedicineDetail::where('prescription_id',$prescriptionId)->delete();
+
+        foreach ($request->medicine_details as $medicine_detail) {
+            if ($medicine_detail['medicine_id']) {
+                PrescriptionMedicineDetail::create([
+                    'prescription_id'       => $prescriptionId,
+                    'medicine_id'           => $medicine_detail['medicine_id'],
+                    'eating_time_breakfast' => ($medicine_detail['eating_time_breakfast']) ? $medicine_detail['eating_time_breakfast'] : 0,
+                    'eating_time_lunch'     => ($medicine_detail['eating_time_lunch']) ? $medicine_detail['eating_time_lunch'] : 0,
+                    'eating_time_dinner'    => ($medicine_detail['eating_time_dinner']) ? $medicine_detail['eating_time_dinner'] : 0,
+                    'eating_term'           => $medicine_detail['eating_term'],
+                    'days'                  => $medicine_detail['days'],
+                    'duration'              => $medicine_detail['duration'],
+                ]);
+            }
+        }
+
+        return response()->json([
+            'message'   => 'Prescription added successfully!!'
+        ],200);
+
+    }
+
     public function findMedicine( Request $request ) {
         $medicines = Medicine::where('name','like','%'.$request->name.'%')->with('type')->get();
         return response()->json([
@@ -97,4 +139,15 @@ class PrescriptionController extends Controller
             'medicines'  => $medicines
         ]);
     }
+
+    public function editPrescription( $prescriptionId ) {
+
+        $prescription = Prescription::where('id',$prescriptionId)->with('patient','prescription_tests.test','prescription_medicines.medicine')->first();
+        return response()->json([
+            'message'       => 'success',
+            'prescription'  => $prescription
+        ]);
+
+    }
+    
 }
