@@ -98,7 +98,7 @@
             <div class="col-lg-10 col-md-12 col-sm-10 col-xs-12">
                 <!-- <a class="Primary mg-b-10" href="#" >Primary</a> -->
                 
-                <div id="PrimaryModalalert" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
+                <div id="PrimaryModalalert" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog" data-keyboard="false" data-backdrop="static">
                     <div class="modal-dialog">
                         <div class="modal-content" style="width=100%!important;">
                             <div class="modal-close-area modal-close-df">
@@ -170,7 +170,7 @@
                                     </tbody>
                                 </table>
 
-                                <h4>Medical Test</h4>
+                                <h4>Medical Tests</h4>
 
                                  <table class="table" v-if="selected_prescription.prescription_tests && selected_prescription.prescription_tests.length">
                                     <thead>
@@ -192,8 +192,6 @@
 
                                 <h4>Suggestions</h4>
                                 <p>{{ selected_prescription.suggestion }}</p>
-
-                                <p>The Modal plugin is a dialog box/popup window that is displayed on top of the current page</p>
 
                             </div>
 
@@ -258,15 +256,13 @@ export default {
 
         viewPrescription(prescription_id) {
 
-            this.prescription_id = prescription_id;
-
-            // let that = this;
-            // axios.get('/get-prescription/'+prescription_id)
-            //     .then(function (response) {
-            //         that.selected_prescription = response.data.prescription;
-            //         that.showEditModal = true;
-            //         //console.log(response.data.prescription);
-            //     })
+            let that = this;
+            axios.get('/get-prescription/'+prescription_id)
+                .then(function (response) {
+                    that.selected_prescription = response.data.prescription;
+                    that.showEditModal = true;
+                    //console.log(response.data.prescription);
+                })
         },
 
         getPrescriptionsByPatientId() {
@@ -331,7 +327,8 @@ export default {
 
         editPrescription(prescription_id) {
             this.showEditModal = true;
-            this.viewPrescription(prescription_id);
+            this.prescription_id = prescription_id;
+            //this.viewPrescription(prescription_id);
         },
 
         hideEditModal() {

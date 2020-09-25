@@ -46,7 +46,7 @@
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="analytics-sparkle-line reso-mg-b-30">
                             <div class="analytics-content">
-                                <h5>Accounting Technologies</h5>
+                                <h5>Total Patients</h5>
                                 <h2>$<span class="counter">3000</span> <span class="tuition-fees">Tuition Fees</span></h2>
                                 <span class="text-danger">30%</span>
                                 <div class="progress m-b-0">

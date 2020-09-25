@@ -5614,8 +5614,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -5632,13 +5630,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     viewPrescription: function viewPrescription(prescription_id) {
-      this.prescription_id = prescription_id; // let that = this;
-      // axios.get('/get-prescription/'+prescription_id)
-      //     .then(function (response) {
-      //         that.selected_prescription = response.data.prescription;
-      //         that.showEditModal = true;
-      //         //console.log(response.data.prescription);
-      //     })
+      var that = this;
+      axios.get('/get-prescription/' + prescription_id).then(function (response) {
+        that.selected_prescription = response.data.prescription;
+        that.showEditModal = true; //console.log(response.data.prescription);
+      });
     },
     getPrescriptionsByPatientId: function getPrescriptionsByPatientId() {
       var that = this;
@@ -5681,7 +5677,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     editPrescription: function editPrescription(prescription_id) {
       this.showEditModal = true;
-      this.viewPrescription(prescription_id);
+      this.prescription_id = prescription_id; //this.viewPrescription(prescription_id);
     },
     hideEditModal: function hideEditModal() {
       this.showEditModal = false;
@@ -49349,7 +49345,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-6 col-xs-12" }, [
             _c("div", { staticClass: "analytics-sparkle-line reso-mg-b-30" }, [
               _c("div", { staticClass: "analytics-content" }, [
-                _c("h5", [_vm._v("Accounting Technologies")]),
+                _c("h5", [_vm._v("Total Patients")]),
                 _vm._v(" "),
                 _c("h2", [
                   _vm._v("$"),
@@ -56358,7 +56354,12 @@ var render = function() {
           {
             staticClass:
               "modal modal-edu-general default-popup-PrimaryModal fade",
-            attrs: { id: "PrimaryModalalert", role: "dialog" }
+            attrs: {
+              id: "PrimaryModalalert",
+              role: "dialog",
+              "data-keyboard": "false",
+              "data-backdrop": "static"
+            }
           },
           [
             _c("div", { staticClass: "modal-dialog" }, [
@@ -56463,7 +56464,7 @@ var render = function() {
                       ])
                     : _vm._e(),
                   _vm._v(" "),
-                  _c("h4", [_vm._v("Medical Test")]),
+                  _c("h4", [_vm._v("Medical Tests")]),
                   _vm._v(" "),
                   _vm.selected_prescription.prescription_tests &&
                   _vm.selected_prescription.prescription_tests.length
@@ -56506,12 +56507,6 @@ var render = function() {
                   _vm._v(" "),
                   _c("p", [
                     _vm._v(_vm._s(_vm.selected_prescription.suggestion))
-                  ]),
-                  _vm._v(" "),
-                  _c("p", [
-                    _vm._v(
-                      "The Modal plugin is a dialog box/popup window that is displayed on top of the current page"
-                    )
                   ])
                 ]),
                 _vm._v(" "),
