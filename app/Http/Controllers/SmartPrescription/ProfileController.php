@@ -12,14 +12,18 @@ class ProfileController extends Controller
 {
     public function getProfile()
     {
-        $profile = Auth::user()->with('details')->get();
+        $profile = Auth::user()->with('details')->first();
         return response()->json([
             'profile' => $profile,
         ]);
     }
 
     public function updateProfile(Request $request)
-    {
+    {   
+
+        // return response()->json([
+        //     'request'   => intval( $request->gender )
+        // ]);
 
         //process image here
         $image_name_to_store = '';
@@ -52,7 +56,7 @@ class ProfileController extends Controller
             'address' => $request->address,
             'bio' => $request->bio,
             'designation' => $request->designation,
-            'gender' => $request->gender,
+            'gender' => intval($request->gender),
             'website_url' => $request->website_url,
             'education' => $request->education,
 

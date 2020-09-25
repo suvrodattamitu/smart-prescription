@@ -20,7 +20,7 @@ class CreateUserDetailsTable extends Migration
             $table->text('image')->nullable();
             $table->string('phone')->nullable();
             $table->text('education')->nullable();
-            $table->boolean('gender')->default(0);
+            $table->boolean('gender')->nullable();
             $table->text('website_url')->nullable();
             $table->text('designation')->nullable();
             $table->text('address')->nullable();

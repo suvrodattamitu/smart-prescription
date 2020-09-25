@@ -260,8 +260,6 @@ export default {
             axios.get('/get-prescription/'+prescription_id)
                 .then(function (response) {
                     that.selected_prescription = response.data.prescription;
-                    that.showEditModal = true;
-                    //console.log(response.data.prescription);
                 })
         },
 
@@ -328,7 +326,6 @@ export default {
         editPrescription(prescription_id) {
             this.showEditModal = true;
             this.prescription_id = prescription_id;
-            //this.viewPrescription(prescription_id);
         },
 
         hideEditModal() {

@@ -38,6 +38,6 @@ class User extends Authenticatable
 
     public function details()
     {
-        return $this->hasMany('App\Model\UserDetail');
+        return $this->belongsTo('App\Model\UserDetail','id');
     }
 }

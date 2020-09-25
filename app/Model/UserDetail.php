@@ -9,8 +9,4 @@ class UserDetail extends Model
     protected $table = 'user_details';
     protected $fillable = ['user_id', 'image', 'phone', 'designation', 'address', 'bio','gender','website_url','education'];
 
-    public function user()
-    {
-        return $this->belongsTo('App\User');
-    }
 }
