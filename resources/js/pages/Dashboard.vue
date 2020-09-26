@@ -34,8 +34,8 @@
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="analytics-sparkle-line reso-mg-b-30">
                             <div class="analytics-content">
-                                <h5>Computer Technologies</h5>
-                                <h2>$<span class="counter">5000</span> <span class="tuition-fees">Tuition Fees</span></h2>
+                                <h5>Total Prescribed</h5>
+                                <h2>$<span class="counter">{{total_prescribed}}</span> <span class="tuition-fees">Prescribed</span></h2>
                                 <span class="text-success">20%</span>
                                 <div class="progress m-b-0">
                                     <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:20%;"> <span class="sr-only">20% Complete</span> </div>
@@ -88,11 +88,28 @@
 
 <script>
 export default {
-    
+    data(){
+        return{
+            total_prescribed:''
+        }
+    },
     mounted() {
 
         console.log('hello from dashboard')
+        this.getCountings();
 
+    },
+
+    methods:{
+        getCountings(){
+            let that = this;
+            axios.get('/dashboard')
+            .then((response)=>{
+                that.total_prescribed = response.data.total_prescribed
+                console.log(response.data.total_prescribed)
+            })
+        }
+        
     }
 
 }

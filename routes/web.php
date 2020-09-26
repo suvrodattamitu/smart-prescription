@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+
+Route::get('/dashboard', 'SmartPrescription\DashboardController@dashboard');
+
 //medical tests
 Route::post('/save-test', 'SmartPrescription\MedicalTestController@addTest');
 Route::get('/tests', 'SmartPrescription\MedicalTestController@allTests');

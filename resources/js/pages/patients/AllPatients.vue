@@ -57,6 +57,7 @@
                                                 <th>Address</th>
                                                 <th>Prescribe</th>
                                                 <th>Prescriptions</th>
+                                                <th>Created</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
@@ -68,7 +69,7 @@
                                                 <td>{{ patient.regi_no }}</td>
                                                 <td>{{ patient.name }}</td>
                                                 <td>{{ patient.age }}</td>
-                                                <td>{{ patient.address }}</td>
+                                                <td>{{ patient.address | shortLength(30,"...")}}</td>
                                                 <td v-if="patient.is_prescribed == 1"><a @click.prevent="prescribeNow(patient.id)" href="#" class="pull-left btn btn-success login-submit-cs" type="submit">Prescribed</a>
                                                 <td v-else><a @click.prevent="prescribeNow(patient.id)" href="#" class="pull-left btn btn-info login-submit-cs" type="submit">Prescribe</a>
                                                 <td><router-link :to="'/all-prescriptions/'+patient.id" class="btn btn-info">View</router-link>
