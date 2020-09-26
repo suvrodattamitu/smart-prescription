@@ -34,6 +34,25 @@ html {
     text-shadow: none;
 }
 
+*:focus {
+    outline: none!important;
+    border-style: none !important;
+}
+
+button:focus{
+    outline: none;
+    border-style: none !important;
+}
+
+.swal2-confirm:focus { overflow: hidden !important; }
+.swal2-cancel{
+    margin-right: 20px !important;
+}
+
+.icon-style {
+    color:blue !important;
+}
+
 /*
  * A better looking default horizontal rule
  */

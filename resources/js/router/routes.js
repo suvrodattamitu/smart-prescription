@@ -28,7 +28,7 @@ import Profile from '../pages/profile/Profile';
 
 import Settings from '../pages/settings/Settings';
 
-import Prescription from '../pages/Prescription'
+import Prescription from '../pages/prescription/Prescription'
 
 import AllPrescriptions from '../pages/prescription/AllPrescriptions'
 

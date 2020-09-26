@@ -72,7 +72,7 @@
                             
                             <li>
                                 <router-link to="/" aria-expanded="false">
-                                    <span class="educate-icon educate-home icon-wrap"></span>
+                                    <span class="educate-icon educate-home icon-wrap icon-style"></span>
                                     <span class="mini-click-non">Dashboard</span>
                                 </router-link>
                                 <ul aria-expanded="true"></ul>
@@ -80,7 +80,37 @@
 
                             <li>
                                 <a class="has-arrow" href="#" aria-expanded="false">
-                                    <span class="educate-icon educate-home icon-wrap"></span>
+                                <span class="educate-icon educate-professor icon-wrap icon-style">
+                                </span> <span class="mini-click-non">Patients</span></a>
+                                <ul class="submenu-angle" aria-expanded="false">
+                                    <li>
+                                        <router-link to="/all-patients"><span class="mini-sub-pro">All Patients</span></router-link>
+                                    </li>
+                                    <li>
+                                        <router-link to="/add-patient"><span class="mini-sub-pro">Add Patient</span></router-link>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a class="has-arrow" href="#" aria-expanded="false">
+                                <span class="fa fa-flask icon-wrap icon-style"></span> 
+                                <span class="mini-click-non">Medicines</span></a>
+                                <ul class="submenu-angle" aria-expanded="false">
+                                    <li>
+                                        <router-link to="/all-medicines"><span class="mini-sub-pro">All Medicines</span></router-link>
+                                    </li>
+                                    <li>
+                                        <router-link to="/add-medicine"><span class="mini-sub-pro">Add Medicine</span></router-link>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            
+
+                            <li>
+                                <a class="has-arrow" href="#" aria-expanded="false">
+                                    <span class="fa fa-stethoscope icon-wrap icon-style"></span>
                                     <span class="mini-click-non">Medical Tests</span>
                                 </a>
                                 <ul class="submenu-angle" aria-expanded="true">
@@ -94,7 +124,9 @@
                             </li>
 
                             <li>
-                                <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Medicine Groups</span></a>
+                                <a class="has-arrow" href="#" aria-expanded="false">
+                                <span class="fa fa-calendar-plus-o icon-wrap icon-style"></span> 
+                                <span class="mini-click-non">Medicine Groups</span></a>
                                 <ul class="submenu-angle" aria-expanded="false">
                                     <li>
                                         <router-link to="/all-groups"><span class="mini-sub-pro">All Groups</span></router-link>
@@ -106,7 +138,9 @@
                             </li>
 
                             <li>
-                                <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Medicine Types</span></a>
+                                <a class="has-arrow" href="#" aria-expanded="false">
+                                <span class="educate-icon educate-course icon-wrap icon-style"></span> 
+                                <span class="mini-click-non">Medicine Types</span></a>
                                 <ul class="submenu-angle" aria-expanded="false">
                                     <li>
                                         <router-link to="/all-types"><span class="mini-sub-pro">All Types</span></router-link>
@@ -118,7 +152,9 @@
                             </li>
 
                             <li>
-                                <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Companies</span></a>
+                                <a class="has-arrow" href="#" aria-expanded="false">
+                                <span class="fa fa-ambulance icon-wrap icon-style"></span> 
+                                <span class="mini-click-non">Companies</span></a>
                                 <ul class="submenu-angle" aria-expanded="false">
                                     <li>
                                         <router-link to="/all-companies"><span class="mini-sub-pro">All Companies</span></router-link>
@@ -128,30 +164,7 @@
                                     </li>
                                 </ul>
                             </li>
-
-                            <li>
-                                <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Patients</span></a>
-                                <ul class="submenu-angle" aria-expanded="false">
-                                    <li>
-                                        <router-link to="/all-patients"><span class="mini-sub-pro">All Patients</span></router-link>
-                                    </li>
-                                    <li>
-                                        <router-link to="/add-patient"><span class="mini-sub-pro">Add Patient</span></router-link>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Medicines</span></a>
-                                <ul class="submenu-angle" aria-expanded="false">
-                                    <li>
-                                        <router-link to="/all-medicines"><span class="mini-sub-pro">All Medicines</span></router-link>
-                                    </li>
-                                    <li>
-                                        <router-link to="/add-medicine"><span class="mini-sub-pro">Add Medicine</span></router-link>
-                                    </li>
-                                </ul>
-                            </li>
+                            
 
                         </ul>
                     </nav>
