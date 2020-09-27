@@ -55,23 +55,23 @@
                         <div class="analytics-sparkle-line reso-mg-b-30">
                             <div class="analytics-content">
                                 <h5>Total Patients</h5>
-                                <h2><span class="counter">3000</span> <span class="tuition-fees">Tuition Fees</span></h2>
+                                <h2><span class="counter">{{ total_patients }}</span> <span class="tuition-fees">Patients</span></h2>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="analytics-sparkle-line reso-mg-b-30 table-mg-t-pro dk-res-t-pro-30">
                             <div class="analytics-content">
-                                <h5>Electrical Engineering</h5>
-                                <h2><span class="counter">2000</span> <span class="tuition-fees">Tuition Fees</span></h2>
+                                <h5>Prescribed Today</h5>
+                                <h2><span class="counter">{{ prescribed_today }}</span> <span class="tuition-fees">Prescribed</span></h2>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="analytics-sparkle-line table-mg-t-pro dk-res-t-pro-30">
                             <div class="analytics-content">
-                                <h5>Chemical Engineering</h5>
-                                <h2><span class="counter">3500</span> <span class="tuition-fees">Tuition Fees</span></h2>
+                                <h5>Added Patients Today</h5>
+                                <h2><span class="counter">{{ patients_today }}</span> <span class="tuition-fees">Patients</span></h2>
                             </div>
                         </div>
                     </div>
@@ -84,14 +84,14 @@
             </div> 
         </div>
 
-        <div id="peekaboo">
+        <!-- <div id="peekaboo">
             <div style="display:flex;flex-direction:row;">
                 <p id="welcome-reminder"> 
                     Hi Doctor! , Welcome To Smart Prescription!! 😊
                 </p>
                 <img id="micky" src="/assets/img/micky.png" alt="">
             </div>
-        </div>
+        </div> -->
 
     </div>
     
@@ -102,25 +102,29 @@ export default {
     data(){
         return{
             total_prescribed:'',
+            total_patients:'',
+            prescribed_today:'',
+            patients_today:'',
+
             //loading
             isLoading: false,
             fullPage: true
         }
     },
     mounted() {
-        
-        this.getTimeNow();
         this.getCountings();
+        this.getTimeNow();
+        
 
-        setTimeout(function(){
-            document.getElementById("peekaboo").style.cssText = "transition: right 0.7s ease-in-out 0s;position:fixed;bottom:0;right:0;";//show
-            document.getElementById("welcome-reminder").style.cssText = 'height:30px;padding:5px;display:block;color:#6200ff;font-size:20px;background-color:#fff'
-        },1500);
+        // setTimeout(function(){
+        //     document.getElementById("peekaboo").style.cssText = "transition: right 0.7s ease-in-out 0s;position:fixed;bottom:0;right:0;";//show
+        //     document.getElementById("welcome-reminder").style.cssText = 'height:30px;padding:5px;display:block;color:#6200ff;font-size:20px;background-color:#fff'
+        // },1500);
 
-        setTimeout(function(){
-            document.getElementById("peekaboo").style.cssText = "transition: right 0.7s ease-in-out 0s;position:fixed;bottom:0;right: -352px;";//hide
-            document.getElementById("welcome-reminder").style = 'display:none'
-        },5000);
+        // setTimeout(function(){
+        //     document.getElementById("peekaboo").style.cssText = "transition: right 0.7s ease-in-out 0s;position:fixed;bottom:0;right: -352px;";//hide
+        //     document.getElementById("welcome-reminder").style = 'display:none'
+        // },5000);
 
     },
 
@@ -166,6 +170,11 @@ export default {
             axios.get('/dashboard')
             .then((response)=>{
                 that.total_prescribed = response.data.total_prescribed
+                that.total_patients = response.data.total_patients
+                that.prescribed_today = response.data.prescribed_today
+                that.patients_today = response.data.patients_today
+                console.log(response.data)
+
                 that.isLoading = false;
             })
         }

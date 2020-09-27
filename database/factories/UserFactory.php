@@ -37,7 +37,7 @@ $factory->define(User::class, function (Faker $faker) {
 $factory->define(MedicalTest::class, function (Faker $faker) {
     return [
         
-        'name' => $faker->name,
+        'name' => $faker->lastName,
         'description' => $faker->paragraphs(1,true),
     ];
 });
@@ -66,7 +66,7 @@ $factory->define(Patient::class, function (Faker $faker) {
 $factory->define(Company::class, function (Faker $faker) {
     return [
         
-        'name' => $faker->name,
+        'name' => $faker->company,
         'description' => $faker->paragraphs(1,true),
     ];
 });
@@ -74,14 +74,14 @@ $factory->define(Company::class, function (Faker $faker) {
 $factory->define(MedicineType::class, function (Faker $faker) {
     return [
         
-        'name' => $faker->name,
+        'name' => $faker->lastName,
     ];
 });
 
 $factory->define(MedicineGroup::class, function (Faker $faker) {
     return [
         
-        'name' => $faker->name,
+        'name' => $faker->lastName,
         'description' => $faker->paragraphs(1,true),
     ];
 });
@@ -89,7 +89,7 @@ $factory->define(MedicineGroup::class, function (Faker $faker) {
 $factory->define(Medicine::class, function (Faker $faker) {
     return [
 
-        'name'          => $faker->name,
+        'name'          => $faker->lastName,
         'group_id'      => rand(1,10),
         'type_id'       => rand(1,10),
         'company_id'    => rand(1,10),
