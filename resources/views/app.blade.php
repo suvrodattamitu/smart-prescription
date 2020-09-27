@@ -209,9 +209,9 @@
                                         <div class="header-right-info">
                                         <ul class="nav navbar-nav mai-top-nav header-right-menu">
                                             <li class="nav-item">
-                                                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+                                                <!-- <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
                                                 <i class="educate-icon educate-bell" aria-hidden="true"></i><span class="indicator-nt"></span>
-                                                </a>
+                                                </a> -->
                                                 <div role="menu" class="notification-author dropdown-menu animated zoomIn">
                                                     <div class="notification-single-top">
                                                     <h1>Notifications</h1>

@@ -73,6 +73,16 @@
                 </div>
             </div> 
         </div>
+
+        <div id="peekaboo">
+            <div style="display:flex;flex-direction:row;">
+                <p id="welcome-reminder"> 
+                    Hi Doctor! , Welcome To Smart Prescription!! 😊
+                </p>
+                <img id="micky" src="/assets/img/micky.png" alt="">
+            </div>
+        </div>
+
     </div>
     
 </template>
@@ -88,6 +98,16 @@ export default {
         
         this.getTimeNow();
         this.getCountings();
+
+        setTimeout(function(){
+            document.getElementById("peekaboo").style.cssText = "transition: right 0.7s ease-in-out 0s;position:fixed;bottom:0;right:0;";//show
+            document.getElementById("welcome-reminder").style.cssText = 'height:30px;padding:5px;display:block;color:#6200ff;font-size:20px;background-color:#fff'
+        },500);
+
+        setTimeout(function(){
+            document.getElementById("peekaboo").style.cssText = "transition: right 0.7s ease-in-out 0s;position:fixed;bottom:0;right: -352px;";//hide
+            document.getElementById("welcome-reminder").style = 'display:none'
+        },3000);
 
     },
 
