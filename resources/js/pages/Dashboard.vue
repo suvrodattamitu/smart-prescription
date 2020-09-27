@@ -1,5 +1,15 @@
 <template>
     <div>
+
+        <!-- loading -->
+        <v-loading 
+            :active.sync="isLoading" 
+            :is-full-page="fullPage"
+            :background-color="'#ffff'"
+            :color="'#007bff'"
+        >
+        </v-loading>
+
         <div class="breadcome-area">
             <div class="container-fluid">
                 <div class="row">
@@ -91,7 +101,10 @@
 export default {
     data(){
         return{
-            total_prescribed:''
+            total_prescribed:'',
+            //loading
+            isLoading: false,
+            fullPage: true
         }
     },
     mounted() {
@@ -102,12 +115,12 @@ export default {
         setTimeout(function(){
             document.getElementById("peekaboo").style.cssText = "transition: right 0.7s ease-in-out 0s;position:fixed;bottom:0;right:0;";//show
             document.getElementById("welcome-reminder").style.cssText = 'height:30px;padding:5px;display:block;color:#6200ff;font-size:20px;background-color:#fff'
-        },500);
+        },1500);
 
         setTimeout(function(){
             document.getElementById("peekaboo").style.cssText = "transition: right 0.7s ease-in-out 0s;position:fixed;bottom:0;right: -352px;";//hide
             document.getElementById("welcome-reminder").style = 'display:none'
-        },3000);
+        },5000);
 
     },
 
@@ -148,11 +161,12 @@ export default {
         },
 
         getCountings(){
+            this.isLoading = true;
             let that = this;
             axios.get('/dashboard')
             .then((response)=>{
                 that.total_prescribed = response.data.total_prescribed
-                console.log(response.data.total_prescribed)
+                that.isLoading = false;
             })
         }
         

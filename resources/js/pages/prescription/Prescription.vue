@@ -1,5 +1,15 @@
 <template>
   <div>
+
+    <!-- loading -->
+    <v-loading 
+        :active.sync="isLoading" 
+        :is-full-page="fullPage"
+        :background-color="'#ffff'"
+        :color="'#007bff'"
+    >
+    </v-loading>
+
     <div class="breadcome-area">
       <div class="container-fluid">
         <div class="row">
@@ -441,11 +451,15 @@ export default {
       isOpen: false,
       medicines: [],
       search: '',
-      isLoading: false,
+      //isLoading: false,
       arrowCounter: -1,
       selected_row:{},
 
-      suggestion: ''
+      suggestion: '',
+
+      //loading
+      isLoading: false,
+      fullPage: true
 
     };
   },
@@ -465,11 +479,11 @@ export default {
 
     getPatientDetails() {
       let that = this;
-      axios
-        .get("/patient-details/" + this.$route.params.id)
+      this.isLoading = true;
+      axios.get("/patient-details/" + this.$route.params.id)
         .then((response) => {
           that.patient_details = response.data.patient_details;
-          console.log(response.data);
+          that.isLoading = false;
         });
     },
 
@@ -508,17 +522,19 @@ export default {
 
     savePrescription() {
       let that = this
-      console.log(this.medicine_details_rows);
+      
       let data = {
         'medical_tests': this.medical_tests_rows,
         'medicine_details': this.medicine_details_rows,
         'suggestion': this.suggestion
       };
 
+      this.isLoading = true;
+
       axios
         .post("/add-prescription/"+ this.$route.params.id, data)
         .then(function (response) {
-            console.log(response);
+            that.isLoading = false;
             that.$router.push('/all-prescriptions/'+that.$route.params.id);
             Toast.fire({
                 icon: 'success',
@@ -527,7 +543,7 @@ export default {
         })
         .catch(function (error) {
           //that.errors = error.response.data.errors;
-          console.log(error.response.data);
+          that.isLoading = false;
         });
     },
 

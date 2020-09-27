@@ -1,5 +1,15 @@
 <template>
   <div>
+
+    <!-- loading -->
+    <v-loading 
+        :active.sync="isLoading" 
+        :is-full-page="fullPage"
+        :background-color="'#ffff'"
+        :color="'#007bff'"
+    >
+    </v-loading>
+
     <div class="breadcome-area">
       <div class="container-fluid">
         <div class="row">
@@ -318,11 +328,18 @@ export default {
       education: "",
       changed_image: false,
       image_file: "",
+
+      //loading
+      isLoading: false,
+      fullPage: true
     };
   },
 
   methods: {
     getCurrentUser() {
+
+      this.isLoading = true;
+
       let that = this;
       axios.get("/get-profile").then(function (response) {
 
@@ -340,10 +357,15 @@ export default {
           that.education = response.data.profile.details.education ? response.data.profile.details.education : '';
         }
 
+         that.isLoading = false;
+
       });
     },
 
     updateProfile() {
+
+      this.isLoading = true;
+
       const formData = new FormData();
 
       formData.append("name", this.name);
@@ -361,13 +383,13 @@ export default {
       axios
         .post("/update-profile", formData)
         .then(function (response) {
-          console.log(response.data);
+            that.isLoading = false;
 
-          that.getCurrentUser();
-          Toast.fire({
-            icon: "success",
-            title: "Profile updated successfully!!!",
-          });
+            that.getCurrentUser();
+            Toast.fire({
+              icon: "success",
+              title: "Profile updated successfully!!!",
+            });
         })
         .catch(function (error) {
           that.errors = error.response.data.errors;

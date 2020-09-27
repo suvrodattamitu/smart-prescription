@@ -1,5 +1,13 @@
 <template>
     <div>
+        <!-- loading -->
+        <v-loading 
+            :active.sync="isLoading" 
+            :is-full-page="fullPage"
+            :background-color="'#ffff'"
+            :color="'#007bff'"
+        >
+        </v-loading>
         <div class="breadcome-area">
             <div class="container-fluid">
                 <div class="row">
@@ -140,7 +148,10 @@
 export default {
     data(){
         return{
-            patient:{}
+            patient:{},
+            //loading
+            isLoading: false,
+            fullPage: true
         }
     },
 
@@ -150,11 +161,12 @@ export default {
 
     methods:{
         getPatient(){
+            this.isLoading = true;
             let that = this
             axios.get('/get-patient/'+this.$route.params.id)
             .then((response)=>{
                 that.patient = response.data.patient
-                console.log(response.data)
+                that.isLoading = false;
             })
         }
     }

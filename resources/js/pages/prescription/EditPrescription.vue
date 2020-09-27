@@ -1,5 +1,15 @@
 <template>
   <div>
+
+    <!-- loading -->
+    <v-loading 
+        :active.sync="isLoading" 
+        :is-full-page="fullPage"
+        :background-color="'#ffff'"
+        :color="'#007bff'"
+    >
+    </v-loading>
+
     <div class="breadcome-area">
       <div class="container-fluid">
         <div class="row">
@@ -450,6 +460,10 @@ export default {
           tests:[],
           suggestion: '',
 
+          //loading
+          isLoading: false,
+          fullPage: true
+
         };
     },
     mounted() {
@@ -477,6 +491,7 @@ export default {
             //this.prescription_id = prescription_id;
 
             let that = this;
+            this.isLoading = true;
             axios.get('/get-prescription/'+prescription_id)
                 .then(function (response) {
                     // that.selected_prescription = response.data.prescription;
@@ -502,19 +517,20 @@ export default {
                     }else {
                       that.medical_tests_rows.push({ medical_test_id: "", description: "" });
                     }
-                    console.log(response.data);
+                    that.isLoading = false;
                 })
         },
 
         
         getPatientDetails() {
-        let that = this;
-        axios
-            .get("/patient-details/" + this.$route.params.id)
-            .then((response) => {
-            that.patient_details = response.data.patient_details;
-            console.log(response.data);
-            });
+          this.isLoading = true;
+          let that = this;
+          axios.get("/patient-details/" + this.$route.params.id)
+              .then((response) => {
+                that.patient_details = response.data.patient_details;
+                that.isLoading = false;
+                console.log(response.data);
+              });
         },
 
         addMedicineDetailsRow() {
@@ -547,19 +563,20 @@ export default {
               'medicine_details': this.medicine_details_rows,
               'suggestion': this.suggestion
           };
-
+            this.isLoading = true;
             axios.post("/update-prescription/"+ this.prescription_id, data)
               .then(function (response) {
                   console.log(response);
+                  that.isLoading = false;
                   //that.$router.push('/all-prescriptions/'+that.$route.params.id);
-                  // Toast.fire({
-                  //     icon: 'success',
-                  //     title: 'Prescription added successfully!!!'
-                  // })
+                  Toast.fire({
+                      icon: 'success',
+                      title: 'Prescription updated successfully!!!'
+                  })
               })
               .catch(function (error) {
                 //that.errors = error.response.data.errors;
-                console.log(error.response.data);
+                that.isLoading = false;
               });
         },
 

@@ -1,6 +1,15 @@
 <template>
     <div>
 
+        <!-- loading -->
+        <v-loading 
+            :active.sync="isLoading" 
+            :is-full-page="fullPage"
+            :background-color="'#ffff'"
+            :color="'#007bff'"
+        >
+        </v-loading>
+
         <div class="breadcome-area">
             <div class="container-fluid">
                 <div class="row">
@@ -248,7 +257,11 @@ export default {
             prescriptions: '',
             selected_prescription:{},
             showEditModal: false,
-            prescription_id:''
+            prescription_id:'',
+            
+            //loading
+            isLoading: false,
+            fullPage: true
         }
     },
 
@@ -256,21 +269,23 @@ export default {
 
         viewPrescription(prescription_id) {
 
+            this.isLoading = true;
             let that = this;
             axios.get('/get-prescription/'+prescription_id)
                 .then(function (response) {
                     that.selected_prescription = response.data.prescription;
+                    that.isLoading = false;
                 })
         },
 
         getPrescriptionsByPatientId() {
 
             let that = this;
-
+            this.isLoading = true;
             axios.get('/prescriptions/'+this.$route.params.id)
                 .then(function (response) {
                     that.patient = response.data.patient;
-                    // console.log(response.data.patient);
+                    that.isLoading = false;
                 })
 
         },
@@ -283,21 +298,21 @@ export default {
 
         deleteMedicine() {
 
-            let id = this.selected_medicine_id;
-            let that = this;
+            // let id = this.selected_medicine_id;
+            // let that = this;
+            // this.isLoading = true;
+            // axios.delete('/delete-medicine/'+id)
+            //     .then(function (response) {
+            //         that.selected_medicine_id = '';
+            //         that.getPrescriptionsByPatientId();
+            //         that.isLoading = false;
+            //         that.$router.push('/all-prescriptions');
+            //         Toast.fire({
+            //             icon: 'warning',
+            //             title: 'Medicine deleted successfully!!!'
+            //         })
 
-            axios.delete('/delete-medicine/'+id)
-                .then(function (response) {
-                    that.selected_medicine_id = '';
-                    that.getPrescriptionsByPatientId();
-
-                    that.$router.push('/all-prescriptions');
-                    Toast.fire({
-                        icon: 'warning',
-                        title: 'Medicine deleted successfully!!!'
-                    })
-
-                })
+            //     })
 
         },
 
