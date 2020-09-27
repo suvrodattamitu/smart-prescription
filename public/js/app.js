@@ -1997,596 +1997,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    console.log('hello from dashboard');
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Prescription.vue?vue&type=script&lang=js&":
-/*!******************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Prescription.vue?vue&type=script&lang=js& ***!
-  \******************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      patient_details: {},
-      // medicine_types: [],
-      tests: [],
-      medical_tests_rows: [{
-        medical_test_id: "",
-        description: ""
-      }],
-      medicine_details_rows: [{
-        medicine_id: '',
-        medicine_name: '',
-        eating_time_breakfast: '',
-        eating_time_lunch: '',
-        eating_time_dinner: '',
-        eating_term: '',
-        days: '',
-        duration: '',
-        isOpen: false
-      }],
-      //search medicine
-      isOpen: false,
-      medicines: [],
-      search: '',
-      isLoading: false,
-      arrowCounter: -1,
-      selected_row: {},
-      suggestion: ''
+      total_prescribed: ''
     };
   },
   mounted: function mounted() {
-    this.getPatientDetails(); // this.getMedicineTypes();
-
-    this.getMedicalTests();
+    console.log('hello from dashboard');
+    this.getCountings();
   },
   methods: {
-    addMedicineDetailsRow: function addMedicineDetailsRow() {
-      this.medicine_details_rows.push({
-        medicine_id: '',
-        medicine_name: '',
-        eating_time_breakfast: '',
-        eating_time_lunch: '',
-        eating_time_dinner: '',
-        eating_term: '',
-        days: '',
-        duration: '',
-        isOpen: false
-      });
-    },
-    deleteMedicineDetailsRow: function deleteMedicineDetailsRow(index) {
-      this.medicine_details_rows.splice(index, 1);
-    },
-    getPatientDetails: function getPatientDetails() {
+    getCountings: function getCountings() {
       var that = this;
-      axios.get("/patient-details/" + this.$route.params.id).then(function (response) {
-        that.patient_details = response.data.patient_details;
-        console.log(response.data);
-      });
-    },
-    // getMedicineTypes(){
-    //   let that = this;
-    //   axios.get('/types')
-    //     .then(function (response) {
-    //         that.medicine_types = response.data.medicine_types;
-    //         // console.log(response.data);
-    //     })
-    // },
-    getMedicalTests: function getMedicalTests() {
-      var that = this;
-      axios.get('/tests').then(function (response) {
-        that.tests = response.data.medical_tests; // console.log(response.data);
-      });
-    },
-    addTestRow: function addTestRow() {
-      this.medical_tests_rows.push({
-        medical_test_id: "",
-        description: ""
-      });
-    },
-    deleteTestRow: function deleteTestRow(index) {
-      this.medical_tests_rows.splice(index, 1);
-    },
-    selectedRow: function selectedRow(row) {
-      this.selected_row = row;
-
-      if (row.duration === '2') {
-        this.selected_row.days = '';
-      }
-    },
-    savePrescription: function savePrescription() {
-      var that = this;
-      console.log(this.medicine_details_rows);
-      var data = {
-        'medical_tests': this.medical_tests_rows,
-        'medicine_details': this.medicine_details_rows,
-        'suggestion': this.suggestion
-      };
-      axios.post("/add-prescription/" + this.$route.params.id, data).then(function (response) {
-        console.log(response);
-        that.$router.push('/all-prescriptions/' + that.$route.params.id);
-        Toast.fire({
-          icon: 'success',
-          title: 'Prescription added successfully!!!'
-        });
-      })["catch"](function (error) {
-        //that.errors = error.response.data.errors;
-        console.log(error.response.data);
-      });
-    },
-    //search medicine
-    onArrowDown: function onArrowDown() {
-      if (this.arrowCounter < this.results.length) {
-        this.arrowCounter = this.arrowCounter + 1;
-      }
-    },
-    onArrowUp: function onArrowUp() {
-      if (this.arrowCounter > 0) {
-        this.arrowCounter = this.arrowCounter - 1;
-      }
-    },
-    onEnter: function onEnter() {
-      this.search = this.results[this.arrowCounter];
-      this.isOpen = false;
-      this.arrowCounter = -1;
-    },
-    setResult: function setResult(medicine) {
-      //this.search = result;
-      this.selected_row.isOpen = false;
-      this.selected_row.medicine_name = medicine.name;
-      this.selected_row.medicine_id = medicine.id;
-    },
-    onChange: function onChange(evt) {
-      console.log(evt.target);
-      var data = {
-        'name': evt.target.value
-      };
-      var that = this;
-      axios.post("/find-medicine", data).then(function (response) {
-        that.medicines = response.data.medicines;
-        that.selected_row.isOpen = true;
-        console.log(response);
-      })["catch"](function (error) {
-        //that.errors = error.response.data.errors;
-        console.log(error.response.data);
+      axios.get('/dashboard').then(function (response) {
+        that.total_prescribed = response.data.total_prescribed;
+        console.log(response.data.total_prescribed);
       });
     }
   }
@@ -2817,28 +2242,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       companies: [],
-      selected_company_id: ''
+      selected_company_id: '',
+      //loading
+      isLoading: false,
+      fullPage: true
     };
   },
   methods: {
     getAllCompanies: function getAllCompanies() {
+      //loading
+      this.isLoading = true;
       var that = this;
       axios.get('/companies').then(function (response) {
-        that.companies = response.data.companies;
-        console.log(response.data);
+        that.companies = response.data.companies; //loading
+
+        that.isLoading = false;
       });
     },
     editCompany: function editCompany(id) {
       this.$router.push('/edit-company/' + id);
     },
     deleteCompany: function deleteCompany() {
+      //loading
+      this.isLoading = true;
       var id = this.selected_company_id;
       var that = this;
       axios["delete"]('/delete-company/' + id).then(function (response) {
+        //loading
+        that.isLoading = true;
         that.selected_company_id = '';
         that.getAllCompanies();
         that.$router.push('/all-companies');
@@ -5066,6 +4510,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5633,7 +5078,6 @@ __webpack_require__.r(__webpack_exports__);
       var that = this;
       axios.get('/get-prescription/' + prescription_id).then(function (response) {
         that.selected_prescription = response.data.prescription;
-        that.showEditModal = true; //console.log(response.data.prescription);
       });
     },
     getPrescriptionsByPatientId: function getPrescriptionsByPatientId() {
@@ -5677,7 +5121,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     editPrescription: function editPrescription(prescription_id) {
       this.showEditModal = true;
-      this.prescription_id = prescription_id; //this.viewPrescription(prescription_id);
+      this.prescription_id = prescription_id;
     },
     hideEditModal: function hideEditModal() {
       this.showEditModal = false;
@@ -6317,10 +5761,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/profile/Profile.vue?vue&type=script&lang=js&":
-/*!*********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/profile/Profile.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/prescription/Prescription.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/prescription/Prescription.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -6445,6 +5889,477 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      patient_details: {},
+      // medicine_types: [],
+      tests: [],
+      medical_tests_rows: [{
+        medical_test_id: "",
+        description: ""
+      }],
+      medicine_details_rows: [{
+        medicine_id: '',
+        medicine_name: '',
+        eating_time_breakfast: '',
+        eating_time_lunch: '',
+        eating_time_dinner: '',
+        eating_term: '',
+        days: '',
+        duration: '',
+        isOpen: false
+      }],
+      //search medicine
+      isOpen: false,
+      medicines: [],
+      search: '',
+      isLoading: false,
+      arrowCounter: -1,
+      selected_row: {},
+      suggestion: ''
+    };
+  },
+  mounted: function mounted() {
+    this.getPatientDetails(); // this.getMedicineTypes();
+
+    this.getMedicalTests();
+  },
+  methods: {
+    addMedicineDetailsRow: function addMedicineDetailsRow() {
+      this.medicine_details_rows.push({
+        medicine_id: '',
+        medicine_name: '',
+        eating_time_breakfast: '',
+        eating_time_lunch: '',
+        eating_time_dinner: '',
+        eating_term: '',
+        days: '',
+        duration: '',
+        isOpen: false
+      });
+    },
+    deleteMedicineDetailsRow: function deleteMedicineDetailsRow(index) {
+      this.medicine_details_rows.splice(index, 1);
+    },
+    getPatientDetails: function getPatientDetails() {
+      var that = this;
+      axios.get("/patient-details/" + this.$route.params.id).then(function (response) {
+        that.patient_details = response.data.patient_details;
+        console.log(response.data);
+      });
+    },
+    // getMedicineTypes(){
+    //   let that = this;
+    //   axios.get('/types')
+    //     .then(function (response) {
+    //         that.medicine_types = response.data.medicine_types;
+    //         // console.log(response.data);
+    //     })
+    // },
+    getMedicalTests: function getMedicalTests() {
+      var that = this;
+      axios.get('/tests').then(function (response) {
+        that.tests = response.data.medical_tests; // console.log(response.data);
+      });
+    },
+    addTestRow: function addTestRow() {
+      this.medical_tests_rows.push({
+        medical_test_id: "",
+        description: ""
+      });
+    },
+    deleteTestRow: function deleteTestRow(index) {
+      this.medical_tests_rows.splice(index, 1);
+    },
+    selectedRow: function selectedRow(row) {
+      this.selected_row = row;
+
+      if (row.duration === '2') {
+        this.selected_row.days = '';
+      }
+    },
+    savePrescription: function savePrescription() {
+      var that = this;
+      console.log(this.medicine_details_rows);
+      var data = {
+        'medical_tests': this.medical_tests_rows,
+        'medicine_details': this.medicine_details_rows,
+        'suggestion': this.suggestion
+      };
+      axios.post("/add-prescription/" + this.$route.params.id, data).then(function (response) {
+        console.log(response);
+        that.$router.push('/all-prescriptions/' + that.$route.params.id);
+        Toast.fire({
+          icon: 'success',
+          title: 'Prescription added successfully!!!'
+        });
+      })["catch"](function (error) {
+        //that.errors = error.response.data.errors;
+        console.log(error.response.data);
+      });
+    },
+    //search medicine
+    onArrowDown: function onArrowDown() {
+      if (this.arrowCounter < this.results.length) {
+        this.arrowCounter = this.arrowCounter + 1;
+      }
+    },
+    onArrowUp: function onArrowUp() {
+      if (this.arrowCounter > 0) {
+        this.arrowCounter = this.arrowCounter - 1;
+      }
+    },
+    onEnter: function onEnter() {
+      this.search = this.results[this.arrowCounter];
+      this.isOpen = false;
+      this.arrowCounter = -1;
+    },
+    setResult: function setResult(medicine) {
+      //this.search = result;
+      this.selected_row.isOpen = false;
+      this.selected_row.medicine_name = medicine.name;
+      this.selected_row.medicine_id = medicine.id;
+    },
+    onChange: function onChange(evt) {
+      console.log(evt.target);
+      var data = {
+        'name': evt.target.value
+      };
+      var that = this;
+      axios.post("/find-medicine", data).then(function (response) {
+        that.medicines = response.data.medicines;
+        that.selected_row.isOpen = true;
+        console.log(response);
+      })["catch"](function (error) {
+        //that.errors = error.response.data.errors;
+        console.log(error.response.data);
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/profile/Profile.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/profile/Profile.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -6769,19 +6684,19 @@ __webpack_require__.r(__webpack_exports__);
     getCurrentUser: function getCurrentUser() {
       var that = this;
       axios.get("/get-profile").then(function (response) {
-        that.profile = response.data.profile[0];
-        that.name = response.data.profile[0].name;
+        that.profile = response.data.profile;
+        that.name = response.data.profile.name;
         that.gender = 0;
         console.log(response.data);
 
-        if (response.data.profile[0].details && response.data.profile[0].details[0]) {
-          that.phone = response.data.profile[0].details[0].phone;
-          that.address = response.data.profile[0].details[0].address;
-          that.bio = response.data.profile[0].details[0].bio;
-          that.designation = response.data.profile[0].details[0].designation;
-          that.gender = response.data.profile[0].details[0].gender;
-          that.website_url = response.data.profile[0].details[0].website_url;
-          that.education = response.data.profile[0].details[0].education;
+        if (response.data.profile.details && response.data.profile.details) {
+          that.phone = response.data.profile.details.phone ? response.data.profile.details.phone : '';
+          that.address = response.data.profile.details.address ? response.data.profile.details.address : '';
+          that.bio = response.data.profile.details.bio ? response.data.profile.details.bio : '';
+          that.designation = response.data.profile.details.designation ? response.data.profile.details.designation : '';
+          that.gender = response.data.profile.details.gender ? response.data.profile.details.gender : 0;
+          that.website_url = response.data.profile.details.website_url ? response.data.profile.details.website_url : '';
+          that.education = response.data.profile.details.education ? response.data.profile.details.education : '';
         }
       });
     },
@@ -7082,6 +6997,112 @@ __webpack_require__.r(__webpack_exports__);
     }
   }
 });
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loading-overlay/dist/vue-loading.css":
+/*!***********************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loading-overlay/dist/vue-loading.css ***!
+  \***********************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".vld-shown {\n  overflow: hidden;\n}\n\n.vld-overlay {\n  bottom: 0;\n  left: 0;\n  position: absolute;\n  right: 0;\n  top: 0;\n  align-items: center;\n  display: none;\n  justify-content: center;\n  overflow: hidden;\n  z-index: 9999;\n}\n\n.vld-overlay.is-active {\n  display: flex;\n}\n\n.vld-overlay.is-full-page {\n  z-index: 9999;\n  position: fixed;\n}\n\n.vld-overlay .vld-background {\n  bottom: 0;\n  left: 0;\n  position: absolute;\n  right: 0;\n  top: 0;\n  background: #fff;\n  opacity: 0.5;\n}\n\n.vld-overlay .vld-icon, .vld-parent {\n  position: relative;\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/lib/css-base.js":
+/*!*************************************************!*\
+  !*** ./node_modules/css-loader/lib/css-base.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
+
 
 /***/ }),
 
@@ -45835,6 +45856,515 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/lib/addStyles.js":
+/*!****************************************************!*\
+  !*** ./node_modules/style-loader/lib/addStyles.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+
+var stylesInDom = {};
+
+var	memoize = function (fn) {
+	var memo;
+
+	return function () {
+		if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+		return memo;
+	};
+};
+
+var isOldIE = memoize(function () {
+	// Test for IE <= 9 as proposed by Browserhacks
+	// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+	// Tests for existence of standard globals is to allow style-loader
+	// to operate correctly into non-standard environments
+	// @see https://github.com/webpack-contrib/style-loader/issues/177
+	return window && document && document.all && !window.atob;
+});
+
+var getTarget = function (target, parent) {
+  if (parent){
+    return parent.querySelector(target);
+  }
+  return document.querySelector(target);
+};
+
+var getElement = (function (fn) {
+	var memo = {};
+
+	return function(target, parent) {
+                // If passing function in options, then use it for resolve "head" element.
+                // Useful for Shadow Root style i.e
+                // {
+                //   insertInto: function () { return document.querySelector("#foo").shadowRoot }
+                // }
+                if (typeof target === 'function') {
+                        return target();
+                }
+                if (typeof memo[target] === "undefined") {
+			var styleTarget = getTarget.call(this, target, parent);
+			// Special case to return head of iframe instead of iframe itself
+			if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
+				try {
+					// This will throw an exception if access to iframe is blocked
+					// due to cross-origin restrictions
+					styleTarget = styleTarget.contentDocument.head;
+				} catch(e) {
+					styleTarget = null;
+				}
+			}
+			memo[target] = styleTarget;
+		}
+		return memo[target]
+	};
+})();
+
+var singleton = null;
+var	singletonCounter = 0;
+var	stylesInsertedAtTop = [];
+
+var	fixUrls = __webpack_require__(/*! ./urls */ "./node_modules/style-loader/lib/urls.js");
+
+module.exports = function(list, options) {
+	if (typeof DEBUG !== "undefined" && DEBUG) {
+		if (typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+	}
+
+	options = options || {};
+
+	options.attrs = typeof options.attrs === "object" ? options.attrs : {};
+
+	// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+	// tags it will allow on a page
+	if (!options.singleton && typeof options.singleton !== "boolean") options.singleton = isOldIE();
+
+	// By default, add <style> tags to the <head> element
+        if (!options.insertInto) options.insertInto = "head";
+
+	// By default, add <style> tags to the bottom of the target
+	if (!options.insertAt) options.insertAt = "bottom";
+
+	var styles = listToStyles(list, options);
+
+	addStylesToDom(styles, options);
+
+	return function update (newList) {
+		var mayRemove = [];
+
+		for (var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+
+			domStyle.refs--;
+			mayRemove.push(domStyle);
+		}
+
+		if(newList) {
+			var newStyles = listToStyles(newList, options);
+			addStylesToDom(newStyles, options);
+		}
+
+		for (var i = 0; i < mayRemove.length; i++) {
+			var domStyle = mayRemove[i];
+
+			if(domStyle.refs === 0) {
+				for (var j = 0; j < domStyle.parts.length; j++) domStyle.parts[j]();
+
+				delete stylesInDom[domStyle.id];
+			}
+		}
+	};
+};
+
+function addStylesToDom (styles, options) {
+	for (var i = 0; i < styles.length; i++) {
+		var item = styles[i];
+		var domStyle = stylesInDom[item.id];
+
+		if(domStyle) {
+			domStyle.refs++;
+
+			for(var j = 0; j < domStyle.parts.length; j++) {
+				domStyle.parts[j](item.parts[j]);
+			}
+
+			for(; j < item.parts.length; j++) {
+				domStyle.parts.push(addStyle(item.parts[j], options));
+			}
+		} else {
+			var parts = [];
+
+			for(var j = 0; j < item.parts.length; j++) {
+				parts.push(addStyle(item.parts[j], options));
+			}
+
+			stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+		}
+	}
+}
+
+function listToStyles (list, options) {
+	var styles = [];
+	var newStyles = {};
+
+	for (var i = 0; i < list.length; i++) {
+		var item = list[i];
+		var id = options.base ? item[0] + options.base : item[0];
+		var css = item[1];
+		var media = item[2];
+		var sourceMap = item[3];
+		var part = {css: css, media: media, sourceMap: sourceMap};
+
+		if(!newStyles[id]) styles.push(newStyles[id] = {id: id, parts: [part]});
+		else newStyles[id].parts.push(part);
+	}
+
+	return styles;
+}
+
+function insertStyleElement (options, style) {
+	var target = getElement(options.insertInto)
+
+	if (!target) {
+		throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
+	}
+
+	var lastStyleElementInsertedAtTop = stylesInsertedAtTop[stylesInsertedAtTop.length - 1];
+
+	if (options.insertAt === "top") {
+		if (!lastStyleElementInsertedAtTop) {
+			target.insertBefore(style, target.firstChild);
+		} else if (lastStyleElementInsertedAtTop.nextSibling) {
+			target.insertBefore(style, lastStyleElementInsertedAtTop.nextSibling);
+		} else {
+			target.appendChild(style);
+		}
+		stylesInsertedAtTop.push(style);
+	} else if (options.insertAt === "bottom") {
+		target.appendChild(style);
+	} else if (typeof options.insertAt === "object" && options.insertAt.before) {
+		var nextSibling = getElement(options.insertAt.before, target);
+		target.insertBefore(style, nextSibling);
+	} else {
+		throw new Error("[Style Loader]\n\n Invalid value for parameter 'insertAt' ('options.insertAt') found.\n Must be 'top', 'bottom', or Object.\n (https://github.com/webpack-contrib/style-loader#insertat)\n");
+	}
+}
+
+function removeStyleElement (style) {
+	if (style.parentNode === null) return false;
+	style.parentNode.removeChild(style);
+
+	var idx = stylesInsertedAtTop.indexOf(style);
+	if(idx >= 0) {
+		stylesInsertedAtTop.splice(idx, 1);
+	}
+}
+
+function createStyleElement (options) {
+	var style = document.createElement("style");
+
+	if(options.attrs.type === undefined) {
+		options.attrs.type = "text/css";
+	}
+
+	if(options.attrs.nonce === undefined) {
+		var nonce = getNonce();
+		if (nonce) {
+			options.attrs.nonce = nonce;
+		}
+	}
+
+	addAttrs(style, options.attrs);
+	insertStyleElement(options, style);
+
+	return style;
+}
+
+function createLinkElement (options) {
+	var link = document.createElement("link");
+
+	if(options.attrs.type === undefined) {
+		options.attrs.type = "text/css";
+	}
+	options.attrs.rel = "stylesheet";
+
+	addAttrs(link, options.attrs);
+	insertStyleElement(options, link);
+
+	return link;
+}
+
+function addAttrs (el, attrs) {
+	Object.keys(attrs).forEach(function (key) {
+		el.setAttribute(key, attrs[key]);
+	});
+}
+
+function getNonce() {
+	if (false) {}
+
+	return __webpack_require__.nc;
+}
+
+function addStyle (obj, options) {
+	var style, update, remove, result;
+
+	// If a transform function was defined, run it on the css
+	if (options.transform && obj.css) {
+	    result = typeof options.transform === 'function'
+		 ? options.transform(obj.css) 
+		 : options.transform.default(obj.css);
+
+	    if (result) {
+	    	// If transform returns a value, use that instead of the original css.
+	    	// This allows running runtime transformations on the css.
+	    	obj.css = result;
+	    } else {
+	    	// If the transform function returns a falsy value, don't add this css.
+	    	// This allows conditional loading of css
+	    	return function() {
+	    		// noop
+	    	};
+	    }
+	}
+
+	if (options.singleton) {
+		var styleIndex = singletonCounter++;
+
+		style = singleton || (singleton = createStyleElement(options));
+
+		update = applyToSingletonTag.bind(null, style, styleIndex, false);
+		remove = applyToSingletonTag.bind(null, style, styleIndex, true);
+
+	} else if (
+		obj.sourceMap &&
+		typeof URL === "function" &&
+		typeof URL.createObjectURL === "function" &&
+		typeof URL.revokeObjectURL === "function" &&
+		typeof Blob === "function" &&
+		typeof btoa === "function"
+	) {
+		style = createLinkElement(options);
+		update = updateLink.bind(null, style, options);
+		remove = function () {
+			removeStyleElement(style);
+
+			if(style.href) URL.revokeObjectURL(style.href);
+		};
+	} else {
+		style = createStyleElement(options);
+		update = applyToTag.bind(null, style);
+		remove = function () {
+			removeStyleElement(style);
+		};
+	}
+
+	update(obj);
+
+	return function updateStyle (newObj) {
+		if (newObj) {
+			if (
+				newObj.css === obj.css &&
+				newObj.media === obj.media &&
+				newObj.sourceMap === obj.sourceMap
+			) {
+				return;
+			}
+
+			update(obj = newObj);
+		} else {
+			remove();
+		}
+	};
+}
+
+var replaceText = (function () {
+	var textStore = [];
+
+	return function (index, replacement) {
+		textStore[index] = replacement;
+
+		return textStore.filter(Boolean).join('\n');
+	};
+})();
+
+function applyToSingletonTag (style, index, remove, obj) {
+	var css = remove ? "" : obj.css;
+
+	if (style.styleSheet) {
+		style.styleSheet.cssText = replaceText(index, css);
+	} else {
+		var cssNode = document.createTextNode(css);
+		var childNodes = style.childNodes;
+
+		if (childNodes[index]) style.removeChild(childNodes[index]);
+
+		if (childNodes.length) {
+			style.insertBefore(cssNode, childNodes[index]);
+		} else {
+			style.appendChild(cssNode);
+		}
+	}
+}
+
+function applyToTag (style, obj) {
+	var css = obj.css;
+	var media = obj.media;
+
+	if(media) {
+		style.setAttribute("media", media)
+	}
+
+	if(style.styleSheet) {
+		style.styleSheet.cssText = css;
+	} else {
+		while(style.firstChild) {
+			style.removeChild(style.firstChild);
+		}
+
+		style.appendChild(document.createTextNode(css));
+	}
+}
+
+function updateLink (link, options, obj) {
+	var css = obj.css;
+	var sourceMap = obj.sourceMap;
+
+	/*
+		If convertToAbsoluteUrls isn't defined, but sourcemaps are enabled
+		and there is no publicPath defined then lets turn convertToAbsoluteUrls
+		on by default.  Otherwise default to the convertToAbsoluteUrls option
+		directly
+	*/
+	var autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;
+
+	if (options.convertToAbsoluteUrls || autoFixUrls) {
+		css = fixUrls(css);
+	}
+
+	if (sourceMap) {
+		// http://stackoverflow.com/a/26603875
+		css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+	}
+
+	var blob = new Blob([css], { type: "text/css" });
+
+	var oldSrc = link.href;
+
+	link.href = URL.createObjectURL(blob);
+
+	if(oldSrc) URL.revokeObjectURL(oldSrc);
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/lib/urls.js":
+/*!***********************************************!*\
+  !*** ./node_modules/style-loader/lib/urls.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+/**
+ * When source maps are enabled, `style-loader` uses a link element with a data-uri to
+ * embed the css on the page. This breaks all relative urls because now they are relative to a
+ * bundle instead of the current page.
+ *
+ * One solution is to only use full urls, but that may be impossible.
+ *
+ * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
+ *
+ * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
+ *
+ */
+
+module.exports = function (css) {
+  // get current location
+  var location = typeof window !== "undefined" && window.location;
+
+  if (!location) {
+    throw new Error("fixUrls requires window.location");
+  }
+
+	// blank or null?
+	if (!css || typeof css !== "string") {
+	  return css;
+  }
+
+  var baseUrl = location.protocol + "//" + location.host;
+  var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, "/");
+
+	// convert each url(...)
+	/*
+	This regular expression is just a way to recursively match brackets within
+	a string.
+
+	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
+	   (  = Start a capturing group
+	     (?:  = Start a non-capturing group
+	         [^)(]  = Match anything that isn't a parentheses
+	         |  = OR
+	         \(  = Match a start parentheses
+	             (?:  = Start another non-capturing groups
+	                 [^)(]+  = Match anything that isn't a parentheses
+	                 |  = OR
+	                 \(  = Match a start parentheses
+	                     [^)(]*  = Match anything that isn't a parentheses
+	                 \)  = Match a end parentheses
+	             )  = End Group
+              *\) = Match anything and then a close parens
+          )  = Close non-capturing group
+          *  = Match anything
+       )  = Close capturing group
+	 \)  = Match a close parens
+
+	 /gi  = Get all matches, not the first.  Be case insensitive.
+	 */
+	var fixedCss = css.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function(fullMatch, origUrl) {
+		// strip quotes (if they exist)
+		var unquotedOrigUrl = origUrl
+			.trim()
+			.replace(/^"(.*)"$/, function(o, $1){ return $1; })
+			.replace(/^'(.*)'$/, function(o, $1){ return $1; });
+
+		// already a full url? no change
+		if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/|\s*$)/i.test(unquotedOrigUrl)) {
+		  return fullMatch;
+		}
+
+		// convert the url to a full url
+		var newUrl;
+
+		if (unquotedOrigUrl.indexOf("//") === 0) {
+		  	//TODO: should we add protocol?
+			newUrl = unquotedOrigUrl;
+		} else if (unquotedOrigUrl.indexOf("/") === 0) {
+			// path should be relative to the base url
+			newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
+		} else {
+			// path should be relative to current directory
+			newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ""); // Strip leading './'
+		}
+
+		// send back the fixed url(...)
+		return "url(" + JSON.stringify(newUrl) + ")";
+	});
+
+	// send back the fixed css
+	return fixedCss;
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/sweetalert2/dist/sweetalert2.all.js":
 /*!**********************************************************!*\
   !*** ./node_modules/sweetalert2/dist/sweetalert2.all.js ***!
@@ -49260,7 +49790,40 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(2)
+    _c("div", { staticClass: "analytics-sparkle-area" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-6 col-xs-12" }, [
+            _c("div", { staticClass: "analytics-sparkle-line reso-mg-b-30" }, [
+              _c("div", { staticClass: "analytics-content" }, [
+                _c("h5", [_vm._v("Total Prescribed")]),
+                _vm._v(" "),
+                _c("h2", [
+                  _vm._v("$"),
+                  _c("span", { staticClass: "counter" }, [
+                    _vm._v(_vm._s(_vm.total_prescribed))
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "tuition-fees" }, [
+                    _vm._v("Prescribed")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "text-success" }, [_vm._v("20%")]),
+                _vm._v(" "),
+                _vm._m(2)
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(3),
+          _vm._v(" "),
+          _vm._m(4),
+          _vm._v(" "),
+          _vm._m(5)
+        ])
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -49299,178 +49862,59 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "analytics-sparkle-area" }, [
-      _c("div", { staticClass: "container-fluid" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-6 col-xs-12" }, [
-            _c("div", { staticClass: "analytics-sparkle-line reso-mg-b-30" }, [
-              _c("div", { staticClass: "analytics-content" }, [
-                _c("h5", [_vm._v("Computer Technologies")]),
-                _vm._v(" "),
-                _c("h2", [
-                  _vm._v("$"),
-                  _c("span", { staticClass: "counter" }, [_vm._v("5000")]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "tuition-fees" }, [
-                    _vm._v("Tuition Fees")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-success" }, [_vm._v("20%")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "progress m-b-0" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "progress-bar progress-bar-success",
-                      staticStyle: { width: "20%" },
-                      attrs: {
-                        role: "progressbar",
-                        "aria-valuenow": "50",
-                        "aria-valuemin": "0",
-                        "aria-valuemax": "100"
-                      }
-                    },
-                    [
-                      _c("span", { staticClass: "sr-only" }, [
-                        _vm._v("20% Complete")
-                      ])
-                    ]
-                  )
-                ])
-              ])
+    return _c("div", { staticClass: "progress m-b-0" }, [
+      _c(
+        "div",
+        {
+          staticClass: "progress-bar progress-bar-success",
+          staticStyle: { width: "20%" },
+          attrs: {
+            role: "progressbar",
+            "aria-valuenow": "50",
+            "aria-valuemin": "0",
+            "aria-valuemax": "100"
+          }
+        },
+        [_c("span", { staticClass: "sr-only" }, [_vm._v("20% Complete")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-6 col-xs-12" }, [
+      _c("div", { staticClass: "analytics-sparkle-line reso-mg-b-30" }, [
+        _c("div", { staticClass: "analytics-content" }, [
+          _c("h5", [_vm._v("Total Patients")]),
+          _vm._v(" "),
+          _c("h2", [
+            _vm._v("$"),
+            _c("span", { staticClass: "counter" }, [_vm._v("3000")]),
+            _vm._v(" "),
+            _c("span", { staticClass: "tuition-fees" }, [
+              _vm._v("Tuition Fees")
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-6 col-xs-12" }, [
-            _c("div", { staticClass: "analytics-sparkle-line reso-mg-b-30" }, [
-              _c("div", { staticClass: "analytics-content" }, [
-                _c("h5", [_vm._v("Total Patients")]),
-                _vm._v(" "),
-                _c("h2", [
-                  _vm._v("$"),
-                  _c("span", { staticClass: "counter" }, [_vm._v("3000")]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "tuition-fees" }, [
-                    _vm._v("Tuition Fees")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-danger" }, [_vm._v("30%")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "progress m-b-0" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "progress-bar progress-bar-danger",
-                      staticStyle: { width: "30%" },
-                      attrs: {
-                        role: "progressbar",
-                        "aria-valuenow": "50",
-                        "aria-valuemin": "0",
-                        "aria-valuemax": "100"
-                      }
-                    },
-                    [
-                      _c("span", { staticClass: "sr-only" }, [
-                        _vm._v("230% Complete")
-                      ])
-                    ]
-                  )
-                ])
-              ])
-            ])
-          ]),
+          _c("span", { staticClass: "text-danger" }, [_vm._v("30%")]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-6 col-xs-12" }, [
+          _c("div", { staticClass: "progress m-b-0" }, [
             _c(
               "div",
               {
-                staticClass:
-                  "analytics-sparkle-line reso-mg-b-30 table-mg-t-pro dk-res-t-pro-30"
+                staticClass: "progress-bar progress-bar-danger",
+                staticStyle: { width: "30%" },
+                attrs: {
+                  role: "progressbar",
+                  "aria-valuenow": "50",
+                  "aria-valuemin": "0",
+                  "aria-valuemax": "100"
+                }
               },
               [
-                _c("div", { staticClass: "analytics-content" }, [
-                  _c("h5", [_vm._v("Electrical Engineering")]),
-                  _vm._v(" "),
-                  _c("h2", [
-                    _vm._v("$"),
-                    _c("span", { staticClass: "counter" }, [_vm._v("2000")]),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "tuition-fees" }, [
-                      _vm._v("Tuition Fees")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "text-info" }, [_vm._v("60%")]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "progress m-b-0" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "progress-bar progress-bar-info",
-                        staticStyle: { width: "60%" },
-                        attrs: {
-                          role: "progressbar",
-                          "aria-valuenow": "50",
-                          "aria-valuemin": "0",
-                          "aria-valuemax": "100"
-                        }
-                      },
-                      [
-                        _c("span", { staticClass: "sr-only" }, [
-                          _vm._v("20% Complete")
-                        ])
-                      ]
-                    )
-                  ])
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-6 col-xs-12" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "analytics-sparkle-line table-mg-t-pro dk-res-t-pro-30"
-              },
-              [
-                _c("div", { staticClass: "analytics-content" }, [
-                  _c("h5", [_vm._v("Chemical Engineering")]),
-                  _vm._v(" "),
-                  _c("h2", [
-                    _vm._v("$"),
-                    _c("span", { staticClass: "counter" }, [_vm._v("3500")]),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "tuition-fees" }, [
-                      _vm._v("Tuition Fees")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "text-inverse" }, [_vm._v("80%")]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "progress m-b-0" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "progress-bar progress-bar-inverse",
-                        staticStyle: { width: "80%" },
-                        attrs: {
-                          role: "progressbar",
-                          "aria-valuenow": "50",
-                          "aria-valuemin": "0",
-                          "aria-valuemax": "100"
-                        }
-                      },
-                      [
-                        _c("span", { staticClass: "sr-only" }, [
-                          _vm._v("230% Complete")
-                        ])
-                      ]
-                    )
-                  ])
+                _c("span", { staticClass: "sr-only" }, [
+                  _vm._v("230% Complete")
                 ])
               ]
             )
@@ -49478,1374 +49922,106 @@ var staticRenderFns = [
         ])
       ])
     ])
-  }
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Prescription.vue?vue&type=template&id=a52e9dba&":
-/*!**********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Prescription.vue?vue&type=template&id=a52e9dba& ***!
-  \**********************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "breadcome-area" }, [
-      _c("div", { staticClass: "container-fluid" }, [
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            { staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12" },
-            [
-              _c("div", { staticClass: "breadcome-list" }, [
-                _c("div", { staticClass: "row" }, [
-                  _vm._m(0),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
-                    [
-                      _c("ul", { staticClass: "breadcome-menu" }, [
-                        _c(
-                          "li",
-                          [
-                            _c("router-link", { attrs: { to: "/" } }, [
-                              _vm._v("Home")
-                            ]),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "bread-slash" }, [
-                              _vm._v("/")
-                            ])
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _vm._m(1)
-                      ])
-                    ]
-                  )
-                ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-6 col-xs-12" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "analytics-sparkle-line reso-mg-b-30 table-mg-t-pro dk-res-t-pro-30"
+        },
+        [
+          _c("div", { staticClass: "analytics-content" }, [
+            _c("h5", [_vm._v("Electrical Engineering")]),
+            _vm._v(" "),
+            _c("h2", [
+              _vm._v("$"),
+              _c("span", { staticClass: "counter" }, [_vm._v("2000")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "tuition-fees" }, [
+                _vm._v("Tuition Fees")
               ])
-            ]
-          )
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "profile-details-hr" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12 col-xs-6" }, [
-          _c("div", { staticClass: "address-hr" }, [
-            _c("p", [
-              _c("b", [_vm._v("Date")]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(
-                "\n            " +
-                  _vm._s(_vm._f("timeformat")(_vm.patient_details.created_at)) +
-                  "\n          "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12 col-xs-6" }, [
-          _c("div", { staticClass: "address-hr tb-sm-res-d-n dps-tb-ntn" }, [
-            _c("p", [
-              _c("b", [_vm._v("Visiting No")]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(
-                "\n            " +
-                  _vm._s(_vm.patient_details.visiting_no) +
-                  "\n          "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12 col-xs-6" }, [
-          _c("div", { staticClass: "address-hr tb-sm-res-d-n dps-tb-ntn" }, [
-            _c("p", [
-              _c("b", [_vm._v("Regi No")]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(
-                "\n            " +
-                  _vm._s(_vm.patient_details.regi_no) +
-                  "\n          "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _vm._m(2)
-      ]),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12 col-xs-6" }, [
-          _c("div", { staticClass: "address-hr" }, [
-            _c("p", [
-              _c("b", [_vm._v("Patient Name")]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(
-                "\n            " +
-                  _vm._s(_vm.patient_details.name) +
-                  "\n          "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12 col-xs-6" }, [
-          _c("div", { staticClass: "address-hr tb-sm-res-d-n dps-tb-ntn" }, [
-            _c("p", [
-              _c("b", [_vm._v("Address")]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(
-                "\n            " +
-                  _vm._s(_vm.patient_details.address) +
-                  "\n          "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12 col-xs-6" }, [
-          _c("div", { staticClass: "address-hr tb-sm-res-d-n dps-tb-ntn" }, [
-            _c("p", [
-              _c("b", [_vm._v("Mobile")]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(
-                "\n            " +
-                  _vm._s(_vm.patient_details.mobile) +
-                  "\n          "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12 col-xs-6" }, [
-          _c("div", { staticClass: "address-hr tb-sm-res-d-n dps-tb-ntn" }, [
-            _c("p", [
-              _c("b", [_vm._v("Sex")]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _vm.patient_details.gender == 0
-                ? _c("span", [_vm._v("Male")])
-                : _c("span", [_vm._v("Female")])
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12 col-xs-6" }, [
-          _c("div", { staticClass: "address-hr" }, [
-            _c("p", [
-              _c("b", [_vm._v("C_C")]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(
-                "\n            " +
-                  _vm._s(_vm.patient_details.c_c) +
-                  "\n          "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12 col-xs-6" }, [
-          _c("div", { staticClass: "address-hr tb-sm-res-d-n dps-tb-ntn" }, [
-            _c("p", [
-              _c("b", [_vm._v("On Exam")]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(
-                "\n            " +
-                  _vm._s(_vm.patient_details.on_exam) +
-                  "\n          "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12 col-xs-6" }, [
-          _c("div", { staticClass: "address-hr tb-sm-res-d-n dps-tb-ntn" }, [
-            _c("p", [
-              _c("b", [_vm._v("P_A_EXAM")]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(
-                "\n            " +
-                  _vm._s(_vm.patient_details.p_a_exam) +
-                  "\n          "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _vm._m(3)
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "basic-form-area mg-b-15" }, [
-      _c("div", { staticClass: "container-fluid" }, [
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            { staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12" },
-            [
-              _c("div", { staticClass: "sparkline8-list mt-b-30" }, [
-                _c("div", { staticClass: "sparkline8-hd" }, [
-                  _c("div", { staticClass: "main-sparkline8-hd" }, [
-                    _c("h1", [_vm._v("Medicine Section")]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "add-product" }, [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              return _vm.addMedicineDetailsRow($event)
-                            }
-                          }
-                        },
-                        [_vm._v("ADD")]
-                      )
-                    ])
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "text-info" }, [_vm._v("60%")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "progress m-b-0" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "progress-bar progress-bar-info",
+                  staticStyle: { width: "60%" },
+                  attrs: {
+                    role: "progressbar",
+                    "aria-valuenow": "50",
+                    "aria-valuemin": "0",
+                    "aria-valuemax": "100"
+                  }
+                },
+                [
+                  _c("span", { staticClass: "sr-only" }, [
+                    _vm._v("20% Complete")
                   ])
-                ]),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("div", { staticClass: "sparkline8-graph" }, [
-                  _c(
-                    "div",
-                    { staticClass: "basic-login-form-ad" },
-                    _vm._l(_vm.medicine_details_rows, function(
-                      medicine_details_row,
-                      index
-                    ) {
-                      return _c("div", { key: index, staticClass: "row" }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "col-lg-12 col-md-12 col-sm-12 col-xs-12"
-                          },
-                          [
-                            _c("div", { staticClass: "basic-login-inner" }, [
-                              _c("form", { attrs: { action: "#" } }, [
-                                _c("div", { staticClass: "form-group-inner" }, [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "col-lg-4 col-md-12 col-sm-12 col-xs-12 pull-left",
-                                      staticStyle: { float: "left" }
-                                    },
-                                    [
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value:
-                                              medicine_details_row.medicine_name,
-                                            expression:
-                                              "medicine_details_row.medicine_name"
-                                          }
-                                        ],
-                                        staticStyle: {
-                                          display: "inline",
-                                          height: "22px",
-                                          "border-radius": "2px",
-                                          padding: "5px",
-                                          border: "1px solid #000"
-                                        },
-                                        attrs: {
-                                          type: "text",
-                                          placeholder: "Medicine Name"
-                                        },
-                                        domProps: {
-                                          value:
-                                            medicine_details_row.medicine_name
-                                        },
-                                        on: {
-                                          input: [
-                                            function($event) {
-                                              if ($event.target.composing) {
-                                                return
-                                              }
-                                              _vm.$set(
-                                                medicine_details_row,
-                                                "medicine_name",
-                                                $event.target.value
-                                              )
-                                            },
-                                            _vm.onChange
-                                          ],
-                                          keydown: [
-                                            function($event) {
-                                              if (
-                                                !$event.type.indexOf("key") &&
-                                                _vm._k(
-                                                  $event.keyCode,
-                                                  "down",
-                                                  40,
-                                                  $event.key,
-                                                  ["Down", "ArrowDown"]
-                                                )
-                                              ) {
-                                                return null
-                                              }
-                                              return _vm.onArrowDown($event)
-                                            },
-                                            function($event) {
-                                              if (
-                                                !$event.type.indexOf("key") &&
-                                                _vm._k(
-                                                  $event.keyCode,
-                                                  "up",
-                                                  38,
-                                                  $event.key,
-                                                  ["Up", "ArrowUp"]
-                                                )
-                                              ) {
-                                                return null
-                                              }
-                                              return _vm.onArrowUp($event)
-                                            },
-                                            function($event) {
-                                              if (
-                                                !$event.type.indexOf("key") &&
-                                                _vm._k(
-                                                  $event.keyCode,
-                                                  "enter",
-                                                  13,
-                                                  $event.key,
-                                                  "Enter"
-                                                )
-                                              ) {
-                                                return null
-                                              }
-                                              return _vm.onEnter($event)
-                                            }
-                                          ],
-                                          click: function($event) {
-                                            return _vm.selectedRow(
-                                              medicine_details_row
-                                            )
-                                          }
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _vm.medicines.length
-                                        ? _c(
-                                            "ul",
-                                            {
-                                              directives: [
-                                                {
-                                                  name: "show",
-                                                  rawName: "v-show",
-                                                  value:
-                                                    medicine_details_row.isOpen,
-                                                  expression:
-                                                    "medicine_details_row.isOpen"
-                                                }
-                                              ],
-                                              staticClass:
-                                                "autocomplete-results"
-                                            },
-                                            _vm._l(_vm.medicines, function(
-                                              medicine,
-                                              index
-                                            ) {
-                                              return _c(
-                                                "li",
-                                                {
-                                                  key: index,
-                                                  staticClass:
-                                                    "autocomplete-result",
-                                                  class: {
-                                                    "is-active":
-                                                      index === _vm.arrowCounter
-                                                  },
-                                                  staticStyle: {
-                                                    cursor: "pointer"
-                                                  },
-                                                  on: {
-                                                    click: function($event) {
-                                                      return _vm.setResult(
-                                                        medicine
-                                                      )
-                                                    }
-                                                  }
-                                                },
-                                                [
-                                                  _c("span", [
-                                                    _vm._v(
-                                                      _vm._s(medicine.name)
-                                                    )
-                                                  ]),
-                                                  _vm._v(" "),
-                                                  _c("small", [
-                                                    _vm._v(
-                                                      "[ " +
-                                                        _vm._s(
-                                                          medicine.type.name
-                                                        ) +
-                                                        " ]"
-                                                    )
-                                                  ])
-                                                ]
-                                              )
-                                            }),
-                                            0
-                                          )
-                                        : _c("ul", [_vm._m(4, true)])
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "col-lg-2 col-md-12 col-sm-12 col-xs-12",
-                                      staticStyle: { float: "left" }
-                                    },
-                                    [
-                                      _c(
-                                        "span",
-                                        {
-                                          staticStyle: { "margin-left": "15px" }
-                                        },
-                                        [
-                                          _c(
-                                            "label",
-                                            {
-                                              staticStyle: {
-                                                "margin-right": "8px",
-                                                "font-size": "15px",
-                                                "font-weight": "normal"
-                                              }
-                                            },
-                                            [
-                                              _vm._v(
-                                                "\n                                B\n                                "
-                                              ),
-                                              _c("input", {
-                                                directives: [
-                                                  {
-                                                    name: "model",
-                                                    rawName: "v-model",
-                                                    value:
-                                                      medicine_details_row.eating_time_breakfast,
-                                                    expression:
-                                                      "medicine_details_row.eating_time_breakfast"
-                                                  }
-                                                ],
-                                                staticClass: "radio-checked",
-                                                attrs: {
-                                                  name: "name1",
-                                                  value: "0",
-                                                  checked: "",
-                                                  type: "checkbox"
-                                                },
-                                                domProps: {
-                                                  checked: Array.isArray(
-                                                    medicine_details_row.eating_time_breakfast
-                                                  )
-                                                    ? _vm._i(
-                                                        medicine_details_row.eating_time_breakfast,
-                                                        "0"
-                                                      ) > -1
-                                                    : medicine_details_row.eating_time_breakfast
-                                                },
-                                                on: {
-                                                  change: function($event) {
-                                                    var $$a =
-                                                        medicine_details_row.eating_time_breakfast,
-                                                      $$el = $event.target,
-                                                      $$c = $$el.checked
-                                                        ? true
-                                                        : false
-                                                    if (Array.isArray($$a)) {
-                                                      var $$v = "0",
-                                                        $$i = _vm._i($$a, $$v)
-                                                      if ($$el.checked) {
-                                                        $$i < 0 &&
-                                                          _vm.$set(
-                                                            medicine_details_row,
-                                                            "eating_time_breakfast",
-                                                            $$a.concat([$$v])
-                                                          )
-                                                      } else {
-                                                        $$i > -1 &&
-                                                          _vm.$set(
-                                                            medicine_details_row,
-                                                            "eating_time_breakfast",
-                                                            $$a
-                                                              .slice(0, $$i)
-                                                              .concat(
-                                                                $$a.slice(
-                                                                  $$i + 1
-                                                                )
-                                                              )
-                                                          )
-                                                      }
-                                                    } else {
-                                                      _vm.$set(
-                                                        medicine_details_row,
-                                                        "eating_time_breakfast",
-                                                        $$c
-                                                      )
-                                                    }
-                                                  }
-                                                }
-                                              })
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "label",
-                                            {
-                                              staticStyle: {
-                                                "margin-right": "8px",
-                                                "font-size": "15px",
-                                                "font-weight": "normal"
-                                              }
-                                            },
-                                            [
-                                              _vm._v(
-                                                "\n                                L\n                                "
-                                              ),
-                                              _c("input", {
-                                                directives: [
-                                                  {
-                                                    name: "model",
-                                                    rawName: "v-model",
-                                                    value:
-                                                      medicine_details_row.eating_time_lunch,
-                                                    expression:
-                                                      "medicine_details_row.eating_time_lunch"
-                                                  }
-                                                ],
-                                                staticClass: "radio-checked",
-                                                attrs: {
-                                                  name: "name2",
-                                                  value: "1",
-                                                  type: "checkbox"
-                                                },
-                                                domProps: {
-                                                  checked: Array.isArray(
-                                                    medicine_details_row.eating_time_lunch
-                                                  )
-                                                    ? _vm._i(
-                                                        medicine_details_row.eating_time_lunch,
-                                                        "1"
-                                                      ) > -1
-                                                    : medicine_details_row.eating_time_lunch
-                                                },
-                                                on: {
-                                                  change: function($event) {
-                                                    var $$a =
-                                                        medicine_details_row.eating_time_lunch,
-                                                      $$el = $event.target,
-                                                      $$c = $$el.checked
-                                                        ? true
-                                                        : false
-                                                    if (Array.isArray($$a)) {
-                                                      var $$v = "1",
-                                                        $$i = _vm._i($$a, $$v)
-                                                      if ($$el.checked) {
-                                                        $$i < 0 &&
-                                                          _vm.$set(
-                                                            medicine_details_row,
-                                                            "eating_time_lunch",
-                                                            $$a.concat([$$v])
-                                                          )
-                                                      } else {
-                                                        $$i > -1 &&
-                                                          _vm.$set(
-                                                            medicine_details_row,
-                                                            "eating_time_lunch",
-                                                            $$a
-                                                              .slice(0, $$i)
-                                                              .concat(
-                                                                $$a.slice(
-                                                                  $$i + 1
-                                                                )
-                                                              )
-                                                          )
-                                                      }
-                                                    } else {
-                                                      _vm.$set(
-                                                        medicine_details_row,
-                                                        "eating_time_lunch",
-                                                        $$c
-                                                      )
-                                                    }
-                                                  }
-                                                }
-                                              })
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "label",
-                                            {
-                                              staticStyle: {
-                                                "margin-right": "5px",
-                                                "font-size": "15px",
-                                                "font-weight": "normal"
-                                              }
-                                            },
-                                            [
-                                              _vm._v(
-                                                "\n                                D\n                                "
-                                              ),
-                                              _c("input", {
-                                                directives: [
-                                                  {
-                                                    name: "model",
-                                                    rawName: "v-model",
-                                                    value:
-                                                      medicine_details_row.eating_time_dinner,
-                                                    expression:
-                                                      "medicine_details_row.eating_time_dinner"
-                                                  }
-                                                ],
-                                                staticClass: "radio-checked",
-                                                attrs: {
-                                                  name: "name3",
-                                                  value: "2",
-                                                  type: "checkbox"
-                                                },
-                                                domProps: {
-                                                  checked: Array.isArray(
-                                                    medicine_details_row.eating_time_dinner
-                                                  )
-                                                    ? _vm._i(
-                                                        medicine_details_row.eating_time_dinner,
-                                                        "2"
-                                                      ) > -1
-                                                    : medicine_details_row.eating_time_dinner
-                                                },
-                                                on: {
-                                                  change: function($event) {
-                                                    var $$a =
-                                                        medicine_details_row.eating_time_dinner,
-                                                      $$el = $event.target,
-                                                      $$c = $$el.checked
-                                                        ? true
-                                                        : false
-                                                    if (Array.isArray($$a)) {
-                                                      var $$v = "2",
-                                                        $$i = _vm._i($$a, $$v)
-                                                      if ($$el.checked) {
-                                                        $$i < 0 &&
-                                                          _vm.$set(
-                                                            medicine_details_row,
-                                                            "eating_time_dinner",
-                                                            $$a.concat([$$v])
-                                                          )
-                                                      } else {
-                                                        $$i > -1 &&
-                                                          _vm.$set(
-                                                            medicine_details_row,
-                                                            "eating_time_dinner",
-                                                            $$a
-                                                              .slice(0, $$i)
-                                                              .concat(
-                                                                $$a.slice(
-                                                                  $$i + 1
-                                                                )
-                                                              )
-                                                          )
-                                                      }
-                                                    } else {
-                                                      _vm.$set(
-                                                        medicine_details_row,
-                                                        "eating_time_dinner",
-                                                        $$c
-                                                      )
-                                                    }
-                                                  }
-                                                }
-                                              })
-                                            ]
-                                          )
-                                        ]
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "col-lg-3 col-md-12 col-sm-12 col-xs-12"
-                                    },
-                                    [
-                                      _c(
-                                        "span",
-                                        {
-                                          staticStyle: { "margin-left": "25px" }
-                                        },
-                                        [
-                                          _c(
-                                            "label",
-                                            {
-                                              staticStyle: {
-                                                "margin-right": "15px",
-                                                "font-size": "15px",
-                                                "font-weight": "normal"
-                                              }
-                                            },
-                                            [
-                                              _vm._v(
-                                                "\n                                Before Meal\n                                "
-                                              ),
-                                              _c("input", {
-                                                directives: [
-                                                  {
-                                                    name: "model",
-                                                    rawName: "v-model",
-                                                    value:
-                                                      medicine_details_row.eating_term,
-                                                    expression:
-                                                      "medicine_details_row.eating_term"
-                                                  }
-                                                ],
-                                                staticClass: "radio-checked",
-                                                attrs: {
-                                                  value: "0",
-                                                  name: "eating_time",
-                                                  checked: "",
-                                                  type: "radio"
-                                                },
-                                                domProps: {
-                                                  checked: _vm._q(
-                                                    medicine_details_row.eating_term,
-                                                    "0"
-                                                  )
-                                                },
-                                                on: {
-                                                  change: function($event) {
-                                                    return _vm.$set(
-                                                      medicine_details_row,
-                                                      "eating_term",
-                                                      "0"
-                                                    )
-                                                  }
-                                                }
-                                              })
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "label",
-                                            {
-                                              staticStyle: {
-                                                "font-size": "15px",
-                                                "font-weight": "normal"
-                                              }
-                                            },
-                                            [
-                                              _vm._v(
-                                                "\n                                After Meal\n                                "
-                                              ),
-                                              _c("input", {
-                                                directives: [
-                                                  {
-                                                    name: "model",
-                                                    rawName: "v-model",
-                                                    value:
-                                                      medicine_details_row.eating_term,
-                                                    expression:
-                                                      "medicine_details_row.eating_term"
-                                                  }
-                                                ],
-                                                staticClass: "radio-checked",
-                                                attrs: {
-                                                  value: "1",
-                                                  name: "eating_time",
-                                                  type: "radio"
-                                                },
-                                                domProps: {
-                                                  checked: _vm._q(
-                                                    medicine_details_row.eating_term,
-                                                    "1"
-                                                  )
-                                                },
-                                                on: {
-                                                  change: function($event) {
-                                                    return _vm.$set(
-                                                      medicine_details_row,
-                                                      "eating_term",
-                                                      "1"
-                                                    )
-                                                  }
-                                                }
-                                              })
-                                            ]
-                                          )
-                                        ]
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "col-lg-3 col-md-12 col-sm-12 col-xs-12",
-                                      staticStyle: { float: "left" }
-                                    },
-                                    [
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: medicine_details_row.days,
-                                            expression:
-                                              "medicine_details_row.days"
-                                          }
-                                        ],
-                                        staticStyle: {
-                                          width: "70px",
-                                          height: "22px",
-                                          "border-radius": "2px",
-                                          padding: "5px",
-                                          border: "1px solid #000"
-                                        },
-                                        attrs: {
-                                          disabled:
-                                            medicine_details_row.duration == "2"
-                                              ? true
-                                              : false,
-                                          type: "text",
-                                          placeholder: "Days/Months"
-                                        },
-                                        domProps: {
-                                          value: medicine_details_row.days
-                                        },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.$set(
-                                              medicine_details_row,
-                                              "days",
-                                              $event.target.value
-                                            )
-                                          }
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "select",
-                                        {
-                                          directives: [
-                                            {
-                                              name: "model",
-                                              rawName: "v-model",
-                                              value:
-                                                medicine_details_row.duration,
-                                              expression:
-                                                "medicine_details_row.duration"
-                                            }
-                                          ],
-                                          attrs: { name: "gender" },
-                                          on: {
-                                            change: [
-                                              function($event) {
-                                                var $$selectedVal = Array.prototype.filter
-                                                  .call(
-                                                    $event.target.options,
-                                                    function(o) {
-                                                      return o.selected
-                                                    }
-                                                  )
-                                                  .map(function(o) {
-                                                    var val =
-                                                      "_value" in o
-                                                        ? o._value
-                                                        : o.value
-                                                    return val
-                                                  })
-                                                _vm.$set(
-                                                  medicine_details_row,
-                                                  "duration",
-                                                  $event.target.multiple
-                                                    ? $$selectedVal
-                                                    : $$selectedVal[0]
-                                                )
-                                              },
-                                              function($event) {
-                                                return _vm.selectedRow(
-                                                  medicine_details_row
-                                                )
-                                              }
-                                            ]
-                                          }
-                                        },
-                                        [
-                                          _c(
-                                            "option",
-                                            { attrs: { value: "" } },
-                                            [_vm._v("Select")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "option",
-                                            { attrs: { value: "0" } },
-                                            [_vm._v("Days")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "option",
-                                            { attrs: { value: "1" } },
-                                            [_vm._v("Months")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "option",
-                                            { attrs: { value: "2" } },
-                                            [_vm._v("Continue")]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      index
-                                        ? _c(
-                                            "a",
-                                            {
-                                              staticClass: "pull-right",
-                                              staticStyle: {
-                                                cursor: "pointer"
-                                              },
-                                              attrs: { type: "button" },
-                                              on: {
-                                                click: function($event) {
-                                                  $event.preventDefault()
-                                                  return _vm.deleteMedicineDetailsRow(
-                                                    index
-                                                  )
-                                                }
-                                              }
-                                            },
-                                            [
-                                              _c("i", {
-                                                staticClass: "fa fa-trash",
-                                                staticStyle: {
-                                                  color: "red",
-                                                  "font-size": "18px"
-                                                }
-                                              })
-                                            ]
-                                          )
-                                        : _vm._e()
-                                    ]
-                                  )
-                                ])
-                              ])
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("br"),
-                        _c("br")
-                      ])
-                    }),
-                    0
-                  )
-                ])
+                ]
+              )
+            ])
+          ])
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-6 col-xs-12" }, [
+      _c(
+        "div",
+        {
+          staticClass: "analytics-sparkle-line table-mg-t-pro dk-res-t-pro-30"
+        },
+        [
+          _c("div", { staticClass: "analytics-content" }, [
+            _c("h5", [_vm._v("Chemical Engineering")]),
+            _vm._v(" "),
+            _c("h2", [
+              _vm._v("$"),
+              _c("span", { staticClass: "counter" }, [_vm._v("3500")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "tuition-fees" }, [
+                _vm._v("Tuition Fees")
               ])
-            ]
-          )
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "basic-form-area mg-b-15" }, [
-      _c("div", { staticClass: "container-fluid" }, [
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            { staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12" },
-            [
-              _c("div", { staticClass: "sparkline8-list mt-b-30" }, [
-                _c("div", { staticClass: "sparkline8-hd" }, [
-                  _c("div", { staticClass: "main-sparkline8-hd" }, [
-                    _c("h1", [_vm._v("Medical Test Section")]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "add-product" }, [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              return _vm.addTestRow($event)
-                            }
-                          }
-                        },
-                        [_vm._v("ADD")]
-                      )
-                    ])
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "text-inverse" }, [_vm._v("80%")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "progress m-b-0" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "progress-bar progress-bar-inverse",
+                  staticStyle: { width: "80%" },
+                  attrs: {
+                    role: "progressbar",
+                    "aria-valuenow": "50",
+                    "aria-valuemin": "0",
+                    "aria-valuemax": "100"
+                  }
+                },
+                [
+                  _c("span", { staticClass: "sr-only" }, [
+                    _vm._v("230% Complete")
                   ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "sparkline8-graph" }, [
-                  _c("div", { staticClass: "basic-login-form-ad" }, [
-                    _c("div", { staticClass: "row" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "col-lg-8 col-md-8 col-sm-12 col-xs-12"
-                        },
-                        [
-                          _c("div", { staticClass: "basic-login-inner" }, [
-                            _c(
-                              "form",
-                              { attrs: { action: "#" } },
-                              _vm._l(_vm.medical_tests_rows, function(
-                                row,
-                                index
-                              ) {
-                                return _c(
-                                  "div",
-                                  {
-                                    key: index,
-                                    staticClass: "form-group-inner"
-                                  },
-                                  [
-                                    index
-                                      ? _c(
-                                          "a",
-                                          {
-                                            staticClass:
-                                              "pull-right btn btn-danger btn-sm",
-                                            staticStyle: {
-                                              "margin-bottom": "10px"
-                                            },
-                                            attrs: { type: "button" },
-                                            on: {
-                                              click: function($event) {
-                                                $event.preventDefault()
-                                                return _vm.deleteTestRow(index)
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _c("i", {
-                                              staticClass: "fa fa-trash"
-                                            })
-                                          ]
-                                        )
-                                      : _vm._e(),
-                                    _vm._v(" "),
-                                    _c("label", [_vm._v("Medical Test")]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "select",
-                                      {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: row.medical_test_id,
-                                            expression: "row.medical_test_id"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: { name: "gender" },
-                                        on: {
-                                          change: function($event) {
-                                            var $$selectedVal = Array.prototype.filter
-                                              .call(
-                                                $event.target.options,
-                                                function(o) {
-                                                  return o.selected
-                                                }
-                                              )
-                                              .map(function(o) {
-                                                var val =
-                                                  "_value" in o
-                                                    ? o._value
-                                                    : o.value
-                                                return val
-                                              })
-                                            _vm.$set(
-                                              row,
-                                              "medical_test_id",
-                                              $event.target.multiple
-                                                ? $$selectedVal
-                                                : $$selectedVal[0]
-                                            )
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "option",
-                                          {
-                                            attrs: { value: "", disabled: "" }
-                                          },
-                                          [_vm._v("Select Test")]
-                                        ),
-                                        _vm._v(" "),
-                                        _vm._l(_vm.tests, function(
-                                          test,
-                                          index
-                                        ) {
-                                          return _c(
-                                            "option",
-                                            {
-                                              key: index,
-                                              domProps: { value: test.id }
-                                            },
-                                            [_vm._v(_vm._s(test.name))]
-                                          )
-                                        })
-                                      ],
-                                      2
-                                    ),
-                                    _vm._v(" "),
-                                    _c("br"),
-                                    _vm._v(" "),
-                                    _c("textarea", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value: row.description,
-                                          expression: "row.description"
-                                        }
-                                      ],
-                                      staticClass: "form-control",
-                                      attrs: {
-                                        name: "",
-                                        id: "",
-                                        cols: "30",
-                                        rows: "5",
-                                        placeholder: "Enter the description"
-                                      },
-                                      domProps: { value: row.description },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            row,
-                                            "description",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              }),
-                              0
-                            )
-                          ])
-                        ]
-                      )
-                    ])
-                  ])
-                ])
-              ])
-            ]
-          )
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "basic-form-area mg-b-15" }, [
-      _c("div", { staticClass: "container-fluid" }, [
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            { staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12" },
-            [
-              _c("div", { staticClass: "sparkline8-list mt-b-30" }, [
-                _vm._m(5),
-                _vm._v(" "),
-                _c("div", { staticClass: "sparkline8-graph" }, [
-                  _c("div", { staticClass: "basic-login-form-ad" }, [
-                    _c("div", { staticClass: "row" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "col-lg-8 col-md-8 col-sm-12 col-xs-12"
-                        },
-                        [
-                          _c("div", { staticClass: "basic-login-inner" }, [
-                            _c("form", { attrs: { action: "#" } }, [
-                              _c("div", { staticClass: "form-group-inner" }, [
-                                _c("textarea", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.suggestion,
-                                      expression: "suggestion"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  attrs: {
-                                    name: "",
-                                    id: "",
-                                    cols: "30",
-                                    rows: "5",
-                                    placeholder: "Enter the suggestions"
-                                  },
-                                  domProps: { value: _vm.suggestion },
-                                  on: {
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.suggestion = $event.target.value
-                                    }
-                                  }
-                                })
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "login-btn-inner" }, [
-                                _c(
-                                  "div",
-                                  { staticClass: "inline-remember-me" },
-                                  [
-                                    _c(
-                                      "button",
-                                      {
-                                        staticClass:
-                                          "btn btn-sm btn-primary pull-left login-submit-cs",
-                                        attrs: { type: "submit" },
-                                        on: {
-                                          click: function($event) {
-                                            $event.preventDefault()
-                                            return _vm.savePrescription($event)
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("Save Prescription")]
-                                    )
-                                  ]
-                                )
-                              ])
-                            ])
-                          ])
-                        ]
-                      )
-                    ])
-                  ])
-                ])
-              ])
-            ]
-          )
-        ])
-      ])
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" }, [
-      _c("div", { staticClass: "breadcome-heading" }, [
-        _c("form", { staticClass: "sr-input-func", attrs: { role: "search" } })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [
-      _c("span", { staticClass: "bread-blod" }, [_vm._v("Add Patient")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12 col-xs-6" }, [
-      _c("div", { staticClass: "address-hr tb-sm-res-d-n dps-tb-ntn" }, [
-        _c("p", [
-          _c("b", [_vm._v("Status")]),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("span", { staticStyle: { color: "rgb(0,255,0)" } }, [
-            _vm._v("On Going")
+                ]
+              )
+            ])
           ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12 col-xs-6" }, [
-      _c("div", { staticClass: "address-hr tb-sm-res-d-n dps-tb-ntn" }, [
-        _c("p", [
-          _c("b", [_vm._v("Visiting Status")]),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v("New\n          ")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [_c("p", [_vm._v("No results found!")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "sparkline8-hd" }, [
-      _c("div", { staticClass: "main-sparkline8-hd" }, [
-        _c("h1", [_vm._v("Suggestions Section")])
-      ])
+        ]
+      )
     ])
   }
 ]
@@ -51104,176 +50280,202 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "breadcome-area" }, [
-      _c("div", { staticClass: "container-fluid" }, [
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            { staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12" },
-            [
-              _c("div", { staticClass: "breadcome-list" }, [
-                _c("div", { staticClass: "row" }, [
-                  _vm._m(0),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
-                    [
-                      _c("ul", { staticClass: "breadcome-menu" }, [
-                        _c(
-                          "li",
-                          [
-                            _c("router-link", { attrs: { to: "/" } }, [
-                              _vm._v("Home")
-                            ]),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "bread-slash" }, [
-                              _vm._v("/")
-                            ])
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _vm._m(1)
-                      ])
-                    ]
-                  )
-                ])
-              ])
-            ]
-          )
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "static-table-area" }, [
-      _c("div", { staticClass: "container-fluid" }, [
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            { staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12" },
-            [
-              _c("div", { staticClass: "sparkline11-list mt-b-30" }, [
-                _c("div", { staticClass: "sparkline11-hd" }, [
-                  _c("div", { staticClass: "main-sparkline11-hd" }, [
-                    _c("h1", [_vm._v("All Companies")]),
+  return _c(
+    "div",
+    [
+      _c("v-loading", {
+        attrs: {
+          active: _vm.isLoading,
+          "is-full-page": _vm.fullPage,
+          "background-color": "#ffff",
+          color: "#007bff"
+        },
+        on: {
+          "update:active": function($event) {
+            _vm.isLoading = $event
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "breadcome-area" }, [
+        _c("div", { staticClass: "container-fluid" }, [
+          _c("div", { staticClass: "row" }, [
+            _c(
+              "div",
+              { staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12" },
+              [
+                _c("div", { staticClass: "breadcome-list" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _vm._m(0),
                     _vm._v(" "),
                     _c(
                       "div",
-                      { staticClass: "add-product" },
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
                       [
-                        _c("router-link", { attrs: { to: "/add-company" } }, [
-                          _vm._v("Add Company")
+                        _c("ul", { staticClass: "breadcome-menu" }, [
+                          _c(
+                            "li",
+                            [
+                              _c("router-link", { attrs: { to: "/" } }, [
+                                _vm._v("Home")
+                              ]),
+                              _vm._v(" "),
+                              _c("span", { staticClass: "bread-slash" }, [
+                                _vm._v("/")
+                              ])
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _vm._m(1)
                         ])
-                      ],
-                      1
+                      ]
                     )
                   ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "sparkline11-graph" }, [
-                  _c("div", { staticClass: "static-table-list" }, [
-                    _vm.companies.length
-                      ? _c("table", { staticClass: "table sparkle-table" }, [
-                          _vm._m(2),
-                          _vm._v(" "),
-                          _c(
-                            "tbody",
-                            _vm._l(_vm.companies, function(company, index) {
-                              return _c("tr", { key: index }, [
-                                _c("td", [_vm._v(_vm._s(index + 1))]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("span", { staticClass: "pie" }, [
-                                    _vm._v(" " + _vm._s(company.name) + " ")
+                ])
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "static-table-area" }, [
+        _c("div", { staticClass: "container-fluid" }, [
+          _c("div", { staticClass: "row" }, [
+            _c(
+              "div",
+              { staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12" },
+              [
+                _c("div", { staticClass: "sparkline11-list mt-b-30" }, [
+                  _c("div", { staticClass: "sparkline11-hd" }, [
+                    _c("div", { staticClass: "main-sparkline11-hd" }, [
+                      _c("h1", [_vm._v("All Companies")]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "add-product" },
+                        [
+                          _c("router-link", { attrs: { to: "/add-company" } }, [
+                            _vm._v("Add Company")
+                          ])
+                        ],
+                        1
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "sparkline11-graph" }, [
+                    _c("div", { staticClass: "static-table-list" }, [
+                      _vm.companies.length
+                        ? _c("table", { staticClass: "table sparkle-table" }, [
+                            _vm._m(2),
+                            _vm._v(" "),
+                            _c(
+                              "tbody",
+                              _vm._l(_vm.companies, function(company, index) {
+                                return _c("tr", { key: index }, [
+                                  _c("td", [_vm._v(_vm._s(index + 1))]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _c("span", { staticClass: "pie" }, [
+                                      _vm._v(" " + _vm._s(company.name) + " ")
+                                    ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(
+                                      _vm._s(
+                                        _vm._f("shortLength")(
+                                          company.description,
+                                          50,
+                                          "..."
+                                        )
+                                      )
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(
+                                      _vm._s(
+                                        _vm._f("timeformat")(company.created_at)
+                                      )
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _c(
+                                      "div",
+                                      { staticClass: "inline-remember-me" },
+                                      [
+                                        _c(
+                                          "a",
+                                          {
+                                            staticClass:
+                                              "pull-left btn btn-info login-submit-cs btn-space",
+                                            attrs: {
+                                              href: "#",
+                                              type: "submit"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                $event.preventDefault()
+                                                return _vm.editCompany(
+                                                  company.id
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fa fa-pencil"
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "a",
+                                          {
+                                            staticClass:
+                                              "pull-left btn btn-danger login-submit-cs",
+                                            attrs: {
+                                              href: "#",
+                                              type: "submit"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                $event.preventDefault()
+                                                return _vm.deleteConfirmation(
+                                                  company.id
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fa fa-trash"
+                                            })
+                                          ]
+                                        )
+                                      ]
+                                    )
                                   ])
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _vm._v(
-                                    _vm._s(
-                                      _vm._f("shortLength")(
-                                        company.description,
-                                        50,
-                                        "..."
-                                      )
-                                    )
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _vm._v(
-                                    _vm._s(
-                                      _vm._f("timeformat")(company.created_at)
-                                    )
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c(
-                                    "div",
-                                    { staticClass: "inline-remember-me" },
-                                    [
-                                      _c(
-                                        "a",
-                                        {
-                                          staticClass:
-                                            "pull-left btn btn-info login-submit-cs btn-space",
-                                          attrs: { href: "#", type: "submit" },
-                                          on: {
-                                            click: function($event) {
-                                              $event.preventDefault()
-                                              return _vm.editCompany(company.id)
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _c("i", {
-                                            staticClass: "fa fa-pencil"
-                                          })
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "a",
-                                        {
-                                          staticClass:
-                                            "pull-left btn btn-danger login-submit-cs",
-                                          attrs: { href: "#", type: "submit" },
-                                          on: {
-                                            click: function($event) {
-                                              $event.preventDefault()
-                                              return _vm.deleteConfirmation(
-                                                company.id
-                                              )
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _c("i", {
-                                            staticClass: "fa fa-trash"
-                                          })
-                                        ]
-                                      )
-                                    ]
-                                  )
                                 ])
-                              ])
-                            }),
-                            0
-                          )
-                        ])
-                      : _c("div", [_c("h4", [_vm._v("No Data Founds!!")])])
+                              }),
+                              0
+                            )
+                          ])
+                        : _c("div", [_c("h4", [_vm._v("No Data Founds!!")])])
+                    ])
                   ])
                 ])
-              ])
-            ]
-          )
+              ]
+            )
+          ])
         ])
       ])
-    ])
-  ])
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -55291,7 +54493,17 @@ var render = function() {
                                 _vm._v(" "),
                                 _c("td", [_vm._v(_vm._s(patient.age))]),
                                 _vm._v(" "),
-                                _c("td", [_vm._v(_vm._s(patient.address))]),
+                                _c("td", [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm._f("shortLength")(
+                                        patient.address,
+                                        30,
+                                        "..."
+                                      )
+                                    )
+                                  )
+                                ]),
                                 _vm._v(" "),
                                 patient.is_prescribed == 1
                                   ? _c("td", [
@@ -55490,6 +54702,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("Prescribe")]),
         _vm._v(" "),
         _c("th", [_vm._v("Prescriptions")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Created")]),
         _vm._v(" "),
         _c("th", [_vm._v("Actions")])
       ])
@@ -58132,6 +57346,1375 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/prescription/Prescription.vue?vue&type=template&id=e98ae914&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/prescription/Prescription.vue?vue&type=template&id=e98ae914& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "breadcome-area" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            { staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12" },
+            [
+              _c("div", { staticClass: "breadcome-list" }, [
+                _c("div", { staticClass: "row" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
+                    [
+                      _c("ul", { staticClass: "breadcome-menu" }, [
+                        _c(
+                          "li",
+                          [
+                            _c("router-link", { attrs: { to: "/" } }, [
+                              _vm._v("Home")
+                            ]),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "bread-slash" }, [
+                              _vm._v("/")
+                            ])
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _vm._m(1)
+                      ])
+                    ]
+                  )
+                ])
+              ])
+            ]
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "profile-details-hr" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12 col-xs-6" }, [
+          _c("div", { staticClass: "address-hr" }, [
+            _c("p", [
+              _c("b", [_vm._v("Date")]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(
+                "\n            " +
+                  _vm._s(_vm._f("timeformat")(_vm.patient_details.created_at)) +
+                  "\n          "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12 col-xs-6" }, [
+          _c("div", { staticClass: "address-hr tb-sm-res-d-n dps-tb-ntn" }, [
+            _c("p", [
+              _c("b", [_vm._v("Visiting No")]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(
+                "\n            " +
+                  _vm._s(_vm.patient_details.visiting_no) +
+                  "\n          "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12 col-xs-6" }, [
+          _c("div", { staticClass: "address-hr tb-sm-res-d-n dps-tb-ntn" }, [
+            _c("p", [
+              _c("b", [_vm._v("Regi No")]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(
+                "\n            " +
+                  _vm._s(_vm.patient_details.regi_no) +
+                  "\n          "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(2)
+      ]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12 col-xs-6" }, [
+          _c("div", { staticClass: "address-hr" }, [
+            _c("p", [
+              _c("b", [_vm._v("Patient Name")]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(
+                "\n            " +
+                  _vm._s(_vm.patient_details.name) +
+                  "\n          "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12 col-xs-6" }, [
+          _c("div", { staticClass: "address-hr tb-sm-res-d-n dps-tb-ntn" }, [
+            _c("p", [
+              _c("b", [_vm._v("Address")]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(
+                "\n            " +
+                  _vm._s(_vm.patient_details.address) +
+                  "\n          "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12 col-xs-6" }, [
+          _c("div", { staticClass: "address-hr tb-sm-res-d-n dps-tb-ntn" }, [
+            _c("p", [
+              _c("b", [_vm._v("Mobile")]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(
+                "\n            " +
+                  _vm._s(_vm.patient_details.mobile) +
+                  "\n          "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12 col-xs-6" }, [
+          _c("div", { staticClass: "address-hr tb-sm-res-d-n dps-tb-ntn" }, [
+            _c("p", [
+              _c("b", [_vm._v("Sex")]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _vm.patient_details.gender == 0
+                ? _c("span", [_vm._v("Male")])
+                : _c("span", [_vm._v("Female")])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12 col-xs-6" }, [
+          _c("div", { staticClass: "address-hr" }, [
+            _c("p", [
+              _c("b", [_vm._v("C_C")]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(
+                "\n            " +
+                  _vm._s(_vm.patient_details.c_c) +
+                  "\n          "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12 col-xs-6" }, [
+          _c("div", { staticClass: "address-hr tb-sm-res-d-n dps-tb-ntn" }, [
+            _c("p", [
+              _c("b", [_vm._v("On Exam")]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(
+                "\n            " +
+                  _vm._s(_vm.patient_details.on_exam) +
+                  "\n          "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12 col-xs-6" }, [
+          _c("div", { staticClass: "address-hr tb-sm-res-d-n dps-tb-ntn" }, [
+            _c("p", [
+              _c("b", [_vm._v("P_A_EXAM")]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(
+                "\n            " +
+                  _vm._s(_vm.patient_details.p_a_exam) +
+                  "\n          "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(3)
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "basic-form-area mg-b-15" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            { staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12" },
+            [
+              _c("div", { staticClass: "sparkline8-list mt-b-30" }, [
+                _c("div", { staticClass: "sparkline8-hd" }, [
+                  _c("div", { staticClass: "main-sparkline8-hd" }, [
+                    _c("h1", [_vm._v("Medicine Section")]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "add-product" }, [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.addMedicineDetailsRow($event)
+                            }
+                          }
+                        },
+                        [_vm._v("ADD")]
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("div", { staticClass: "sparkline8-graph" }, [
+                  _c(
+                    "div",
+                    { staticClass: "basic-login-form-ad" },
+                    _vm._l(_vm.medicine_details_rows, function(
+                      medicine_details_row,
+                      index
+                    ) {
+                      return _c("div", { key: index, staticClass: "row" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                          },
+                          [
+                            _c("div", { staticClass: "basic-login-inner" }, [
+                              _c("form", { attrs: { action: "#" } }, [
+                                _c("div", { staticClass: "form-group-inner" }, [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-lg-4 col-md-12 col-sm-12 col-xs-12 pull-left",
+                                      staticStyle: { float: "left" }
+                                    },
+                                    [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value:
+                                              medicine_details_row.medicine_name,
+                                            expression:
+                                              "medicine_details_row.medicine_name"
+                                          }
+                                        ],
+                                        staticStyle: {
+                                          display: "inline",
+                                          height: "22px",
+                                          "border-radius": "2px",
+                                          padding: "5px",
+                                          border: "1px solid #000"
+                                        },
+                                        attrs: {
+                                          type: "text",
+                                          placeholder: "Medicine Name"
+                                        },
+                                        domProps: {
+                                          value:
+                                            medicine_details_row.medicine_name
+                                        },
+                                        on: {
+                                          input: [
+                                            function($event) {
+                                              if ($event.target.composing) {
+                                                return
+                                              }
+                                              _vm.$set(
+                                                medicine_details_row,
+                                                "medicine_name",
+                                                $event.target.value
+                                              )
+                                            },
+                                            _vm.onChange
+                                          ],
+                                          keydown: [
+                                            function($event) {
+                                              if (
+                                                !$event.type.indexOf("key") &&
+                                                _vm._k(
+                                                  $event.keyCode,
+                                                  "down",
+                                                  40,
+                                                  $event.key,
+                                                  ["Down", "ArrowDown"]
+                                                )
+                                              ) {
+                                                return null
+                                              }
+                                              return _vm.onArrowDown($event)
+                                            },
+                                            function($event) {
+                                              if (
+                                                !$event.type.indexOf("key") &&
+                                                _vm._k(
+                                                  $event.keyCode,
+                                                  "up",
+                                                  38,
+                                                  $event.key,
+                                                  ["Up", "ArrowUp"]
+                                                )
+                                              ) {
+                                                return null
+                                              }
+                                              return _vm.onArrowUp($event)
+                                            },
+                                            function($event) {
+                                              if (
+                                                !$event.type.indexOf("key") &&
+                                                _vm._k(
+                                                  $event.keyCode,
+                                                  "enter",
+                                                  13,
+                                                  $event.key,
+                                                  "Enter"
+                                                )
+                                              ) {
+                                                return null
+                                              }
+                                              return _vm.onEnter($event)
+                                            }
+                                          ],
+                                          click: function($event) {
+                                            return _vm.selectedRow(
+                                              medicine_details_row
+                                            )
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _vm.medicines.length
+                                        ? _c(
+                                            "ul",
+                                            {
+                                              directives: [
+                                                {
+                                                  name: "show",
+                                                  rawName: "v-show",
+                                                  value:
+                                                    medicine_details_row.isOpen,
+                                                  expression:
+                                                    "medicine_details_row.isOpen"
+                                                }
+                                              ],
+                                              staticClass:
+                                                "autocomplete-results"
+                                            },
+                                            _vm._l(_vm.medicines, function(
+                                              medicine,
+                                              index
+                                            ) {
+                                              return _c(
+                                                "li",
+                                                {
+                                                  key: index,
+                                                  staticClass:
+                                                    "autocomplete-result",
+                                                  class: {
+                                                    "is-active":
+                                                      index === _vm.arrowCounter
+                                                  },
+                                                  staticStyle: {
+                                                    cursor: "pointer"
+                                                  },
+                                                  on: {
+                                                    click: function($event) {
+                                                      return _vm.setResult(
+                                                        medicine
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c("span", [
+                                                    _vm._v(
+                                                      _vm._s(medicine.name)
+                                                    )
+                                                  ]),
+                                                  _vm._v(" "),
+                                                  _c("small", [
+                                                    _vm._v(
+                                                      "[ " +
+                                                        _vm._s(
+                                                          medicine.type.name
+                                                        ) +
+                                                        " ]"
+                                                    )
+                                                  ])
+                                                ]
+                                              )
+                                            }),
+                                            0
+                                          )
+                                        : _c("ul", [_vm._m(4, true)])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-lg-2 col-md-12 col-sm-12 col-xs-12",
+                                      staticStyle: { float: "left" }
+                                    },
+                                    [
+                                      _c(
+                                        "span",
+                                        {
+                                          staticStyle: { "margin-left": "15px" }
+                                        },
+                                        [
+                                          _c(
+                                            "label",
+                                            {
+                                              staticStyle: {
+                                                "margin-right": "8px",
+                                                "font-size": "15px",
+                                                "font-weight": "normal"
+                                              }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                                B\n                                "
+                                              ),
+                                              _c("input", {
+                                                directives: [
+                                                  {
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value:
+                                                      medicine_details_row.eating_time_breakfast,
+                                                    expression:
+                                                      "medicine_details_row.eating_time_breakfast"
+                                                  }
+                                                ],
+                                                staticClass: "radio-checked",
+                                                attrs: {
+                                                  name: "name1",
+                                                  value: "0",
+                                                  checked: "",
+                                                  type: "checkbox"
+                                                },
+                                                domProps: {
+                                                  checked: Array.isArray(
+                                                    medicine_details_row.eating_time_breakfast
+                                                  )
+                                                    ? _vm._i(
+                                                        medicine_details_row.eating_time_breakfast,
+                                                        "0"
+                                                      ) > -1
+                                                    : medicine_details_row.eating_time_breakfast
+                                                },
+                                                on: {
+                                                  change: function($event) {
+                                                    var $$a =
+                                                        medicine_details_row.eating_time_breakfast,
+                                                      $$el = $event.target,
+                                                      $$c = $$el.checked
+                                                        ? true
+                                                        : false
+                                                    if (Array.isArray($$a)) {
+                                                      var $$v = "0",
+                                                        $$i = _vm._i($$a, $$v)
+                                                      if ($$el.checked) {
+                                                        $$i < 0 &&
+                                                          _vm.$set(
+                                                            medicine_details_row,
+                                                            "eating_time_breakfast",
+                                                            $$a.concat([$$v])
+                                                          )
+                                                      } else {
+                                                        $$i > -1 &&
+                                                          _vm.$set(
+                                                            medicine_details_row,
+                                                            "eating_time_breakfast",
+                                                            $$a
+                                                              .slice(0, $$i)
+                                                              .concat(
+                                                                $$a.slice(
+                                                                  $$i + 1
+                                                                )
+                                                              )
+                                                          )
+                                                      }
+                                                    } else {
+                                                      _vm.$set(
+                                                        medicine_details_row,
+                                                        "eating_time_breakfast",
+                                                        $$c
+                                                      )
+                                                    }
+                                                  }
+                                                }
+                                              })
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "label",
+                                            {
+                                              staticStyle: {
+                                                "margin-right": "8px",
+                                                "font-size": "15px",
+                                                "font-weight": "normal"
+                                              }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                                L\n                                "
+                                              ),
+                                              _c("input", {
+                                                directives: [
+                                                  {
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value:
+                                                      medicine_details_row.eating_time_lunch,
+                                                    expression:
+                                                      "medicine_details_row.eating_time_lunch"
+                                                  }
+                                                ],
+                                                staticClass: "radio-checked",
+                                                attrs: {
+                                                  name: "name2",
+                                                  value: "1",
+                                                  type: "checkbox"
+                                                },
+                                                domProps: {
+                                                  checked: Array.isArray(
+                                                    medicine_details_row.eating_time_lunch
+                                                  )
+                                                    ? _vm._i(
+                                                        medicine_details_row.eating_time_lunch,
+                                                        "1"
+                                                      ) > -1
+                                                    : medicine_details_row.eating_time_lunch
+                                                },
+                                                on: {
+                                                  change: function($event) {
+                                                    var $$a =
+                                                        medicine_details_row.eating_time_lunch,
+                                                      $$el = $event.target,
+                                                      $$c = $$el.checked
+                                                        ? true
+                                                        : false
+                                                    if (Array.isArray($$a)) {
+                                                      var $$v = "1",
+                                                        $$i = _vm._i($$a, $$v)
+                                                      if ($$el.checked) {
+                                                        $$i < 0 &&
+                                                          _vm.$set(
+                                                            medicine_details_row,
+                                                            "eating_time_lunch",
+                                                            $$a.concat([$$v])
+                                                          )
+                                                      } else {
+                                                        $$i > -1 &&
+                                                          _vm.$set(
+                                                            medicine_details_row,
+                                                            "eating_time_lunch",
+                                                            $$a
+                                                              .slice(0, $$i)
+                                                              .concat(
+                                                                $$a.slice(
+                                                                  $$i + 1
+                                                                )
+                                                              )
+                                                          )
+                                                      }
+                                                    } else {
+                                                      _vm.$set(
+                                                        medicine_details_row,
+                                                        "eating_time_lunch",
+                                                        $$c
+                                                      )
+                                                    }
+                                                  }
+                                                }
+                                              })
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "label",
+                                            {
+                                              staticStyle: {
+                                                "margin-right": "5px",
+                                                "font-size": "15px",
+                                                "font-weight": "normal"
+                                              }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                                D\n                                "
+                                              ),
+                                              _c("input", {
+                                                directives: [
+                                                  {
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value:
+                                                      medicine_details_row.eating_time_dinner,
+                                                    expression:
+                                                      "medicine_details_row.eating_time_dinner"
+                                                  }
+                                                ],
+                                                staticClass: "radio-checked",
+                                                attrs: {
+                                                  name: "name3",
+                                                  value: "2",
+                                                  type: "checkbox"
+                                                },
+                                                domProps: {
+                                                  checked: Array.isArray(
+                                                    medicine_details_row.eating_time_dinner
+                                                  )
+                                                    ? _vm._i(
+                                                        medicine_details_row.eating_time_dinner,
+                                                        "2"
+                                                      ) > -1
+                                                    : medicine_details_row.eating_time_dinner
+                                                },
+                                                on: {
+                                                  change: function($event) {
+                                                    var $$a =
+                                                        medicine_details_row.eating_time_dinner,
+                                                      $$el = $event.target,
+                                                      $$c = $$el.checked
+                                                        ? true
+                                                        : false
+                                                    if (Array.isArray($$a)) {
+                                                      var $$v = "2",
+                                                        $$i = _vm._i($$a, $$v)
+                                                      if ($$el.checked) {
+                                                        $$i < 0 &&
+                                                          _vm.$set(
+                                                            medicine_details_row,
+                                                            "eating_time_dinner",
+                                                            $$a.concat([$$v])
+                                                          )
+                                                      } else {
+                                                        $$i > -1 &&
+                                                          _vm.$set(
+                                                            medicine_details_row,
+                                                            "eating_time_dinner",
+                                                            $$a
+                                                              .slice(0, $$i)
+                                                              .concat(
+                                                                $$a.slice(
+                                                                  $$i + 1
+                                                                )
+                                                              )
+                                                          )
+                                                      }
+                                                    } else {
+                                                      _vm.$set(
+                                                        medicine_details_row,
+                                                        "eating_time_dinner",
+                                                        $$c
+                                                      )
+                                                    }
+                                                  }
+                                                }
+                                              })
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-lg-3 col-md-12 col-sm-12 col-xs-12"
+                                    },
+                                    [
+                                      _c(
+                                        "span",
+                                        {
+                                          staticStyle: { "margin-left": "25px" }
+                                        },
+                                        [
+                                          _c(
+                                            "label",
+                                            {
+                                              staticStyle: {
+                                                "margin-right": "15px",
+                                                "font-size": "15px",
+                                                "font-weight": "normal"
+                                              }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                                Before Meal\n                                "
+                                              ),
+                                              _c("input", {
+                                                directives: [
+                                                  {
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value:
+                                                      medicine_details_row.eating_term,
+                                                    expression:
+                                                      "medicine_details_row.eating_term"
+                                                  }
+                                                ],
+                                                staticClass: "radio-checked",
+                                                attrs: {
+                                                  value: "0",
+                                                  name: "eating_time",
+                                                  checked: "",
+                                                  type: "radio"
+                                                },
+                                                domProps: {
+                                                  checked: _vm._q(
+                                                    medicine_details_row.eating_term,
+                                                    "0"
+                                                  )
+                                                },
+                                                on: {
+                                                  change: function($event) {
+                                                    return _vm.$set(
+                                                      medicine_details_row,
+                                                      "eating_term",
+                                                      "0"
+                                                    )
+                                                  }
+                                                }
+                                              })
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "label",
+                                            {
+                                              staticStyle: {
+                                                "font-size": "15px",
+                                                "font-weight": "normal"
+                                              }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                                After Meal\n                                "
+                                              ),
+                                              _c("input", {
+                                                directives: [
+                                                  {
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value:
+                                                      medicine_details_row.eating_term,
+                                                    expression:
+                                                      "medicine_details_row.eating_term"
+                                                  }
+                                                ],
+                                                staticClass: "radio-checked",
+                                                attrs: {
+                                                  value: "1",
+                                                  name: "eating_time",
+                                                  type: "radio"
+                                                },
+                                                domProps: {
+                                                  checked: _vm._q(
+                                                    medicine_details_row.eating_term,
+                                                    "1"
+                                                  )
+                                                },
+                                                on: {
+                                                  change: function($event) {
+                                                    return _vm.$set(
+                                                      medicine_details_row,
+                                                      "eating_term",
+                                                      "1"
+                                                    )
+                                                  }
+                                                }
+                                              })
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-lg-3 col-md-12 col-sm-12 col-xs-12",
+                                      staticStyle: { float: "left" }
+                                    },
+                                    [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: medicine_details_row.days,
+                                            expression:
+                                              "medicine_details_row.days"
+                                          }
+                                        ],
+                                        staticStyle: {
+                                          width: "70px",
+                                          height: "22px",
+                                          "border-radius": "2px",
+                                          padding: "5px",
+                                          border: "1px solid #000"
+                                        },
+                                        attrs: {
+                                          disabled:
+                                            medicine_details_row.duration == "2"
+                                              ? true
+                                              : false,
+                                          type: "text",
+                                          placeholder: "Days/Months"
+                                        },
+                                        domProps: {
+                                          value: medicine_details_row.days
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              medicine_details_row,
+                                              "days",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c(
+                                        "select",
+                                        {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value:
+                                                medicine_details_row.duration,
+                                              expression:
+                                                "medicine_details_row.duration"
+                                            }
+                                          ],
+                                          attrs: { name: "gender" },
+                                          on: {
+                                            change: [
+                                              function($event) {
+                                                var $$selectedVal = Array.prototype.filter
+                                                  .call(
+                                                    $event.target.options,
+                                                    function(o) {
+                                                      return o.selected
+                                                    }
+                                                  )
+                                                  .map(function(o) {
+                                                    var val =
+                                                      "_value" in o
+                                                        ? o._value
+                                                        : o.value
+                                                    return val
+                                                  })
+                                                _vm.$set(
+                                                  medicine_details_row,
+                                                  "duration",
+                                                  $event.target.multiple
+                                                    ? $$selectedVal
+                                                    : $$selectedVal[0]
+                                                )
+                                              },
+                                              function($event) {
+                                                return _vm.selectedRow(
+                                                  medicine_details_row
+                                                )
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "option",
+                                            { attrs: { value: "" } },
+                                            [_vm._v("Select")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "option",
+                                            { attrs: { value: "0" } },
+                                            [_vm._v("Days")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "option",
+                                            { attrs: { value: "1" } },
+                                            [_vm._v("Months")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "option",
+                                            { attrs: { value: "2" } },
+                                            [_vm._v("Continue")]
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      index
+                                        ? _c(
+                                            "a",
+                                            {
+                                              staticClass: "pull-right",
+                                              staticStyle: {
+                                                cursor: "pointer"
+                                              },
+                                              attrs: { type: "button" },
+                                              on: {
+                                                click: function($event) {
+                                                  $event.preventDefault()
+                                                  return _vm.deleteMedicineDetailsRow(
+                                                    index
+                                                  )
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c("i", {
+                                                staticClass: "fa fa-trash",
+                                                staticStyle: {
+                                                  color: "red",
+                                                  "font-size": "18px"
+                                                }
+                                              })
+                                            ]
+                                          )
+                                        : _vm._e()
+                                    ]
+                                  )
+                                ])
+                              ])
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("br"),
+                        _c("br")
+                      ])
+                    }),
+                    0
+                  )
+                ])
+              ])
+            ]
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "basic-form-area mg-b-15" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            { staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12" },
+            [
+              _c("div", { staticClass: "sparkline8-list mt-b-30" }, [
+                _c("div", { staticClass: "sparkline8-hd" }, [
+                  _c("div", { staticClass: "main-sparkline8-hd" }, [
+                    _c("h1", [_vm._v("Medical Test Section")]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "add-product" }, [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.addTestRow($event)
+                            }
+                          }
+                        },
+                        [_vm._v("ADD")]
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "sparkline8-graph" }, [
+                  _c("div", { staticClass: "basic-login-form-ad" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "col-lg-8 col-md-8 col-sm-12 col-xs-12"
+                        },
+                        [
+                          _c("div", { staticClass: "basic-login-inner" }, [
+                            _c(
+                              "form",
+                              { attrs: { action: "#" } },
+                              _vm._l(_vm.medical_tests_rows, function(
+                                row,
+                                index
+                              ) {
+                                return _c(
+                                  "div",
+                                  {
+                                    key: index,
+                                    staticClass: "form-group-inner"
+                                  },
+                                  [
+                                    index
+                                      ? _c(
+                                          "a",
+                                          {
+                                            staticClass:
+                                              "pull-right btn btn-danger btn-sm",
+                                            staticStyle: {
+                                              "margin-bottom": "10px"
+                                            },
+                                            attrs: { type: "button" },
+                                            on: {
+                                              click: function($event) {
+                                                $event.preventDefault()
+                                                return _vm.deleteTestRow(index)
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fa fa-trash"
+                                            })
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    _c("label", [_vm._v("Medical Test")]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "select",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: row.medical_test_id,
+                                            expression: "row.medical_test_id"
+                                          }
+                                        ],
+                                        staticClass: "form-control",
+                                        attrs: { name: "gender" },
+                                        on: {
+                                          change: function($event) {
+                                            var $$selectedVal = Array.prototype.filter
+                                              .call(
+                                                $event.target.options,
+                                                function(o) {
+                                                  return o.selected
+                                                }
+                                              )
+                                              .map(function(o) {
+                                                var val =
+                                                  "_value" in o
+                                                    ? o._value
+                                                    : o.value
+                                                return val
+                                              })
+                                            _vm.$set(
+                                              row,
+                                              "medical_test_id",
+                                              $event.target.multiple
+                                                ? $$selectedVal
+                                                : $$selectedVal[0]
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "option",
+                                          {
+                                            attrs: { value: "", disabled: "" }
+                                          },
+                                          [_vm._v("Select Test")]
+                                        ),
+                                        _vm._v(" "),
+                                        _vm._l(_vm.tests, function(
+                                          test,
+                                          index
+                                        ) {
+                                          return _c(
+                                            "option",
+                                            {
+                                              key: index,
+                                              domProps: { value: test.id }
+                                            },
+                                            [_vm._v(_vm._s(test.name))]
+                                          )
+                                        })
+                                      ],
+                                      2
+                                    ),
+                                    _vm._v(" "),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c("textarea", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: row.description,
+                                          expression: "row.description"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      attrs: {
+                                        name: "",
+                                        id: "",
+                                        cols: "30",
+                                        rows: "5",
+                                        placeholder: "Enter the description"
+                                      },
+                                      domProps: { value: row.description },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            row,
+                                            "description",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]
+                                )
+                              }),
+                              0
+                            )
+                          ])
+                        ]
+                      )
+                    ])
+                  ])
+                ])
+              ])
+            ]
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "basic-form-area mg-b-15" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            { staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12" },
+            [
+              _c("div", { staticClass: "sparkline8-list mt-b-30" }, [
+                _vm._m(5),
+                _vm._v(" "),
+                _c("div", { staticClass: "sparkline8-graph" }, [
+                  _c("div", { staticClass: "basic-login-form-ad" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "col-lg-8 col-md-8 col-sm-12 col-xs-12"
+                        },
+                        [
+                          _c("div", { staticClass: "basic-login-inner" }, [
+                            _c("form", { attrs: { action: "#" } }, [
+                              _c("div", { staticClass: "form-group-inner" }, [
+                                _c("textarea", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.suggestion,
+                                      expression: "suggestion"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    name: "",
+                                    id: "",
+                                    cols: "30",
+                                    rows: "5",
+                                    placeholder: "Enter the suggestions"
+                                  },
+                                  domProps: { value: _vm.suggestion },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.suggestion = $event.target.value
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "login-btn-inner" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "inline-remember-me" },
+                                  [
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass:
+                                          "btn btn-sm btn-primary pull-left login-submit-cs",
+                                        attrs: { type: "submit" },
+                                        on: {
+                                          click: function($event) {
+                                            $event.preventDefault()
+                                            return _vm.savePrescription($event)
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("Save Prescription")]
+                                    )
+                                  ]
+                                )
+                              ])
+                            ])
+                          ])
+                        ]
+                      )
+                    ])
+                  ])
+                ])
+              ])
+            ]
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" }, [
+      _c("div", { staticClass: "breadcome-heading" }, [
+        _c("form", { staticClass: "sr-input-func", attrs: { role: "search" } })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("span", { staticClass: "bread-blod" }, [_vm._v("Add Patient")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12 col-xs-6" }, [
+      _c("div", { staticClass: "address-hr tb-sm-res-d-n dps-tb-ntn" }, [
+        _c("p", [
+          _c("b", [_vm._v("Status")]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("span", { staticStyle: { color: "rgb(0,255,0)" } }, [
+            _vm._v("On Going")
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-12 col-xs-6" }, [
+      _c("div", { staticClass: "address-hr tb-sm-res-d-n dps-tb-ntn" }, [
+        _c("p", [
+          _c("b", [_vm._v("Visiting Status")]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v("New\n          ")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [_c("p", [_vm._v("No results found!")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "sparkline8-hd" }, [
+      _c("div", { staticClass: "main-sparkline8-hd" }, [
+        _c("h1", [_vm._v("Suggestions Section")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/profile/Profile.vue?vue&type=template&id=4c50516c&":
 /*!*************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/profile/Profile.vue?vue&type=template&id=4c50516c& ***!
@@ -58194,43 +58777,55 @@ var render = function() {
       _c("div", { staticClass: "container-fluid" }, [
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-12" }, [
-            _vm.profile.details &&
-            _vm.profile.details[0] &&
-            _vm.profile.details[0].image
+            _vm.profile.details
               ? _c("div", { staticClass: "profile-info-inner" }, [
-                  _c("div", { staticClass: "profile-img" }, [
-                    _c("img", {
-                      attrs: {
-                        src: "/images/profile/" + _vm.profile.details[0].image,
-                        alt: ""
-                      }
-                    })
-                  ]),
+                  _vm.profile.details
+                    ? _c("div", { staticClass: "profile-img" }, [
+                        _vm.profile.details.image
+                          ? _c("img", {
+                              attrs: {
+                                src:
+                                  "/images/profile/" +
+                                  _vm.profile.details.image,
+                                alt: ""
+                              }
+                            })
+                          : _c("img", {
+                              attrs: {
+                                src: "/images/profile/profile.jpg",
+                                alt: ""
+                              }
+                            })
+                      ])
+                    : _vm._e(),
                   _vm._v(" "),
                   _c("div", { staticClass: "profile-details-hr" }, [
                     _c("div", { staticClass: "row" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "col-lg-6 col-md-12 col-sm-12 col-xs-6"
-                        },
-                        [
-                          _c("div", { staticClass: "address-hr" }, [
-                            _c("p", [
-                              _c("b", [_vm._v("Name")]),
-                              _vm._v(" "),
-                              _c("br"),
-                              _vm._v(
-                                "\n                      " +
-                                  _vm._s(_vm.profile.name) +
-                                  "\n                    "
-                              )
-                            ])
-                          ])
-                        ]
-                      ),
+                      _vm.profile.name
+                        ? _c(
+                            "div",
+                            {
+                              staticClass:
+                                "col-lg-6 col-md-12 col-sm-12 col-xs-6"
+                            },
+                            [
+                              _c("div", { staticClass: "address-hr" }, [
+                                _c("p", [
+                                  _c("b", [_vm._v("Name")]),
+                                  _vm._v(" "),
+                                  _c("br"),
+                                  _vm._v(
+                                    "\n                      " +
+                                      _vm._s(_vm.profile.name) +
+                                      "\n                    "
+                                  )
+                                ])
+                              ])
+                            ]
+                          )
+                        : _vm._e(),
                       _vm._v(" "),
-                      _vm.profile.details && _vm.profile.details[0]
+                      _vm.profile.details && _vm.profile.details.designation
                         ? _c(
                             "div",
                             {
@@ -58252,7 +58847,7 @@ var render = function() {
                                     _vm._v(
                                       "\n                      " +
                                         _vm._s(
-                                          _vm.profile.details[0].designation
+                                          _vm.profile.details.designation
                                         ) +
                                         "\n                    "
                                     )
@@ -58265,28 +58860,31 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "row" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "col-lg-6 col-md-12 col-sm-12 col-xs-6"
-                        },
-                        [
-                          _c("div", { staticClass: "address-hr" }, [
-                            _c("p", [
-                              _c("b", [_vm._v("Email ID")]),
-                              _vm._v(" "),
-                              _c("br"),
-                              _vm._v(
-                                "\n                      " +
-                                  _vm._s(_vm.profile.email) +
-                                  "\n                    "
-                              )
-                            ])
-                          ])
-                        ]
-                      ),
+                      _vm.profile.email
+                        ? _c(
+                            "div",
+                            {
+                              staticClass:
+                                "col-lg-6 col-md-12 col-sm-12 col-xs-6"
+                            },
+                            [
+                              _c("div", { staticClass: "address-hr" }, [
+                                _c("p", [
+                                  _c("b", [_vm._v("Email ID")]),
+                                  _vm._v(" "),
+                                  _c("br"),
+                                  _vm._v(
+                                    "\n                      " +
+                                      _vm._s(_vm.profile.email) +
+                                      "\n                    "
+                                  )
+                                ])
+                              ])
+                            ]
+                          )
+                        : _vm._e(),
                       _vm._v(" "),
-                      _vm.profile.details && _vm.profile.details[0]
+                      _vm.profile.details && _vm.profile.details.phone
                         ? _c(
                             "div",
                             {
@@ -58307,7 +58905,7 @@ var render = function() {
                                     _c("br"),
                                     _vm._v(
                                       "\n                      " +
-                                        _vm._s(_vm.profile.details[0].phone) +
+                                        _vm._s(_vm.profile.details.phone) +
                                         "\n                    "
                                     )
                                   ])
@@ -58318,7 +58916,7 @@ var render = function() {
                         : _vm._e()
                     ]),
                     _vm._v(" "),
-                    _vm.profile.details && _vm.profile.details[0]
+                    _vm.profile.details && _vm.profile.details.address
                       ? _c("div", { staticClass: "row" }, [
                           _c("div", { staticClass: "col-lg-12" }, [
                             _c("div", { staticClass: "address-hr" }, [
@@ -58328,7 +58926,7 @@ var render = function() {
                                 _c("br"),
                                 _vm._v(
                                   "\n                      " +
-                                    _vm._s(_vm.profile.details[0].address) +
+                                    _vm._s(_vm.profile.details.address) +
                                     "\n                    "
                                 )
                               ])
@@ -58407,7 +59005,7 @@ var render = function() {
                                     ),
                                     _vm._v(" "),
                                     _vm.profile.details &&
-                                    _vm.profile.details[0]
+                                    _vm.profile.details.phone
                                       ? _c(
                                           "div",
                                           {
@@ -58429,7 +59027,7 @@ var render = function() {
                                                   _vm._v(
                                                     "\n                              " +
                                                       _vm._s(
-                                                        _vm.profile.details[0]
+                                                        _vm.profile.details
                                                           .phone
                                                       ) +
                                                       "\n                            "
@@ -58469,8 +59067,8 @@ var render = function() {
                                       ]
                                     ),
                                     _vm._v(" "),
-                                    _vm.profile.detaiils &&
-                                    _vm.profile.details[0]
+                                    _vm.profile.details &&
+                                    _vm.profile.details.address
                                       ? _c(
                                           "div",
                                           {
@@ -58492,7 +59090,7 @@ var render = function() {
                                                   _vm._v(
                                                     "\n                              " +
                                                       _vm._s(
-                                                        _vm.profile.details[0]
+                                                        _vm.profile.details
                                                           .address
                                                       ) +
                                                       "\n                            "
@@ -58505,7 +59103,7 @@ var render = function() {
                                       : _vm._e()
                                   ]),
                                   _vm._v(" "),
-                                  _vm.profile.details && _vm.profile.details[0]
+                                  _vm.profile.details && _vm.profile.details.bio
                                     ? _c("div", { staticClass: "row" }, [
                                         _c(
                                           "div",
@@ -58520,7 +59118,7 @@ var render = function() {
                                                 _c("p", [
                                                   _vm._v(
                                                     _vm._s(
-                                                      _vm.profile.details[0].bio
+                                                      _vm.profile.details.bio
                                                     )
                                                   )
                                                 ])
@@ -58529,15 +59127,7 @@ var render = function() {
                                           ]
                                         )
                                       ])
-                                    : _vm._e(),
-                                  _vm._v(" "),
-                                  _vm._m(3),
-                                  _vm._v(" "),
-                                  _vm._m(4),
-                                  _vm._v(" "),
-                                  _vm._m(5),
-                                  _vm._v(" "),
-                                  _vm._m(6)
+                                    : _vm._e()
                                 ]
                               )
                             ]
@@ -58632,9 +59222,16 @@ var render = function() {
                                             }
                                           },
                                           [
-                                            _c("option", [
-                                              _vm._v("Select Gender")
-                                            ]),
+                                            _c(
+                                              "option",
+                                              {
+                                                attrs: {
+                                                  value: "",
+                                                  disabled: ""
+                                                }
+                                              },
+                                              [_vm._v("Select Gender")]
+                                            ),
                                             _vm._v(" "),
                                             _c(
                                               "option",
@@ -58942,239 +59539,6 @@ var staticRenderFns = [
         ])
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row mg-b-15" }, [
-      _c("div", { staticClass: "col-lg-12" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-lg-12" }, [
-            _c("div", { staticClass: "skill-title" }, [
-              _c("h2", [_vm._v("Skill Set")]),
-              _vm._v(" "),
-              _c("hr")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "progress-skill" }, [
-          _c("h2", [_vm._v("Java")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "progress progress-mini" }, [
-            _c("div", {
-              staticClass: "progress-bar progress-yellow",
-              staticStyle: { width: "90%" }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "progress-skill" }, [
-          _c("h2", [_vm._v("Php")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "progress progress-mini" }, [
-            _c("div", {
-              staticClass: "progress-bar progress-green",
-              staticStyle: { width: "80%" }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "progress-skill" }, [
-          _c("h2", [_vm._v("Apps")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "progress progress-mini" }, [
-            _c("div", {
-              staticClass: "progress-bar progress-blue",
-              staticStyle: { width: "70%" }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "progress-skill" }, [
-          _c("h2", [_vm._v("C#")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "progress progress-mini" }, [
-            _c("div", {
-              staticClass: "progress-bar progress-red",
-              staticStyle: { width: "60%" }
-            })
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row mg-b-15" }, [
-      _c("div", { staticClass: "col-lg-12" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-lg-12" }, [
-            _c("div", { staticClass: "skill-title" }, [
-              _c("h2", [_vm._v("Education")]),
-              _vm._v(" "),
-              _c("hr")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "ex-pro" }, [
-          _c("ul", [
-            _c("li", [
-              _c("i", { staticClass: "fa fa-angle-right" }),
-              _vm._v(
-                " Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                              "
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("i", { staticClass: "fa fa-angle-right" }),
-              _vm._v(
-                " Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                              "
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("i", { staticClass: "fa fa-angle-right" }),
-              _vm._v(
-                " Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                              "
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("i", { staticClass: "fa fa-angle-right" }),
-              _vm._v(
-                " Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                              "
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("i", { staticClass: "fa fa-angle-right" }),
-              _vm._v(
-                " Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                              "
-              )
-            ])
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row mg-b-15" }, [
-      _c("div", { staticClass: "col-lg-12" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-lg-12" }, [
-            _c("div", { staticClass: "skill-title" }, [
-              _c("h2", [_vm._v("Experience")]),
-              _vm._v(" "),
-              _c("hr")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "ex-pro" }, [
-          _c("ul", [
-            _c("li", [
-              _c("i", { staticClass: "fa fa-angle-right" }),
-              _vm._v(
-                " Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                              "
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("i", { staticClass: "fa fa-angle-right" }),
-              _vm._v(
-                " Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                              "
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("i", { staticClass: "fa fa-angle-right" }),
-              _vm._v(
-                " Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                              "
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("i", { staticClass: "fa fa-angle-right" }),
-              _vm._v(
-                " Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                              "
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("i", { staticClass: "fa fa-angle-right" }),
-              _vm._v(
-                " Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                              "
-              )
-            ])
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-12" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-lg-12" }, [
-            _c("div", { staticClass: "skill-title" }, [
-              _c("h2", [_vm._v("Subjects")]),
-              _vm._v(" "),
-              _c("hr")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "ex-pro" }, [
-          _c("ul", [
-            _c("li", [
-              _c("i", { staticClass: "fa fa-angle-right" }),
-              _vm._v(
-                " Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                              "
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("i", { staticClass: "fa fa-angle-right" }),
-              _vm._v(
-                " Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                              "
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("i", { staticClass: "fa fa-angle-right" }),
-              _vm._v(
-                " Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                              "
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("i", { staticClass: "fa fa-angle-right" }),
-              _vm._v(
-                " Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                              "
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("i", { staticClass: "fa fa-angle-right" }),
-              _vm._v(
-                " Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                              "
-              )
-            ])
-          ])
-        ])
-      ])
-    ])
   }
 ]
 render._withStripped = true
@@ -60062,6 +60426,47 @@ function normalizeComponent (
   }
 }
 
+
+/***/ }),
+
+/***/ "./node_modules/vue-loading-overlay/dist/vue-loading.css":
+/*!***************************************************************!*\
+  !*** ./node_modules/vue-loading-overlay/dist/vue-loading.css ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./vue-loading.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loading-overlay/dist/vue-loading.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loading-overlay/dist/vue-loading.min.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/vue-loading-overlay/dist/vue-loading.min.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(t,e){ true?module.exports=e():undefined}("undefined"!=typeof self?self:this,(function(){return function(t){var e={};function i(n){if(e[n])return e[n].exports;var r=e[n]={i:n,l:!1,exports:{}};return t[n].call(r.exports,r,r.exports,i),r.l=!0,r.exports}return i.m=t,i.c=e,i.d=function(t,e,n){i.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:n})},i.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},i.t=function(t,e){if(1&e&&(t=i(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var n=Object.create(null);if(i.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var r in t)i.d(n,r,function(e){return t[e]}.bind(null,r));return n},i.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return i.d(e,"a",e),e},i.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},i.p="",i(i.s=1)}([function(t,e,i){},function(t,e,i){"use strict";i.r(e);var n="undefined"!=typeof window?window.HTMLElement:Object,r={mounted:function(){this.enforceFocus&&document.addEventListener("focusin",this.focusIn)},methods:{focusIn:function(t){if(this.isActive&&t.target!==this.$el&&!this.$el.contains(t.target)){var e=this.container?this.container:this.isFullPage?null:this.$el.parentElement;(this.isFullPage||e&&e.contains(t.target))&&(t.preventDefault(),this.$el.focus())}}},beforeDestroy:function(){document.removeEventListener("focusin",this.focusIn)}};function a(t,e,i,n,r,a,o,s){var l,u="function"==typeof t?t.options:t;if(e&&(u.render=e,u.staticRenderFns=i,u._compiled=!0),n&&(u.functional=!0),a&&(u._scopeId="data-v-"+a),o?(l=function(t){(t=t||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext)||"undefined"==typeof __VUE_SSR_CONTEXT__||(t=__VUE_SSR_CONTEXT__),r&&r.call(this,t),t&&t._registeredComponents&&t._registeredComponents.add(o)},u._ssrRegister=l):r&&(l=s?function(){r.call(this,(u.functional?this.parent:this).$root.$options.shadowRoot)}:r),l)if(u.functional){u._injectStyles=l;var c=u.render;u.render=function(t,e){return l.call(e),c(t,e)}}else{var d=u.beforeCreate;u.beforeCreate=d?[].concat(d,l):[l]}return{exports:t,options:u}}var o=a({name:"spinner",props:{color:{type:String,default:"#000"},height:{type:Number,default:64},width:{type:Number,default:64}}},(function(){var t=this.$createElement,e=this._self._c||t;return e("svg",{attrs:{viewBox:"0 0 38 38",xmlns:"http://www.w3.org/2000/svg",width:this.width,height:this.height,stroke:this.color}},[e("g",{attrs:{fill:"none","fill-rule":"evenodd"}},[e("g",{attrs:{transform:"translate(1 1)","stroke-width":"2"}},[e("circle",{attrs:{"stroke-opacity":".25",cx:"18",cy:"18",r:"18"}}),e("path",{attrs:{d:"M36 18c0-9.94-8.06-18-18-18"}},[e("animateTransform",{attrs:{attributeName:"transform",type:"rotate",from:"0 18 18",to:"360 18 18",dur:"0.8s",repeatCount:"indefinite"}})],1)])])])}),[],!1,null,null,null).exports,s=a({name:"dots",props:{color:{type:String,default:"#000"},height:{type:Number,default:240},width:{type:Number,default:60}}},(function(){var t=this.$createElement,e=this._self._c||t;return e("svg",{attrs:{viewBox:"0 0 120 30",xmlns:"http://www.w3.org/2000/svg",fill:this.color,width:this.width,height:this.height}},[e("circle",{attrs:{cx:"15",cy:"15",r:"15"}},[e("animate",{attrs:{attributeName:"r",from:"15",to:"15",begin:"0s",dur:"0.8s",values:"15;9;15",calcMode:"linear",repeatCount:"indefinite"}}),e("animate",{attrs:{attributeName:"fill-opacity",from:"1",to:"1",begin:"0s",dur:"0.8s",values:"1;.5;1",calcMode:"linear",repeatCount:"indefinite"}})]),e("circle",{attrs:{cx:"60",cy:"15",r:"9","fill-opacity":"0.3"}},[e("animate",{attrs:{attributeName:"r",from:"9",to:"9",begin:"0s",dur:"0.8s",values:"9;15;9",calcMode:"linear",repeatCount:"indefinite"}}),e("animate",{attrs:{attributeName:"fill-opacity",from:"0.5",to:"0.5",begin:"0s",dur:"0.8s",values:".5;1;.5",calcMode:"linear",repeatCount:"indefinite"}})]),e("circle",{attrs:{cx:"105",cy:"15",r:"15"}},[e("animate",{attrs:{attributeName:"r",from:"15",to:"15",begin:"0s",dur:"0.8s",values:"15;9;15",calcMode:"linear",repeatCount:"indefinite"}}),e("animate",{attrs:{attributeName:"fill-opacity",from:"1",to:"1",begin:"0s",dur:"0.8s",values:"1;.5;1",calcMode:"linear",repeatCount:"indefinite"}})])])}),[],!1,null,null,null).exports,l=a({name:"bars",props:{color:{type:String,default:"#000"},height:{type:Number,default:40},width:{type:Number,default:40}}},(function(){var t=this.$createElement,e=this._self._c||t;return e("svg",{attrs:{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 30 30",height:this.height,width:this.width,fill:this.color}},[e("rect",{attrs:{x:"0",y:"13",width:"4",height:"5"}},[e("animate",{attrs:{attributeName:"height",attributeType:"XML",values:"5;21;5",begin:"0s",dur:"0.6s",repeatCount:"indefinite"}}),e("animate",{attrs:{attributeName:"y",attributeType:"XML",values:"13; 5; 13",begin:"0s",dur:"0.6s",repeatCount:"indefinite"}})]),e("rect",{attrs:{x:"10",y:"13",width:"4",height:"5"}},[e("animate",{attrs:{attributeName:"height",attributeType:"XML",values:"5;21;5",begin:"0.15s",dur:"0.6s",repeatCount:"indefinite"}}),e("animate",{attrs:{attributeName:"y",attributeType:"XML",values:"13; 5; 13",begin:"0.15s",dur:"0.6s",repeatCount:"indefinite"}})]),e("rect",{attrs:{x:"20",y:"13",width:"4",height:"5"}},[e("animate",{attrs:{attributeName:"height",attributeType:"XML",values:"5;21;5",begin:"0.3s",dur:"0.6s",repeatCount:"indefinite"}}),e("animate",{attrs:{attributeName:"y",attributeType:"XML",values:"13; 5; 13",begin:"0.3s",dur:"0.6s",repeatCount:"indefinite"}})])])}),[],!1,null,null,null).exports,u=a({name:"vue-loading",mixins:[r],props:{active:Boolean,programmatic:Boolean,container:[Object,Function,n],isFullPage:{type:Boolean,default:!0},enforceFocus:{type:Boolean,default:!0},lockScroll:{type:Boolean,default:!1},transition:{type:String,default:"fade"},canCancel:Boolean,onCancel:{type:Function,default:function(){}},color:String,backgroundColor:String,blur:{type:String,default:"2px"},opacity:Number,width:Number,height:Number,zIndex:Number,loader:{type:String,default:"spinner"}},data:function(){return{isActive:this.active}},components:{Spinner:o,Dots:s,Bars:l},beforeMount:function(){this.programmatic&&(this.container?(this.isFullPage=!1,this.container.appendChild(this.$el)):document.body.appendChild(this.$el))},mounted:function(){this.programmatic&&(this.isActive=!0),document.addEventListener("keyup",this.keyPress)},methods:{cancel:function(){this.canCancel&&this.isActive&&(this.hide(),this.onCancel.apply(null,arguments))},hide:function(){var t=this;this.$emit("hide"),this.$emit("update:active",!1),this.programmatic&&(this.isActive=!1,setTimeout((function(){var e;t.$destroy(),void 0!==(e=t.$el).remove?e.remove():e.parentNode.removeChild(e)}),150))},disableScroll:function(){this.isFullPage&&this.lockScroll&&document.body.classList.add("vld-shown")},enableScroll:function(){this.isFullPage&&this.lockScroll&&document.body.classList.remove("vld-shown")},keyPress:function(t){27===t.keyCode&&this.cancel()}},watch:{active:function(t){this.isActive=t},isActive:function(t){t?this.disableScroll():this.enableScroll()}},computed:{bgStyle:function(){return{background:this.backgroundColor,opacity:this.opacity,backdropFilter:"blur(".concat(this.blur,")")}}},beforeDestroy:function(){document.removeEventListener("keyup",this.keyPress)}},(function(){var t=this,e=t.$createElement,i=t._self._c||e;return i("transition",{attrs:{name:t.transition}},[i("div",{directives:[{name:"show",rawName:"v-show",value:t.isActive,expression:"isActive"}],staticClass:"vld-overlay is-active",class:{"is-full-page":t.isFullPage},style:{zIndex:t.zIndex},attrs:{tabindex:"0","aria-busy":t.isActive,"aria-label":"Loading"}},[i("div",{staticClass:"vld-background",style:t.bgStyle,on:{click:function(e){return e.preventDefault(),t.cancel(e)}}}),i("div",{staticClass:"vld-icon"},[t._t("before"),t._t("default",[i(t.loader,{tag:"component",attrs:{color:t.color,width:t.width,height:t.height}})]),t._t("after")],2)])])}),[],!1,null,null,null).exports,c=function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},i=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{};return{show:function(){var n=arguments.length>0&&void 0!==arguments[0]?arguments[0]:e,r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:i,a={programmatic:!0},o=Object.assign({},e,n,a),s=new(t.extend(u))({el:document.createElement("div"),propsData:o}),l=Object.assign({},i,r);return Object.keys(l).map((function(t){s.$slots[t]=l[t]})),s}}};i(0);u.install=function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},i=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{},n=c(t,e,i);t.$loading=n,t.prototype.$loading=n};e.default=u}]).default}));
 
 /***/ }),
 
@@ -75258,11 +75663,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-select */ "./node_modules/vue-select/dist/vue-select.js");
 /* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_select__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _router_routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./router/routes */ "./resources/js/router/routes.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _filter_filters_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./filter/filters.js */ "./resources/js/filter/filters.js");
-/* harmony import */ var _MasterApp__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./MasterApp */ "./resources/js/MasterApp.vue");
+/* harmony import */ var vue_loading_overlay__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-loading-overlay */ "./node_modules/vue-loading-overlay/dist/vue-loading.min.js");
+/* harmony import */ var vue_loading_overlay__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_loading_overlay__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-loading-overlay/dist/vue-loading.css */ "./node_modules/vue-loading-overlay/dist/vue-loading.css");
+/* harmony import */ var vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _router_routes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./router/routes */ "./resources/js/router/routes.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _filter_filters_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./filter/filters.js */ "./resources/js/filter/filters.js");
+/* harmony import */ var _MasterApp__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./MasterApp */ "./resources/js/MasterApp.vue");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -75274,12 +75683,15 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
-Vue.component("v-select", vue_select__WEBPACK_IMPORTED_MODULE_1___default.a); //import all routes here
+Vue.component("v-select", vue_select__WEBPACK_IMPORTED_MODULE_1___default.a);
+
+
+Vue.component("v-loading", vue_loading_overlay__WEBPACK_IMPORTED_MODULE_2___default.a); //import all routes here
 
  //make all routes inside this 
 
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
-  routes: _router_routes__WEBPACK_IMPORTED_MODULE_2__["routes"],
+  routes: _router_routes__WEBPACK_IMPORTED_MODULE_4__["routes"],
   mode: 'history',
   scrollBehavior: function scrollBehavior() {
     return {
@@ -75290,8 +75702,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
 }); //sweat alert
 
 
-window.Swal = sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a;
-var swalWithBootstrapButtons = sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.mixin({
+window.Swal = sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a;
+var swalWithBootstrapButtons = sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.mixin({
   customClass: {
     confirmButton: 'btn btn-success',
     cancelButton: 'btn btn-danger'
@@ -75299,15 +75711,15 @@ var swalWithBootstrapButtons = sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.
   buttonsStyling: false
 });
 window.swalWithBootstrapButtons = swalWithBootstrapButtons;
-var Toast = sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.mixin({
+var Toast = sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.mixin({
   toast: true,
   position: 'top-end',
   showConfirmButton: false,
   timer: 3000,
   timerProgressBar: true,
   onOpen: function onOpen(toast) {
-    toast.addEventListener('mouseenter', sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.stopTimer);
-    toast.addEventListener('mouseleave', sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.resumeTimer);
+    toast.addEventListener('mouseenter', sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.stopTimer);
+    toast.addEventListener('mouseleave', sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.resumeTimer);
   }
 });
 window.Toast = Toast; //importing filters.js for using momentjs and others
@@ -75318,7 +75730,7 @@ router.beforeEach(function (to, from, next) {
   next();
 });
 
-Vue.component('master-app', _MasterApp__WEBPACK_IMPORTED_MODULE_5__["default"]);
+Vue.component('master-app', _MasterApp__WEBPACK_IMPORTED_MODULE_7__["default"]);
 var app = new Vue({
   el: '#smart-prescription',
   router: router
@@ -75430,75 +75842,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Dashboard_vue_vue_type_template_id_82704d4a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Dashboard_vue_vue_type_template_id_82704d4a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/pages/Prescription.vue":
-/*!*********************************************!*\
-  !*** ./resources/js/pages/Prescription.vue ***!
-  \*********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Prescription_vue_vue_type_template_id_a52e9dba___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Prescription.vue?vue&type=template&id=a52e9dba& */ "./resources/js/pages/Prescription.vue?vue&type=template&id=a52e9dba&");
-/* harmony import */ var _Prescription_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Prescription.vue?vue&type=script&lang=js& */ "./resources/js/pages/Prescription.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Prescription_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Prescription_vue_vue_type_template_id_a52e9dba___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Prescription_vue_vue_type_template_id_a52e9dba___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/pages/Prescription.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/pages/Prescription.vue?vue&type=script&lang=js&":
-/*!**********************************************************************!*\
-  !*** ./resources/js/pages/Prescription.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Prescription_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Prescription.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Prescription.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Prescription_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/pages/Prescription.vue?vue&type=template&id=a52e9dba&":
-/*!****************************************************************************!*\
-  !*** ./resources/js/pages/Prescription.vue?vue&type=template&id=a52e9dba& ***!
-  \****************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Prescription_vue_vue_type_template_id_a52e9dba___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Prescription.vue?vue&type=template&id=a52e9dba& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Prescription.vue?vue&type=template&id=a52e9dba&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Prescription_vue_vue_type_template_id_a52e9dba___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Prescription_vue_vue_type_template_id_a52e9dba___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -76884,6 +77227,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/pages/prescription/Prescription.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/pages/prescription/Prescription.vue ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Prescription_vue_vue_type_template_id_e98ae914___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Prescription.vue?vue&type=template&id=e98ae914& */ "./resources/js/pages/prescription/Prescription.vue?vue&type=template&id=e98ae914&");
+/* harmony import */ var _Prescription_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Prescription.vue?vue&type=script&lang=js& */ "./resources/js/pages/prescription/Prescription.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Prescription_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Prescription_vue_vue_type_template_id_e98ae914___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Prescription_vue_vue_type_template_id_e98ae914___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/pages/prescription/Prescription.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/pages/prescription/Prescription.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/pages/prescription/Prescription.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Prescription_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Prescription.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/prescription/Prescription.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Prescription_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/pages/prescription/Prescription.vue?vue&type=template&id=e98ae914&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/pages/prescription/Prescription.vue?vue&type=template&id=e98ae914& ***!
+  \*****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Prescription_vue_vue_type_template_id_e98ae914___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Prescription.vue?vue&type=template&id=e98ae914& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/prescription/Prescription.vue?vue&type=template&id=e98ae914&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Prescription_vue_vue_type_template_id_e98ae914___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Prescription_vue_vue_type_template_id_e98ae914___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/pages/profile/Profile.vue":
 /*!************************************************!*\
   !*** ./resources/js/pages/profile/Profile.vue ***!
@@ -77053,7 +77465,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_medicines_AllMedicines__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../pages/medicines/AllMedicines */ "./resources/js/pages/medicines/AllMedicines.vue");
 /* harmony import */ var _pages_profile_Profile__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../pages/profile/Profile */ "./resources/js/pages/profile/Profile.vue");
 /* harmony import */ var _pages_settings_Settings__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../pages/settings/Settings */ "./resources/js/pages/settings/Settings.vue");
-/* harmony import */ var _pages_Prescription__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../pages/Prescription */ "./resources/js/pages/Prescription.vue");
+/* harmony import */ var _pages_prescription_Prescription__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../pages/prescription/Prescription */ "./resources/js/pages/prescription/Prescription.vue");
 /* harmony import */ var _pages_prescription_AllPrescriptions__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../pages/prescription/AllPrescriptions */ "./resources/js/pages/prescription/AllPrescriptions.vue");
 
 
@@ -77215,7 +77627,7 @@ var routes = [{
 }, //prescription
 {
   path: '/prescribe/:id',
-  component: _pages_Prescription__WEBPACK_IMPORTED_MODULE_21__["default"],
+  component: _pages_prescription_Prescription__WEBPACK_IMPORTED_MODULE_21__["default"],
   meta: {
     title: 'Prescription'
   }

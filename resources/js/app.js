@@ -14,6 +14,10 @@ Vue.use(VueRouter);
 import vSelect from "vue-select";
 Vue.component("v-select", vSelect);
 
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
+Vue.component("v-loading", Loading);
+
 //import all routes here
 import {routes} from './router/routes';
 //make all routes inside this 
