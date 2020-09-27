@@ -1,5 +1,15 @@
 <template>
     <div>
+
+        <!-- loading -->
+        <v-loading 
+            :active.sync="isLoading" 
+            :is-full-page="fullPage"
+            :background-color="'#ffff'"
+            :color="'#007bff'"
+        >
+        </v-loading>
+
         <div class="breadcome-area">
             <div class="container-fluid">
                 <div class="row">
@@ -176,19 +186,25 @@ export default {
             c_c: '',
             on_exam: '',
             p_a_exam: '',
-            errors: []
+            errors: [],
+
+             //loading
+            isLoading: false,
+            fullPage: true
         }
     },
 
     methods: {
 
         getPatient() {
+            //loading
+            this.isLoading = true;
 
             let id = this.$route.params.id;
             let that = this;
             axios.get('/patient/'+id)
                 .then(function (response) {
-
+                    
                     that.name = response.data.patient.name;
                     that.regi_no = response.data.patient.regi_no;
                     that.visiting_no = response.data.patient.visiting_no;
@@ -202,6 +218,9 @@ export default {
                     that.c_c = response.data.patient.c_c;
                     that.on_exam = response.data.patient.on_exam;
                     that.p_a_exam = response.data.patient.p_a_exam;
+
+                    //loading
+                    that.isLoading = false
 
                 })
 
@@ -226,10 +245,15 @@ export default {
                 'visiting_no': this.visiting_no,
             }
 
+            //loading
+            this.isLoading = true;
             let that = this;
 
             axios.post('/update-patient',data)
                 .then(function (response) {
+                    
+                    //loading
+                    that.isLoading = false
 
                     that.$router.push('/all-patients');
                     Toast.fire({
@@ -239,6 +263,9 @@ export default {
 
                 })
                 .catch(function (error) {
+                    
+                    //loading
+                    that.isLoading = false
 
                     that.errors = error.response.data.errors;
                     console.log(error.response.data);

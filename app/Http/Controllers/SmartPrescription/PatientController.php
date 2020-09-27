@@ -70,6 +70,15 @@ class PatientController extends Controller
         ],200);
     }
 
+    public function getPatient($id) {
+        $patient = Patient::where('id',$id)->first();
+
+        return response()->json([
+            'message'           => 'success',
+            'patient'   => $patient
+        ],200);
+    }
+
     public function editPatient( $id ) {
 
         $patient = Patient::where('id',$id)->first();

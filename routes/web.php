@@ -33,10 +33,11 @@ Route::get('/company/{id}', 'SmartPrescription\CompanyController@editCompany');
 Route::post('/update-company', 'SmartPrescription\CompanyController@updateCompany');
 Route::delete('/delete-company/{id}', 'SmartPrescription\CompanyController@deleteCompany');
 
-//patient
+//patient 
 Route::post('/save-patient', 'SmartPrescription\PatientController@addPatient');
 Route::get('/patients', 'SmartPrescription\PatientController@allPatients');
 Route::get('/patient/{id}', 'SmartPrescription\PatientController@editPatient');
+Route::get('/get-patient/{id}', 'SmartPrescription\PatientController@getPatient');
 Route::post('/update-patient', 'SmartPrescription\PatientController@updatePatient');
 Route::delete('/delete-patient/{id}', 'SmartPrescription\PatientController@deletePatient');
 

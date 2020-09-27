@@ -1,5 +1,13 @@
 <template>
     <div>
+        <!-- loading -->
+        <v-loading 
+            :active.sync="isLoading" 
+            :is-full-page="fullPage"
+            :background-color="'#ffff'"
+            :color="'#007bff'"
+        >
+        </v-loading>
 
         <div class="breadcome-area">
             <div class="container-fluid">
@@ -95,18 +103,23 @@ export default {
     data() {
         return {
             medical_tests: [],
-            selected_test_id: ''
+            selected_test_id: '',
+
+             //loading
+            isLoading: false,
+            fullPage: true
         }
     },
 
     methods: {
 
         getAllTests() {
-
+            this.isLoading = true
             let that = this;
             axios.get('/tests')
                 .then(function (response) {
                     that.medical_tests = response.data.medical_tests;
+                    that.isLoading = false
                     console.log(response.data);
                 })
 
@@ -122,12 +135,19 @@ export default {
 
             let id = this.selected_test_id;
             let that = this;
+            
+            //loading
+            this.isLoading = true
 
             axios.delete('/delete-test/'+id)
                 .then(function (response) {
+
+                    //loading
+                    that.isLoading = false
+                    
                     that.selected_test_id = '';
                     that.getAllTests();
-
+                    
                     that.$router.push('/all-tests');
                     Toast.fire({
                         icon: 'warning',

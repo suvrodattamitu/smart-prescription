@@ -19,6 +19,7 @@ import AllCompanies from '../pages/companies/AllCompanies'
 import AddPatient from '../pages/patients/AddPatient'
 import EditPatient from '../pages/patients/EditPatient'
 import AllPatients from '../pages/patients/AllPatients'
+import ViewPatient from '../pages/patients/ViewPatient'
 
 import AddMedicine from '../pages/medicines/AddMedicine'
 import EditMedicine from '../pages/medicines/EditMedicine'
@@ -138,6 +139,12 @@ export const routes = [
 		path:'/all-patients',
 		component:AllPatients,
 		meta: {title: 'All Patients'},
+
+	},
+	{
+		path:'/view-patient/:id',
+		component:ViewPatient,
+		meta: {title: 'View Patient'},
 
 	},
 

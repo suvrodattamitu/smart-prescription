@@ -1,5 +1,15 @@
 <template>
     <div>
+
+         <!-- loading -->
+        <v-loading 
+            :active.sync="isLoading" 
+            :is-full-page="fullPage"
+            :background-color="'#ffff'"
+            :color="'#007bff'"
+        >
+        </v-loading>
+
         <div class="breadcome-area">
             <div class="container-fluid">
                 <div class="row">
@@ -88,7 +98,11 @@ export default {
         return {
             name: '',
             description: '',
-            errors: []
+            errors: [],
+
+             //loading
+            isLoading: false,
+            fullPage: true
         }
     },
 
@@ -98,11 +112,14 @@ export default {
 
             let id = this.$route.params.id;
             let that = this;
+            this.isLoading = true
             axios.get('/test/'+id)
                 .then(function (response) {
 
                     that.name = response.data.medical_test.name;
                     that.description = response.data.medical_test.description;
+
+                    that.isLoading = false
 
                 })
 
@@ -115,11 +132,16 @@ export default {
                 'name': this.name,
                 'description': this.description
             }
+            //loading
+            this.isLoading = true
 
             let that = this;
 
             axios.post('/update-test',data)
                 .then(function (response) {
+                    
+                    //loading
+                    that.isLoading = false
 
                     that.$router.push('/all-tests');
                     Toast.fire({
@@ -129,7 +151,9 @@ export default {
 
                 })
                 .catch(function (error) {
-
+                    //loading
+                    that.isLoading = false
+                    
                     that.errors = error.response.data.errors;
                     console.log(error.response.data);
                     

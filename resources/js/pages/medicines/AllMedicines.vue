@@ -1,6 +1,15 @@
 <template>
     <div>
 
+        <!-- loading -->
+        <v-loading 
+            :active.sync="isLoading" 
+            :is-full-page="fullPage"
+            :background-color="'#ffff'"
+            :color="'#007bff'"
+        >
+        </v-loading>
+
         <div class="breadcome-area">
             <div class="container-fluid">
                 <div class="row">
@@ -86,19 +95,29 @@ export default {
     data() {
         return {
             medicines: [],
-            selected_medicine_id: ''
+            selected_medicine_id: '',
+             
+             //loading
+            isLoading: false,
+            fullPage: true
         }
     },
 
     methods: {
 
         getAllMedicines() {
+            
+            //loading
+            this.isLoading = true;
 
             let that = this;
             axios.get('/medicines')
                 .then(function (response) {
                     that.medicines = response.data.medicines;
-                    console.log(response.data);
+                     
+                     //loading
+                    that.isLoading = false
+                    // console.log(response.data);
                 })
 
         },
@@ -110,12 +129,18 @@ export default {
         },
 
         deleteMedicine() {
+             //loading
+            this.isLoading = true
 
             let id = this.selected_medicine_id;
             let that = this;
 
             axios.delete('/delete-medicine/'+id)
                 .then(function (response) {
+                    
+                    //loading
+                    that.isLoading = false
+
                     that.selected_medicine_id = '';
                     that.getAllMedicines();
 

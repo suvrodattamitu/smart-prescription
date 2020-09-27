@@ -1,5 +1,15 @@
 <template>
     <div>
+
+         <!-- loading -->
+        <v-loading 
+            :active.sync="isLoading" 
+            :is-full-page="fullPage"
+            :background-color="'#ffff'"
+            :color="'#007bff'"
+        >
+        </v-loading>
+
         <div class="breadcome-area">
             <div class="container-fluid">
                 <div class="row">
@@ -125,13 +135,20 @@ export default {
             errors: [],
             types: [],
             groups: [],
-            companies: []
+            companies: [],
+
+            //loading
+            isLoading: false,
+            fullPage: true
         }
     },
 
     methods: {
 
         getMedicine() {
+            
+            //loading
+            this.isLoading = true;
 
             let id = this.$route.params.id;
             let that = this;
@@ -148,6 +165,9 @@ export default {
                     that.type_id = response.data.medicine.id;
                     that.company_id = response.data.medicine.id;
 
+                    //loading
+                    that.isLoading = false;
+
                 })
 
         },
@@ -163,10 +183,16 @@ export default {
                 'group': this.group_id
             }
 
+            //loading
+            this.isLoading = true;
+
             let that = this;
 
             axios.post('/update-medicine',data)
                 .then(function (response) {
+                     
+                     //loading
+                     that.isLoading = false;
 
                     //console.log(response);
                     that.$router.push('/all-medicines');
@@ -177,7 +203,10 @@ export default {
 
                 })
                 .catch(function (error) {
-
+                    
+                    //loading
+                     that.isLoading = false;
+                     
                     that.errors = error.response.data.errors;
                     console.log(error.response.data);
                     

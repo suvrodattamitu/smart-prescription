@@ -1,5 +1,15 @@
 <template>
     <div>
+
+         <!-- loading -->
+        <v-loading 
+            :active.sync="isLoading" 
+            :is-full-page="fullPage"
+            :background-color="'#ffff'"
+            :color="'#007bff'"
+        >
+        </v-loading>
+
         <div class="breadcome-area">
             <div class="container-fluid">
                 <div class="row">
@@ -127,7 +137,11 @@ export default {
 
             types: [],
             groups: [],
-            companies: []
+            companies: [],
+
+            //loading
+            isLoading: false,
+            fullPage: true
         }
     },
 
@@ -143,13 +157,20 @@ export default {
                 'group': this.group_id
             }
 
-            console.log(data);
-
+            // console.log(data);
+            
+            //loading
+            this.isLoading = true;
+            
             let that = this;
 
             axios.post('/save-medicine',data)
                 .then(function (response) {
-                    console.log(response)
+
+                    //loading
+                     that.isLoading = false; 
+
+                    // console.log(response)
                     that.$router.push('/all-medicines');
                     Toast.fire({
                         icon: 'success',
@@ -158,8 +179,11 @@ export default {
                 })
                 .catch(function (error) {
 
+                    //loading
+                     that.isLoading = false; 
+
                     that.errors = error.response.data.errors;
-                    console.log(error.response.data);
+                    // console.log(error.response.data);
                     
                 });
 

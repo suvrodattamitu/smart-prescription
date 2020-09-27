@@ -1,5 +1,15 @@
 <template>
     <div>
+
+         <!-- loading -->
+        <v-loading 
+            :active.sync="isLoading" 
+            :is-full-page="fullPage"
+            :background-color="'#ffff'"
+            :color="'#007bff'"
+        >
+        </v-loading>
+
         <div class="breadcome-area">
             <div class="container-fluid">
                 <div class="row">
@@ -80,7 +90,7 @@
                                                 <td>
                                                     <div class="inline-remember-me">
                                                         <a  @click.prevent="editPatient(patient.id)" href="#" class="pull-left btn btn-info login-submit-cs btn-space" type="submit"><i class="fa fa-pencil"></i></a>
-                                                        <a  @click.prevent="" href="#" class="pull-left btn btn-success login-submit-cs btn-space" type="submit"><i class="fa fa-eye"></i></a>
+                                                        <a  @click.prevent="viwPatient(patient.id)" href="#" class="pull-left btn btn-success login-submit-cs btn-space" type="submit"><i class="fa fa-eye"></i></a>
                                                         <a @click.prevent="deleteConfirmation(patient.id)" href="#" class="pull-left btn btn-danger login-submit-cs" type="submit"><i class="fa fa-trash"></i></a>
                                                     </div>
                                                 </td>
@@ -109,7 +119,11 @@ export default {
     data() {
         return {
             patients: [],
-            selected_patient_id: ''
+            selected_patient_id: '',
+
+            //loading
+            isLoading: false,
+            fullPage: true
         }
     },
 
@@ -117,11 +131,16 @@ export default {
 
         getAllPatients() {
 
+             //loading
+            this.isLoading = true;
+
             let that = this;
             axios.get('/patients')
                 .then(function (response) {
                     that.patients = response.data.patients;
-                    console.log(response.data);
+                    // console.log(response.data);
+                    //loading
+                    that.isLoading = false
                 })
 
         },
@@ -131,14 +150,27 @@ export default {
             this.$router.push('/edit-patient/'+id);
 
         },
+
+        viwPatient( id ) {
+
+            this.$router.push('/view-patient/'+id);
+
+        },
         
         deletePatient() {
+
+            //loading
+            this.isLoading = true;
 
             let id = this.selected_patient_id;
             let that = this;
 
             axios.delete('/delete-patient/'+id)
                 .then(function (response) {
+
+                    //loading
+                    that.isLoading = false;
+                    
                     that.selected_patient_id = '';
                     that.getAllPatients();
 

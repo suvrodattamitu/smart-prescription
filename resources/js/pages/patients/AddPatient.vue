@@ -1,5 +1,15 @@
 <template>
     <div>
+
+        <!-- loading -->
+        <v-loading 
+            :active.sync="isLoading" 
+            :is-full-page="fullPage"
+            :background-color="'#ffff'"
+            :color="'#007bff'"
+        >
+        </v-loading>
+
         <div class="breadcome-area">
             <div class="container-fluid">
                 <div class="row">
@@ -176,7 +186,11 @@ export default {
             c_c: '',
             on_exam: '',
             p_a_exam: '',
-            errors: []
+            errors: [],
+
+            //loading
+            isLoading: false,
+            fullPage: true
         }
     },
 
@@ -199,11 +213,17 @@ export default {
                 'p_a_exam': this.p_a_exam,
                 'visiting_no': this.visiting_no,
             }
+            
+            //loading
+            this.isLoading = true;
 
             let that = this;
-
+            
             axios.post('/save-patient',data)
                 .then(function (response) {
+                    //loading
+                    that.isLoading = false
+
                     that.$router.push('/all-patients');
                     Toast.fire({
                         icon: 'success',
@@ -211,7 +231,10 @@ export default {
                     })
                 })
                 .catch(function (error) {
-
+                    
+                    //loading
+                    that.isLoading = false
+                    
                     that.errors = error.response.data.errors;
                     console.log(error.response.data);
                     
