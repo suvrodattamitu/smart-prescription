@@ -50,7 +50,15 @@ button:focus{
 }
 
 .icon-style {
-    color:blue !important;
+    color:#6200ff !important;
+}
+
+.icon-style1 {
+    color:#6200ff !important;
+}
+
+.bar-button-pro:focus,.bar-button-pro:hover{
+    color:#fff !important;
 }
 
 /*

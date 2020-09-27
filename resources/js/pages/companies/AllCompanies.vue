@@ -148,7 +148,7 @@ export default {
                 .then(function (response) {
 
                     //loading
-                    that.isLoading = true;
+                    that.isLoading = false;
 
                     that.selected_company_id = '';
                     that.getAllCompanies();

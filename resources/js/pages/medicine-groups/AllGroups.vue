@@ -1,5 +1,15 @@
 <template>
     <div>
+
+        <!-- loading -->
+        <v-loading 
+            :active.sync="isLoading" 
+            :is-full-page="fullPage"
+            :background-color="'#ffff'"
+            :color="'#007bff'"
+        >
+        </v-loading>
+
         <div class="breadcome-area">
             <div class="container-fluid">
                 <div class="row">
@@ -94,7 +104,11 @@ export default {
     data() {
         return {
             medicine_groups: [],
-            selected_group_id: ''
+            selected_group_id: '',
+
+            //loading
+            isLoading: false,
+            fullPage: true
         }
     },
 
@@ -103,10 +117,11 @@ export default {
         getAllGroups() {
 
             let that = this;
+            this.isLoading = true;
             axios.get('/groups')
                 .then(function (response) {
                     that.medicine_groups = response.data.medicine_groups;
-                    console.log(response.data);
+                    that.isLoading = false;
                 })
 
         },
@@ -121,12 +136,12 @@ export default {
 
             let id = this.selected_group_id;
             let that = this;
-
+            this.isLoading = true;
             axios.delete('/delete-group/'+id)
                 .then(function (response) {
                     that.selected_group_id = '';
                     that.getAllGroups();
-
+                    that.isLoading = false;
                     that.$router.push('/all-groups');
                     Toast.fire({
                         icon: 'warning',

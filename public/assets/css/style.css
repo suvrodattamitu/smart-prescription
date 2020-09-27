@@ -3658,7 +3658,7 @@ div#sparklinehome canvas {
     width: 100% !important;
 }
 .header-top-area {
-    background: #006DF0;
+    background: #6200ff;
 }
 .sidebar-nav .metismenu{
 	background: #fff;
@@ -4726,4 +4726,9 @@ div#sparklinehome canvas {
 .footer-copy-right a{
 	color:#fff;
 	text-decoration:none;
+}
+
+.align-center{
+    display:flex;
+    justify-content: center;
 }

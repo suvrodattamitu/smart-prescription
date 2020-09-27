@@ -1,5 +1,14 @@
 <template>
     <div>
+        <!-- loading -->
+        <v-loading 
+            :active.sync="isLoading" 
+            :is-full-page="fullPage"
+            :background-color="'#ffff'"
+            :color="'#007bff'"
+        >
+        </v-loading>
+
         <div class="breadcome-area">
             <div class="container-fluid">
                 <div class="row">
@@ -92,7 +101,10 @@ export default {
     data() {
         return {
             medicine_types: [],
-            selected_type_id: ''
+            selected_type_id: '',
+            //loading
+            isLoading: false,
+            fullPage: true,
         }
     },
 
@@ -101,10 +113,11 @@ export default {
         getAllTypes() {
 
             let that = this;
+            this.isLoading = true;
             axios.get('/types')
                 .then(function (response) {
                     that.medicine_types = response.data.medicine_types;
-                    console.log(response.data);
+                    that.isLoading = false;
                 })
 
         },
@@ -120,9 +133,11 @@ export default {
             let id = this.selected_type_id;
             let that = this;
 
+            this.isLoading = true;
             axios.delete('/delete-type/'+id)
                 .then(function (response) {
                     that.selected_type_id = '';
+                    that.isLoading = true;
                     that.getAllTypes();
 
                     that.$router.push('/all-types');

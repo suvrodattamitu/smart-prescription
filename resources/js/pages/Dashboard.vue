@@ -4,25 +4,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="breadcome-list">
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <div class="breadcome-heading">
-                                        <form role="search" class="sr-input-func">
-                                            <input type="text" placeholder="Search..." class="search-int form-control">
-                                            <a href="#"><i class="fa fa-search"></i></a>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <ul class="breadcome-menu">
-                                        <li><router-link to="/">Home</router-link> <span class="bread-slash">/</span>
-                                        </li>
-                                        <li><span class="bread-blod">Dashboard</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <div class="mg-t-30">
+                            
                         </div>
                     </div>
                 </div>
@@ -31,15 +14,30 @@
         <div class="analytics-sparkle-area">
             <div class="container-fluid">
                 <div class="row">
+                    
+                    <div class="align-center">
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                            <div class="analytics-content">
+                                <p class="align-center"><i class="fa fa-calendar fa-3x icon-style1" aria-hidden="true"></i></p>
+                                <p class="align-center mg-t-15" id="real-time-date"></p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 align-center">
+                            <div class="analytics-content">
+                                <p class="align-center"><i class="fa fa-clock-o fa-3x icon-style1"></i></p>
+                                <p id="real-time-clock" class="mg-t-15 align-center"></p>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+
+                <div class="row">
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="analytics-sparkle-line reso-mg-b-30">
                             <div class="analytics-content">
                                 <h5>Total Prescribed</h5>
-                                <h2>$<span class="counter">{{total_prescribed}}</span> <span class="tuition-fees">Prescribed</span></h2>
-                                <span class="text-success">20%</span>
-                                <div class="progress m-b-0">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:20%;"> <span class="sr-only">20% Complete</span> </div>
-                                </div>
+                                <h2><span class="counter">{{total_prescribed}}</span> <span class="tuition-fees">Prescribed</span></h2>
                             </div>
                         </div>
                     </div>
@@ -47,11 +45,7 @@
                         <div class="analytics-sparkle-line reso-mg-b-30">
                             <div class="analytics-content">
                                 <h5>Total Patients</h5>
-                                <h2>$<span class="counter">3000</span> <span class="tuition-fees">Tuition Fees</span></h2>
-                                <span class="text-danger">30%</span>
-                                <div class="progress m-b-0">
-                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:30%;"> <span class="sr-only">230% Complete</span> </div>
-                                </div>
+                                <h2><span class="counter">3000</span> <span class="tuition-fees">Tuition Fees</span></h2>
                             </div>
                         </div>
                     </div>
@@ -59,11 +53,7 @@
                         <div class="analytics-sparkle-line reso-mg-b-30 table-mg-t-pro dk-res-t-pro-30">
                             <div class="analytics-content">
                                 <h5>Electrical Engineering</h5>
-                                <h2>$<span class="counter">2000</span> <span class="tuition-fees">Tuition Fees</span></h2>
-                                <span class="text-info">60%</span>
-                                <div class="progress m-b-0">
-                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:60%;"> <span class="sr-only">20% Complete</span> </div>
-                                </div>
+                                <h2><span class="counter">2000</span> <span class="tuition-fees">Tuition Fees</span></h2>
                             </div>
                         </div>
                     </div>
@@ -71,13 +61,14 @@
                         <div class="analytics-sparkle-line table-mg-t-pro dk-res-t-pro-30">
                             <div class="analytics-content">
                                 <h5>Chemical Engineering</h5>
-                                <h2>$<span class="counter">3500</span> <span class="tuition-fees">Tuition Fees</span></h2>
-                                <span class="text-inverse">80%</span>
-                                <div class="progress m-b-0">
-                                    <div class="progress-bar progress-bar-inverse" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:80%;"> <span class="sr-only">230% Complete</span> </div>
-                                </div>
+                                <h2><span class="counter">3500</span> <span class="tuition-fees">Tuition Fees</span></h2>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mg-t-10">
+                        <img src="assets/img/doctor/dashboard.jpg" alt="dash-board">
                     </div>
                 </div>
             </div> 
@@ -94,13 +85,48 @@ export default {
         }
     },
     mounted() {
-
-        console.log('hello from dashboard')
+        
+        this.getTimeNow();
         this.getCountings();
 
     },
 
     methods:{
+        getTimeNow(){
+
+            const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
+
+            var today = new Date(); 
+            var date = today.toJSON().slice(0, 10); 
+            var nDate = date.slice(8, 10) + ' '  
+                       + monthNames[today.getMonth()] + ' '  
+                       + date.slice(0, 4); 
+
+            //Make time clock
+            let rc    = new Date();
+            let hours = rc.getHours();
+            let min   = rc.getMinutes();
+            let sec   = rc.getSeconds();
+
+            //am/pm
+            let ampm = (hours<12)?'Am':'Pm';
+            hours    = (hours<12)?hours:hours-12;
+
+
+            hours = ('0'+hours).slice(-2);
+            min   = ('0'+min).slice(-2);
+            sec   = ('0'+sec).slice(-2);
+
+            let time = hours+' : '+min+' : '+sec+' '+ampm;
+
+            document.getElementById('real-time-date').innerHTML = nDate;
+            document.getElementById('real-time-clock').innerHTML = time;
+
+            let self = this;
+            let t = setTimeout( self.getTimeNow,500 );
+
+        },
+
         getCountings(){
             let that = this;
             axios.get('/dashboard')
