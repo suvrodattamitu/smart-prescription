@@ -19,7 +19,7 @@ class PrescriptionController extends Controller
         return response()->json([
             'message'       => 'success',
             'prescription'  => $prescription
-        ]);
+        ],200);
 
     }
 
@@ -29,7 +29,7 @@ class PrescriptionController extends Controller
         return response()->json([
             'message'       => 'success',
             'patient'  => $patient
-        ]);
+        ],200);
 
     }
 
@@ -137,7 +137,7 @@ class PrescriptionController extends Controller
         return response()->json([
             'message'   => 'success',
             'medicines'  => $medicines
-        ]);
+        ],200);
     }
 
     public function editPrescription( $prescriptionId ) {
@@ -146,7 +146,19 @@ class PrescriptionController extends Controller
         return response()->json([
             'message'       => 'success',
             'prescription'  => $prescription
-        ]);
+        ],200);
+
+    }
+
+    public function deletePrescription( $prescriptionId ) {
+
+        PrescriptionMedicalTestDetail::where('prescription_id',$prescriptionId)->delete();
+        PrescriptionMedicineDetail::where('prescription_id',$prescriptionId)->delete();
+        Prescription::where('id',$prescriptionId)->delete();
+
+        return response()->json([
+            'message'           => 'success',
+        ],200);
 
     }
     

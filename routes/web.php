@@ -59,7 +59,7 @@ Route::post('/change-password','SmartPrescription\SettingsController@changePassw
 //prescriptions 
 Route::get('/patient-details/{patient_id}','SmartPrescription\PrescriptionController@patientDetails');
 Route::post('/add-prescription/{patient_id}','SmartPrescription\PrescriptionController@addPrescription');
-// Route::get('/prescription/{prescription_id}','SmartPrescription\PrescriptionController@editPrescription');
+Route::delete('/prescription/{prescription_id}','SmartPrescription\PrescriptionController@deletePrescription');
 Route::post('/update-prescription/{prescription_id}','SmartPrescription\PrescriptionController@updatePrescription');
 
 Route::post('/find-medicine','SmartPrescription\PrescriptionController@findMedicine');

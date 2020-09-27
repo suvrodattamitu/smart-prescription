@@ -258,7 +258,7 @@ export default {
             selected_prescription:{},
             showEditModal: false,
             prescription_id:'',
-            
+            selected_prescription_id: '',
             //loading
             isLoading: false,
             fullPage: true
@@ -296,33 +296,34 @@ export default {
 
         },
 
-        deleteMedicine() {
+        deletePrescription() {
 
-            // let id = this.selected_medicine_id;
-            // let that = this;
-            // this.isLoading = true;
-            // axios.delete('/delete-medicine/'+id)
-            //     .then(function (response) {
-            //         that.selected_medicine_id = '';
-            //         that.getPrescriptionsByPatientId();
-            //         that.isLoading = false;
-            //         that.$router.push('/all-prescriptions');
-            //         Toast.fire({
-            //             icon: 'warning',
-            //             title: 'Medicine deleted successfully!!!'
-            //         })
+            let id = this.selected_prescription_id;
+            let that = this;
+            this.isLoading = true;
+            axios.delete('/prescription/'+id)
+                .then(function (response) {
 
-            //     })
+                    console.log(response);
+                    that.selected_prescription_id = '';
+                    that.getPrescriptionsByPatientId();
+                    that.isLoading = false;
+                    Toast.fire({
+                        icon: 'warning',
+                        title: 'Prescription deleted successfully!!!'
+                    })
+
+                })
 
         },
 
         deleteConfirmation( id ) {
 
-            this.selected_medicine_id = id;
+            this.selected_prescription_id = id;
             let that = this;
 
             swalWithBootstrapButtons.fire({
-                title: 'Do you want to delete the selected medicine?',
+                title: 'Do you want to delete the selected prescription?',
                 text: "You won't be able to revert this!",
                 icon: 'warning',
                 showCancelButton: true,
@@ -332,7 +333,7 @@ export default {
             }).then((result) => {
                 if (result.isConfirmed) {
 
-                    that.deleteMedicine();
+                    that.deletePrescription();
 
                 } 
             })
