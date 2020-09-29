@@ -23,14 +23,6 @@
                                         </form>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <ul class="breadcome-menu">
-                                        <li><router-link to="/">Home</router-link> <span class="bread-slash">/</span>
-                                        </li>
-                                        <li><span class="bread-blod">All Medical Tests</span>
-                                        </li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                     </div>

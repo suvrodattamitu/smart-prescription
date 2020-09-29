@@ -156,7 +156,7 @@
                               
                               <input
                                 type="text"
-                                style="display:inline;height:22px;border-radius:2px; padding:5px; border: 1px solid #000;"
+                                style="display:inline;height:22px;width:150px;border-radius:2px; padding:5px; border: 1px solid #000;"
                                 @input="onChange"
                                 v-model="medicine_details_row.medicine_name"
                                 @keydown.down="onArrowDown"
@@ -166,11 +166,15 @@
                                 placeholder="Medicine Name"
                               />
 
-                              <!-- <select name="medicine_type" class v-model="medicine_details_row.type_id" style="display:inline; width:130px!important;">
-                                <option  value>Medicine type</option>
-                                <option v-for="(type,index) in medicine_types" :value="type.id" :key="index" style="font-size:10px;">{{ type.name }}</option>
-                                
-                              </select> -->
+                              <input
+                                type="text"
+                                style="display:inline;height:22px;
+                                width:150px; border-radius:2px; padding:5px; border: 1px solid #000;"
+                                v-model="medicine_details_row.type"
+                                disabled
+                                placeholder="Medicine Type"
+                              />
+
                               <ul v-if="medicines.length"
                                 v-show="medicine_details_row.isOpen"
                                 class="autocomplete-results"
@@ -414,7 +418,7 @@ export default {
       // medicine_types: [],
       tests:[],
       medical_tests_rows: [{ medical_test_id: "", description: "" }],
-      medicine_details_rows: [{medicine_id:'',medicine_name:'',eating_time_breakfast:'',eating_time_lunch:'',eating_time_dinner:'',eating_term:'',days:'',duration:'',isOpen:false}],
+      medicine_details_rows: [{medicine_id:'',medicine_name:'',type:'',eating_time_breakfast:'',eating_time_lunch:'',eating_time_dinner:'',eating_term:'',days:'',duration:'',isOpen:false}],
 
       //search medicine
       isOpen: false,
@@ -440,7 +444,7 @@ export default {
 
   methods: {
     addMedicineDetailsRow() {
-      this.medicine_details_rows.push({medicine_id:'',medicine_name:'',eating_time_breakfast:'',eating_time_lunch:'',eating_time_dinner:'',eating_term:'',days:'',duration:'',isOpen:false});
+      this.medicine_details_rows.push({medicine_id:'',medicine_name:'',type:'',eating_time_breakfast:'',eating_time_lunch:'',eating_time_dinner:'',eating_term:'',days:'',duration:'',isOpen:false});
     },
     deleteMedicineDetailsRow(index) {
       this.medicine_details_rows.splice(index, 1);
@@ -536,6 +540,7 @@ export default {
       //this.search = result;
       this.selected_row.isOpen = false;
       this.selected_row.medicine_name = medicine.name;
+      this.selected_row.type = medicine.type.name;
       this.selected_row.medicine_id= medicine.id;
     },
     onChange(evt) {

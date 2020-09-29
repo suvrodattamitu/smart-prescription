@@ -166,6 +166,15 @@
                                 placeholder="Medicine Name"
                               />
 
+                              <input
+                                type="text"
+                                style="display:inline;height:22px;
+                                width:150px; border-radius:2px; padding:5px; border: 1px solid #000;"
+                                v-model="medicine_details_row.type"
+                                disabled
+                                placeholder="Medicine Type"
+                              />
+
                               <!-- <select name="medicine_type" class v-model="medicine_details_row.type_id" style="display:inline; width:130px!important;">
                                 <option  value>Medicine type</option>
                                 <option v-for="(type,index) in medicine_types" :value="type.id" :key="index" style="font-size:10px;">{{ type.name }}</option>
@@ -469,12 +478,14 @@ export default {
                     that.suggestion = prescription_data.suggestion;
                     that.patient_details = prescription_data.patient;
 
+                    console.log(prescription_data);
+
                     if(prescription_data.prescription_medicines.length) {
                       for(var i=0;i<prescription_data.prescription_medicines.length;i++ ){
-                        that.medicine_details_rows.push({medicine_id:prescription_data.prescription_medicines[i].medicine_id, medicine_name:prescription_data.prescription_medicines[i].medicine.name, eating_time_breakfast:prescription_data.prescription_medicines[i].eating_time_breakfast, eating_time_lunch:prescription_data.prescription_medicines[i].eating_time_lunch, eating_time_dinner:prescription_data.prescription_medicines[i].eating_time_dinner, eating_term:prescription_data.prescription_medicines[i].eating_term, days:prescription_data.prescription_medicines[i].days, duration:prescription_data.prescription_medicines[i].duration, isOpen:false});
+                        that.medicine_details_rows.push({medicine_id:prescription_data.prescription_medicines[i].medicine_id, medicine_name:prescription_data.prescription_medicines[i].medicine.name, type:prescription_data.prescription_medicines[i].medicine.type.name,eating_time_breakfast:prescription_data.prescription_medicines[i].eating_time_breakfast, eating_time_lunch:prescription_data.prescription_medicines[i].eating_time_lunch, eating_time_dinner:prescription_data.prescription_medicines[i].eating_time_dinner, eating_term:prescription_data.prescription_medicines[i].eating_term, days:prescription_data.prescription_medicines[i].days, duration:prescription_data.prescription_medicines[i].duration, isOpen:false});
                       }
                     }else{
-                      that.medicine_details_rows.push({medicine_id:'',medicine_name:'',eating_time_breakfast:'',eating_time_lunch:'',eating_time_dinner:'',eating_term:'',days:'',duration:'',isOpen:false});
+                      that.medicine_details_rows.push({medicine_id:'',type:'',medicine_name:'',eating_time_breakfast:'',eating_time_lunch:'',eating_time_dinner:'',eating_term:'',days:'',duration:'',isOpen:false});
                     }
 
                     if(prescription_data.prescription_tests.length) {
@@ -569,6 +580,7 @@ export default {
         //this.search = result;
         this.selected_row.isOpen = false;
         this.selected_row.medicine_name = medicine.name;
+        this.selected_row.type = medicine.type.name;
         this.selected_row.medicine_id= medicine.id;
         },
         onChange(evt) {

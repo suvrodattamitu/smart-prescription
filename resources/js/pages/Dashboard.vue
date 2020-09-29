@@ -47,7 +47,10 @@
                         <div class="analytics-sparkle-line reso-mg-b-30">
                             <div class="analytics-content">
                                 <h5>Total Prescribed</h5>
-                                <h2><span class="counter">{{total_prescribed}}</span> <span class="tuition-fees">Prescribed</span></h2>
+                                <h2>
+                                    {{total_prescribed}}
+                                    <span class="tuition-fees">Prescribed</span>
+                                </h2>
                             </div>
                         </div>
                     </div>
@@ -55,7 +58,10 @@
                         <div class="analytics-sparkle-line reso-mg-b-30">
                             <div class="analytics-content">
                                 <h5>Total Patients</h5>
-                                <h2><span class="counter">{{ total_patients }}</span> <span class="tuition-fees">Patients</span></h2>
+                                <h2>
+                                    {{ total_patients }}
+                                    <span class="tuition-fees">Patients</span>
+                                </h2>
                             </div>
                         </div>
                     </div>
@@ -63,7 +69,10 @@
                         <div class="analytics-sparkle-line reso-mg-b-30 table-mg-t-pro dk-res-t-pro-30">
                             <div class="analytics-content">
                                 <h5>Prescribed Today</h5>
-                                <h2><span class="counter">{{ prescribed_today }}</span> <span class="tuition-fees">Prescribed</span></h2>
+                                <h2>
+                                    {{ prescribed_today }}
+                                    <span class="tuition-fees">Prescribed</span>
+                                </h2>
                             </div>
                         </div>
                     </div>
