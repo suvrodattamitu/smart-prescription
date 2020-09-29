@@ -137,7 +137,9 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">No.</th>
-                                            <th scope="col">Name</th>
+                                            <th scope="col">Name</th>                                          
+                                            <th scope="col">Amount</th>
+                                            <th scope="col">Taking Qty</th>
                                             <th scope="col">Breakfast/Lunch/Dinner</th>
                                             <th scope="col">Time</th>
                                         </tr>
@@ -145,7 +147,9 @@
                                     <tbody>
                                         <tr style="text-align:left;" v-for="(prescription_medicine,index) in selected_prescription.prescription_medicines" :key="index">
                                             <td>{{index+1}}</td>
-                                            <td>{{ prescription_medicine.medicine.name }}</td>
+                                            <td>{{ prescription_medicine.medicine.name }}</td>                                           
+                                            <td>{{ prescription_medicine.mg_ml }}</td>
+                                            <td>{{ prescription_medicine.qty }}</td>
                                             <td>
                                                 <span v-if="prescription_medicine.eating_time_breakfast == 1">Yes/</span>
                                                 <span v-else>No/</span>

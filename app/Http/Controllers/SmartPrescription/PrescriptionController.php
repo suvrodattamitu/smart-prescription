@@ -70,6 +70,8 @@ class PrescriptionController extends Controller
                 PrescriptionMedicineDetail::create([
                     'prescription_id'       => $prescriptionId,
                     'medicine_id'           => $medicine_detail['medicine_id'],
+                    'mg_ml'                 => $medicine_detail['mg_ml'],
+                    'qty'                   => $medicine_detail['qty'],
                     'eating_time_breakfast' => ($medicine_detail['eating_time_breakfast']) ? $medicine_detail['eating_time_breakfast'] : 0,
                     'eating_time_lunch'     => ($medicine_detail['eating_time_lunch']) ? $medicine_detail['eating_time_lunch'] : 0,
                     'eating_time_dinner'    => ($medicine_detail['eating_time_dinner']) ? $medicine_detail['eating_time_dinner'] : 0,
@@ -116,6 +118,8 @@ class PrescriptionController extends Controller
                 PrescriptionMedicineDetail::create([
                     'prescription_id'       => $prescriptionId,
                     'medicine_id'           => $medicine_detail['medicine_id'],
+                    'mg_ml'                 => $medicine_detail['mg_ml'],
+                    'qty'                   => $medicine_detail['qty'],
                     'eating_time_breakfast' => ($medicine_detail['eating_time_breakfast']) ? $medicine_detail['eating_time_breakfast'] : 0,
                     'eating_time_lunch'     => ($medicine_detail['eating_time_lunch']) ? $medicine_detail['eating_time_lunch'] : 0,
                     'eating_time_dinner'    => ($medicine_detail['eating_time_dinner']) ? $medicine_detail['eating_time_dinner'] : 0,

@@ -19,6 +19,8 @@ class CreatePrescriptionMedicineDetailsTable extends Migration
             $table->foreign('prescription_id')->references('id')->on('prescriptions')->onDelete('cascade');
             $table->unsignedBigInteger('medicine_id')->nullable()->index();
             $table->foreign('medicine_id')->references('id')->on('medicines')->onDelete('cascade');
+            $table->string('mg_ml')->nullable();//ml or mg
+            $table->string('qty')->nullable();//qunatity of medicine
             $table->boolean('eating_time_breakfast')->default(0);//breakfast lunch dinner
             $table->boolean('eating_time_lunch')->default(0);//breakfast lunch dinner
             $table->boolean('eating_time_dinner')->default(0);//breakfast lunch dinner

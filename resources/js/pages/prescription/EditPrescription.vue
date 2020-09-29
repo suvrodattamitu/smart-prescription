@@ -156,7 +156,7 @@
                               
                               <input
                                 type="text"
-                                style="display:inline;height:22px;border-radius:2px; padding:5px; border: 1px solid #000;"
+                                style="display:inline; width:130px; height:22px;border-radius:2px; padding:5px; border: 1px solid #000;"
                                 @input="onChange"
                                 v-model="medicine_details_row.medicine_name"
                                 @keydown.down="onArrowDown"
@@ -169,11 +169,20 @@
                               <input
                                 type="text"
                                 style="display:inline;height:22px;
-                                width:150px; border-radius:2px; padding:5px; border: 1px solid #000;"
+                                width:70px; border-radius:2px; padding:5px; border: 1px solid #000;"
                                 v-model="medicine_details_row.type"
                                 disabled
                                 placeholder="Medicine Type"
                               />
+
+                              <input type="text" v-model="medicine_details_row.mg_ml" placeholder="mg/ml" style="width:65px; border: 1px solid #000;height:22px;">
+
+                               <select name="" v-model="medicine_details_row.qty" style="width:50px; border: 1px solid #000;height:22px;">
+                                 <option value="">Qty</option>
+                                 <option value="0.5">0.5</option>
+                                 <option value="1">1</option>
+                                 <option value="2">2</option>
+                               </select>
 
                               <!-- <select name="medicine_type" class v-model="medicine_details_row.type_id" style="display:inline; width:130px!important;">
                                 <option  value>Medicine type</option>
@@ -482,10 +491,10 @@ export default {
 
                     if(prescription_data.prescription_medicines.length) {
                       for(var i=0;i<prescription_data.prescription_medicines.length;i++ ){
-                        that.medicine_details_rows.push({medicine_id:prescription_data.prescription_medicines[i].medicine_id, medicine_name:prescription_data.prescription_medicines[i].medicine.name, type:prescription_data.prescription_medicines[i].medicine.type.name,eating_time_breakfast:prescription_data.prescription_medicines[i].eating_time_breakfast, eating_time_lunch:prescription_data.prescription_medicines[i].eating_time_lunch, eating_time_dinner:prescription_data.prescription_medicines[i].eating_time_dinner, eating_term:prescription_data.prescription_medicines[i].eating_term, days:prescription_data.prescription_medicines[i].days, duration:prescription_data.prescription_medicines[i].duration, isOpen:false});
+                        that.medicine_details_rows.push({medicine_id:prescription_data.prescription_medicines[i].medicine_id, medicine_name:prescription_data.prescription_medicines[i].medicine.name, type:prescription_data.prescription_medicines[i].medicine.type.name,qty:prescription_data.prescription_medicines[i].qty,mg_ml:prescription_data.prescription_medicines[i].mg_ml,eating_time_breakfast:prescription_data.prescription_medicines[i].eating_time_breakfast, eating_time_lunch:prescription_data.prescription_medicines[i].eating_time_lunch, eating_time_dinner:prescription_data.prescription_medicines[i].eating_time_dinner, eating_term:prescription_data.prescription_medicines[i].eating_term, days:prescription_data.prescription_medicines[i].days, duration:prescription_data.prescription_medicines[i].duration, isOpen:false});
                       }
                     }else{
-                      that.medicine_details_rows.push({medicine_id:'',type:'',medicine_name:'',eating_time_breakfast:'',eating_time_lunch:'',eating_time_dinner:'',eating_term:'',days:'',duration:'',isOpen:false});
+                      that.medicine_details_rows.push({medicine_id:'',type:'',medicine_name:'',qty:'',mg_ml:'',eating_time_breakfast:'',eating_time_lunch:'',eating_time_dinner:'',eating_term:'',days:'',duration:'',isOpen:false});
                     }
 
                     if(prescription_data.prescription_tests.length) {
@@ -514,7 +523,7 @@ export default {
         },
 
         addMedicineDetailsRow() {
-          this.medicine_details_rows.push({type_id:'',medicine_id:'',medicine_name:'',eating_time_breakfast:'',eating_time_lunch:'',eating_time_dinner:'',eating_term:'',days:'',duration:'',isOpen:false});
+          this.medicine_details_rows.push({type_id:'',medicine_id:'',medicine_name:'',qty:'',mg_ml:'',eating_time_breakfast:'',eating_time_lunch:'',eating_time_dinner:'',eating_term:'',days:'',duration:'',isOpen:false});
         },
         deleteMedicineDetailsRow(index) {
           this.medicine_details_rows.splice(index, 1);
@@ -548,7 +557,7 @@ export default {
               .then(function (response) {
                   console.log(response);
                   that.isLoading = false;
-                  //that.$router.push('/all-prescriptions/'+that.$route.params.id);
+                  that.$router.push('/all-prescriptions/'+that.$route.params.id);
                   Toast.fire({
                       icon: 'success',
                       title: 'Prescription updated successfully!!!'
