@@ -37,11 +37,21 @@ class MedicineTypeController extends Controller
     }
 
     public function allTypes() {
-        $allTypes = MedicineType::all();
+
+        $searchTerm = $_REQUEST['q'];
+
+        $allTypes = [];
+
+        if( $searchTerm ) { 
+            $allTypes = MedicineType::where('name','like',"%$searchTerm%")->get();
+        }else {
+            $allTypes = MedicineType::all();
+        }
 
         return response()->json([
             'message'           => 'success',
-            'medicine_types'   => $allTypes
+            'searchTerm'        => $searchTerm,
+            'medicine_types'    => $allTypes
         ],200);
     }
 

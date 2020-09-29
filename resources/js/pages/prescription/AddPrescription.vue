@@ -420,6 +420,9 @@
 </template>
 
 <script>
+
+import _ from 'lodash';
+
 export default {
   data() {
     return {
@@ -516,7 +519,6 @@ export default {
       axios
         .post("/add-prescription/"+ this.$route.params.id, data)
         .then(function (response) {
-          console.log(response)
             that.isLoading = false;
             that.$router.push('/all-prescriptions/'+that.$route.params.id);
             Toast.fire({
@@ -553,26 +555,22 @@ export default {
       this.selected_row.type = medicine.type.name;
       this.selected_row.medicine_id= medicine.id;
     },
-    onChange(evt) {
 
-      console.log(evt.target);
+    onChange:_.debounce(function(evt){
+        let data = {
+            'name' : evt.target.value 
+        };
 
-      let data = {
-        'name' : evt.target.value 
-      };
-
-      let that = this;
-      axios.post("/find-medicine",data)
-      .then(function (response) {
-        that.medicines = response.data.medicines;
-        that.selected_row.isOpen = true;
-        console.log(response);
-      })
-      .catch(function (error) {
-        //that.errors = error.response.data.errors;
-        console.log(error.response.data);
-      });
-    }
+        let that = this;
+        axios.post("/find-medicine",data)
+        .then(function (response) {
+            that.medicines = response.data.medicines;
+            that.selected_row.isOpen = true;
+        })
+        .catch(function (error) {
+            console.log(error.response.data);
+        });
+    },500),
 
   },
 };

@@ -18,7 +18,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="breadcome-heading">
                                         <form role="search" class="sr-input-func">
-                                            <input type="text" placeholder="Search..." class="search-int form-control">
+                                            <input type="text" v-model="search" @keyup="searchItems" placeholder="Search..." class="search-int form-control">
                                             <a href="#"><i class="fa fa-search"></i></a>
                                         </form>
                                     </div>
@@ -88,6 +88,9 @@
 </template>
 
 <script>
+
+import _ from 'lodash';
+
 export default {
     
     data() {
@@ -97,16 +100,29 @@ export default {
             //loading
             isLoading: false,
             fullPage: true,
+            search: ''
         }
     },
 
     methods: {
 
+        // searchItems() {
+
+        //     _.debounce(function(){
+        //         this.getAllTypes();
+        //     },2000);
+
+        // },
+
+        searchItems: _.debounce(function () {
+            this.getAllTypes();
+        }, 500),
+
         getAllTypes() {
 
             let that = this;
             this.isLoading = true;
-            axios.get('/types')
+            axios.get('/types?q='+this.search)
                 .then(function (response) {
                     that.medicine_types = response.data.medicine_types;
                     that.isLoading = false;

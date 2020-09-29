@@ -427,6 +427,9 @@
 </template>
 
 <script>
+
+import _ from 'lodash';
+
 export default {
 
     props:['prescription_id'],    
@@ -457,7 +460,6 @@ export default {
 
         this.getMedicalTests();
         this.viewPrescription(this.prescription_id);
-        console.log('prescription_id',this.prescription_id);
         //this.medical_tests_rows.push(this.selected_prescription.prescription_tests); 
         //this.getPatientDetails();
     },
@@ -469,7 +471,6 @@ export default {
           axios.get('/tests')
             .then(function (response) {
                 that.tests = response.data.medical_tests;
-                // console.log(response.data);
             })
         },
 
@@ -486,8 +487,6 @@ export default {
                     let prescription_data = response.data.prescription;
                     that.suggestion = prescription_data.suggestion;
                     that.patient_details = prescription_data.patient;
-
-                    console.log(prescription_data);
 
                     if(prescription_data.prescription_medicines.length) {
                       for(var i=0;i<prescription_data.prescription_medicines.length;i++ ){
@@ -518,7 +517,6 @@ export default {
               .then((response) => {
                 that.patient_details = response.data.patient_details;
                 that.isLoading = false;
-                console.log(response.data);
               });
         },
 
@@ -546,7 +544,6 @@ export default {
 
         updatePrescription() {
           let that = this
-          //console.log(this.medicine_details_rows);
           let data = {
               'medical_tests': this.medical_tests_rows,
               'medicine_details': this.medicine_details_rows,
@@ -555,7 +552,6 @@ export default {
             this.isLoading = true;
             axios.post("/update-prescription/"+ this.prescription_id, data)
               .then(function (response) {
-                  console.log(response);
                   that.isLoading = false;
                   that.$router.push('/all-prescriptions/'+that.$route.params.id);
                   Toast.fire({
@@ -581,37 +577,34 @@ export default {
         }
         },
         onEnter() {
-        this.search = this.results[this.arrowCounter];
-        this.isOpen = false;
-        this.arrowCounter = -1;
+          this.search = this.results[this.arrowCounter];
+          this.isOpen = false;
+          this.arrowCounter = -1;
         },
         setResult(medicine) {
         //this.search = result;
-        this.selected_row.isOpen = false;
-        this.selected_row.medicine_name = medicine.name;
-        this.selected_row.type = medicine.type.name;
-        this.selected_row.medicine_id= medicine.id;
+          this.selected_row.isOpen = false;
+          this.selected_row.medicine_name = medicine.name;
+          this.selected_row.type = medicine.type.name;
+          this.selected_row.medicine_id= medicine.id;
         },
-        onChange(evt) {
 
-        console.log(evt.target);
+        onChange:_.debounce(function(evt){
+            let data = {
+                'name' : evt.target.value 
+            };
 
-        let data = {
-            'name' : evt.target.value 
-        };
+            let that = this;
+            axios.post("/find-medicine",data)
+            .then(function (response) {
+                that.medicines = response.data.medicines;
+                that.selected_row.isOpen = true;
+            })
+            .catch(function (error) {
+                console.log(error.response.data);
+            });
+        },500),
 
-        let that = this;
-        axios.post("/find-medicine",data)
-        .then(function (response) {
-            that.medicines = response.data.medicines;
-            that.selected_row.isOpen = true;
-            console.log(response);
-        })
-        .catch(function (error) {
-            //that.errors = error.response.data.errors;
-            console.log(error.response.data);
-        });
-        }
 
     },
 };

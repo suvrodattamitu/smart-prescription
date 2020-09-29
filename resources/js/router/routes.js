@@ -29,7 +29,7 @@ import Profile from '../pages/profile/Profile';
 
 import Settings from '../pages/settings/Settings';
 
-import Prescription from '../pages/prescription/Prescription'
+import AddPrescription from '../pages/prescription/AddPrescription'
 
 import AllPrescriptions from '../pages/prescription/AllPrescriptions'
 
@@ -186,8 +186,8 @@ export const routes = [
 	//prescription
 	{
 		path:'/prescribe/:id',
-		component:Prescription,
-		meta: {title: 'Prescription'},
+		component:AddPrescription,
+		meta: {title: 'Add Prescription'},
 
 	},
 
