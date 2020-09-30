@@ -19,7 +19,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="breadcome-heading">
                                         <form role="search" class="sr-input-func">
-                                            <input type="text" placeholder="Search..." class="search-int form-control">
+                                            <input type="text" v-model="search" @keyup="searchItems" placeholder="Search..." class="search-int form-control">
                                             <a href="#"><i class="fa fa-search"></i></a>
                                         </form>
                                     </div>
@@ -106,12 +106,14 @@
 </template>
 
 <script>
+import _ from "lodash";
 export default {
     
     data() {
         return {
             patients: [],
             selected_patient_id: '',
+            search:'',
 
             //loading
             isLoading: false,
@@ -121,13 +123,17 @@ export default {
 
     methods: {
 
+        searchItems:_.debounce(function(){
+            this.getAllPatients();
+        },500),
+
         getAllPatients() {
 
              //loading
             this.isLoading = true;
 
             let that = this;
-            axios.get('/patients')
+            axios.get('/patients?q='+this.search)
                 .then(function (response) {
                     that.patients = response.data.patients;
                     // console.log(response.data);

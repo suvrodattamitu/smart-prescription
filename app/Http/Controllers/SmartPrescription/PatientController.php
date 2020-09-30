@@ -62,7 +62,16 @@ class PatientController extends Controller
     }
 
     public function allPatients() {
-        $allPatients = Patient::all();
+        $searchTerm = $_REQUEST['q'];
+        
+        $allPatients = array();
+
+        if ( $searchTerm ) {
+            $allPatients = Patient::where('name','like',"%$searchTerm%")->orWhere('id','like',"$searchTerm")->get();
+        } else {
+            $allPatients = Patient::all();
+        }
+        
 
         return response()->json([
             'message'           => 'success',

@@ -30,8 +30,18 @@ class MedicineController extends Controller
     }
 
     public function allMedicines() {
-       
-        $allMedicines = Medicine::with(['group','company','type'])->get();
+        
+        $searchTerm = $_REQUEST['q'];
+
+        $allMedicines = array();
+
+        if( $searchTerm ) { 
+            $allMedicines = Medicine::where('name','like',"%$searchTerm%")->with(['group','company','type'])->get();
+        }else {
+            $allMedicines = Medicine::with(['group','company','type'])->get();
+        }
+
+        
         return response()->json([
             'message'      => 'success',
             'medicines'    => $allMedicines

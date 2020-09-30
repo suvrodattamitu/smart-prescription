@@ -19,7 +19,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="breadcome-heading">
                                         <form role="search" class="sr-input-func">
-                                            <input type="text" placeholder="Search..." class="search-int form-control">
+                                            <input type="text" v-model="search" @keyup="searchItems" placeholder="Search..." class="search-int form-control">
                                             <a href="#"><i class="fa fa-search"></i></a>
                                         </form>
                                     </div>
@@ -97,6 +97,7 @@ export default {
         return {
             medicine_groups: [],
             selected_group_id: '',
+            search:'',
 
             //loading
             isLoading: false,
@@ -106,11 +107,15 @@ export default {
 
     methods: {
 
+        searchItems: _.debounce(function () {
+            this.getAllGroups();
+        }, 500),
+
         getAllGroups() {
 
             let that = this;
             this.isLoading = true;
-            axios.get('/groups')
+            axios.get('/groups?q='+this.search)
                 .then(function (response) {
                     that.medicine_groups = response.data.medicine_groups;
                     that.isLoading = false;

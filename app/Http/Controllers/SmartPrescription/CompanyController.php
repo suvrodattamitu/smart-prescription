@@ -12,7 +12,14 @@ class CompanyController extends Controller
 {
     public function allCompanies() {
        
-        $allCompanies = Company::all();
+        $searchTerm = $_REQUEST['q'];
+
+        if ( $searchTerm ) {
+            $allCompanies = Company::where('name','like',"%$searchTerm%")->get();
+        } else {
+            $allCompanies = Company::all();
+        }
+        
 
         return response()->json([
             'message'      => 'success',

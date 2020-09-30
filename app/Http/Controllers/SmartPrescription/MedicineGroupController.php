@@ -40,7 +40,18 @@ class MedicineGroupController extends Controller
     }
 
     public function allGroups() {
-        $allGroups = MedicineGroup::all();
+
+        $searchTerm = $_REQUEST['q'];
+
+        $allGroups = [];
+
+        if( $searchTerm ) { 
+            $allGroups = MedicineGroup::where('name','like',"%$searchTerm%")->get();
+        }else {
+            $allGroups = MedicineGroup::all();
+        }
+
+        
 
         return response()->json([
             'message'           => 'success',

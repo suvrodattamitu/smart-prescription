@@ -11,12 +11,23 @@ use Illuminate\Foundation\Validation\ValidationException;
 class MedicalTestController extends Controller
 {
     public function allTests() {
+
+        $searchTerm = $_REQUEST['q'];
+
+        $allTests = array();
+
+        if( $searchTerm ){
+            $allTests = MedicalTest::where('name','like',"%$searchTerm%")->get();
+        }else{
+            $allTests = MedicalTest::all();
+        }
        
-        $allTests = MedicalTest::all();
+        
 
         return response()->json([
             'message'           => 'success',
-            'medical_tests'    => $allTests
+            'medical_tests'    => $allTests,
+            'search'=> $searchTerm
         ],200);
 
     }
