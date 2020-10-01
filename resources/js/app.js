@@ -44,6 +44,9 @@ const swalWithBootstrapButtons = Swal.mixin({
 
 window.swalWithBootstrapButtons = swalWithBootstrapButtons;
 
+//pagination
+Vue.component('pagination', require('laravel-vue-pagination'));
+
 const Toast = Swal.mixin({
     toast: true,
     position: 'top-end',

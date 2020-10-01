@@ -45,9 +45,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="sparkline11-graph">
+                            <div class="sparkline11-graph" v-if="medicine_types.data">
                                 <div class="static-table-list">
-                                    <table class="table sparkle-table" v-if="medicine_types.length">
+                                    <table class="table sparkle-table">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -58,8 +58,8 @@
                                         </thead>
                                         <tbody>
 
-                                            <tr v-for="(type,index) in medicine_types" :key="index">
-                                                <td>{{ index+1 }}</td>
+                                            <tr v-for="(type,index) in medicine_types.data" :key="index">
+                                                <td>{{ type.id }}</td>
                                                 <td><span class="pie"> {{ type.name }} </span></td>
                                                 <td>{{ type.created_at | timeformat }}</td>
                                                 <td>
@@ -71,12 +71,23 @@
                                             </tr>
                                            
                                         </tbody>
+                                        
                                     </table>
-                                    <div v-else>
-                                        <h4>No Data Founds!!</h4>
-                                    </div>
+                                    
                                 </div>
+
+                                <div class="custom-pagination align-right">
+                                    <nav aria-label="Page navigation example">
+                                        <pagination :data="medicine_types" @pagination-change-page="getAllTypes"></pagination>
+                                    </nav>
+                                </div>
+                                
                             </div>
+
+                            <div v-else>
+                                <h4>No Data Founds!!</h4>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -95,7 +106,7 @@ export default {
     
     data() {
         return {
-            medicine_types: [],
+            medicine_types: {},
             selected_type_id: '',
             //loading
             isLoading: false,
@@ -106,26 +117,21 @@ export default {
 
     methods: {
 
-        // searchItems() {
-
-        //     _.debounce(function(){
-        //         this.getAllTypes();
-        //     },2000);
-
-        // },
-
         searchItems: _.debounce(function () {
             this.getAllTypes();
         }, 500),
 
-        getAllTypes() {
+        getAllTypes(page = 1) {
 
             let that = this;
             this.isLoading = true;
-            axios.get('/types?q='+this.search)
+            axios.get(`/types?q=${this.search}&page=${page}`)
                 .then(function (response) {
-                    that.medicine_types = response.data.medicine_types;
+
+                    console.log(response.data);
+                    that.medicine_types = response.data;
                     that.isLoading = false;
+
                 })
 
         },
