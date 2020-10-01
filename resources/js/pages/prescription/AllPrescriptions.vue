@@ -10,28 +10,7 @@
         >
         </v-loading>
 
-        <div class="breadcome-area">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="breadcome-list">
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <div class="breadcome-heading">
-                                        <form role="search" class="sr-input-func">
-                                            <input type="text" placeholder="Search..." class="search-int form-control">
-                                            <a href="#"><i class="fa fa-search"></i></a>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="product-status mg-b-15">
+        <div class="product-status mg-b-15 mg-t-50">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -75,11 +54,13 @@
                                     <tr v-for="(prescription,index) in patient.prescriptions" :key="index">
                                         <td>Prescription No. {{ index+1 }}</td>
                                         <td>{{ prescription.created_at | timeformat}}</td>
-                                        <td>
-                                            <button data-toggle="modal" data-target="#PrimaryModalalert" title="Edit" class="pd-setting-ed" @click="viewPrescription(prescription.id)"><i class="fa fa-eye" aria-hidden="true"></i></button>
-                                            <button data-toggle="modal" data-target="#editPrescriptionModal" class="pd-setting-ed" @click="editPrescription(prescription.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                            <!-- <button title="Edit" class="pd-setting-ed" @click="editMedicine(prescription.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button> -->
-                                            <button title="Trash" class="pd-setting-ed" @click="deleteConfirmation(prescription.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        <td class="width-100">
+                                            <div class="action-inliner">
+                                                <button data-toggle="modal" data-target="#PrimaryModalalert" title="Edit" class="pd-setting-ed" @click="viewPrescription(prescription.id)"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                                                <button data-toggle="modal" data-target="#editPrescriptionModal" class="pd-setting-ed" @click="editPrescription(prescription.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                                <!-- <button title="Edit" class="pd-setting-ed" @click="editMedicine(prescription.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button> -->
+                                                <button title="Trash" class="pd-setting-ed" @click="deleteConfirmation(prescription.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                            </div>
                                         </td>
                                     </tr>
                                     
@@ -202,7 +183,6 @@
 
                             <div class="modal-footer">
                                 <a data-dismiss="modal" href="#">Cancel</a>
-                                <!-- <a href="#">Process</a> -->
                             </div>
                         </div>
                     </div>
@@ -226,6 +206,10 @@
                                 
                                 <edit-prescription :prescription_id="prescription_id"></edit-prescription>
 
+                            </div>
+
+                            <div class="modal-footer">
+                                <a data-dismiss="modal" href="#">Cancel</a>
                             </div>
 
                         </div>

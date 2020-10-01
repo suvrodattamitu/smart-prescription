@@ -66,7 +66,7 @@
                                                 <td>{{ group.description | shortLength(50,"...")}}</td>
                                                 <td>{{ group.created_at | timeformat}}</td>
                                                 <td>
-                                                    <div class="inline-remember-me">
+                                                    <div class="inline-remember-me action-inliner">
                                                         <!-- <a  @click.prevent="editGroup(group.id)" href="#" class="pull-left btn btn-info login-submit-cs btn-space" type="submit"><i class="fa fa-pencil"></i></a>
                                                         <a @click.prevent="deleteConfirmation(group.id)" href="#" class="pull-left btn btn-danger login-submit-cs" type="submit"><i class="fa fa-trash"></i></a> -->
 

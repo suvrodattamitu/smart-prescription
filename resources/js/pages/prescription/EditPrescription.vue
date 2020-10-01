@@ -468,7 +468,7 @@ export default {
 
         getMedicalTests(){
           let that = this;
-          axios.get('/tests')
+          axios.get('/all-test-lists')
             .then(function (response) {
                 that.tests = response.data.medical_tests;
             })

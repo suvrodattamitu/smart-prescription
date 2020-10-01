@@ -66,7 +66,7 @@
                                                 <td>{{ company.description | shortLength(50,"...")}}</td>
                                                 <td>{{ company.created_at  | timeformat}}</td>
                                                 <td>
-                                                    <div class="inline-remember-me">
+                                                    <div class="inline-remember-me action-inliner">
                                                         <!-- <a  @click.prevent="editCompany(company.id)" href="#" class="pull-left btn btn-info login-submit-cs btn-space" type="submit"><i class="fa fa-pencil"></i></a>
                                                         <a @click.prevent="deleteConfirmation(company.id)" href="#" class="pull-left btn btn-danger login-submit-cs" type="submit"><i class="fa fa-trash"></i></a> -->
 

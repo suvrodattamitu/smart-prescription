@@ -4739,3 +4739,12 @@ div#sparklinehome canvas {
 .align-right{
     float: right;
 }
+
+.action-inliner{
+    display:flex;
+    flex-direction:row
+}
+
+.width-100{
+    width:100px;
+}

@@ -21,16 +21,18 @@ class MedicalTestController extends Controller
         }else{
             $allTests = MedicalTest::latest()->paginate(5);
         }
-       
-        
-
-        // return response()->json([
-        //     'message'           => 'success',
-        //     'medical_tests'    => $allTests,
-        //     'search'=> $searchTerm
-        // ],200);
 
         return $allTests;
+
+    }
+
+    public function allTestLists() {
+
+        $allTests = MedicalTest::all();
+        return response()->json([
+            'message'          => 'success',
+            'medical_tests'    => $allTests,
+        ],200);
 
     }
 

@@ -8,6 +8,7 @@ Route::get('/dashboard', 'SmartPrescription\DashboardController@dashboard');
 //medical tests
 Route::post('/save-test', 'SmartPrescription\MedicalTestController@addTest');
 Route::get('/tests', 'SmartPrescription\MedicalTestController@allTests');
+Route::get('/all-test-lists', 'SmartPrescription\MedicalTestController@allTestLists');
 Route::delete('/delete-test/{id}', 'SmartPrescription\MedicalTestController@deleteTest');
 Route::get('/test/{id}', 'SmartPrescription\MedicalTestController@editTest');
 Route::post('/update-test', 'SmartPrescription\MedicalTestController@updateTest');
