@@ -45,18 +45,14 @@ class MedicineGroupController extends Controller
 
         $allGroups = [];
 
-        if( $searchTerm ) { 
-            $allGroups = MedicineGroup::where('name','like',"%$searchTerm%")->get();
+        if( $searchTerm && !empty($searchTerm) ) { 
+            $allGroups = MedicineGroup::where('name','like',"%$searchTerm%")->latest()->paginate(5);
         }else {
-            $allGroups = MedicineGroup::all();
+            $allGroups = MedicineGroup::latest()->paginate(5);
         }
 
-        
 
-        return response()->json([
-            'message'           => 'success',
-            'medicine_groups'   => $allGroups
-        ],200);
+        return $allGroups;
     }
 
     public function editGroup( $id ) {

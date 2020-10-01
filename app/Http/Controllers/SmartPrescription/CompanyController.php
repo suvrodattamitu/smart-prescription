@@ -15,16 +15,18 @@ class CompanyController extends Controller
         $searchTerm = $_REQUEST['q'];
 
         if ( $searchTerm ) {
-            $allCompanies = Company::where('name','like',"%$searchTerm%")->get();
+            $allCompanies = Company::where('name','like',"%$searchTerm%")->latest()->paginate(5);
         } else {
-            $allCompanies = Company::all();
+            $allCompanies = Company::latest()->paginate(5);
         }
         
 
-        return response()->json([
-            'message'      => 'success',
-            'companies'    => $allCompanies
-        ],200);
+        // return response()->json([
+        //     'message'      => 'success',
+        //     'companies'    => $allCompanies
+        // ],200);
+
+        return $allCompanies;
 
     }
 

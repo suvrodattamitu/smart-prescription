@@ -36,16 +36,18 @@ class MedicineController extends Controller
         $allMedicines = array();
 
         if( $searchTerm ) { 
-            $allMedicines = Medicine::where('name','like',"%$searchTerm%")->with(['group','company','type'])->get();
+            $allMedicines = Medicine::where('name','like',"%$searchTerm%")->with(['group','company','type'])->latest()->paginate(5);
         }else {
-            $allMedicines = Medicine::with(['group','company','type'])->get();
+            $allMedicines = Medicine::with(['group','company','type'])->latest()->paginate(5);
         }
 
         
-        return response()->json([
-            'message'      => 'success',
-            'medicines'    => $allMedicines
-        ],200);
+        // return response()->json([
+        //     'message'      => 'success',
+        //     'medicines'    => $allMedicines
+        // ],200);
+
+        return $allMedicines;
 
     }
 

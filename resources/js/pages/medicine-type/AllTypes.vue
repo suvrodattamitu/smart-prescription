@@ -106,7 +106,7 @@ export default {
     
     data() {
         return {
-            medicine_types: {},
+            medicine_types: [],
             selected_type_id: '',
             //loading
             isLoading: false,

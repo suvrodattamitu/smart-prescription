@@ -45,9 +45,9 @@
                                    </div>
                                 </div>
                             </div>
-                            <div class="sparkline11-graph">
+                            <div class="sparkline11-graph"  v-if="medical_tests.data">
                                 <div class="static-table-list">
-                                    <table class="table sparkle-table" v-if="medical_tests.length">
+                                    <table class="table sparkle-table">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -59,7 +59,7 @@
                                         </thead>
                                         <tbody>
 
-                                            <tr v-for="(test,index) in medical_tests" :key="index">
+                                            <tr v-for="(test,index) in medical_tests.data" :key="index">
                                                 <td>{{ index+1 }}</td>
                                                 <td><span class="pie"> {{ test.name }} </span></td>
                                                 <td>{{ test.description | shortLength(50,"...")}}</td>
@@ -70,15 +70,21 @@
                                                         <a @click.prevent="deleteConfirmation(test.id)" href="#" class="pull-left btn btn-danger login-submit-cs" type="submit"><i class="fa fa-trash"></i></a>
                                                     </div>
                                                 </td>
-                                            </tr>
-                                           
-                                        </tbody>
-                                    </table>
-                                    <div v-else>
-                                        <h4>No Data Founds!!</h4>
-                                    </div>
+                                            </tr>                                          
+                                        </tbody>                                           
+                                    </table>  
                                 </div>
+                                <div class="custom-pagination align-right">
+                                    <nav aria-label="Page navigation example">
+                                        <pagination :data="medical_tests" @pagination-change-page="getAllTests"></pagination>
+                                    </nav>
+                                 </div>
                             </div>
+
+                            <div v-else>
+                                        <h4>No Data Founds!!</h4>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -111,14 +117,14 @@ export default {
             this.getAllTests();
         },500),
         
-        getAllTests() {
+        getAllTests( page = 1 ) {
             this.isLoading = true
             let that = this;
-            axios.get('/tests?q='+this.search)
+            axios.get(`/tests?q=${this.search}&page=${page}`)
             
                 .then(function (response) {
                     //console.log(response)
-                    that.medical_tests = response.data.medical_tests;
+                    that.medical_tests = response.data;
                     that.isLoading = false
                     console.log(response.data);
                 })

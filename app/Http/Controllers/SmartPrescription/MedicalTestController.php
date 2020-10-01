@@ -17,18 +17,20 @@ class MedicalTestController extends Controller
         $allTests = array();
 
         if( $searchTerm ){
-            $allTests = MedicalTest::where('name','like',"%$searchTerm%")->get();
+            $allTests = MedicalTest::where('name','like',"%$searchTerm%")->latest()->paginate(5);
         }else{
-            $allTests = MedicalTest::all();
+            $allTests = MedicalTest::latest()->paginate(5);
         }
        
         
 
-        return response()->json([
-            'message'           => 'success',
-            'medical_tests'    => $allTests,
-            'search'=> $searchTerm
-        ],200);
+        // return response()->json([
+        //     'message'           => 'success',
+        //     'medical_tests'    => $allTests,
+        //     'search'=> $searchTerm
+        // ],200);
+
+        return $allTests;
 
     }
 

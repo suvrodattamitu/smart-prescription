@@ -46,9 +46,9 @@
                                    </div>
                                 </div>
                             </div>
-                            <div class="sparkline11-graph">
+                            <div class="sparkline11-graph" v-if="medicine_groups.data">
                                 <div class="static-table-list">
-                                    <table class="table sparkle-table" v-if="medicine_groups.length">
+                                    <table class="table sparkle-table">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -60,8 +60,8 @@
                                         </thead>
                                         <tbody>
 
-                                            <tr v-for="(group,index) in medicine_groups" :key="index">
-                                                <td>{{ index+1 }}</td>
+                                            <tr v-for="(group,index) in medicine_groups.data" :key="index">
+                                                <td>{{ group.id }}</td>
                                                 <td><span class="pie"> {{ group.name }} </span></td>
                                                 <td>{{ group.description | shortLength(50,"...")}}</td>
                                                 <td>{{ group.created_at | timeformat}}</td>
@@ -74,12 +74,17 @@
                                             </tr>
                                            
                                         </tbody>
-                                    </table>
-                                    <div v-else>
-                                        <h4>No Data Founds!!</h4>
-                                    </div>
+                                    </table>                          
                                 </div>
+                                    <div class="custom-pagination align-right">
+                                        <nav aria-label="Page navigation example">
+                                            <pagination :data="medicine_groups" @pagination-change-page="getAllGroups"></pagination>
+                                        </nav>
+                                    </div>
                             </div>
+                               <div v-else>
+                                  <h4>No Data Founds!!</h4>
+                               </div>
                         </div>
                     </div>
                 </div>
@@ -111,13 +116,14 @@ export default {
             this.getAllGroups();
         }, 500),
 
-        getAllGroups() {
+        getAllGroups( page = 1 ) {
 
             let that = this;
             this.isLoading = true;
-            axios.get('/groups?q='+this.search)
+            axios.get(`/groups?q=${this.search}&page=${page}`)
                 .then(function (response) {
-                    that.medicine_groups = response.data.medicine_groups;
+                    that.medicine_groups = response.data;
+                    console.log(response.data)
                     that.isLoading = false;
                 })
 

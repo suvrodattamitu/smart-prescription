@@ -46,9 +46,9 @@
                                    </div>
                                 </div>
                             </div>
-                            <div class="sparkline11-graph">
+                            <div class="sparkline11-graph" v-if="companies.data">
                                 <div class="static-table-list">
-                                    <table class="table sparkle-table" v-if="companies.length">
+                                    <table class="table sparkle-table">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -60,8 +60,8 @@
                                         </thead>
                                         <tbody>
 
-                                            <tr v-for="(company,index) in companies" :key="index">
-                                                <td>{{ index+1 }}</td>
+                                            <tr v-for="(company,index) in companies.data" :key="index">
+                                                <td>{{ company.id }}</td>
                                                 <td><span class="pie"> {{ company.name }} </span></td>
                                                 <td>{{ company.description | shortLength(50,"...")}}</td>
                                                 <td>{{ company.created_at  | timeformat}}</td>
@@ -75,11 +75,19 @@
                                            
                                         </tbody>
                                     </table>
-                                    <div v-else>
-                                        <h4>No Data Founds!!</h4>
-                                    </div>
                                 </div>
+
+                                <div class="custom-pagination align-right">
+                                    <nav aria-label="Page navigation example">
+                                        <pagination :data="companies" @pagination-change-page="getAllCompanies"></pagination>
+                                    </nav>
+                                </div>
+
                             </div>
+                              <div v-else>
+                                 <h4>No Data Founds!!</h4>
+                              </div>
+
                         </div>
                     </div>
                 </div>
@@ -113,15 +121,15 @@ export default {
             this.getAllCompanies();
         },500),
 
-        getAllCompanies() {
+        getAllCompanies( page = 1 ) {
 
             //loading
             this.isLoading = true;
 
             let that = this;
-            axios.get('/companies?q='+this.search)
+            axios.get(`/companies?q=${this.search}&page=${page}`)
                 .then(function (response) {
-                    that.companies = response.data.companies;
+                    that.companies = response.data;
                     //loading
                     that.isLoading = false
                 })

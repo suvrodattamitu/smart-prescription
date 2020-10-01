@@ -46,9 +46,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="sparkline11-graph">
+                            <div class="sparkline11-graph"  v-if="patients.data">
                                 <div class="static-table-list">
-                                    <table class="table sparkle-table" v-if="patients.length">
+                                    <table class="table sparkle-table">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -65,7 +65,7 @@
                                         </thead>
                                         <tbody>
 
-                                            <tr v-for="(patient,index) in patients" :key="index">
+                                            <tr v-for="(patient,index) in patients.data" :key="index">
                                                 <td>{{ index+1 }}</td>
                                                 <td>{{ patient.visiting_no }}</td>
                                                 <td>{{ patient.regi_no }}</td>
@@ -87,14 +87,18 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                           
                                         </tbody>
-                                    </table>
-                                    <div v-else>
-                                        <h4>No Data Founds!!</h4>
-                                    </div>
+                                    </table>      
                                 </div>
+                                    <div class="custom-pagination align-right">
+                                        <nav aria-label="Page navigation example">
+                                            <pagination :data="patients" @pagination-change-page="getAllPatients"></pagination>
+                                        </nav>
+                                    </div>
                             </div>
+                                <div v-else>
+                                    <h4>No Data Founds!!</h4>
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -127,15 +131,15 @@ export default {
             this.getAllPatients();
         },500),
 
-        getAllPatients() {
+        getAllPatients( page = 1 ) {
 
              //loading
             this.isLoading = true;
 
             let that = this;
-            axios.get('/patients?q='+this.search)
+            axios.get(`/patients?q=${this.search}&page=${page}`)
                 .then(function (response) {
-                    that.patients = response.data.patients;
+                    that.patients = response.data;
                     // console.log(response.data);
                     //loading
                     that.isLoading = false

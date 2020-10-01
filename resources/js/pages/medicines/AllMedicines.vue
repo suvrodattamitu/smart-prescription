@@ -41,8 +41,8 @@
                             <div class="add-product">
                                 <router-link to="/add-medicine">Add Medicine</router-link>
                             </div>
-                            <div class="asset-inner">
-                                <table v-if="medicines.length">
+                            <div class="asset-inner" v-if="medicines.data">
+                                <table>
                                     <tr>
                                         <th>No</th>
                                         <th>Name</th>
@@ -54,8 +54,8 @@
                                         <th>Actions</th>
                                     </tr>
 
-                                    <tr v-for="(medicine,index) in medicines" :key="index">
-                                        <td>{{ index+1 }}</td>
+                                    <tr v-for="(medicine,index) in medicines.data" :key="index">
+                                        <td>{{ medicine.id }}</td>
                                         <td>{{ medicine.name }}</td>
                                         <td>{{ medicine.description | shortLength(50,"...")}}</td>
                                         <td>{{ medicine.group.name }}</td>
@@ -69,8 +69,17 @@
                                     </tr>
                                     
                                 </table>
-                                <h4 v-else>No data found!!</h4>
+
+                                 <div class="custom-pagination align-right">
+                                    <nav aria-label="Page navigation example">
+                                        <pagination :data="medicines" @pagination-change-page="getAllMedicines"></pagination>
+                                    </nav>
+                                </div>
+                                
                             </div>
+                               <div v-else>
+                                   <h4 >No data found!!</h4>
+                               </div>
                             
                         </div>
                     </div>
@@ -103,19 +112,19 @@ export default {
             this.getAllMedicines();
         }, 500),
 
-        getAllMedicines() {
+        getAllMedicines( page = 1 ) {
             
             //loading
             this.isLoading = true;
 
             let that = this;
-            axios.get('/medicines?q='+this.search)
+            axios.get(`/medicines?q=${this.search}&page=${page}`)
                 .then(function (response) {
-                    that.medicines = response.data.medicines;
+                    that.medicines = response.data;
                      
                      //loading
                     that.isLoading = false
-                    // console.log(response.data);
+                    console.log(response.data);
                 })
 
         },
