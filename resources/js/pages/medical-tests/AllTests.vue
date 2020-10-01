@@ -47,7 +47,7 @@
                             </div>
                             <div class="sparkline11-graph"  v-if="medical_tests.data">
                                 <div class="static-table-list">
-                                    <table class="table sparkle-table">
+                                    <table class="table table-striped">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -60,14 +60,17 @@
                                         <tbody>
 
                                             <tr v-for="(test,index) in medical_tests.data" :key="index">
-                                                <td>{{ index+1 }}</td>
+                                                <td>{{ test.id }}</td>
                                                 <td><span class="pie"> {{ test.name }} </span></td>
                                                 <td>{{ test.description | shortLength(50,"...")}}</td>
                                                 <td>{{ test.created_at  | timeformat}}</td>
                                                 <td>
                                                     <div class="inline-remember-me">
-                                                        <a  @click.prevent="editTest(test.id)" href="#" class="pull-left btn btn-info login-submit-cs btn-space" type="submit"><i class="fa fa-pencil"></i></a>
-                                                        <a @click.prevent="deleteConfirmation(test.id)" href="#" class="pull-left btn btn-danger login-submit-cs" type="submit"><i class="fa fa-trash"></i></a>
+                                                        <!-- <a  @click.prevent="editTest(test.id)" href="#" class="pull-left btn btn-info login-submit-cs btn-space" type="submit"><i class="fa fa-pencil"></i></a>
+                                                        <a @click.prevent="deleteConfirmation(test.id)" href="#" class="pull-left btn btn-danger login-submit-cs" type="submit"><i class="fa fa-trash"></i></a> -->
+                                                        
+                                                        <button data-toggle="tooltip" title="Edit" class="pd-setting-ed" @click="editTest(test.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                                        <button data-toggle="tooltip" title="Trash" class="pd-setting-ed" @click="deleteConfirmation(test.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                                     </div>
                                                 </td>
                                             </tr>                                          

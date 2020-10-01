@@ -48,7 +48,7 @@
                             </div>
                             <div class="sparkline11-graph" v-if="companies.data">
                                 <div class="static-table-list">
-                                    <table class="table sparkle-table">
+                                    <table class="table table-striped">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -67,8 +67,11 @@
                                                 <td>{{ company.created_at  | timeformat}}</td>
                                                 <td>
                                                     <div class="inline-remember-me">
-                                                        <a  @click.prevent="editCompany(company.id)" href="#" class="pull-left btn btn-info login-submit-cs btn-space" type="submit"><i class="fa fa-pencil"></i></a>
-                                                        <a @click.prevent="deleteConfirmation(company.id)" href="#" class="pull-left btn btn-danger login-submit-cs" type="submit"><i class="fa fa-trash"></i></a>
+                                                        <!-- <a  @click.prevent="editCompany(company.id)" href="#" class="pull-left btn btn-info login-submit-cs btn-space" type="submit"><i class="fa fa-pencil"></i></a>
+                                                        <a @click.prevent="deleteConfirmation(company.id)" href="#" class="pull-left btn btn-danger login-submit-cs" type="submit"><i class="fa fa-trash"></i></a> -->
+
+                                                        <button data-toggle="tooltip" title="Edit" class="pd-setting-ed" @click="editCompany(company.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                                        <button data-toggle="tooltip" title="Trash" class="pd-setting-ed" @click="deleteConfirmation(company.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                                     </div>
                                                 </td>
                                             </tr>

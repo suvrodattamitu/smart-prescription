@@ -42,7 +42,7 @@
                                 <router-link to="/add-medicine">Add Medicine</router-link>
                             </div>
                             <div class="asset-inner" v-if="medicines.data">
-                                <table>
+                                <table class="table table-striped">
                                     <tr>
                                         <th>No</th>
                                         <th>Name</th>

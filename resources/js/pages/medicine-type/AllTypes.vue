@@ -47,7 +47,7 @@
                             </div>
                             <div class="sparkline11-graph" v-if="medicine_types.data">
                                 <div class="static-table-list">
-                                    <table class="table sparkle-table">
+                                    <table class="table table-striped">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -64,8 +64,11 @@
                                                 <td>{{ type.created_at | timeformat }}</td>
                                                 <td>
                                                     <div class="inline-remember-me">
-                                                        <a  @click.prevent="editType(type.id)" href="#" class="pull-left btn btn-info login-submit-cs btn-space" type="submit"><i class="fa fa-pencil"></i></a>
-                                                        <a @click.prevent="deleteConfirmation(type.id)" href="#" class="pull-left btn btn-danger login-submit-cs" type="submit"><i class="fa fa-trash"></i></a>
+                                                        <!-- <button  @click.prevent="editType(type.id)" href="#" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i></button> -->
+                                                        <button data-toggle="tooltip" title="Edit" class="pd-setting-ed" @click="editType(type.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                                        <button data-toggle="tooltip" title="Thrash" class="pd-setting-ed" @click="deleteConfirmation(type.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+
+                                                        <!-- <a @click.prevent="deleteConfirmation(type.id)" href="#" class="pull-left btn btn-danger login-submit-cs" type="submit"><i class="fa fa-trash"></i></a> -->
                                                     </div>
                                                 </td>
                                             </tr>
