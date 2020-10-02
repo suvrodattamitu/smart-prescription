@@ -134,8 +134,8 @@ export default {
                     that.name = response.data.medicine.name;
                     that.description = response.data.medicine.description;
                     that.group_id = response.data.medicine.group.id;
-                    that.type_id = response.data.medicine.id;
-                    that.company_id = response.data.medicine.id;
+                    that.type_id = response.data.medicine.type.id;
+                    that.company_id = response.data.medicine.company.id;
 
                     //loading
                     that.isLoading = false;

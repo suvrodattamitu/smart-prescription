@@ -13,10 +13,10 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="background:white;  margin-left:18px;  padding:15px;">
-
                             <h4>Patient Details</h4> <br>
                             <div class="add-product">
-                                <router-link :to="`/prescribe/${$route.params.id}`">Prescribe</router-link>
+                                <span><router-link :to="`/prescribe/${$route.params.id}`">Prescribe</router-link></span>
+                                <span><router-link to="/all-patients" style="margin-right:120px; background:green;">All Patients</router-link></span>
                             </div>
 
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mg-t-30">
@@ -60,8 +60,8 @@
 
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                      <label for="">Prescribed : </label>
-                                     <span v-if="is_prescribed==1">Prescribed</span>
-                                     <span v-else>Not Prescribed</span>
+                                     <span v-if="patient.is_prescribed==1" style="color:green;">Prescribed</span>
+                                     <span v-else style="color:red;">Not Prescribed</span>
                                 </div>
                             </div>
 
@@ -83,7 +83,7 @@
 
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                      <label for="">Gender : </label>
-                                     <span v-if="gender==0">Male</span>
+                                     <span v-if="patient.gender==0">Male</span>
                                      <span v-else>Female</span>
                                 </div>
                             </div>
