@@ -67,16 +67,16 @@ class PatientController extends Controller
         $allPatients = array();
 
         if ( $searchTerm ) {
-            $allPatients = Patient::where('name','like',"%$searchTerm%")->orWhere('id','like',"$searchTerm")->latest()->paginate(5);
+            $allPatients = Patient::where('name','like',"%$searchTerm%")
+                        ->orWhere('id','like',"$searchTerm")
+                        ->orWhere('visiting_no', 'like', "%$searchTerm%")
+                        ->orWhere('regi_no', 'like', "%$searchTerm%")
+                        ->orWhere('age', 'like', "%$searchTerm%")
+                        ->orWhere('address', 'like', "%$searchTerm%")
+                        ->latest()->paginate(5);
         } else {
             $allPatients = Patient::latest()->paginate(5);
         }
-        
-
-        // return response()->json([
-        //     'message'           => 'success',
-        //     'patients'   => $allPatients
-        // ],200);
 
         return $allPatients;
     }

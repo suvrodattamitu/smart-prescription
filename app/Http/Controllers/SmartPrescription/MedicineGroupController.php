@@ -46,7 +46,7 @@ class MedicineGroupController extends Controller
         $allGroups = [];
 
         if( $searchTerm && !empty($searchTerm) ) { 
-            $allGroups = MedicineGroup::where('name','like',"%$searchTerm%")->latest()->paginate(5);
+            $allGroups = MedicineGroup::where('name','like',"%$searchTerm%")->orWhere('description', 'like', "%$searchTerm%")->latest()->paginate(5);
         }else {
             $allGroups = MedicineGroup::latest()->paginate(5);
         }

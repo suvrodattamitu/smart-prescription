@@ -17,7 +17,7 @@ class MedicalTestController extends Controller
         $allTests = array();
 
         if( $searchTerm ){
-            $allTests = MedicalTest::where('name','like',"%$searchTerm%")->latest()->paginate(5);
+            $allTests = MedicalTest::where('name','like',"%$searchTerm%")->orWhere('description', 'like', "%$searchTerm%")->latest()->paginate(5);
         }else{
             $allTests = MedicalTest::latest()->paginate(5);
         }

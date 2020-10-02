@@ -32,20 +32,33 @@ class MedicineController extends Controller
     public function allMedicines() {
         
         $searchTerm = $_REQUEST['q'];
-
         $allMedicines = array();
-
-        if( $searchTerm ) { 
-            $allMedicines = Medicine::where('name','like',"%$searchTerm%")->with(['group','company','type'])->latest()->paginate(5);
-        }else {
-            $allMedicines = Medicine::with(['group','company','type'])->latest()->paginate(5);
+        $Query = Medicine::with(['group','company','type']);
+        
+        if ($searchTerm) {
+            $Query = $Query->whereHas('group', function ($query) use ($searchTerm) {
+                $query->where('name', 'like', '%'.$searchTerm.'%');
+            });
         }
 
-        
-        // return response()->json([
-        //     'message'      => 'success',
-        //     'medicines'    => $allMedicines
-        // ],200);
+        if ($searchTerm) {
+            $Query = $Query->orWhereHas('company', function ($query) use ($searchTerm) {
+                $query->where('name', 'like', '%'.$searchTerm.'%');
+            });
+        }
+
+        if ($searchTerm) {
+            $Query = $Query->orWhereHas('type', function ($query) use ($searchTerm) {
+                $query->where('name', 'like', '%'.$searchTerm.'%');
+            });
+        }
+
+        if ($searchTerm) {
+            $Query = $Query->orWhere('name', 'like', "%$searchTerm%");
+            $Query = $Query->orWhere('description', 'like', "%$searchTerm%");
+        }
+
+        $allMedicines     = $Query->latest()->paginate(5);
 
         return $allMedicines;
 
