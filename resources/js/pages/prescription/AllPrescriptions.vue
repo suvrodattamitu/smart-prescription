@@ -86,7 +86,7 @@
                                                 <div class="dropdown-menu" x-placement="right-start" style="z-index:999999;transform: translate3d(112px, 0px, 0px);top: 0px;">
                                                     <a class="dropdown-item" @click.prevent="Export2Doc('exportContent','.doc')">Microsoft Word(.doc)</a>
                                                     <a class="dropdown-item" @click.prevent="Export2Pdf('exportContent','.pdf')">Pdf Document(.pdf)</a>
-                                                    <a class="dropdown-item" @click.prevent="Export2Doc('exportContent','.txt')">Plain Text(.txt)</a>
+                                                    <a class="dropdown-item" @click.prevent="Export2Txt('exportContent','.txt')">Plain Text(.txt)</a>
                                                     <a class="dropdown-item" @click.prevent="Export2Doc('exportContent','.doc')">Print</a>
                                                 </div>
                                             </div>
@@ -349,15 +349,7 @@ export default {
                     type: 'application/msword'
                 });
                 // Specify link url
-            var url = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(html);
-
-            // doc.fromHTML($('#content').html(), 15, 15, {
-            //     'width': 170,
-            //         'elementHandlers': specialElementHandlers
-            // });
-            // doc.save('sample-file.pdf');
-            
-            
+            var url = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(html);            
             
             // Specify file name
             //filename = filename?filename+'.doc':'document.doc';
@@ -385,7 +377,7 @@ export default {
             document.body.removeChild(downloadLink);
         },
 
-        Export2Pdf(element) {
+        Export2Pdf(element,extension) {
             var pdf = new jsPDF();
             var specialElementHandlers = {
                 '#editor': function (element, renderer) {
@@ -405,6 +397,27 @@ export default {
 
         },
 
+        Export2Txt(element,extension) {
+            
+            var html = jQuery('#'+element).text();
+            var data = { x: 42, s: "hello, world", d: new Date() },
+            fileName = "my-download.txt";
+
+            var a = document.createElement("a");
+            document.body.appendChild(a);
+            a.style = "display: none";
+
+            var blob = new Blob([html], {
+                type: "text/plain;charset=utf-8"
+            });
+            var url = window.URL.createObjectURL(blob);
+
+            a.href = url;
+            a.download = fileName;
+            a.click();
+            window.URL.revokeObjectURL(url);
+
+        },
         viewPrescription(prescription_id) {
 
             this.isLoading = true;
