@@ -11,6 +11,12 @@
         </v-loading>
 
         <div class="product-status mg-b-15 mg-t-50">
+
+            <div id="exportContent">
+                <!-- Your content here -->
+                <h2>Hi There</h2>
+            </div>
+
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -43,23 +49,46 @@
                             <div class="add-product">
                                 <router-link :to="'/prescribe/'+this.$route.params.id">Add Prescription</router-link>
                             </div>
-                            <div class="asset-inner">
+                            <div class="table-responsive">
                                 <table v-if="patient.prescriptions && patient.prescriptions.length">
                                     <tr>
                                         <th>Prescriptions</th>
                                         <th>Created At</th>
                                         <th>Actions</th>
+                                        <th>Export</th>
                                     </tr>
 
                                     <tr v-for="(prescription,index) in patient.prescriptions" :key="index">
                                         <td>Prescription No. {{ index+1 }}</td>
                                         <td>{{ prescription.created_at | timeformat}}</td>
+                                        
                                         <td class="width-100">
                                             <div class="action-inliner">
                                                 <button data-toggle="modal" data-target="#PrimaryModalalert" title="Edit" class="pd-setting-ed" @click="viewPrescription(prescription.id)"><i class="fa fa-eye" aria-hidden="true"></i></button>
                                                 <button data-toggle="modal" data-target="#editPrescriptionModal" class="pd-setting-ed" @click="editPrescription(prescription.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                                 <!-- <button title="Edit" class="pd-setting-ed" @click="editMedicine(prescription.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button> -->
                                                 <button title="Trash" class="pd-setting-ed" @click="deleteConfirmation(prescription.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <div class="btn-group dropright">
+                                                
+                                                <button 
+                                                    class="pd-setting-ed dropdown-toggle" 
+                                                    data-toggle="dropdown" 
+                                                    aria-haspopup="true" 
+                                                >
+                                                Export as
+                                                <i class="fa fa-download" aria-hidden="true"></i>
+                                                </button>
+
+                                                <div class="dropdown-menu" x-placement="right-start" style="z-index:999999;transform: translate3d(112px, 0px, 0px);top: 0px;">
+                                                    <a class="dropdown-item" @click.prevent="Export2Doc('exportContent','.doc')">Microsoft Word(.doc)</a>
+                                                    <a class="dropdown-item" @click.prevent="Export2Pdf('exportContent','.pdf')">Pdf Document(.pdf)</a>
+                                                    <a class="dropdown-item" @click.prevent="Export2Doc('exportContent','.txt')">Plain Text(.txt)</a>
+                                                    <a class="dropdown-item" @click.prevent="Export2Doc('exportContent','.doc')">Print</a>
+                                                </div>
                                             </div>
                                         </td>
                                     </tr>
@@ -221,6 +250,68 @@
     </div>
 </template>
 
+<style lang="scss">
+
+.table-responsive {
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+}
+
+.btn-group {
+    margin-top: .25rem;
+    margin-bottom: .25rem;
+}
+
+.dropright {
+    margin-top: 0;
+    margin-left: .125rem;
+}
+
+.dropdown-menu{
+
+    // position: absolute;
+    // transform: translate3d(112px, 0px, 0px);
+    // top: 0px;
+    // left: 0px;
+    // will-change: transform;
+
+    position: absolute;
+    // top: 100%;
+    // left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 10rem;
+    padding: .5rem 0;
+    margin: .125rem 0 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
+</style>
+
 <script>
 
 import EditPrescription from '../prescription/EditPrescription';
@@ -246,6 +337,73 @@ export default {
     },
 
     methods: {
+
+        Export2Doc(element,extension, filename = ''){
+
+           
+            var preHtml = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Smart Prescription</title></head><body>";
+            var postHtml = "</body></html>";
+            var html = preHtml+document.getElementById(element).innerHTML+postHtml;
+
+            var blob = new Blob(['\ufeff', html], {
+                    type: 'application/msword'
+                });
+                // Specify link url
+            var url = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(html);
+
+            // doc.fromHTML($('#content').html(), 15, 15, {
+            //     'width': 170,
+            //         'elementHandlers': specialElementHandlers
+            // });
+            // doc.save('sample-file.pdf');
+            
+            
+            
+            // Specify file name
+            //filename = filename?filename+'.doc':'document.doc';
+
+            filename = 'filename'+extension;
+            
+            // Create download link element
+            var downloadLink = document.createElement("a");
+
+            document.body.appendChild(downloadLink);
+            
+            if(navigator.msSaveOrOpenBlob ){
+                navigator.msSaveOrOpenBlob(blob, filename);
+            }else{
+                // Create a link to the file
+                downloadLink.href = url;
+                
+                // Setting the file name
+                downloadLink.download = filename;
+                
+                //triggering the function
+                downloadLink.click();
+            }
+            
+            document.body.removeChild(downloadLink);
+        },
+
+        Export2Pdf(element) {
+            var pdf = new jsPDF();
+            var specialElementHandlers = {
+                '#editor': function (element, renderer) {
+                    return true;
+                }
+            };
+            //var $addr = $(this).closest('.res').find('.content');
+            var $temp = $('#'+element);
+            console.log($temp);
+            // //$temp.find('h3').text($addr.find('h3').text());
+            pdf.fromHTML($temp.html(), 15, 15, {
+                    'width': 170,
+                    'elementHandlers':specialElementHandlers
+                    }
+            );
+            pdf.save('sample-file.pdf');
+
+        },
 
         viewPrescription(prescription_id) {
 
@@ -330,6 +488,18 @@ export default {
     },
 
     mounted() {
+
+        setTimeout(function(){
+            jQuery(document).ready(function(){
+                jQuery('.table-responsive').on('show.bs.dropdown', function () {
+                    jQuery('.table-responsive').css( "overflow", "inherit" );
+                });
+
+                jQuery('.table-responsive').on('hide.bs.dropdown', function () {
+                    jQuery('.table-responsive').css( "overflow", "auto" );
+                })
+            });
+        },1000)
 
         this.getPrescriptionsByPatientId();
 
