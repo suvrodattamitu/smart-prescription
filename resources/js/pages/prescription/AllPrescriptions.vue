@@ -11,12 +11,6 @@
         </v-loading>
 
         <div class="product-status mg-b-15 mg-t-50">
-
-            <div id="exportContent">
-                <!-- Your content here -->
-                <h2>Hi There</h2>
-            </div>
-
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -56,6 +50,7 @@
                                         <th>Created At</th>
                                         <th>Actions</th>
                                         <th>Export</th>
+                                        <th>Print</th>
                                     </tr>
 
                                     <tr v-for="(prescription,index) in patient.prescriptions" :key="index">
@@ -87,9 +82,11 @@
                                                     <a class="dropdown-item" @click.prevent="Export2Doc('exportContent','.doc')">Microsoft Word(.doc)</a>
                                                     <a class="dropdown-item" @click.prevent="Export2Pdf('exportContent','.pdf')">Pdf Document(.pdf)</a>
                                                     <a class="dropdown-item" @click.prevent="Export2Txt('exportContent','.txt')">Plain Text(.txt)</a>
-                                                    <a class="dropdown-item" @click.prevent="Export2Doc('exportContent','.doc')">Print</a>
                                                 </div>
                                             </div>
+                                        </td>
+                                        <td>
+                                            <button class="pd-setting-ed" @click.prevent="printDiv('exportContent',prescription.id)">Print <i class="fa fa-print" aria-hidden="true"></i></button>
                                         </td>
                                     </tr>
                                     
@@ -105,6 +102,7 @@
             </div>
         </div>
 
+        <!-- prescription view -->
         <div class="row">
             <div class="col-lg-10 col-md-12 col-sm-10 col-xs-12">
                 <!-- <a class="Primary mg-b-10" href="#" >Primary</a> -->
@@ -246,6 +244,90 @@
                 </div>
             </div>
         </div>
+
+        <div class="hide-export-content" style="visibility:hidden; display:none">
+            <!-- prescription print/export start -->
+            <div style="margin: 0 auto;visibility:visible; display:block;"  id="exportContent">
+                
+                <div>
+                    <p>Header Section</p>
+                </div>
+                <!-- patient section -->
+                <div style="display: block;" v-if="patient">
+                    <h4 style="text-align: left; margin-bottom: -5px;" >Patient Details</h4>
+
+                    <div style="float: left; margin-left: 0px;">
+                        <ul style="margin-left: -40px;">
+                            <li style="list-style: none;"><label>Name:</label> <span>{{patient.name}}</span></li>
+                            <li style="list-style: none;"><label>Age:</label> <span>{{ patient.age }}</span></li>
+                        </ul>
+                    </div>
+
+                    <div style="float: left;">
+                        <ul >
+                            <li style="list-style: none;"><label>Address:</label> <span>{{ patient.address }}</span></li>
+                            <li style="list-style: none;"><label>Mobile:</label> <span>{{ patient.mobile }}</span></li>
+                        </ul>
+                    </div>
+                    <br>
+
+                </div>
+                <br> <br>
+                <!-- end patient section -->
+
+                <!-- medicine section -->
+                <div style="display: block; margin-top: 50px;"  v-if="selected_prescription.prescription_medicines && selected_prescription.prescription_medicines.length">
+                    <h4 style="margin-bottom: -5px;">Medicines</h4>
+                    
+                    <div style="float: left; width: 30%;">
+                        <p>{{ patient.on_exam }}</p>
+                    </div>
+
+                    <div style="float: left; width: 70%;">
+                        <ul v-for="(prescription_medicine,index) in selected_prescription.prescription_medicines" :key="index">
+                            <td></td>
+                            <li style="list-style: none;">
+                                <strong>1.</strong> 
+                                {{ prescription_medicine.medicine.name }}
+                                <small>({{ prescription_medicine.mg_ml }})</small>  
+                                
+                                <span>{{ ( prescription_medicine.qty * !!prescription_medicine.eating_time_breakfast ) }} +</span>
+                                <span>{{ ( prescription_medicine.qty * !!prescription_medicine.eating_time_lunch ) }} +</span>
+                                <span>{{ ( prescription_medicine.qty * !!prescription_medicine.eating_time_dinner ) }} </span>
+                                
+                                <small>
+                                    <span v-if="prescription_medicine.eating_term == 0">(Before meal)</span>
+                                    <span v-else-if="prescription_medicine.eating_term == 1">(After meal)</span>
+                                </small>  
+                                
+
+                                <span v-if="prescription_medicine.days"> {{ prescription_medicine.days }} </span>
+
+                                <span v-if="prescription_medicine.duration == 0"> day(s)</span>
+                                <span v-else-if="prescription_medicine.duration == 1"> month(s)</span>
+                                <span v-else> continue...</span>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- end medicine section -->
+
+                <!-- test section -->
+                <div v-if="selected_prescription.prescription_tests && selected_prescription.prescription_tests.length">
+                    <h4 style="margin-bottom: -5px;">Medical Tests</h4>
+                    <div style="float: left; overflow: hidden;">
+                        <ul style="margin-left: -40px;" v-for="(prescription_test,index) in selected_prescription.prescription_tests" :key="index">
+                            <li style="list-style: none;"><strong>1.</strong> {{ prescription_test.test.name }} <small>[ {{ prescription_test.description }} ]</small> </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- end test section -->
+
+            </div>
+            <!-- prescription print/export end -->
+        </div> 
 
     </div>
 </template>
@@ -418,6 +500,28 @@ export default {
             window.URL.revokeObjectURL(url);
 
         },
+        
+        printDiv(element,prescription_id) {
+
+            this.isLoading = true;
+            let that = this;
+            axios.get('/get-prescription/'+prescription_id)
+                .then(function (response) {
+                    that.selected_prescription = response.data.prescription;
+                    that.isLoading = false;
+                    setTimeout(function(){
+                        var html = $('#'+element).html();
+                        var printWin = window.open("","processPrint");
+                        printWin.document.open();
+                        printWin.document.write(html);
+                        printWin.document.close();
+                        printWin.print();
+                    },1000);
+
+                })
+
+        },
+        
         viewPrescription(prescription_id) {
 
             this.isLoading = true;
