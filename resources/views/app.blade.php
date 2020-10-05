@@ -34,7 +34,7 @@
     <!-- <link rel="stylesheet" href="{{ asset( 'assets/css') }}/morrisjs/morris.css">
 
     <link rel="stylesheet" href="{{ asset( 'assets/css') }}/scrollbar/jquery.mCustomScrollbar.min.css"> -->
-
+    <link rel="stylesheet" href="{{ asset( 'assets/css/summernote/summernote.css') }}">
     <link rel="stylesheet" href="{{ asset( 'assets/css/metisMenu/metisMenu.min.css') }}">
     <link rel="stylesheet" href="{{ asset( 'assets/css/metisMenu/metisMenu-vertical.css') }}">
     <link rel="stylesheet" href="{{ asset( 'assets/css/modals.css') }}">
@@ -434,6 +434,11 @@
     <!-- <script src="{{ asset( 'assets/js') }}/plugins.js"></script> -->
     <script src="{{ asset( 'assets/js/main.js') }}"></script>
     <!-- <script src="{{ asset( 'assets/js') }}/tawk-chat.js"></script> -->
+
+    <!-- summernote JS
+		============================================ -->
+    <script src="{{ asset( 'assets/js/summernote/summernote.min.js') }}"></script>
+    <script src="{{ asset( 'assets/js/summernote/summernote-active.js') }}"></script>
 </body>
 
 </html>

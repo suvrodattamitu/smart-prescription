@@ -38,7 +38,7 @@ $factory->define(MedicalTest::class, function (Faker $faker) {
     return [
         
         'name' => $faker->lastName,
-        'description' => $faker->paragraphs(1,true),
+        'description' => $faker->sentence,
     ];
 });
 

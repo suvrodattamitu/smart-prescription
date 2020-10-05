@@ -5,6 +5,7 @@ namespace App\Http\Controllers\SmartPrescription;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\Model\PrescriptionHeaderFooter;
 use Illuminate\Foundation\Validation\ValidationException;
 use Illuminate\Support\Facades\Hash;
 use Auth;
@@ -84,5 +85,26 @@ class SettingsController extends Controller
            
             $user->password = Hash::make($request->new_password);
             $user->save();
+    }
+
+    public function getHeaderFooter(){
+        $data = PrescriptionHeaderFooter::all()->first();
+        return response()->json([
+            'info' => $data
+        ]);
+    }
+
+
+    public function updateHeaderFooter(Request $request){
+        PrescriptionHeaderFooter::where('id',1)->update([
+            'header'          => $request->header,
+            'footer'          => $request->footer,
+        ]);
+
+        //return $request->all();
+
+        return response()->json([
+            'message'   => 'success',
+        ],200);
     }
 }

@@ -54,8 +54,11 @@ Route::delete('/delete-medicine/{id}', 'SmartPrescription\MedicineController@del
 Route::get('/get-profile', 'SmartPrescription\ProfileController@getProfile');
 Route::post('/update-profile', 'SmartPrescription\ProfileController@updateProfile');
 
-//settings
+//settings 
 Route::post('/change-password','SmartPrescription\SettingsController@changePassword');
+Route::get('/get-header-footer','SmartPrescription\SettingsController@getHeaderFooter');
+Route::post('/update-header-footer','SmartPrescription\SettingsController@updateHeaderFooter');
+
 
 //prescriptions 
 Route::get('/patient-details/{patient_id}','SmartPrescription\PrescriptionController@patientDetails');
