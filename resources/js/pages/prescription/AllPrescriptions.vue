@@ -516,7 +516,7 @@ export default {
                         printWin.document.write(html);
                         printWin.document.close();
                         printWin.print();
-                    },1000);
+                    },100);
 
                 })
 
