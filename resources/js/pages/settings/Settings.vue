@@ -50,9 +50,13 @@
                                                             <div class="form-group">
                                                                 <h4>Header</h4>
                                                                 <!-- <div id="summernote1" style="display: none;"> </div> -->
-                                                                <textarea class="form-control p-input" id="summernote1" v-model="header"  cols="30" rows="10"></textarea>
+                                                                <!-- <textarea class="form-control p-input" id="summernote1" v-model="header"  cols="30" rows="10"></textarea> -->
                                                                 <!-- <textarea  id="" v-model="header"  cols="30" rows="10"></textarea> -->
+                                                                <markdown-editor v-model="header"></markdown-editor>
                                                             </div>
+
+                                                            {{ header }}
+
                                                           
                                                             <div class="form-group">
                                                                 <h4>Footer</h4>

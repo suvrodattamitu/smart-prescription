@@ -43,6 +43,12 @@ const swalWithBootstrapButtons = Swal.mixin({
 })
 
 window.swalWithBootstrapButtons = swalWithBootstrapButtons;
+//markdown-editor
+import 'v-markdown-editor/dist/v-markdown-editor.css';
+import Editor from 'v-markdown-editor'
+// global register
+Vue.use(Editor);
+
 
 //pagination
 Vue.component('pagination', require('laravel-vue-pagination'));

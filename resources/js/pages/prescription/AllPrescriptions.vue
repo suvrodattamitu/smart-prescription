@@ -245,12 +245,16 @@
             </div>
         </div>
 
+        <div v-if="header_footer && header_footer.header">
+            <span v-html="header_footer.header"></span>
+        </div>
+        
         <div class="hide-export-content" style="visibility:hidden; display:none">
             <!-- prescription print/export start -->
             <div style="margin: 0 auto;visibility:visible; display:block;"  id="exportContent">
                 
                 <div>
-                    <p>Header Section</p>
+                    <span v-html="header_footer.header"></span>
                 </div>
                 <!-- patient section -->
                 <div style="display: block;" v-if="patient">
@@ -412,6 +416,7 @@ export default {
             showEditModal: false,
             prescription_id:'',
             selected_prescription_id: '',
+            header_footer:'',
             //loading
             isLoading: false,
             fullPage: true
@@ -508,6 +513,7 @@ export default {
             axios.get('/get-prescription/'+prescription_id)
                 .then(function (response) {
                     that.selected_prescription = response.data.prescription;
+                    that.header_footer = response.data.header_footer;
                     that.isLoading = false;
                     setTimeout(function(){
                         var html = $('#'+element).html();

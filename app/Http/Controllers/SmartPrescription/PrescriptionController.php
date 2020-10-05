@@ -10,15 +10,18 @@ use App\Model\PrescriptionMedicalTestDetail;
 use App\Model\PrescriptionMedicineDetail;
 use App\Model\Patient;
 use App\Model\Medicine;
+use App\Model\PrescriptionHeaderFooter;
 
 class PrescriptionController extends Controller
 {
     public function getPrescriptionByPrescriptionId($prescriptionId) {
         
         $prescription = Prescription::where('id',$prescriptionId)->with('patient','prescription_tests.test','prescription_medicines.medicine','prescription_medicines.medicine.type')->first();
+        $headerFooter = PrescriptionHeaderFooter::all()->first();
         return response()->json([
             'message'       => 'success',
-            'prescription'  => $prescription
+            'prescription'  => $prescription,
+            'header_footer' => $headerFooter
         ],200);
 
     }
