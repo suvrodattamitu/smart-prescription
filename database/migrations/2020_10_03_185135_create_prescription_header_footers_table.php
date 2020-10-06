@@ -15,8 +15,8 @@ class CreatePrescriptionHeaderFootersTable extends Migration
     {
         Schema::create('prescription_header_footers', function (Blueprint $table) {
             $table->id();
-            $table->binary('header')->nullable();
-            $table->binary('footer')->nullable();
+            $table->text('header')->nullable();
+            $table->text('footer')->nullable();
             $table->timestamps();
         });
     }

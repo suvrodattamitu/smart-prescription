@@ -1,42 +1,24 @@
 <template>
 <div>
-    <div class="breadcome-area">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="breadcome-list single-page-breadcome">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="breadcome-heading">
-                                    <form role="search" class="sr-input-func">
-                                        <input type="text" placeholder="Search..." class="search-int form-control">
-                                        <a href="#"><i class="fa fa-search"></i></a>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <ul class="breadcome-menu">
-                                    <li><a href="#">Home</a> <span class="bread-slash">/</span>
-                                    </li>
-                                    <li><span class="bread-blod">Edit Professor</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="single-pro-review-area mt-t-30 mg-b-15">
+
+    <!-- loading -->
+    <v-loading 
+        :active.sync="isLoading" 
+        :is-full-page="fullPage"
+        :background-color="'#ffff'"
+        :color="'#007bff'"
+    >
+    </v-loading>
+
+
+    <div class="single-pro-review-area mg-t-50 mg-b-15">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="product-payment-inner-st">
                         <ul id="myTabedu1" class="tab-review-design">
-                            <li class="active"><a href="#description">Edit header and footer of prescription</a></li>
+                            <li class="active"><a href="#description">Header/Footer of prescription</a></li>
                             <li><a href="#reviews"> Change Password</a></li>
-                            <li><a href="#INFORMATION">Edit Social Information</a></li>
                         </ul>
                         <div id="myTabContent" class="tab-content custom-product-edit">
                             <div class="product-tab-list tab-pane fade active in" id="description">
@@ -49,32 +31,16 @@
                                                         <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
                                                             <div class="form-group">
                                                                 <h4>Header</h4>
-                                                                <!-- <div id="summernote1" style="display: none;"> </div> -->
-                                                                <!-- <textarea class="form-control p-input" id="summernote1" v-model="header"  cols="30" rows="10"></textarea> -->
-                                                                <!-- <textarea  id="" v-model="header"  cols="30" rows="10"></textarea> -->
-                                                                <markdown-editor v-model="header"></markdown-editor>
+                                                                <textarea class="form-control p-input" id="summernote1" v-model="header"  cols="30" rows="10"></textarea>
                                                             </div>
-
-                                                            {{ header }}
-
-                                                          
                                                             <div class="form-group">
                                                                 <h4>Footer</h4>
                                                                 <textarea  id="summernote2" v-model="footer" cols="30" rows="10"></textarea>
-                                                                <!-- <textarea  id="" v-model="footer" cols="30" rows="10"></textarea> -->
                                                             </div>
-                                                                <a @click.prevent="saveHeaderFooter" type="submit" class="btn btn-primary waves-effect waves-light">Submit</a>
-                                                            
+                                                            <a @click.prevent="saveHeaderFooter" type="submit" class="btn btn-primary waves-effect waves-light">Submit</a>
                                                         </div>
                                                         
                                                     </div>
-                                                    <!-- <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <div class="payment-adress">
-                                                                <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
-                                                            </div>
-                                                        </div>
-                                                    </div> -->
                                                 </form>
                                             </div>
                                         </div>
@@ -109,44 +75,21 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="product-tab-list tab-pane fade" id="INFORMATION">
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="review-content-section">
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <div class="devit-card-custom">
-                                                        <div class="form-group">
-                                                            <input type="url" class="form-control" placeholder="Facebook URL" value="http://www.facebook.com">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <input type="url" class="form-control" placeholder="Twitter URL" value="http://www.twitter.com">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <input type="url" class="form-control" placeholder="Google Plus" value="http://www.google-plus.com">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <input type="url" class="form-control" placeholder="Linkedin URL" value="http://www.Linkedin.com">
-                                                        </div>
-                                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 </div>
 </template>
 
 <script>
+
+
 export default {
+   
     data(){
         return{
             current_password:'',
@@ -154,33 +97,44 @@ export default {
             confirm_password:'',
             errors:[],
             header:'',
-            footer:''
+            footer:'',
+
+            //loading
+            isLoading: false,
+            fullPage: true
+
         }
     },
+
     mounted() {
-
-        console.log('hi')
-
-        this.getHeaderFooter();
-        jQuery('#myTabedu1 a').on('click', function (e) {
-		  e.preventDefault()
-		  $(this).tab('show')
-        });
-
         
-        
+        let that = this;
+        that.isLoading = true;
+        setTimeout(function(){
+            that.getHeaderFooter();
+            jQuery('#myTabedu1 a').on('click', function (e) {
+                e.preventDefault()
+                $(this).tab('show')
+            });
+        },2000);
                 
     },
     methods:{
-
      
         getHeaderFooter(){
+
+            this.isLoading = true;
             let that= this
             axios.get('/get-header-footer')
             .then(function (response){
-               that.header = response.data.info.header;
-               that.footer = response.data.info.footer;
-               console.log(response.data)
+
+                jQuery('#summernote1').summernote('code', response.data.info.header);
+                jQuery('#summernote2').summernote('code', response.data.info.footer);
+
+                that.header = response.data.info.header;
+                that.footer = response.data.info.footer;
+                that.isLoading = false;
+
             })
         },
         saveHeaderFooter(){
@@ -199,9 +153,9 @@ export default {
             axios.post('/update-header-footer',data)
             .then(function (response){
                 Toast.fire({
-                        icon: 'success',
-                        title: 'Header and footer updated successfully!!!'
-                    })
+                    icon: 'success',
+                    title: 'Header and footer updated successfully!!!'
+                })
             })
         },
         changePassword(){

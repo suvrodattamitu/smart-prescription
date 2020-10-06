@@ -244,20 +244,19 @@
                 </div>
             </div>
         </div>
-
-        <div v-if="header_footer && header_footer.header">
-            <span v-html="header_footer.header"></span>
-        </div>
         
         <div class="hide-export-content" style="visibility:hidden; display:none">
             <!-- prescription print/export start -->
             <div style="margin: 0 auto;visibility:visible; display:block;"  id="exportContent">
                 
+                <!-- prescription header section -->
                 <div>
                     <span v-html="header_footer.header"></span>
                 </div>
+                <!-- end prescription header section -->
+
                 <!-- patient section -->
-                <div style="display: block;" v-if="patient">
+                <div style="display: block; margin-top: 50px;" v-if="patient">
                     <h4 style="text-align: left; margin-bottom: -5px;" >Patient Details</h4>
 
                     <div style="float: left; margin-left: 0px;">
@@ -276,7 +275,6 @@
                     <br>
 
                 </div>
-                <br> <br>
                 <!-- end patient section -->
 
                 <!-- medicine section -->
@@ -318,7 +316,7 @@
                 <!-- end medicine section -->
 
                 <!-- test section -->
-                <div v-if="selected_prescription.prescription_tests && selected_prescription.prescription_tests.length">
+                <div style="display: block; margin-top: 50px;" v-if="selected_prescription.prescription_tests && selected_prescription.prescription_tests.length">
                     <h4 style="margin-bottom: -5px;">Medical Tests</h4>
                     <div style="float: left; overflow: hidden;">
                         <ul style="margin-left: -40px;" v-for="(prescription_test,index) in selected_prescription.prescription_tests" :key="index">
@@ -326,8 +324,13 @@
                         </ul>
                     </div>
                 </div>
-                
                 <!-- end test section -->
+
+                <!-- prescription header section -->
+                <div style="display: block; margin-top: 50px;">
+                    <span v-html="header_footer.footer"></span>
+                </div>
+                <!-- end prescription header section -->
 
             </div>
             <!-- prescription print/export end -->

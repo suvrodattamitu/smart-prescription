@@ -1,8 +1,3 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
 
 require('./bootstrap');
 
@@ -43,12 +38,6 @@ const swalWithBootstrapButtons = Swal.mixin({
 })
 
 window.swalWithBootstrapButtons = swalWithBootstrapButtons;
-//markdown-editor
-import 'v-markdown-editor/dist/v-markdown-editor.css';
-import Editor from 'v-markdown-editor'
-// global register
-Vue.use(Editor);
-
 
 //pagination
 Vue.component('pagination', require('laravel-vue-pagination'));

@@ -418,6 +418,10 @@
     <script src="{{ asset( 'assets/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset( 'assets/js/metisMenu/metisMenu-active.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/jquery.tinymce.min.js" referrerpolicy="origin"></script>
+
     
     <!-- <script src="{{ asset( 'assets/js') }}/morrisjs/raphael-min.js"></script>
     <script src="{{ asset( 'assets/js') }}/morrisjs/morris.js"></script>
@@ -435,10 +439,7 @@
     <script src="{{ asset( 'assets/js/main.js') }}"></script>
     <!-- <script src="{{ asset( 'assets/js') }}/tawk-chat.js"></script> -->
 
-    <!-- summernote JS
-		============================================ -->
     <script src="{{ asset( 'assets/js/summernote/summernote.min.js') }}"></script>
-    <script src="{{ asset( 'assets/js/summernote/summernote-active.js') }}"></script>
 </body>
 
 </html>
