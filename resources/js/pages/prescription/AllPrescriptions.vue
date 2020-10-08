@@ -244,8 +244,8 @@
                 </div>
             </div>
         </div>
-        <!-- visibility:hidden; display:none -->
-        <div class="hide-export-content" style="">
+        
+        <div class="hide-export-content" style="visibility:hidden; display:none">
             <!-- prescription print/export start -->
             <div style="margin: 0 auto;visibility:visible; display:block;"  id="exportContent">
                 
@@ -258,6 +258,9 @@
                 <!-- end prescription header section -->
 
                 <!-- patient section -->
+                <div style="display: block; float: right;">
+                    <span>Date: {{ patient.updated_at | timeformat }}</span>
+                </div>
                 <div style="display: block; margin-top: 50px;" v-if="patient">
                     <h4 style="text-align: left; margin-bottom: -5px;" >Patient Details</h4>
 
@@ -270,7 +273,10 @@
 
                     <div style="float: left;">
                         <ul >
-                            <li style="list-style: none;"><label>Address:</label> <span>{{ patient.address }}</span></li>
+                            <li style="list-style: none;"><label>Sex:</label>
+                              <span v-if="patient.gender==0">Male</span>
+                              <span v-if="patient.gender==1">Female</span>
+                            </li>
                             <li style="list-style: none;"><label>Mobile:</label> <span>{{ patient.mobile }}</span></li>
                         </ul>
                     </div>
@@ -286,13 +292,13 @@
                     <div style="display:flex;flex-direction:row;" >
                         <div style="width: 30%;">
                             <div style="display:block;">
-                                <h4 style="margin-bottom: -5px;">On Exam</h4>
-                                <p>{{ patient.on_exam }}</p>
+                                <h4 style="margin-bottom: -5px;">C/C</h4>
+                                <p v-html="patient.c_c"></p>
                             </div>
 
                             <div style="display:block;">
-                                <h4 style="margin-bottom: -5px;">CC</h4>
-                                <p>{{ patient.c_c }}</p>
+                                <h4 style="margin-bottom: -5px;">O/E</h4>
+                                <p v-html="patient.on_exam"></p>
                             </div>
 
                         </div>
@@ -300,11 +306,11 @@
                         <div style="width:5%;"></div>
 
                         <div style="display:flex;flex-direction:column;width: 65%;">
-                            <p><strong>R</strong>x</p>
+                            <p><strong style="font-size:15px;">R</strong>x</p>
                             
                                 
                                 <span style="list-style: none; font-family: 'Roboto';font-size: 18px; margin-top:0;" v-for="(prescription_medicine,index) in selected_prescription.prescription_medicines" :key="index">
-                                    <span>{{ index+1 }}</span> 
+                                    <span>{{ index+1 }}. </span> 
                                     {{ prescription_medicine.medicine.name }}
                                     <small>({{ prescription_medicine.mg_ml }})</small>  
                                     
@@ -333,14 +339,14 @@
                 <!-- end medicine section -->
 
                 <!-- test section -->
-                <div style="width:100%; display: block; margin-top: 50px;" v-if="selected_prescription.prescription_tests && selected_prescription.prescription_tests.length">
+                <div style="width:100%; display: block; " v-if="selected_prescription.prescription_tests && selected_prescription.prescription_tests.length">
                     
-                    <br><br>
-                    <h4 style="margin-bottom: -5px;">Medical Tests</h4>
+                    <br>
+                    <h4 style="margin-bottom: -5px;">Investigation</h4>
                     <div style="float: left; overflow: hidden;">
                         <ul style="margin-left: -40px;" >
                             <li style="list-style: none;" v-for="(prescription_test,index) in selected_prescription.prescription_tests" :key="index">
-                                <strong>1.</strong> {{ prescription_test.test.name }} <small>[ {{ prescription_test.description }} ]</small> </li>
+                                <span>{{ index+1 }}. </span> {{ prescription_test.test.name }} <small>[ {{ prescription_test.description }} ]</small> </li>
                         </ul>
                     </div>
                 </div>

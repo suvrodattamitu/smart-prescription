@@ -102,19 +102,22 @@
 
                                                 <div class="form-group-inner">
                                                     <label>CC</label>
-                                                    <textarea class="form-control" name="" id="" cols="30" rows="5" v-model="c_c"></textarea>
+                                                    <!-- <textarea class="form-control" name="" id="" cols="30" rows="5" v-model="c_c"></textarea> -->
+                                                    <textarea class="form-control p-input" id="summernote6" v-model="c_c"  cols="30" rows="10"></textarea>
                                                     <p class="text-danger" v-if="errors.c_c">{{ errors.c_c[0] }}</p>
                                                 </div>
 
                                                 <div class="form-group-inner">
                                                     <label>On Exam</label>
-                                                    <textarea class="form-control" name="" id="" cols="30" rows="5" v-model="on_exam"></textarea>
+                                                    <!-- <textarea class="form-control" name="" id="" cols="30" rows="5" v-model="on_exam"></textarea> -->
+                                                    <textarea class="form-control p-input" id="summernote7" v-model="on_exam"  cols="30" rows="10"></textarea>
                                                     <p class="text-danger" v-if="errors.on_exam">{{ errors.on_exam[0] }}</p>
                                                 </div>
 
                                                 <div class="form-group-inner">
                                                     <label>Pa On Exam</label>
-                                                    <textarea class="form-control" name="" id="" cols="30" rows="5" v-model="p_a_exam"></textarea>
+                                                    <!-- <textarea class="form-control" name="" id="" cols="30" rows="5" v-model="p_a_exam"></textarea> -->
+                                                    <textarea class="form-control p-input" id="summernote8" v-model="p_a_exam"  cols="30" rows="10"></textarea>
                                                     <p class="text-danger" v-if="errors.p_a_exam">{{ errors.p_a_exam[0] }}</p>
                                                 </div>
 
@@ -176,6 +179,10 @@ export default {
             let that = this;
             axios.get('/patient/'+id)
                 .then(function (response) {
+
+                    jQuery('#summernote6').summernote('code', response.data.patient.c_c);
+                    jQuery('#summernote7').summernote('code', response.data.patient.on_exam);
+                    jQuery('#summernote8').summernote('code', response.data.patient.p_a_exam);
                     
                     that.name = response.data.patient.name;
                     that.regi_no = response.data.patient.regi_no;
@@ -211,9 +218,9 @@ export default {
                 'address': this.address,
                 'gender': this.gender,
                 'marital_status': this.marital_status,
-                'c_c': this.c_c,
-                'on_exam': this.on_exam,
-                'p_a_exam': this.p_a_exam,
+                'c_c': jQuery('#summernote6').val(),
+                'on_exam': jQuery('#summernote7').val(),
+                'p_a_exam': jQuery('#summernote8').val(),
                 'visiting_no': this.visiting_no,
             }
 
@@ -249,8 +256,10 @@ export default {
     },
 
     mounted() {
-
-        this.getPatient();
+        let that = this;
+        setTimeout(function(){
+            that.getPatient()
+        },2000);
 
     }
 }

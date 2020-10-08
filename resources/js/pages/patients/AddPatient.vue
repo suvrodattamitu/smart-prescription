@@ -102,19 +102,22 @@
 
                                                 <div class="form-group-inner">
                                                     <label>CC</label>
-                                                    <textarea class="form-control" name="" id="" cols="30" rows="5" v-model="c_c"></textarea>
+                                                    <!-- <textarea class="form-control" name="" id="" cols="30" rows="5" v-model="c_c"></textarea><br> -->
+                                                    <textarea class="form-control" id="summernote3" v-model="c_c"  cols="30" rows="15"></textarea>
                                                     <p class="text-danger" v-if="errors.c_c">{{ errors.c_c[0] }}</p>
                                                 </div>
 
                                                 <div class="form-group-inner">
                                                     <label>On Exam</label>
-                                                    <textarea class="form-control" name="" id="" cols="30" rows="5" v-model="on_exam"></textarea>
+                                                    <!-- <textarea class="form-control" name="" id="" cols="30" rows="5" v-model="on_exam"></textarea> -->
+                                                    <textarea class="form-control" id="summernote4" v-model="c_c"  cols="30" rows="15"></textarea>
                                                     <p class="text-danger" v-if="errors.on_exam">{{ errors.on_exam[0] }}</p>
                                                 </div>
 
                                                 <div class="form-group-inner">
                                                     <label>Pa On Exam</label>
-                                                    <textarea class="form-control" name="" id="" cols="30" rows="5" v-model="p_a_exam"></textarea>
+                                                    <!-- <textarea class="form-control" name="" id="" cols="30" rows="5" v-model="p_a_exam"></textarea> -->
+                                                    <textarea class="form-control" id="summernote5" v-model="c_c"  cols="30" rows="15"></textarea>
                                                     <p class="text-danger" v-if="errors.p_a_exam">{{ errors.p_a_exam[0] }}</p>
                                                 </div>
 
@@ -166,6 +169,14 @@ export default {
         }
     },
 
+    mounted(){
+        setTimeout(function(){
+            jQuery('#summernote3').summernote();
+            jQuery('#summernote4').summernote();
+            jQuery('#summernote5').summernote();
+        },2000);
+    },
+
     methods: {
 
         addPatient() {
@@ -180,9 +191,9 @@ export default {
                 'address': this.address,
                 'gender': this.gender,
                 'marital_status': this.marital_status,
-                'c_c': this.c_c,
-                'on_exam': this.on_exam,
-                'p_a_exam': this.p_a_exam,
+                'c_c': jQuery('#summernote3').val(),
+                'on_exam': jQuery('#summernote4').val(),
+                'p_a_exam': jQuery('#summernote5').val(),
                 'visiting_no': this.visiting_no,
             }
             
@@ -195,7 +206,7 @@ export default {
                 .then(function (response) {
                     //loading
                     that.isLoading = false
-
+                    console.log(response.data)
                     that.$router.push('/all-patients');
                     Toast.fire({
                         icon: 'success',

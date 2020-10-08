@@ -91,17 +91,17 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mg-t-30">
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                      <label for="">CC : </label>
-                                     <span>{{ patient.c_c }}</span>
+                                     <span v-html="patient.c_c"></span>
                                 </div>
 
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                      <label for="">On Exam : </label>
-                                     <span>{{ patient.on_exam }}</span>
+                                     <span v-html="patient.on_exam"></span>
                                 </div>
 
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                      <label for="">P_A_Exam : </label>
-                                     <span>{{ patient.p_a_exam }}</span>
+                                     <span v-html="patient.p_a_exam"></span>
                                 </div>
 
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">

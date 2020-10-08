@@ -97,7 +97,7 @@
             <p>
               <b>C_C</b>
               <br />
-              {{ patient_details.c_c }}
+              <span v-html="patient_details.c_c"></span>
             </p>
           </div>
         </div>
@@ -106,7 +106,7 @@
             <p>
               <b>On Exam</b>
               <br />
-              {{ patient_details.on_exam}}
+              <span v-html="patient_details.on_exam"></span>
             </p>
           </div>
         </div>
@@ -115,7 +115,7 @@
             <p>
               <b>P_A_EXAM</b>
               <br />
-              {{ patient_details.p_a_exam}}
+              <span v-html="patient_details.p_a_exam"></span>
             </p>
           </div>
         </div>
