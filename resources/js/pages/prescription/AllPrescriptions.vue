@@ -247,120 +247,90 @@
         
         <div class="hide-export-content" style="visibility:hidden; display:none">
             <!-- prescription print/export start -->
-            <div style="margin: 0 auto;visibility:visible; display:block;"  id="exportContent">
+            <div style="margin:0 auto; min-width: 50%; min-height: 500px; overflow: hidden;" id="exportContent">
+	<div style="display: block; padding: 20px; overflow: hidden; margin-bottom: 5px;">
+		<p v-html="header_footer.header"></p>
+	</div>
+
+	<div style="display: block; padding: 20px; overflow: hidden; border: 1px solid #000; margin-bottom: 5px;">
+		<h4 style="margin: 0; padding: 0;">Patient Details</h4>
+		<div style="float: left; width: 50%; line-height: 8px;">
+			<p>Name : {{ patient.name }}</p>
+			<p>Age  : {{ patient.age }}</p>
+		</div>
+		<div style="float: right; width: 50%; line-height: 8px;">
+			<p>Sex : 
+                <span v-if="patient.gender == 0">Male</span>
+                <span v-if="patient.gender == 1">Female</span>
+            </p>
+			<p>Mobile: {{ patient.mobile }}</p>
+		</div>
+	</div>
+
+    <div style="border: 1px solid black; min-height: 300px;">
+    		<div style="width: 100%; display: block; padding: 20px; min-height: 30%; overflow: hidden;">
+		<!-- CC and On Exam section  -->
+		<div style="width: 30%; float: left;">
+			<div style="display: block; margin-bottom: 15px;">
+				<h4 style="margin: 0; padding: 0;">CC</h4>
+				<p style="margin: 0; padding: 0;" v-html="patient.c_c"></p>
+			</div>
+			<div style="display: block;">
+				<h4 style="margin: 0; padding: 0;">O/E</h4>
+				<p style="margin: 0; padding: 0;" v-html="patient.on_exam"></p>
+			</div>
+		</div>
+		<!-- end CC and On Exam section  -->
+		<!-- Medicine section -->
+		<div style="width: 65%; float: right; margin-left: 10px;">
+			<h4 style="margin: 0; padding: 0;">Rx</h4>
+			<p style="list-style: none; font-family: 'Roboto';font-size: 18px; margin-top:0; width:99%; padding:0;" v-for="(prescription_medicine,index) in selected_prescription.prescription_medicines" :key="index">
+                <span>{{ index+1 }}. </span> 
+                {{ prescription_medicine.medicine.name }}
+                <small>({{ prescription_medicine.mg_ml }})</small>  
                 
-                <!-- prescription header section -->
-                <div>
-                    <span v-html="header_footer.header"></span>
-                    <br>
-                    <hr>
-                </div>
-                <!-- end prescription header section -->
+                <span>{{ ( prescription_medicine.qty * !!prescription_medicine.eating_time_breakfast ) }} +</span>
+                <span>{{ ( prescription_medicine.qty * !!prescription_medicine.eating_time_lunch ) }} +</span>
+                <span>{{ ( prescription_medicine.qty * !!prescription_medicine.eating_time_dinner ) }} </span>
+                
+                <small>
+                    <span v-if="prescription_medicine.eating_term == 0">(Before meal)</span>
+                    <span v-else-if="prescription_medicine.eating_term == 1">(After meal)</span>
+                </small>  
+                
 
-                <!-- patient section -->
-                <div style="display: block; float: right;">
-                    <span>Date: {{ patient.updated_at | timeformat }}</span>
-                </div>
-                <div style="display: block; margin-top: 50px;" v-if="patient">
-                    <h4 style="text-align: left; margin-bottom: -5px;" >Patient Details</h4>
+                <span v-if="prescription_medicine.days"> {{ prescription_medicine.days }} </span>
 
-                    <div style="float: left; margin-left: 0px;">
-                        <ul style="margin-left: -40px;">
-                            <li style="list-style: none;"><label>Name:</label> <span>{{patient.name}}</span></li>
-                            <li style="list-style: none;"><label>Age:</label> <span>{{ patient.age }}</span></li>
-                        </ul>
-                    </div>
+                <span v-if="prescription_medicine.duration == 0"> day(s)</span>
+                <span v-else-if="prescription_medicine.duration == 1"> month(s)</span>
+                <span v-else> continue...</span>
 
-                    <div style="float: left;">
-                        <ul >
-                            <li style="list-style: none;"><label>Sex:</label>
-                              <span v-if="patient.gender==0">Male</span>
-                              <span v-if="patient.gender==1">Female</span>
-                            </li>
-                            <li style="list-style: none;"><label>Mobile:</label> <span>{{ patient.mobile }}</span></li>
-                        </ul>
-                    </div>
-                    <br>
-
-                </div>
-                <!-- end patient section -->
-
-                <!-- medicine section -->
-                <div style="display: block; margin-top: 50px;width:100%"  v-if="selected_prescription.prescription_medicines && selected_prescription.prescription_medicines.length">
-                    <br>
-                    
-                    <div style="display:flex;flex-direction:row;" >
-                        <div style="width: 30%;">
-                            <div style="display:block;">
-                                <h4 style="margin-bottom: -5px;">C/C</h4>
-                                <p v-html="patient.c_c"></p>
-                            </div>
-
-                            <div style="display:block;">
-                                <h4 style="margin-bottom: -5px;">O/E</h4>
-                                <p v-html="patient.on_exam"></p>
-                            </div>
-
-                        </div>
-
-                        <div style="width:5%;"></div>
-
-                        <div style="display:flex;flex-direction:column;width: 65%;">
-                            <p><strong style="font-size:15px;">R</strong>x</p>
-                            
-                                
-                                <span style="list-style: none; font-family: 'Roboto';font-size: 18px; margin-top:0;" v-for="(prescription_medicine,index) in selected_prescription.prescription_medicines" :key="index">
-                                    <span>{{ index+1 }}. </span> 
-                                    {{ prescription_medicine.medicine.name }}
-                                    <small>({{ prescription_medicine.mg_ml }})</small>  
-                                    
-                                    <span>{{ ( prescription_medicine.qty * !!prescription_medicine.eating_time_breakfast ) }} +</span>
-                                    <span>{{ ( prescription_medicine.qty * !!prescription_medicine.eating_time_lunch ) }} +</span>
-                                    <span>{{ ( prescription_medicine.qty * !!prescription_medicine.eating_time_dinner ) }} </span>
-                                    
-                                    <small>
-                                        <span v-if="prescription_medicine.eating_term == 0">(Before meal)</span>
-                                        <span v-else-if="prescription_medicine.eating_term == 1">(After meal)</span>
-                                    </small>  
-                                    
-
-                                    <span v-if="prescription_medicine.days"> {{ prescription_medicine.days }} </span>
-
-                                    <span v-if="prescription_medicine.duration == 0"> day(s)</span>
-                                    <span v-else-if="prescription_medicine.duration == 1"> month(s)</span>
-                                    <span v-else> continue...</span>
-
-                                </span>
-                    
-                        </div>
-                    </div>
-
-                </div>
-                <!-- end medicine section -->
-
-                <!-- test section -->
-                <div style="width:100%; display: block; " v-if="selected_prescription.prescription_tests && selected_prescription.prescription_tests.length">
-                    
-                    <br>
-                    <h4 style="margin-bottom: -5px;">Investigation</h4>
-                    <div style="float: left; overflow: hidden;">
-                        <ul style="margin-left: -40px;" >
-                            <li style="list-style: none;" v-for="(prescription_test,index) in selected_prescription.prescription_tests" :key="index">
-                                <span>{{ index+1 }}. </span> {{ prescription_test.test.name }} <small>[ {{ prescription_test.description }} ]</small> </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- end test section -->
-
-                <!-- prescription footer section -->
-                <div style="display: block; margin-top: 50px;">
-                    <br>
-                    <hr>
-                    <span v-html="header_footer.footer"></span>
-                </div>
-                <!-- end prescription footer section -->
-
-            </div>
+            </p>
+			
+		</div>
+		<!-- end Medicine section -->
+	</div>
+    
+    <!-- medical tests -->
+	<div style="width: 100%; display: block; padding: 20px; overflow: hidden; margin-top:-34px;">
+		<h4 style="margin: 0; padding: 0;">Investigations</h4>
+		<span style="display: block;" v-for="(prescription_test,index) in selected_prescription.prescription_tests" :key="index">
+            <span>{{ index+1 }}. </span> {{ prescription_test.test.name }} 
+            <small>[ {{ prescription_test.description }} ]</small>
+        </span>
+	
+	</div>
+	<!-- end medical tests -->
+   
+	 <!-- footer -->
+	<div style="width: 100%; display: block; padding: 20px; overflow: hidden;">
+        <span>--------------------------------------------------------------------------------------------------------</span>
+		<div style="display: block; border: 1px dot grey; float: center; width:80%;"></div>
+        <p v-html="header_footer.footer"></p>
+	</div>
+	<!-- end footer -->
+    </div>
+</div>
             <!-- prescription print/export end -->
         </div> 
 
