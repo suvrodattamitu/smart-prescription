@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/logo/logosn.png') }}">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
    
@@ -268,12 +268,12 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="nav-item">
+                                            <li class="nav-item" style="margin-right:50px!important">
                                                 <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
                                                 <span class="admin-name">{{Auth::user()->name}}</span>
                                                 <i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
                                                 </a>
-                                                <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
+                                                <ul style="width:20px!important" role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
                                                     <li>
                                                     <router-link to="/profile"><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</router-link>
                                                     </li>

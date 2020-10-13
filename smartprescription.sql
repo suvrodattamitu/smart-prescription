@@ -7,6 +7,7 @@ SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
 SET NAMES utf8mb4;
 
+
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -22,7 +23,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1,	'admin',	'admin@admin.com',	'2020-09-27 03:47:51',	'$2y$10$MdnSm//i6/0U1x.DjJPaPeiV1nyVhMZAwuFyILn2cw/j31f29Zg6e',	'nUZMbVUe2T',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51');
+(1,	'admin',	'admin@admin.com',	'2020-10-10 23:55:43',	'$2y$10$MdnSm//i6/0U1x.DjJPaPeiV1nyVhMZAwuFyILn2cw/j31f29Zg6e',	'yPAPEmKtY9',	'2020-10-10 23:55:43',	'2020-10-10 23:55:43');
 
 DROP TABLE IF EXISTS `user_details`;
 CREATE TABLE `user_details` (
@@ -43,6 +44,7 @@ CREATE TABLE `user_details` (
   CONSTRAINT `user_details_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+
 DROP TABLE IF EXISTS `companies`;
 CREATE TABLE `companies` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -54,16 +56,16 @@ CREATE TABLE `companies` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `companies` (`id`, `name`, `description`, `created_at`, `updated_at`) VALUES
-(1,	'Alice Glover',	'Et nihil non consequatur odit harum. Neque qui porro sed veritatis tempore. Recusandae qui facere magni.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(2,	'Winnifred Hirthe',	'Quo placeat soluta quis sed. Magnam dolorum eius et ullam deserunt. Et praesentium esse voluptas et quasi id.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(3,	'Prudence Spencer',	'In rerum quaerat nam iure numquam sapiente perspiciatis. Non laborum voluptatem distinctio animi consequatur. Laudantium est est aut sit sed nostrum facere.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(4,	'Ms. Nia Shanahan',	'Velit blanditiis magni ducimus dolorem. Corrupti voluptatem non minus veniam hic voluptatem. Quas aperiam nostrum laborum aperiam nulla. Voluptatem tempore nulla voluptates similique quia quisquam.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(5,	'Kaley Walker III',	'Dolores labore vitae quis numquam. Illum id accusantium dicta perspiciatis. Repellendus reiciendis exercitationem sapiente earum illum excepturi omnis. Suscipit quia nesciunt similique quia mollitia.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(6,	'Aliyah White',	'Corporis vel consequuntur deleniti similique voluptate nobis sint est. Sit molestiae culpa nulla sed aut et. Exercitationem officiis omnis sunt quo. Ea aut officia odit voluptas dolores qui.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(7,	'Miss Shakira Stoltenberg V',	'Quibusdam consequatur optio doloremque quibusdam. Quis expedita at eveniet ut in possimus. Quos non laboriosam nobis aperiam dolor ipsa sed.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(8,	'Bettie Paucek',	'Et rerum temporibus ipsam nemo rerum maiores. Natus eveniet ex architecto laborum amet ab perspiciatis. Ab totam perferendis nobis vitae.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(9,	'Miss Kariane Runte III',	'Modi consequuntur enim consequatur aut ex quibusdam. Nesciunt fugiat est omnis et enim. Accusamus perferendis dicta et exercitationem officia rerum commodi. Quos ea voluptate harum aspernatur et excepturi consectetur.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(10,	'Prof. Darius Schaefer',	'Qui rerum accusamus odio nihil ut et voluptas. Rem eos velit minus odio sunt quas repellendus nostrum. Ut saepe saepe porro assumenda minus nemo aperiam. Quaerat facere recusandae dolore quia.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51');
+(1,	'Lindgren PLC',	'Optio nesciunt aut suscipit facere quidem reprehenderit veniam. Quo aut qui quia esse expedita qui vero. Est et ea deserunt minus. Esse id ad et culpa.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(2,	'Hahn-Balistreri',	'Et eos tenetur aperiam vero accusantium consequatur sit. Debitis et tempore quis nemo sed et. Ad voluptas vero accusantium aut nulla labore. Consequuntur dolore placeat consequatur ea aut voluptas eaque. Mollitia aut laboriosam consequatur facilis ipsum culpa necessitatibus aut.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(3,	'Bahringer, Rice and O\'Connell',	'Atque et incidunt velit autem quae sit. Quia et blanditiis quo voluptatibus. Doloremque excepturi animi est et perferendis.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(4,	'Lueilwitz, Wintheiser and Stroman',	'Nihil et et totam quia. Molestias fuga aut consectetur nostrum sed distinctio. Eaque aspernatur consequatur numquam a deserunt. Eos nihil excepturi nemo architecto rerum. Rerum et optio quisquam quibusdam recusandae dolor eaque.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(5,	'Schinner, Hand and DuBuque',	'Consequatur sint commodi quae autem at in at. Cupiditate consectetur ipsum nobis. Et doloribus labore ad sint praesentium non delectus.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(6,	'Hermiston-Osinski',	'Assumenda alias exercitationem distinctio dicta tenetur aut quod. Quia consectetur et rem ipsa. Sapiente repellendus nesciunt suscipit sit dolorem deleniti. Ut explicabo in eius vero debitis.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(7,	'Friesen PLC',	'Rerum aut deserunt nesciunt cupiditate deleniti nobis debitis aut. Qui delectus molestias quae recusandae quo. Ipsa dolores assumenda enim voluptatum.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(8,	'Friesen-Bashirian',	'Unde repellendus sapiente reiciendis minima. Omnis et assumenda placeat quo. Illum et debitis aliquid omnis quisquam cum nemo soluta. Ducimus sunt quaerat accusamus.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(9,	'Harris, Jacobi and Kub',	'Illum assumenda quidem laborum explicabo pariatur illo non. Id quo non sed ad est non porro. Voluptatibus recusandae illum voluptatibus dolores maxime nesciunt.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(10,	'Upton and Sons',	'Est explicabo aliquam error dolorem id est. Voluptas suscipit est hic totam autem quos ducimus. Itaque consequuntur iusto placeat dolorem magni laboriosam dolores.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44');
 
 DROP TABLE IF EXISTS `failed_jobs`;
 CREATE TABLE `failed_jobs` (
@@ -88,16 +90,37 @@ CREATE TABLE `medical_tests` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `medical_tests` (`id`, `name`, `description`, `created_at`, `updated_at`) VALUES
-(1,	'Bethel Hessel IV',	'Eum ut autem ullam aut. Veniam blanditiis sunt dolores occaecati nihil. Et possimus et natus quisquam est sed. Libero sint illo minus sit libero et.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(2,	'Kenny Kozey',	'Maiores magnam aliquam odit consequatur. Earum ut sit inventore ut temporibus. Ut amet eaque et provident. Et labore dolorem amet. Non sint quae et.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(3,	'Christina Ward',	'Cupiditate eligendi aut voluptas illum excepturi similique optio. Nemo sequi harum est. Non et sed ut consequatur debitis.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(4,	'Dr. Etha Dietrich',	'Soluta neque inventore laborum officia aspernatur sunt. Molestiae consectetur ea sequi beatae impedit officia. Quibusdam ducimus eos molestiae magnam culpa voluptatem. Non assumenda maiores consequatur quidem consequatur.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(5,	'Jaylon Hegmann',	'Nihil perferendis ratione sapiente. Quia quis a dolor repudiandae. Mollitia ratione maiores et. Eaque ut fugit soluta vero explicabo quae nulla.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(6,	'Marc Wiegand',	'Officiis delectus qui dolore rerum id. Suscipit voluptas rerum fugiat quam. Iure dolor dolor sed omnis error.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(7,	'Mrs. Jennifer Ziemann',	'Ut ad provident ex blanditiis expedita aliquid. Et aliquid fugiat eos explicabo esse provident.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(8,	'Wendy Reilly Jr.',	'Eos incidunt porro maiores necessitatibus quibusdam et. Et aspernatur repellendus ex architecto aut aut inventore. Consequatur sed dolorem rem accusamus. Exercitationem id mollitia tenetur suscipit et placeat exercitationem.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(9,	'Nellie Kuhlman',	'Perspiciatis nobis numquam fuga corporis illo impedit fugit. Aspernatur ut fuga et rerum. Sit quo qui molestiae commodi.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(10,	'Bradley Price IV',	'Nemo consequatur adipisci alias quia consequatur. Ad harum molestiae quaerat eaque eos aut. Earum dicta quis illum natus quae dicta dicta qui. Eos autem quod fugiat molestiae quae nulla quia.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51');
+(1,	'Brakus',	'Fuga placeat et et et omnis iusto quidem cum.',	'2020-10-10 23:55:43',	'2020-10-10 23:55:43'),
+(2,	'Emmerich',	'Qui iste modi consectetur totam quia.',	'2020-10-10 23:55:43',	'2020-10-10 23:55:43'),
+(3,	'Schuster',	'Laborum et eos velit recusandae animi accusamus.',	'2020-10-10 23:55:43',	'2020-10-10 23:55:43'),
+(4,	'Price',	'Voluptas ut dolores non aut consequatur consequatur.',	'2020-10-10 23:55:43',	'2020-10-10 23:55:43'),
+(5,	'Hahn',	'Non est corrupti officia consequatur blanditiis.',	'2020-10-10 23:55:43',	'2020-10-10 23:55:43'),
+(6,	'Parisian',	'Ut omnis sed nam laboriosam iure.',	'2020-10-10 23:55:43',	'2020-10-10 23:55:43'),
+(7,	'Botsford',	'Iste non et nesciunt.',	'2020-10-10 23:55:43',	'2020-10-10 23:55:43'),
+(8,	'Gutkowski',	'Aliquid dolor aut tempora.',	'2020-10-10 23:55:43',	'2020-10-10 23:55:43'),
+(9,	'Ruecker',	'Fuga mollitia perspiciatis ipsa fugit in et quia.',	'2020-10-10 23:55:43',	'2020-10-10 23:55:43'),
+(10,	'Wintheiser',	'Voluptatum quisquam fugiat illo corporis.',	'2020-10-10 23:55:43',	'2020-10-10 23:55:43');
+
+DROP TABLE IF EXISTS `medicine_types`;
+CREATE TABLE `medicine_types` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `medicine_types` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1,	'King',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(2,	'Durgan',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(3,	'Harber',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(4,	'Stracke',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(5,	'Kuvalis',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(6,	'Legros',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(7,	'Lang',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(8,	'Dickens',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(9,	'Schiller',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(10,	'O\'Kon',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44');
 
 DROP TABLE IF EXISTS `medicine_groups`;
 CREATE TABLE `medicine_groups` (
@@ -110,37 +133,17 @@ CREATE TABLE `medicine_groups` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `medicine_groups` (`id`, `name`, `description`, `created_at`, `updated_at`) VALUES
-(1,	'Adonis Romaguera MD',	'Saepe perferendis ut qui. Nobis sunt similique ea. Placeat similique commodi illo aliquid dolorum. Voluptates iste voluptatum porro maxime est cum.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(2,	'Ms. Oceane Veum I',	'Aperiam corrupti unde soluta illum pariatur officia voluptatem. Quo iste aut minus saepe eius ut. Qui et neque animi sapiente. Nam alias temporibus quos aperiam eos. Excepturi rerum necessitatibus sit corrupti.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(3,	'Annie Collins',	'Quia facilis voluptatem dignissimos quidem voluptatibus tempora. Ut illum excepturi aut quis tenetur. Est est eos delectus consectetur.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(4,	'Dr. Agnes Mayert',	'Iure vel quam voluptas provident rerum sit id. Non cumque maxime excepturi sapiente magnam debitis. Ut placeat qui et asperiores id nisi.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(5,	'Nia Paucek',	'Aspernatur natus accusamus omnis voluptate quae. Et veritatis sit fugiat quos animi. Sequi qui deserunt voluptatibus.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(6,	'Urban O\'Conner',	'Veniam enim cumque veritatis. Expedita blanditiis soluta illo. Provident architecto aut non sunt sit perferendis. Quas facilis ipsum sit magni cum.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(7,	'Mr. Colten Romaguera',	'Sint delectus eaque et quaerat est perspiciatis voluptas. Iusto voluptatem itaque consequuntur rerum at molestias. Deleniti et et dolores tempora quo autem. Quis adipisci praesentium deleniti itaque et ut enim.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(8,	'Lucie Hettinger',	'Praesentium ex quae laborum fugit repellendus labore ex. Totam libero dolor optio ut quae libero. Et vel ab delectus illo et facere consequatur magni. Aut beatae omnis quis optio cum eveniet.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(9,	'Kacey McLaughlin',	'Sequi non quae aspernatur incidunt doloribus. Ipsum consequatur et sit numquam. Temporibus quasi iste perferendis id qui non quo.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(10,	'Mr. Gerhard Pfannerstill',	'Aspernatur id eos minus. Accusantium vel quis doloribus maiores repellat rerum. Natus reprehenderit est eaque suscipit porro eum ea. Sed non vel aliquam est ea et.',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51');
+(1,	'Hermiston',	'Nam inventore commodi unde minima labore. Facere a maxime neque voluptas ut consequatur et. Tempore quibusdam fugiat impedit sequi ratione.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(2,	'Oberbrunner',	'Natus nemo beatae sequi explicabo voluptatem aut. At quis similique ipsum a dolorum enim. Architecto fugiat sit et odio mollitia. Deserunt necessitatibus unde fuga libero explicabo consequatur.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(3,	'Reynolds',	'Debitis blanditiis velit earum quis aspernatur voluptates. Libero ratione eos quaerat nulla. Ipsum natus maiores aut in.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(4,	'Ondricka',	'Culpa tempora eos voluptatum. Reiciendis neque eos nemo. Maxime voluptatem enim sequi totam.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(5,	'Wuckert',	'Sit sapiente dolorum explicabo excepturi sapiente in quia. Rerum totam doloribus itaque nesciunt iste enim veritatis. Nihil beatae possimus voluptas. Labore velit ipsam laboriosam sed.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(6,	'Leannon',	'Et veniam eaque dolorum tempore id ex enim. Error commodi at recusandae nam ut modi. Est recusandae laboriosam necessitatibus sint error.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(7,	'Harber',	'Soluta veniam velit iure omnis. Est eveniet repudiandae non neque labore voluptas. In expedita itaque non. Porro sequi voluptate corporis debitis illum veniam voluptatem.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(8,	'Feil',	'Architecto quo possimus pariatur a aspernatur expedita. Facere sequi ad illum repellendus necessitatibus tenetur ut exercitationem. Hic qui accusantium fugit impedit voluptatem omnis.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(9,	'Carroll',	'Reprehenderit voluptatem deserunt omnis qui nisi voluptas officiis. Totam qui ipsam tempora qui. Cupiditate quos consequuntur magnam. Laudantium a iure molestiae modi.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(10,	'Cole',	'Dolorem aut nihil ut id voluptatem officia explicabo et. Sunt labore vel velit asperiores eaque et quia. Qui rerum maxime qui illo quas et nam suscipit.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44');
 
-DROP TABLE IF EXISTS `medicine_types`;
-CREATE TABLE `medicine_types` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-INSERT INTO `medicine_types` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1,	'Gilda Hintz',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(2,	'Mr. Joe Blick',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(3,	'Keven Sawayn MD',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(4,	'Prof. Darrin Beer',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(5,	'Leonora Parker I',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(6,	'Eldon Bosco',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(7,	'Cleo Walsh',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(8,	'Ruthie Gleichner',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(9,	'Ettie Skiles V',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(10,	'Renee Kohler I',	'2020-09-27 03:47:51',	'2020-09-27 03:47:51');
 
 DROP TABLE IF EXISTS `medicines`;
 CREATE TABLE `medicines` (
@@ -162,16 +165,18 @@ CREATE TABLE `medicines` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `medicines` (`id`, `name`, `group_id`, `type_id`, `company_id`, `description`, `created_at`, `updated_at`) VALUES
-(1,	'Amiya Bahringer',	7,	1,	5,	'Odit iure eius quia veniam architecto laborum.',	'2020-09-27 03:47:52',	'2020-09-27 03:47:52'),
-(2,	'Ms. Dana Watsica DDS',	4,	7,	5,	'Quisquam neque sit repudiandae consequatur odio nostrum.',	'2020-09-27 03:47:52',	'2020-09-27 03:47:52'),
-(3,	'Fern Block',	9,	4,	5,	'Optio sapiente voluptas vero ducimus laudantium minus porro nemo.',	'2020-09-27 03:47:52',	'2020-09-27 03:47:52'),
-(4,	'Kelly Waelchi Jr.',	10,	9,	6,	'Aut quo asperiores quisquam culpa sit dignissimos ut.',	'2020-09-27 03:47:52',	'2020-09-27 03:47:52'),
-(5,	'Santiago O\'Hara',	2,	3,	8,	'Fugit voluptate sunt nihil iure qui magnam.',	'2020-09-27 03:47:52',	'2020-09-27 03:47:52'),
-(6,	'Prof. Elinore Conroy I',	3,	4,	1,	'Est quia aliquam cum illo.',	'2020-09-27 03:47:52',	'2020-09-27 03:47:52'),
-(7,	'Mrs. Molly Paucek III',	3,	3,	2,	'Assumenda omnis modi est voluptatibus nemo eligendi.',	'2020-09-27 03:47:52',	'2020-09-27 03:47:52'),
-(8,	'Mr. Edd Eichmann DDS',	9,	3,	3,	'Quo quo quisquam quidem possimus.',	'2020-09-27 03:47:52',	'2020-09-27 03:47:52'),
-(9,	'Geovanny Schmidt MD',	7,	6,	4,	'Repellat consequuntur ea sed eveniet.',	'2020-09-27 03:47:52',	'2020-09-27 03:47:52'),
-(10,	'Anthony Eichmann',	5,	6,	4,	'Rem ut esse nobis sapiente.',	'2020-09-27 03:47:52',	'2020-09-27 03:47:52');
+(1,	'O\'Conner',	1,	9,	2,	'Quia quod vel sint rerum.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(2,	'Gusikowski',	8,	3,	8,	'Tempore sunt quis facilis voluptatem.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(3,	'Daugherty',	9,	3,	9,	'Quibusdam a dicta at consequatur.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(4,	'Kirlin',	3,	1,	5,	'Debitis ab sed a architecto et distinctio.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(5,	'Durgan',	3,	8,	9,	'Rerum dolore corporis sed aut dolores.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(6,	'Dietrich',	2,	9,	3,	'Dolor velit delectus nihil magni.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(7,	'Medhurst',	1,	9,	9,	'Magnam quam ipsum quae iure.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(8,	'Raynor',	3,	1,	9,	'Ut voluptatem sint officiis aut iure et.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(9,	'Heidenreich',	9,	6,	2,	'Distinctio veritatis exercitationem itaque hic iste dolor sequi.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44'),
+(10,	'Turcotte',	4,	4,	2,	'Laudantium labore iste sint aliquid.',	'2020-10-10 23:55:44',	'2020-10-10 23:55:44');
+
+
 
 
 DROP TABLE IF EXISTS `migrations`;
@@ -183,19 +188,20 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1,	'2014_10_12_000000_create_users_table',	1),
-(2,	'2014_10_12_100000_create_password_resets_table',	1),
-(3,	'2019_08_19_000000_create_failed_jobs_table',	1),
-(4,	'2020_09_13_155419_create_medicine_groups_table',	1),
-(5,	'2020_09_13_161910_create_medical_tests_table',	1),
-(6,	'2020_09_14_141533_create_medicine_types_table',	1),
-(7,	'2020_09_14_152220_create_companies_table',	1),
-(8,	'2020_09_14_162017_create_medicines_table',	1),
-(9,	'2020_09_14_162104_create_patients_table',	1),
-(10,	'2020_09_16_150953_create_user_details_table',	1),
-(11,	'2020_09_17_172419_create_prescriptions_table',	1),
-(12,	'2020_09_19_030007_create_prescription_medicine_details_table',	1),
-(13,	'2020_09_19_031038_create_prescription_medical_test_details_table',	1);
+(29,	'2014_10_12_000000_create_users_table',	1),
+(30,	'2014_10_12_100000_create_password_resets_table',	1),
+(31,	'2019_08_19_000000_create_failed_jobs_table',	1),
+(32,	'2020_09_13_155419_create_medicine_groups_table',	1),
+(33,	'2020_09_13_161910_create_medical_tests_table',	1),
+(34,	'2020_09_14_141533_create_medicine_types_table',	1),
+(35,	'2020_09_14_152220_create_companies_table',	1),
+(36,	'2020_09_14_162017_create_medicines_table',	1),
+(37,	'2020_09_14_162104_create_patients_table',	1),
+(38,	'2020_09_16_150953_create_user_details_table',	1),
+(39,	'2020_09_17_172419_create_prescriptions_table',	1),
+(40,	'2020_09_19_030007_create_prescription_medicine_details_table',	1),
+(41,	'2020_09_19_031038_create_prescription_medical_test_details_table',	1),
+(42,	'2020_10_03_185135_create_prescription_header_footers_table',	1);
 
 DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE `password_resets` (
@@ -229,16 +235,16 @@ CREATE TABLE `patients` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `patients` (`id`, `visiting_no`, `name`, `age`, `regi_no`, `gender`, `marital_status`, `address`, `mobile`, `height`, `weight`, `c_c`, `on_exam`, `p_a_exam`, `is_prescribed`, `created_at`, `updated_at`) VALUES
-(1,	25,	'Vivianne Hessel',	80,	877,	1,	0,	'522 Rippin Motorway\nSouth Alfburgh, MO 53504-5305',	'01700000000',	126.00,	73.00,	'Iure iusto dolor quia ipsam facere veniam.',	'Illum voluptate aut est voluptas eveniet fugit sit.',	'Rerum et pariatur sit non ab.',	0,	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(2,	65,	'Tracey Lind I',	52,	718,	1,	0,	'7966 Rubie Park\nTesshaven, AR 46089',	'01700000000',	153.00,	78.00,	'Sed impedit possimus repellat quia ducimus occaecati aspernatur.',	'Inventore ea aut asperiores exercitationem.',	'Sequi voluptatem temporibus hic labore voluptas magnam dignissimos.',	0,	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(3,	76,	'Stanton Yundt',	32,	983,	1,	0,	'830 Maximillia Plains Apt. 627\nPort Maverickton, UT 06869-6173',	'01700000000',	116.00,	91.00,	'Quas et inventore voluptate.',	'Illum deserunt et qui dolorem sit ratione.',	'Et doloribus delectus necessitatibus et omnis officia culpa.',	0,	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(4,	8,	'Prof. Theo Heaney',	44,	435,	1,	1,	'32098 Mann Locks Suite 281\nReynaton, FL 04557',	'01700000000',	185.00,	63.00,	'Aut aut perferendis accusamus autem et hic vel.',	'Consequatur rerum consectetur magni enim.',	'Id doloremque eveniet sint eum ad velit harum.',	0,	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(5,	97,	'Prof. Harley Mann Sr.',	74,	480,	1,	1,	'2271 Corwin Canyon Apt. 794\nEast Madisonburgh, NV 97875',	'01700000000',	162.00,	80.00,	'Est non asperiores atque optio quasi.',	'Occaecati error omnis fuga harum fugit aspernatur.',	'Deserunt id voluptatem aliquam aperiam est.',	0,	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(6,	75,	'Dillan Bailey',	29,	428,	0,	0,	'69825 Nader Rapids Apt. 569\nPrudencetown, IN 41821-7703',	'01700000000',	149.00,	79.00,	'Expedita nihil culpa odio error dolorem magni pariatur.',	'Voluptatem autem maxime molestias.',	'Ipsam reiciendis dolores est suscipit.',	0,	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(7,	54,	'Karli Pfannerstill',	95,	103,	0,	0,	'4931 Carrie Parkways Apt. 978\nWest Celestinoshire, NJ 83679-0463',	'01700000000',	154.00,	42.00,	'Suscipit quia est qui ut.',	'Ut consectetur voluptatem reiciendis est optio.',	'Aut delectus sint rem quos dolorem velit.',	0,	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(8,	80,	'Kiarra Price',	25,	113,	0,	1,	'772 Jakob Cliff\nEast Nasirbury, UT 01171',	'01700000000',	181.00,	73.00,	'Minus eum qui itaque quam odio numquam magni voluptatem.',	'Alias odit ipsa autem in inventore.',	'Qui corrupti voluptatem ut est numquam dolor inventore.',	0,	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(9,	12,	'Joanie Hickle',	12,	496,	1,	1,	'36933 Jillian Fort\nEldorahaven, IN 91029',	'01700000000',	154.00,	43.00,	'Aliquid quis est iure vero ut voluptatem.',	'A libero qui voluptatem voluptatum et ea.',	'Autem molestiae et id omnis ut.',	0,	'2020-09-27 03:47:51',	'2020-09-27 03:47:51'),
-(10,	91,	'Tomas Gottlieb',	17,	212,	1,	1,	'5276 Jillian Vista Apt. 283\nBergeberg, RI 12946',	'01700000000',	106.00,	79.00,	'Et exercitationem doloremque quod et quis impedit.',	'Repudiandae recusandae aperiam eius numquam cum.',	'Ut doloribus unde sed.',	0,	'2020-09-27 03:47:51',	'2020-09-27 03:47:51');
+(1,	57,	'Constance Spinka',	21,	811,	1,	0,	'562 Jarrod Point Apt. 995\nNew Lavonne, NC 67923-8319',	'01700000000',	110.00,	64.00,	'Ex aliquam ab nobis facilis magni libero minus.',	'Voluptas sunt qui quo sequi sunt enim.',	'Omnis ducimus perspiciatis ad qui incidunt voluptatibus quos autem.',	0,	'2020-10-10 23:55:43',	'2020-10-10 23:55:43'),
+(2,	22,	'June O\'Keefe',	50,	970,	1,	1,	'32415 Asha Light\nEast Emmie, NH 67854',	'01700000000',	194.00,	66.00,	'Soluta cupiditate nihil vel possimus fugiat eligendi.',	'Est rerum aut et nam nam quia facere eum.',	'Ducimus labore temporibus doloribus cum voluptatem quia sit.',	0,	'2020-10-10 23:55:43',	'2020-10-10 23:55:43'),
+(3,	17,	'Chadrick Skiles Sr.',	51,	634,	1,	1,	'5257 Barrows Garden\nRossbury, CA 07343-7902',	'01700000000',	115.00,	80.00,	'Sit aut consectetur consequatur dicta quo.',	'Sapiente doloremque vero beatae est facere nihil nihil.',	'Nulla et eveniet occaecati assumenda.',	0,	'2020-10-10 23:55:43',	'2020-10-10 23:55:43'),
+(4,	96,	'Dr. Lavada Stiedemann',	69,	841,	1,	0,	'19018 Braun Village\nWest Nyahfurt, WY 15466-0000',	'01700000000',	156.00,	44.00,	'Unde voluptates dolor occaecati et nihil temporibus asperiores autem.',	'Natus at sapiente quos magnam commodi sit.',	'Quas atque iusto dolorem assumenda dolorum.',	0,	'2020-10-10 23:55:43',	'2020-10-10 23:55:43'),
+(5,	9,	'Chase Fahey',	21,	139,	1,	1,	'64384 Nolan Street Suite 033\nHickleburgh, CA 78521-5879',	'01700000000',	194.00,	48.00,	'Iste ex fugit veniam doloribus dolores natus.',	'Aperiam earum architecto et.',	'Quaerat consequatur magni rem atque.',	0,	'2020-10-10 23:55:43',	'2020-10-10 23:55:43'),
+(6,	59,	'Prof. Valerie Wilderman',	57,	635,	0,	0,	'36295 Mitchell Glen Suite 267\nToyshire, AR 89593-6428',	'01700000000',	162.00,	51.00,	'Placeat dolore dolores sunt quis voluptates et.',	'Possimus aut vitae nam eaque molestias delectus consequatur.',	'Nesciunt facilis sint consequatur quae.',	0,	'2020-10-10 23:55:43',	'2020-10-10 23:55:43'),
+(7,	33,	'Roosevelt O\'Reilly',	14,	509,	1,	0,	'47672 McClure Pines\nNorth Carsonbury, AR 72064',	'01700000000',	139.00,	32.00,	'Nisi debitis voluptatem explicabo aperiam fugiat et.',	'Ad ut quis sit.',	'Facere consequatur tempore aut dignissimos commodi sint.',	0,	'2020-10-10 23:55:43',	'2020-10-10 23:55:43'),
+(8,	54,	'Mr. Evan Stracke DVM',	56,	593,	0,	0,	'28793 Erling Stream\nSouth Leviside, NY 95729-7135',	'01700000000',	115.00,	91.00,	'Nam ut minus et placeat aut velit.',	'Aspernatur aut reprehenderit ea officia voluptatum velit.',	'Et at sapiente qui voluptas omnis.',	0,	'2020-10-10 23:55:43',	'2020-10-10 23:55:43'),
+(9,	77,	'Zachary Bergstrom',	63,	321,	1,	1,	'61156 Norris Orchard\nFlaviomouth, AR 00634-3489',	'01700000000',	123.00,	59.00,	'Voluptatibus sapiente est eos explicabo.',	'Repellendus iste possimus ut in et.',	'Animi blanditiis qui quis corporis ipsam repellat.',	0,	'2020-10-10 23:55:43',	'2020-10-10 23:55:43'),
+(10,	94,	'Franz Osinski',	34,	502,	1,	1,	'7543 Conner Club Suite 668\nLittelville, IL 65930-2271',	'01700000000',	183.00,	86.00,	'Suscipit atque amet eligendi debitis consectetur cum.',	'Nulla eos rerum asperiores.',	'Autem velit quam sapiente sit.',	0,	'2020-10-10 23:55:44',	'2020-10-10 23:55:44');
 
 DROP TABLE IF EXISTS `prescriptions`;
 CREATE TABLE `prescriptions` (
@@ -250,6 +256,17 @@ CREATE TABLE `prescriptions` (
   PRIMARY KEY (`id`),
   KEY `prescriptions_patient_id_index` (`patient_id`),
   CONSTRAINT `prescriptions_patient_id_foreign` FOREIGN KEY (`patient_id`) REFERENCES `patients` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+DROP TABLE IF EXISTS `prescription_header_footers`;
+CREATE TABLE `prescription_header_footers` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `header` text COLLATE utf8mb4_unicode_ci,
+  `footer` text COLLATE utf8mb4_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
@@ -274,6 +291,8 @@ CREATE TABLE `prescription_medicine_details` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `prescription_id` bigint(20) unsigned NOT NULL,
   `medicine_id` bigint(20) unsigned DEFAULT NULL,
+  `mg_ml` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `qty` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `eating_time_breakfast` tinyint(1) NOT NULL DEFAULT '0',
   `eating_time_lunch` tinyint(1) NOT NULL DEFAULT '0',
   `eating_time_dinner` tinyint(1) NOT NULL DEFAULT '0',
@@ -291,6 +310,4 @@ CREATE TABLE `prescription_medicine_details` (
 
 
 
-
-
--- 2020-09-27 09:48:35
+-- 2020-10-11 05:59:06

@@ -128,11 +128,20 @@ export default {
             axios.get('/get-header-footer')
             .then(function (response){
 
-                jQuery('#summernote1').summernote('code', response.data.info.header);
-                jQuery('#summernote2').summernote('code', response.data.info.footer);
+                if(response.data.info && response.data.info.header) {
+                    that.header = response.data.info.header;
+                    jQuery('#summernote1').summernote('code', response.data.info.header);
+                }else{
+                    jQuery('#summernote1').summernote('code', '');
+                }
+                
+                if(response.data.info && response.data.info.footer) {
+                    that.footer = response.data.info.footer;
+                    jQuery('#summernote2').summernote('code', response.data.info.footer);
+                }else{
+                    jQuery('#summernote2').summernote('code', '');
+                }
 
-                that.header = response.data.info.header;
-                that.footer = response.data.info.footer;
                 that.isLoading = false;
 
             })
@@ -146,8 +155,6 @@ export default {
                 header: header,
                 footer: footer
             }
-
-            console.log('data',data)
 
             let that = this
             axios.post('/update-header-footer',data)

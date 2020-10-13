@@ -96,12 +96,20 @@ class SettingsController extends Controller
 
 
     public function updateHeaderFooter(Request $request){
-        PrescriptionHeaderFooter::where('id',1)->update([
-            'header'          => $request->header,
-            'footer'          => $request->footer,
-        ]);
 
-        //return $request->all();
+        $exists = PrescriptionHeaderFooter::first();
+        
+        if (!$exists) {
+            PrescriptionHeaderFooter::create([
+                'header'          => $request->header,
+                'footer'          => $request->footer,
+            ]);
+        } else {
+            PrescriptionHeaderFooter::where('id', $exists->id)->update([
+                'header'          => $request->header,
+                'footer'          => $request->footer,
+            ]);
+        }
 
         return response()->json([
             'message'   => 'success',
