@@ -283,9 +283,9 @@
 
                                 <ul v-else>
                                 
-                                  <li>
+                                  <!-- <li>
                                     <p>No results found!</p>
-                                  </li>
+                                  </li> -->
                                   
                                 </ul>
                               </div> 

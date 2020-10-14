@@ -97,7 +97,7 @@
             <p>
               <b>C_C</b>
               <br />
-              {{ patient_details.c_c }}
+              <span v-html="patient_details.c_c"></span>
             </p>
           </div>
         </div>
@@ -106,7 +106,7 @@
             <p>
               <b>On Exam</b>
               <br />
-              {{ patient_details.on_exam}}
+              <span v-html="patient_details.on_exam"></span>
             </p>
           </div>
         </div>
@@ -115,7 +115,7 @@
             <p>
               <b>P_A_EXAM</b>
               <br />
-              {{ patient_details.p_a_exam}}
+              <span v-html="patient_details.p_a_exam"></span>
             </p>
           </div>
         </div>
@@ -146,153 +146,154 @@
               <br />
               <div class="sparkline8-graph">
                 <div class="basic-login-form-ad">
-                  <div class="row"  v-for="(medicine_details_row,index) in medicine_details_rows" :key="index">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <div class="basic-login-inner">
-                        <form action="#">
-                          <div class="form-group-inner">
+                          <div class="row" v-for="(medicine_details_row,index) in medicine_details_rows" :key="index">
                             
-                            <div style="float:left" class="col-lg-4 col-md-12 col-sm-12 col-xs-12 pull-left">
+                            <div style="float:left" class="pull-left">
                               
-                              <input
-                                type="text"
-                                style="display:inline; width:130px; height:22px;border-radius:2px; padding:5px; border: 1px solid #000;"
-                                @input="onChange"
-                                v-model="medicine_details_row.medicine_name"
-                                @keydown.down="onArrowDown"
-                                @keydown.up="onArrowUp"
-                                @keydown.enter="onEnter"
-                                @click="selectedRow(medicine_details_row)"
-                                placeholder="Medicine Name"
-                              />
+                              <!-- medicine name selection start -->
+                              <div style="display:flex;flex-direction:column;">
+                                <div>
+                                  
+                                  <span style="width:20px" >
+                                    <i class="fa fa-check text-success" v-if="medicine_details_row.medicine_id"></i>
+                                    <i class="fa fa-close text-danger"  v-else></i>
+                                  </span>
+            
+                                  <span style="display:inline;height:22px;width:130px;border-radius:2px; padding:5px;">
+                                    <input
+                                      type="text"
+                                      @input="onChange"
+                                      v-model="medicine_details_row.medicine_name"
+                                      @keydown.down="onArrowDown"
+                                      @keydown.up="onArrowUp"
+                                      @keydown.enter="onEnter"
+                                      @click="selectedRow(medicine_details_row)"
+                                      placeholder="Medicine Name"
+                                    />
+                                  </span>
 
-                              <input
-                                type="text"
-                                style="display:inline;height:22px;
-                                width:70px; border-radius:2px; padding:5px; border: 1px solid #000;"
-                                v-model="medicine_details_row.type"
-                                disabled
-                                placeholder="Medicine Type"
-                              />
+                                  <span style="margin-left:15px">
+                                    <input
+                                      type="text"
+                                      style="display:inline;height:22px;
+                                      width:70px; border-radius:2px; padding:5px; border: 1px solid #000;"
+                                      v-model="medicine_details_row.type"
+                                      disabled
+                                      placeholder="Type"
+                                    />
+                                  </span>
 
-                              <input type="text" v-model="medicine_details_row.mg_ml" placeholder="mg/ml" style="width:65px; border: 1px solid #000;height:22px;">
+                                  <span style="margin-left:15px">
+                                    <input type="text" v-model="medicine_details_row.mg_ml" placeholder="mg/ml" style="width:65px; border: 1px solid #000;height:22px;">
+                                  </span>
 
-                               <select name="" v-model="medicine_details_row.qty" style="width:50px; border: 1px solid #000;height:22px;">
-                                 <option value="">Qty</option>
-                                 <option value="0.5">0.5</option>
-                                 <option value="1">1</option>
-                                 <option value="2">2</option>
-                               </select>
+                                  <span style="width:50px; border: 1px solid #000;height:22px;">
+                                    <select name="" v-model="medicine_details_row.qty">
+                                      <option value="">Qty</option>
+                                      <option value="0.5">0.5</option>
+                                      <option value="1">1</option>
+                                      <option value="2">2</option>
+                                    </select>
+                                  </span>
 
-                              <!-- <select name="medicine_type" class v-model="medicine_details_row.type_id" style="display:inline; width:130px!important;">
-                                <option  value>Medicine type</option>
-                                <option v-for="(type,index) in medicine_types" :value="type.id" :key="index" style="font-size:10px;">{{ type.name }}</option>
+                                  <span style="margin-left:15px">
+                                      <label style="margin-right: 8px; font-size:15px; font-weight:normal;">
+                                        B
+                                        <input class="radio-checked" v-model="medicine_details_row.eating_time_breakfast" name="name1" value="0" checked type="checkbox" />
+                                      </label>
+                                      <label style="margin-right: 8px; font-size:15px; font-weight:normal;">
+                                        L
+                                        <input class="radio-checked"  v-model="medicine_details_row.eating_time_lunch" name="name2" value="1" type="checkbox" />
+                                      </label>
+                                      <label
+                                        style="margin-right: 5px; font-size:15px; font-weight:normal;"
+                                      >
+                                        D
+                                        <input class="radio-checked"  v-model="medicine_details_row.eating_time_dinner" name="name3" value="2" type="checkbox" />
+                                      </label>
+                                  </span>
+
+                                  <span style="margin-left:25px">
+                                    <label
+                                      style="margin-right: 15px; font-size: 15px; font-weight:normal"
+                                    >
+                                      Before Meal
+                                      <input class="radio-checked" v-model="medicine_details_row.eating_term" value="0" name="eating_time" checked type="radio" />
+                                    </label>
+                                    <label
+                                      style="font-size: 15px; font-weight:normal"
+                                    >
+                                      After Meal
+                                      <input class="radio-checked" v-model="medicine_details_row.eating_term" value="1" name="eating_time" type="radio" />
+                                    </label>
+                                  </span>
+
+                                  <span style="margin-left:25px">
+                                    <input
+                                      :disabled="medicine_details_row.duration=='2'?true:false"
+                                      v-model="medicine_details_row.days"
+                                      type="text"
+                                      placeholder="Days/Months"
+                                      style="width:70px; height:22px; border-radius:2px; padding:5px; border: 1px solid #000;"
+                                    />
+                                  </span>
+
+                                  <span style="margin-left:25px">
+                                    <select name="gender" class  v-model="medicine_details_row.duration" @change="selectedRow(medicine_details_row)">
+                                      <option value>Select</option>
+                                      <option value="0">Days</option>
+                                      <option value="1">Months</option>
+                                      <option value="2">Continue</option>
+                                    </select>
+                                  </span>
+
+                                  <span style="margin-left:25px">
+                                    <a
+                                      type="button"
+                                      class="pull-right"
+                                      style="cursor:pointer;"
+                                      v-if="index"
+                                      @click.prevent="deleteMedicineDetailsRow(index)"
+                                    >
+                                      <i class="fa fa-trash" style="color:red;font-size:18px;"></i>
+                                    </a>
+                                  </span>
+
+                                </div>
+
+                                <ul v-if="medicines.length"
+                                  v-show="medicine_details_row.isOpen"
+                                  class="autocomplete-results"
+                                >
+                                  <li
+                                    style="cursor:pointer"
+                                    v-for="(medicine, index) in medicines"
+                                    :key="index"
+                                    @click="setResult(medicine)"
+                                    class="autocomplete-result"
+                                    :class="{ 'is-active': index === arrowCounter }"
+                                  >
+                                    <span>{{ medicine.name }}</span> 
+                                    <small>[ {{ medicine.type.name }} ]</small>
+
+                                  </li>
+                                  
+                                </ul>
+
+                                <ul v-else>
                                 
-                              </select> -->
-                              <ul v-if="medicines.length"
-                                v-show="medicine_details_row.isOpen"
-                                class="autocomplete-results"
-                              >
-                                <li
-                                  style="cursor:pointer"
-                                  v-for="(medicine, index) in medicines"
-                                  :key="index"
-                                  @click="setResult(medicine)"
-                                  class="autocomplete-result"
-                                  :class="{ 'is-active': index === arrowCounter }"
-                                >
-                                  <span>{{ medicine.name }}</span> 
-                                  <small>[ {{ medicine.type.name }} ]</small>
-
-                                  <!-- <span  v-for="(type,index) in medicine_types"  :key="index">
-                                      <small v-if="medicine.type_id == type.id">[ {{ type.name }} ]</small>
-                                  </span> -->
-                                </li>
-                                
-                              </ul>
-
-                              <ul v-else>
-                               
-                                <li>
-                                  <p>No results found!</p>
-                                </li>
-                                
-                              </ul>
-
+                                  <!-- <li>
+                                    <p>No results found!</p>
+                                  </li> -->
+                                  
+                                </ul>
+                              </div> 
+                              <!-- medicine name selection end-->
                             </div>
-                            
-                            <div style="float:left" class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
-                              <span style="margin-left:15px">
-                                <label
-                                  style="margin-right: 8px; font-size:15px; font-weight:normal;"
-                                >
-                                  B
-                                  <input class="radio-checked" v-model="medicine_details_row.eating_time_breakfast" name="name1" value="0" checked type="checkbox" />
-                                </label>
-                                <label
-                                  style="margin-right: 8px; font-size:15px; font-weight:normal;"
-                                >
-                                  L
-                                  <input class="radio-checked"  v-model="medicine_details_row.eating_time_lunch" name="name2" value="1" type="checkbox" />
-                                </label>
-                                <label
-                                  style="margin-right: 5px; font-size:15px; font-weight:normal;"
-                                >
-                                  D
-                                  <input class="radio-checked"  v-model="medicine_details_row.eating_time_dinner" name="name3" value="2" type="checkbox" />
-                                </label>
-                              </span>
-                            </div> 
-                            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-                              <span style="margin-left:25px">
-                                <label
-                                  style="margin-right: 15px; font-size: 15px; font-weight:normal"
-                                >
-                                  Before Meal
-                                  <input class="radio-checked" v-model="medicine_details_row.eating_term" value="0" name="eating_time" checked type="radio" />
-                                </label>
-                                <label
-                                  style="font-size: 15px; font-weight:normal"
-                                >
-                                  After Meal
-                                  <input class="radio-checked" v-model="medicine_details_row.eating_term" value="1" name="eating_time" type="radio" />
-                                </label>
-                              </span>
-                            </div>
-
-                            <div style="float:left" class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-                              <input
-                              :disabled="medicine_details_row.duration=='2'?true:false"
-                                v-model="medicine_details_row.days"
-                                type="text"
-                                placeholder="Days/Months"
-                                style="width:70px; height:22px; border-radius:2px; padding:5px; border: 1px solid #000;"
-                              />
-                              <select name="gender" class  v-model="medicine_details_row.duration" @change="selectedRow(medicine_details_row)">
-                                <option value>Select</option>
-                                <option value="0">Days</option>
-                                <option value="1">Months</option>
-                                <option value="2">Continue</option>
-                              </select>
-                              <a
-                                type="button"
-                                class="pull-right"
-                                style="cursor:pointer;"
-                                v-if="index"
-                                @click.prevent="deleteMedicineDetailsRow(index)"
-                              >
-                                <i class="fa fa-trash" style="color:red;font-size:18px;"></i>
-                              </a>
-                            </div>
-
                           </div>
-
-                        </form>
                       </div>
-                    </div>
-                    <br><br>
-                  </div>
-                  
+                    <br><br>                  
                 </div>
               </div>
             </div>
@@ -597,13 +598,18 @@ export default {
             let that = this;
             axios.post("/find-medicine",data)
             .then(function (response) {
+                // that.medicines = response.data.medicines;
+                // that.selected_row.isOpen = true;
+
                 that.medicines = response.data.medicines;
                 that.selected_row.isOpen = true;
+                that.selected_row.medicine_id= '';
+                that.selected_row.type = '';
             })
             .catch(function (error) {
                 console.log(error.response.data);
             });
-        },500),
+        },250),
 
 
     },
