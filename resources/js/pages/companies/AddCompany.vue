@@ -1,21 +1,10 @@
 <template>
-    <div>
-        <!-- loading -->
-        <v-loading 
-            :active.sync="isLoading" 
-            :is-full-page="fullPage"
-            :background-color="'#ffff'"
-            :color="'#007bff'"
-        >
-        </v-loading>
-
-
+    <div v-loading="isLoading" element-loading-text="Loading...">
         <div class="basic-form-area mg-b-15 mg-t-50">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
                         <div class="sparkline8-list mt-b-30">
-                            
                             <div class="sparkline8-hd">
                                 <div class="main-sparkline8-hd">
                                     <h1>Add Company</h1>
@@ -26,31 +15,25 @@
                             </div>
                             <div class="sparkline8-graph">
                                 <div class="basic-login-form-ad">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="basic-login-inner">
-                                                <form action="#">
-
-                                                    <div class="form-group-inner">
-                                                        <label>Name</label>
-                                                        <input type="text" v-model="name" class="form-control" placeholder="Enter test name" />
-                                                        <p class="text-danger" v-if="errors.name">{{ errors.name[0] }}</p>
-                                                    </div>
-
-                                                    <div class="form-group-inner">
-                                                        <label>Description</label>
-                                                        <textarea class="form-control" v-model="description" cols="83" rows="10" placeholder="Enter description"></textarea>
-                                                        <p class="text-danger" v-if="errors.description">{{ errors.description[0] }}</p>
-                                                    </div>
-                                                    <div class="login-btn-inner">
-                                                        <div class="inline-remember-me">
-                                                            <button class="btn btn-sm btn-primary pull-left login-submit-cs" type="submit" @click.prevent="addCompany">Save</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <el-row>
+                                        <el-col :span="21">
+                                            <el-form ref="form"  label-width="120px" class="mg-t-50">
+                                                <el-form-item>
+                                                    <label>Name</label>
+                                                    <el-input type="text" v-model="name" placeholder="Enter company name" />
+                                                    <p class="text-danger" v-if="errors.name">{{ errors.name[0] }}</p>
+                                                </el-form-item>
+                                                <el-form-item>
+                                                    <label>Description</label>
+                                                    <el-input type="textarea" v-model="description" cols="83" rows="10" placeholder="Enter description"></el-input>
+                                                    <p class="text-danger" v-if="errors.description">{{ errors.description[0] }}</p>
+                                                </el-form-item>
+                                                <el-form-item>
+                                                    <el-button type="success" size="medium" @click.prevent="addCompany">Save</el-button>
+                                                </el-form-item>
+                                            </el-form>
+                                        </el-col>
+                                    </el-row>
                                 </div>
                             </div>
                         </div>
@@ -59,62 +42,43 @@
             </div>
         </div>
     </div>
-
-    
 </template>
 
-<script>
+<script type="text/babel">
 export default {
-    
     data() {
         return {
             name: '',
             description: '',
             errors: [],
-
-            //loading
             isLoading: false,
             fullPage: true
         }
     },
 
     methods: {
-
         addCompany() {
-
-            //loading
             this.isLoading = true;
-
             let data = {
                 'name': this.name,
                 'description': this.description
             }
-
             let that = this;
 
             axios.post('/save-company',data)
                 .then(function (response) {
-
-                    //loading
-                    that.isLoading = false;
-
                     that.$router.push('/all-companies');
-                    Toast.fire({
-                        icon: 'success',
-                        title: 'Company added successfully!!!'
-                    })
-                })
-                .catch(function (error) {
 
-                    //loading
-                    that.isLoading = false;
-
+                    that.$message({
+                        message: 'Company added successfully!!!',
+                        type: 'success'
+                    });
+                }).catch(function (error) {
                     that.errors = error.response.data.errors;
-                    
+                }).then(() => {
+                    that.isLoading = false;
                 });
-
         }
-
     }
 }
 </script>

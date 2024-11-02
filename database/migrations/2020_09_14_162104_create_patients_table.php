@@ -15,18 +15,18 @@ class CreatePatientsTable extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('visiting_no');
-            $table->string('name');
-            $table->integer('age');
-            $table->integer('regi_no');
-            $table->boolean('gender');
+            $table->integer('visiting_no')->nullable();
+            $table->string('name')->nullable();
+            $table->integer('age')->nullable();
+            $table->integer('regi_no')->nullable();
+            $table->boolean('gender')->nullable();
             $table->boolean('marital_status')->nullable();
             $table->string('address')->nullable();
             $table->string('mobile')->nullable();
             $table->float('height')->nullable();
             $table->float('weight')->nullable();
-            $table->string('c_c');
-            $table->string('on_exam');
+            $table->string('c_c')->nullable();
+            $table->string('on_exam')->nullable();
             $table->string('p_a_exam')->nullable();
             $table->boolean('is_prescribed')->nullable();
             $table->timestamps(); 

@@ -9,8 +9,45 @@
 // Bootstrap
 // @import '~bootstrap/scss/bootstrap';
 
+.app-name {
+    font-weight: bold;
+    font-size: 15px;
+    color: #009688;
+    margin-top: 10px;
+    
+    &:hover {
+        color: #009688;
+    }
+}
+
 .btn-space{
     margin-right:3px;
+}
+
+.header-top-area {
+    background-color: #009688;
+}
+
+#smart-prescription {
+    .icon-style {
+        color: #009688 !important;
+    }
+}
+
+.place-middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container-box {
+    height: 100px;
+    width: 300px;
+}
+
+.empty-list {
+    margin-top: 50px;
 }
 
 .inline-header {

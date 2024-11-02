@@ -26,7 +26,7 @@ class CreateMedicinesTable extends Migration
             $table->unsignedBigInteger('company_id')->index();
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
 
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

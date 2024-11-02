@@ -1,15 +1,5 @@
 <template>
-    <div>
-
-        <!-- loading -->
-        <v-loading 
-            :active.sync="isLoading" 
-            :is-full-page="fullPage"
-            :background-color="'#ffff'"
-            :color="'#007bff'"
-        >
-        </v-loading>
-
+    <div v-loading="isLoading">
         <div class="breadcome-area">
             <div class="container-fluid">
                 <div class="row">
@@ -95,16 +85,11 @@
                             <div v-else>
                                 <h4>No Data Founds!!</h4>
                             </div>
-
                         </div>
                     </div>
-                </div>
-                
+                </div>  
             </div>
         </div>
-
-
-
     </div>
 </template>
 

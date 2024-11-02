@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{{ asset( 'assets/css/bootstrap.min.css') }}">
     
     <link rel="stylesheet" href="{{ asset( 'assets/css/font-awesome.min.css') }}">
+
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     
     <!-- <link rel="stylesheet" href="{{ asset( 'assets/css') }}/owl.carousel.css">
     <link rel="stylesheet" href="{{ asset( 'assets/css') }}/owl.theme.css">
@@ -61,10 +63,13 @@
         <div class="left-sidebar-pro">
             <nav id="sidebar" class="">
                 <div class="sidebar-header">
-                    <router-link to="/"><img class="main-logo" src="{{asset('assets/img/logo/logo.png') }}" alt="" /></router-link>
+                    <!-- <router-link to="/" class="app-name">
+                        SMART PRESCRIPTION
+                    </router-link>
                     <strong>
-                        <router-link to="/"><img src="{{asset('assets/img/logo/logosn.png') }}" alt="" /></router-link>
-                    </strong>
+                        <router-link to="/">
+                        </router-link>
+                    </strong> -->
                 </div>
                 <div class="left-custom-menu-adp-wrap comment-scrollbar">
                     <nav class="sidebar-nav left-sidebar-menu-pro">

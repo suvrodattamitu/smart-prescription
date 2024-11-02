@@ -1,16 +1,6 @@
 <template>
-    <div>
-
-        <!-- loading -->
-        <v-loading 
-            :active.sync="isLoading" 
-            :is-full-page="fullPage"
-            :background-color="'#ffff'"
-            :color="'#007bff'"
-        >
-        </v-loading>
-
-        <div class="breadcome-area">
+    <div v-loading="isLoading" element-loading-text="Loading...">
+        <div class="breadcome-area" v-if="companies.data && companies.data.length">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -34,10 +24,9 @@
         <!-- Static Table Start -->
         <div class="static-table-area">
             <div class="container-fluid">
-              
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="sparkline11-list mt-b-30">
+                        <div class="sparkline11-list mt-b-30" v-if="companies.data && companies.data.length">
                             <div class="sparkline11-hd">
                                 <div class="main-sparkline11-hd">
                                     <h1>All Companies</h1>
@@ -46,7 +35,8 @@
                                    </div>
                                 </div>
                             </div>
-                            <div class="sparkline11-graph" v-if="companies.data">
+
+                            <div class="sparkline11-graph">
                                 <div class="static-table-list">
                                     <table class="table table-striped">
                                         <thead>
@@ -59,7 +49,6 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-
                                             <tr v-for="(company,index) in companies.data" :key="index">
                                                 <td>{{ company.id }}</td>
                                                 <td><span class="pie"> {{ company.name }} </span></td>
@@ -75,7 +64,6 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                           
                                         </tbody>
                                     </table>
                                 </div>
@@ -85,128 +73,115 @@
                                         <pagination :data="companies" @pagination-change-page="getAllCompanies"></pagination>
                                     </nav>
                                 </div>
-
                             </div>
-                              <div v-else>
-                                 <h4>No Data Founds!!</h4>
-                              </div>
-
+                        </div>
+                        
+                        <div class="empty-list row" v-else>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="sparkline11-list mt-b-30">
+                                    <div class="sparkline11-list mt-30 place-middle">
+                                        <div class="sparkline11-hd container-box">
+                                            <div class="main-sparkline11-hd place-middle">
+                                                <h1>No Companies found!</h1>
+                                                <el-button type="success" @click="$router.push('/add-company')">
+                                                    Add Company
+                                                </el-button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
+                </div>  
             </div>
         </div>
 
+        <el-dialog
+            title="Delete Company"
+            :visible.sync="dialogVisible"
+            width="30%"
+            :before-close="handleClose"
+        >
+            <span>Are you sure to delete this company!</span>
+
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogVisible = false">Cancel</el-button>
+                <el-button type="danger" @click="deleteCompany">Confirm</el-button>
+            </span>
+        </el-dialog>
     </div>
 </template>
 
 <script>
 import _ from "lodash"
 export default {
-    
     data() {
         return {
+            dialogVisible: false,
             companies: [],
             selected_company_id: '',
             search:'',
-
-            //loading
             isLoading: false,
             fullPage: true
-
         }
     },
 
     methods: {
-
         searchItems: _.debounce(function(){
             this.getAllCompanies();
         },500),
 
         getAllCompanies( page = 1 ) {
-
-            //loading
             this.isLoading = true;
 
             let that = this;
             axios.get(`/companies?q=${this.search}&page=${page}`)
                 .then(function (response) {
                     that.companies = response.data;
-                    //loading
+                }).catch((error) => {
+                    // error
+                }).then(() => {
                     that.isLoading = false
                 })
-
         },
 
         editCompany( id ) {
-
             this.$router.push('/edit-company/'+id);
-
         },
 
         deleteCompany() {
-
-            //loading
             this.isLoading = true;
-
             let id = this.selected_company_id;
             let that = this;
 
             axios.delete('/delete-company/'+id)
                 .then(function (response) {
-
-                    //loading
-                    that.isLoading = false;
-
                     that.selected_company_id = '';
                     that.getAllCompanies();
 
                     that.$router.push('/all-companies');
-                    Toast.fire({
-                        icon: 'warning',
-                        title: 'Company deleted successfully!!!'
-                    })
 
+                    that.$message({
+                        message: 'Company deleted successfully!!!',
+                        type: 'success'
+                    });
+                }).catch((error) => {
+                    //error
+                }).then(() => {
+                    that.isLoading = false;
+                    this.dialogVisible = false;
                 })
-
         },
 
-        deleteConfirmation( id ) {
-
+        deleteConfirmation(id) {
             this.selected_company_id = id;
-            let that = this;
-
-            swalWithBootstrapButtons.fire({
-                title: 'Do you want to delete the selected Company?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Delete',
-                cancelButtonText: 'Cancel',
-                reverseButtons: true
-            }).then((result) => {
-                if (result.isConfirmed) {
-
-                    that.deleteCompany();
-
-                } 
-            })
+            this.dialogVisible = true;
         }
-
     },
 
     mounted() {
-
         this.getAllCompanies();
-
     }
 }
 </script>
-
-
-
-
-
-   
-    

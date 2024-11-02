@@ -9,6 +9,10 @@ use App\Model\MedicineGroup;
 use App\Model\Medicine;
 use App\User;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+
 class DatabaseSeeder extends Seeder
 {
     
@@ -21,5 +25,11 @@ class DatabaseSeeder extends Seeder
         factory(MedicineType::class,10)->create();
         factory(MedicineGroup::class,10)->create();
         factory(Medicine::class,10)->create();
+
+        DB::table('users')->insert([
+            'name' => Str::random(10),
+            'email' => Str::random(10).'@example.com',
+            'password' => Hash::make('password'),
+        ]);
     }
 }

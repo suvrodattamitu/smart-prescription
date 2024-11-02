@@ -1,15 +1,6 @@
 <template>
-    <div>
-        <!-- loading -->
-        <v-loading 
-            :active.sync="isLoading" 
-            :is-full-page="fullPage"
-            :background-color="'#ffff'"
-            :color="'#007bff'"
-        >
-        </v-loading>
-
-        <div class="breadcome-area">
+    <div v-loading="isLoading" element-loading-text="Loading...">
+        <div class="breadcome-area" v-if="medical_tests.data && medical_tests.data.length">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -30,13 +21,11 @@
             </div>
         </div>
 
-        <!-- Static Table Start -->
         <div class="static-table-area">
             <div class="container-fluid">
-              
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="sparkline11-list mt-b-30">
+                        <div class="sparkline11-list mt-b-30" v-if="medical_tests.data && medical_tests.data.length">
                             <div class="sparkline11-hd">
                                 <div class="main-sparkline11-hd">
                                     <h1>All Medical Tests</h1>
@@ -58,17 +47,13 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-
                                             <tr v-for="(test,index) in medical_tests.data" :key="index">
                                                 <td>{{ test.id }}</td>
                                                 <td><span class="pie"> {{ test.name }} </span></td>
                                                 <td>{{ test.description | shortLength(50,"...")}}</td>
                                                 <td>{{ test.created_at  | timeformat}}</td>
                                                 <td>
-                                                    <div class="inline-remember-me action-inliner">
-                                                        <!-- <a  @click.prevent="editTest(test.id)" href="#" class="pull-left btn btn-info login-submit-cs btn-space" type="submit"><i class="fa fa-pencil"></i></a>
-                                                        <a @click.prevent="deleteConfirmation(test.id)" href="#" class="pull-left btn btn-danger login-submit-cs" type="submit"><i class="fa fa-trash"></i></a> -->
-                                                        
+                                                    <div class="inline-remember-me action-inliner">                                                        
                                                         <button data-toggle="tooltip" title="Edit" class="pd-setting-ed" @click="editTest(test.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                                         <button data-toggle="tooltip" title="Trash" class="pd-setting-ed" @click="deleteConfirmation(test.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                                     </div>
@@ -83,125 +68,112 @@
                                     </nav>
                                  </div>
                             </div>
+                        </div>
 
-                            <div v-else>
-                                        <h4>No Data Founds!!</h4>
+                        <div class="empty-list row" v-else>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="sparkline11-list mt-b-30">
+                                    <div class="sparkline11-list mt-30 place-middle">
+                                        <div class="sparkline11-hd container-box">
+                                            <div class="main-sparkline11-hd place-middle">
+                                                <h1>No medicine types found!</h1>
+                                                <el-button type="success" @click="$router.push('/add-type')">
+                                                    Add Type
+                                                </el-button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
-                
             </div>
         </div>
 
+        <el-dialog
+            title="Delete Test"
+            :visible.sync="dialogVisible"
+            width="30%"
+        >
+            <span>Are you sure to delete this medical test!</span>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogVisible = false">Cancel</el-button>
+                <el-button type="danger" @click="deleteTest">Confirm</el-button>
+            </span>
+        </el-dialog>
     </div>
 </template>
 
-<script>
+<script type="text/babel">
 import _ from "lodash"
 export default {
-    
     data() {
         return {
             medical_tests: [],
             selected_test_id: '',
             search: '',
-
-             //loading
             isLoading: false,
-            fullPage: true
+            fullPage: true,
+            dialogVisible: false
         }
     },
 
     methods: {
-
         searchItems:_.debounce(function(){
             this.getAllTests();
         },500),
         
         getAllTests( page = 1 ) {
-            this.isLoading = true
+            this.isLoading = true;
             let that = this;
-            axios.get(`/tests?q=${this.search}&page=${page}`)
-            
-                .then(function (response) {
-                    //console.log(response)
-                    that.medical_tests = response.data;
-                    that.isLoading = false
-                    console.log(response.data);
-                })
 
+            axios.get(`/tests?q=${this.search}&page=${page}`)
+                .then((response) => {
+                    that.medical_tests = response.data;
+                }).catch(() => {
+
+                }).then(() => {
+                    that.isLoading = false;
+                })
         },
 
         editTest( id ) {
-
             this.$router.push('/edit-test/'+id);
-
         },
 
         deleteTest() {
-
             let id = this.selected_test_id;
             let that = this;
-            
-            //loading
-            this.isLoading = true
+            this.isLoading = true;
 
             axios.delete('/delete-test/'+id)
-                .then(function (response) {
-
-                    //loading
-                    that.isLoading = false
-                    
+                .then(function (response) {                    
                     that.selected_test_id = '';
                     that.getAllTests();
                     
                     that.$router.push('/all-tests');
-                    Toast.fire({
-                        icon: 'warning',
-                        title: 'Medical test deleted successfully!!!'
-                    })
 
+                    that.$message({
+                        message: 'Medical test deleted successfully!!!',
+                        type: 'success'
+                    });
+                }).catch(() => {
+
+                }).then(() => {
+                    that.isLoading = false;
+                    that.dialogVisible = false;
                 })
-
         },
 
         deleteConfirmation( id ) {
-
             this.selected_test_id = id;
-            let that = this;
-
-            swalWithBootstrapButtons.fire({
-                title: 'Do you want to delete the selected test?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Delete',
-                cancelButtonText: 'Cancel',
-                reverseButtons: true
-            }).then((result) => {
-                if (result.isConfirmed) {
-
-                    that.deleteTest();
-
-                } 
-            })
+            this.dialogVisible = true;
         }
-
     },
 
     mounted() {
-
         this.getAllTests();
-
     }
 }
 </script>
-
-
-
-
-
-   
-    

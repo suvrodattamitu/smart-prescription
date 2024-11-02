@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+// Route::post('/register-user', 'SmartPrescription\RegisterController@create');
+
 
 Route::get('/dashboard', 'SmartPrescription\DashboardController@dashboard');
 
@@ -43,6 +45,7 @@ Route::post('/update-patient', 'SmartPrescription\PatientController@updatePatien
 Route::delete('/delete-patient/{id}', 'SmartPrescription\PatientController@deletePatient');
 
 //medicines
+Route::get('/download', 'SmartPrescription\MedicineController@downloadMedicine');
 Route::get('/get-additional-medicine-data', 'SmartPrescription\MedicineController@getAdditionalMedicineData');
 Route::post('/save-medicine', 'SmartPrescription\MedicineController@addMedicine');
 Route::get('/medicines', 'SmartPrescription\MedicineController@allMedicines');
@@ -69,6 +72,7 @@ Route::post('/update-prescription/{prescription_id}','SmartPrescription\Prescrip
 Route::post('/find-medicine','SmartPrescription\PrescriptionController@findMedicine');
 Route::get('/get-prescription/{prescription_id}','SmartPrescription\PrescriptionController@getPrescriptionByPrescriptionId');
 Route::get('/prescriptions/{patient_id}','SmartPrescription\PrescriptionController@getPrescriptionsByPatientId');
+
 
 Auth::routes();
 Route::get('/', function () {

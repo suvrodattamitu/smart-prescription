@@ -7,5 +7,6 @@ Vue.filter('timeformat', function(arg){
 }),
 
 Vue.filter('shortLength',function(text,length,suffix){
+  if(typeof text !== 'string') return '';
   return text.substring(0,length)+suffix
 })

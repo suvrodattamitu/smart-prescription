@@ -15,8 +15,8 @@ class CreateMedicalTestsTable extends Migration
     {
         Schema::create('medical_tests', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('description');
+            $table->string('name')->nullable();
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }

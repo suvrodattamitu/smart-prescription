@@ -1,15 +1,6 @@
 <template>
-    <div>
-        <!-- loading -->
-        <v-loading 
-            :active.sync="isLoading" 
-            :is-full-page="fullPage"
-            :background-color="'#ffff'"
-            :color="'#007bff'"
-        >
-        </v-loading>
-
-        <div class="breadcome-area">
+    <div v-loading="isLoading" element-loading-text="Loading...">
+        <div class="breadcome-area" v-if="medicine_types.data && medicine_types.data.length">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -33,10 +24,9 @@
         <!-- Static Table Start -->
         <div class="static-table-area">
             <div class="container-fluid">
-              
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="sparkline11-list mt-b-30">
+                        <div class="sparkline11-list mt-b-30" v-if="medicine_types.data && medicine_types.data.length">
                             <div class="sparkline11-hd">
                                 <div class="main-sparkline11-hd">
                                     <h1>All Medicine Types</h1>
@@ -57,7 +47,6 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-
                                             <tr v-for="(type,index) in medicine_types.data" :key="index">
                                                 <td>{{ type.id }}</td>
                                                 <td>{{ type.name }}</td>
@@ -71,12 +60,9 @@
                                                         <!-- <a @click.prevent="deleteConfirmation(type.id)" href="#" class="pull-left btn btn-danger login-submit-cs" type="submit"><i class="fa fa-trash"></i></a> -->
                                                     </div>
                                                 </td>
-                                            </tr>
-                                           
-                                        </tbody>
-                                        
+                                            </tr>                                          
+                                        </tbody>                                        
                                     </table>
-                                    
                                 </div>
 
                                 <div class="custom-pagination align-right">
@@ -84,69 +70,83 @@
                                         <pagination :data="medicine_types" @pagination-change-page="getAllTypes"></pagination>
                                     </nav>
                                 </div>
-                                
                             </div>
+                        </div>
 
-                            <div v-else>
-                                <h4>No Data Founds!!</h4>
+                        <div class="empty-list row" v-else>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="sparkline11-list mt-b-30">
+                                    <div class="sparkline11-list mt-30 place-middle">
+                                        <div class="sparkline11-hd container-box">
+                                            <div class="main-sparkline11-hd place-middle">
+                                                <h1>No medicine types found!</h1>
+                                                <el-button type="success" @click="$router.push('/add-type')">
+                                                    Add Type
+                                                </el-button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
-                
             </div>
         </div>
 
+        <el-dialog
+            title="Delete Type"
+            :visible.sync="dialogVisible"
+            width="30%"
+            :before-close="handleClose"
+        >
+            <span>Are you sure to delete this medicine type!</span>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogVisible = false">Cancel</el-button>
+                <el-button type="danger" @click="deleteType">Confirm</el-button>
+            </span>
+        </el-dialog>
     </div>
 </template>
 
-<script>
-
+<script type="text/babel">
 import _ from 'lodash';
 
 export default {
-    
     data() {
         return {
             medicine_types: [],
             selected_type_id: '',
-            //loading
             isLoading: false,
             fullPage: true,
-            search: ''
+            search: '',
+            dialogVisible: false
         }
     },
 
     methods: {
-
         searchItems: _.debounce(function () {
             this.getAllTypes();
         }, 500),
 
         getAllTypes(page = 1) {
-
             let that = this;
             this.isLoading = true;
             axios.get(`/types?q=${this.search}&page=${page}`)
                 .then(function (response) {
-
-                    console.log(response.data);
                     that.medicine_types = response.data;
-                    that.isLoading = false;
+                }).catch((error) => {
 
+                }).then(() => {
+                    that.isLoading = false
                 })
-
         },
 
         editType( id ) {
-
-            this.$router.push('/edit-type/'+id);
-
+            this.$router.push('/edit-type/' + id);
         },
         
         deleteType() {
-
             let id = this.selected_type_id;
             let that = this;
 
@@ -154,54 +154,30 @@ export default {
             axios.delete('/delete-type/'+id)
                 .then(function (response) {
                     that.selected_type_id = '';
-                    that.isLoading = true;
                     that.getAllTypes();
 
                     that.$router.push('/all-types');
-                    Toast.fire({
-                        icon: 'warning',
-                        title: 'Medicine type deleted successfully!!!'
-                    })
 
+                    that.$message({
+                        message: 'Medicine type deleted successfully!!!',
+                        type: 'success'
+                    });
+                }).catch((error) => {
+
+                }).then(() => {
+                    that.isLoading = false;
+                    this.dialogVisible = false;
                 })
-
         },
 
         deleteConfirmation( id ) {
-
             this.selected_type_id = id;
-            let that = this;
-
-            swalWithBootstrapButtons.fire({
-                title: 'Do you want to delete the selected type?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Delete',
-                cancelButtonText: 'Cancel',
-                reverseButtons: true
-            }).then((result) => {
-                if (result.isConfirmed) {
-
-                    that.deleteType();
-
-                } 
-            })
+            this.dialogVisible = true;
         }
-    
     },
 
     mounted() {
-
         this.getAllTypes();
-
     }
 }
 </script>
-
-
-
-
-
-   
-    

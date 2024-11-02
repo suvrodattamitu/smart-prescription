@@ -15,8 +15,8 @@ class CreateMedicineGroupsTable extends Migration
     {
         Schema::create('medicine_groups', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->text('description');
+            $table->string('name')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
