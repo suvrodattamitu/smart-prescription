@@ -83,9 +83,26 @@ import {
   Loading,
   MessageBox,
   Message,
-  Notification
+  Notification,
 } from 'element-ui';
 
+// import enLocale from 'element-plus/lib/locale/lang/en';
+
+import locale from 'element-ui/lib/locale/lang/en';  // Import English locale
+import ElementLocale from 'element-ui/lib/locale';  
+ElementLocale.use(locale);
+
+// import locale from 'element-ui/lib/locale/lang/en'
+
+// Vue.use(ElementUI, { locale })
+// import VueI18n from 'vue-i18n'
+
+// Vue.use(VueI18n)
+
+// import enLocale from 'element-ui/lib/locale/lang/en'
+// Vue.locale('en', enLocale)
+// ElLocale.use(enLocale);
+// Vue.use(enLocale);
 Vue.use(Pagination);
 Vue.use(Dialog);
 Vue.use(Autocomplete);
@@ -169,6 +186,8 @@ Vue.prototype.$confirm = MessageBox.confirm;
 Vue.prototype.$prompt = MessageBox.prompt;
 Vue.prototype.$notify = Notification;
 Vue.prototype.$message = Message;
+// Vue.config.lang = 'en-US'
+
 
 import vSelect from "vue-select";
 Vue.component("v-select", vSelect);

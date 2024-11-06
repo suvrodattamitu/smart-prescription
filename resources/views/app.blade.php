@@ -1,7 +1,5 @@
-
 <!doctype html>
 <html class="no-js" lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -10,47 +8,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/logo/logosn.png') }}">
-
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
-   
     <link rel="stylesheet" href="{{ asset( 'assets/css/bootstrap.min.css') }}">
-    
     <link rel="stylesheet" href="{{ asset( 'assets/css/font-awesome.min.css') }}">
-
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    
-    <!-- <link rel="stylesheet" href="{{ asset( 'assets/css') }}/owl.carousel.css">
-    <link rel="stylesheet" href="{{ asset( 'assets/css') }}/owl.theme.css">
-    <link rel="stylesheet" href="{{ asset( 'assets/css') }}/owl.transitions.css"> -->
-
     <link rel="stylesheet" href="{{ asset( 'assets/css/animate.css') }}">
-    
     <link rel="stylesheet" href="{{ asset( 'assets/css/normalize.css') }}">
-   
     <link rel="stylesheet" href="{{ asset( 'assets/css/meanmenu.min.css') }}">
-   
     <link rel="stylesheet" href="{{ asset( 'assets/css/main.css') }}">
-    
     <link rel="stylesheet" href="{{ asset( 'assets/css/educate-custon-icon.css') }}">
-
-    <!-- <link rel="stylesheet" href="{{ asset( 'assets/css') }}/morrisjs/morris.css">
-
-    <link rel="stylesheet" href="{{ asset( 'assets/css') }}/scrollbar/jquery.mCustomScrollbar.min.css"> -->
     <link rel="stylesheet" href="{{ asset( 'assets/css/summernote/summernote.css') }}">
     <link rel="stylesheet" href="{{ asset( 'assets/css/metisMenu/metisMenu.min.css') }}">
     <link rel="stylesheet" href="{{ asset( 'assets/css/metisMenu/metisMenu-vertical.css') }}">
     <link rel="stylesheet" href="{{ asset( 'assets/css/modals.css') }}">
-
-    <!-- <link rel="stylesheet" href="{{ asset( 'assets/css') }}/calendar/fullcalendar.min.css">
-    <link rel="stylesheet" href="{{ asset( 'assets/css') }}/calendar/fullcalendar.print.min.css"> -->
-
     <link rel="stylesheet" href="{{ asset( 'assets/css/style.css') }}">
-
     <link rel="stylesheet" href="{{ asset( 'css/app.css') }}">
-    
     <link rel="stylesheet" href="{{ asset( 'assets/css/responsive.css') }}">
     <script src="{{ asset( 'assets/js/vendor/modernizr-2.8.3.min.js') }}"></script>
-
 </head>
 
 <body>
@@ -59,7 +33,6 @@
 	<![endif]-->
     <!-- Start Left menu area -->
     <div id="smart-prescription">
-
         <div class="left-sidebar-pro">
             <nav id="sidebar" class="">
                 <div class="sidebar-header">
@@ -174,7 +147,6 @@
             </nav>
         </div>
 
-
         <!-- End Left menu area -->
         <!-- Start Welcome area -->
         <div class="all-content-wrapper">
@@ -202,104 +174,120 @@
                                         </button>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
+                                    <div class="col-lg-9 col-md-7 col-sm-6 col-xs-12">
                                         <div class="header-top-menu tabl-d-n">
-                                       
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                                        <div class="header-right-info">
-                                        <ul class="nav navbar-nav mai-top-nav header-right-menu">
-                                            <li class="nav-item">
-                                                <!-- <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
-                                                <i class="educate-icon educate-bell" aria-hidden="true"></i><span class="indicator-nt"></span>
-                                                </a> -->
-                                                <div role="menu" class="notification-author dropdown-menu animated zoomIn">
-                                                    <div class="notification-single-top">
-                                                    <h1>Notifications</h1>
-                                                    </div>
-                                                    <ul class="notification-menu">
-                                                    <li>
-                                                        <a href="#">
-                                                            <div class="notification-icon">
-                                                                <i class="educate-icon educate-checked edu-checked-pro admin-check-pro" aria-hidden="true"></i>
-                                                            </div>
-                                                            <div class="notification-content">
-                                                                <span class="notification-date">16 Sept</span>
-                                                                <h2>Advanda Cro</h2>
-                                                                <p>Please done this project as soon possible.</p>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <div class="notification-icon">
-                                                                <i class="fa fa-cloud edu-cloud-computing-down" aria-hidden="true"></i>
-                                                            </div>
-                                                            <div class="notification-content">
-                                                                <span class="notification-date">16 Sept</span>
-                                                                <h2>Sulaiman din</h2>
-                                                                <p>Please done this project as soon possible.</p>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <div class="notification-icon">
-                                                                <i class="fa fa-eraser edu-shield" aria-hidden="true"></i>
-                                                            </div>
-                                                            <div class="notification-content">
-                                                                <span class="notification-date">16 Sept</span>
-                                                                <h2>Victor Jara</h2>
-                                                                <p>Please done this project as soon possible.</p>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <div class="notification-icon">
-                                                                <i class="fa fa-line-chart edu-analytics-arrow" aria-hidden="true"></i>
-                                                            </div>
-                                                            <div class="notification-content">
-                                                                <span class="notification-date">16 Sept</span>
-                                                                <h2>Victor Jara</h2>
-                                                                <p>Please done this project as soon possible.</p>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    </ul>
-                                                    <div class="notification-view">
-                                                    <a href="#">View All Notification</a>
+                                            <div class="align-center">
+                                                <!-- <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                                    <div class="date-calendar">
+                                                        <p class="align-center">
+                                                            <i class="fa fa-calendar fa-2x icon-style1" aria-hidden="true"></i>
+                                                        </p>
+                                                        <p class="align-center mg-t-15" id="real-time-date"></p>
                                                     </div>
                                                 </div>
-                                            </li>
-                                            <li class="nav-item" style="margin-right:50px!important">
-                                                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
-                                                <span class="admin-name">{{Auth::user()->name}}</span>
-                                                <i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
-                                                </a>
-                                                <ul style="width:20px!important" role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
-                                                    <li>
-                                                    <router-link to="/profile"><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</router-link>
-                                                    </li>
-                                                    <li>
-                                                    <router-link to="/settings" ><span class="edu-icon edu-settings author-log-ic"></span>Settings</router-link>
-                                                    </li>
-                                                    <li>
-                                                    <a href="{{ route('logout') }}"
-                                                        onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();"
-                                                    >
-                                                        <span class="edu-icon edu-locked author-log-ic"></span>Log Out
+                                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 align-center">
+                                                    <div class="time-clock">
+                                                        <p class="align-center">
+                                                            <i class="fa fa-clock-o fa-2x icon-style1"></i>
+                                                        </p>
+                                                        <p id="real-time-clock" class="mg-t-15 align-center"></p>
+                                                    </div>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-5 col-sm-12 col-xs-12">
+                                        <div class="header-right-info">
+                                            <ul class="nav navbar-nav mai-top-nav header-right-menu">
+                                                <li class="nav-item">
+                                                    <!-- <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+                                                    <i class="educate-icon educate-bell" aria-hidden="true"></i><span class="indicator-nt"></span>
+                                                    </a> -->
+                                                    <div role="menu" class="notification-author dropdown-menu animated zoomIn">
+                                                        <div class="notification-single-top">
+                                                        <h1>Notifications</h1>
+                                                        </div>
+                                                        <ul class="notification-menu">
+                                                        <li>
+                                                            <a href="#">
+                                                                <div class="notification-icon">
+                                                                    <i class="educate-icon educate-checked edu-checked-pro admin-check-pro" aria-hidden="true"></i>
+                                                                </div>
+                                                                <div class="notification-content">
+                                                                    <span class="notification-date">16 Sept</span>
+                                                                    <h2>Advanda Cro</h2>
+                                                                    <p>Please done this project as soon possible.</p>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                                <div class="notification-icon">
+                                                                    <i class="fa fa-cloud edu-cloud-computing-down" aria-hidden="true"></i>
+                                                                </div>
+                                                                <div class="notification-content">
+                                                                    <span class="notification-date">16 Sept</span>
+                                                                    <h2>Sulaiman din</h2>
+                                                                    <p>Please done this project as soon possible.</p>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                                <div class="notification-icon">
+                                                                    <i class="fa fa-eraser edu-shield" aria-hidden="true"></i>
+                                                                </div>
+                                                                <div class="notification-content">
+                                                                    <span class="notification-date">16 Sept</span>
+                                                                    <h2>Victor Jara</h2>
+                                                                    <p>Please done this project as soon possible.</p>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                                <div class="notification-icon">
+                                                                    <i class="fa fa-line-chart edu-analytics-arrow" aria-hidden="true"></i>
+                                                                </div>
+                                                                <div class="notification-content">
+                                                                    <span class="notification-date">16 Sept</span>
+                                                                    <h2>Victor Jara</h2>
+                                                                    <p>Please done this project as soon possible.</p>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        </ul>
+                                                        <div class="notification-view">
+                                                        <a href="#">View All Notification</a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="nav-item" style="margin-right:50px!important">
+                                                    <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+                                                    <span class="admin-name">{{Auth::user()->name}}</span>
+                                                    <i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
                                                     </a>
-                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                        @csrf
-                                                    </form>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            
-                                        </ul>
+                                                    <ul style="width:20px!important" role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
+                                                        <li>
+                                                        <router-link to="/profile"><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</router-link>
+                                                        </li>
+                                                        <li>
+                                                        <router-link to="/settings" ><span class="edu-icon edu-settings author-log-ic"></span>Settings</router-link>
+                                                        </li>
+                                                        <li>
+                                                        <a href="{{ route('logout') }}"
+                                                            onclick="event.preventDefault();
+                                                            document.getElementById('logout-form').submit();"
+                                                        >
+                                                            <span class="edu-icon edu-locked author-log-ic"></span>Log Out
+                                                        </a>
+                                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                            @csrf
+                                                        </form>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
@@ -390,61 +378,25 @@
                 <!-- Mobile Menu end -->
             </div>
             
-
-            <master-app></master-app>
-                
+            <master-app></master-app>    
         </div>
     </div>
-    <script src="{{ asset( 'js/app.js') }}"></script>
 
+    <script src="{{ asset( 'js/app.js') }}"></script>
     <script src="{{ asset( 'assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
-   
     <script src="{{ asset( 'assets/js/bootstrap.min.js') }}"></script>
-  
-    <script src="{{ asset( 'assets/js/wow.min.js') }}"></script>
- 
-    <!-- <script src="{{ asset( 'assets/js') }}/jquery-price-slider.js"></script> -->
-  
-    <script src="{{ asset( 'assets/js/jquery.meanmenu.js') }}"></script>
-    
-    <!-- <script src="{{ asset( 'assets/js') }}/owl.carousel.min.js"></script> -->
-   
-    <script src="{{ asset( 'assets/js/jquery.sticky.js') }}"></script>
-   
-    <!-- <script src="{{ asset( 'assets/js') }}/jquery.scrollUp.min.js"></script> -->
-    
+    <script src="{{ asset( 'assets/js/wow.min.js') }}"></script>  
+    <script src="{{ asset( 'assets/js/jquery.meanmenu.js') }}"></script>   
+    <script src="{{ asset( 'assets/js/jquery.sticky.js') }}"></script>    
     <script src="{{ asset( 'assets/js/counterup/jquery.counterup.min.js') }}"></script>
     <script src="{{ asset( 'assets/js/counterup/waypoints.min.js') }}"></script>
-    <script src="{{ asset( 'assets/js/counterup/counterup-active.js') }}"></script>
-    
-    <!--<script src="{{ asset( 'assets/js') }}/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="{{ asset( 'assets/js') }}/scrollbar/mCustomScrollbar-active.js"></script> -->
- 
+    <script src="{{ asset( 'assets/js/counterup/counterup-active.js') }}"></script> 
     <script src="{{ asset( 'assets/js/metisMenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset( 'assets/js/metisMenu/metisMenu-active.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
-
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/jquery.tinymce.min.js" referrerpolicy="origin"></script>
-
-    
-    <!-- <script src="{{ asset( 'assets/js') }}/morrisjs/raphael-min.js"></script>
-    <script src="{{ asset( 'assets/js') }}/morrisjs/morris.js"></script>
-    <script src="{{ asset( 'assets/js') }}/morrisjs/morris-active.js"></script> -->
-  
-    <!-- <script src="{{ asset( 'assets/js') }}/sparkline/jquery.sparkline.min.js"></script>
-    <script src="{{ asset( 'assets/js') }}/sparkline/jquery.charts-sparkline.js"></script>
-    <script src="{{ asset( 'assets/js') }}/sparkline/sparkline-active.js"></script> -->
-
-    <!-- <script src="{{ asset( 'assets/js') }}/calendar/moment.min.js"></script>
-    <script src="{{ asset( 'assets/js') }}/calendar/fullcalendar.min.js"></script>
-    <script src="{{ asset( 'assets/js') }}/calendar/fullcalendar-active.js"></script> -->
-    
-    <!-- <script src="{{ asset( 'assets/js') }}/plugins.js"></script> -->
     <script src="{{ asset( 'assets/js/main.js') }}"></script>
-    <!-- <script src="{{ asset( 'assets/js') }}/tawk-chat.js"></script> -->
-
     <script src="{{ asset( 'assets/js/summernote/summernote.min.js') }}"></script>
 </body>
-
 </html>

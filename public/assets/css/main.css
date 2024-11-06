@@ -34,10 +34,10 @@ html {
     text-shadow: none;
 }
 
-*:focus {
+/* *:focus {
     outline: none!important;
     border-style: none !important;
-}
+} */
 
 button:focus{
     outline: none;

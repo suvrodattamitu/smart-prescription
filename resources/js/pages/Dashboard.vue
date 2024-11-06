@@ -14,8 +14,8 @@
 
         <div class="analytics-sparkle-area">
             <div class="container-fluid">
-                <div class="row">
-                    <div class="align-center">
+                <!-- <div class="row"> -->
+                    <!-- <div class="align-center">
                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                             <div class="analytics-content">
                                 <p class="align-center"><i class="fa fa-calendar fa-3x icon-style1" aria-hidden="true"></i></p>
@@ -28,9 +28,8 @@
                                 <p id="real-time-clock" class="mg-t-15 align-center"></p>
                             </div>
                         </div>
-                    </div>
-    
-                </div>
+                    </div> -->
+                <!-- </div> -->
 
                 <div class="row">
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
@@ -44,7 +43,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 border-on-hover">
                         <div class="analytics-sparkle-line reso-mg-b-30">
                             <div class="analytics-content">
                                 <h5>Total Patients</h5>
@@ -95,7 +94,7 @@ export default {
     },
     mounted() {
         this.getCountings();
-        this.getTimeNow();
+        // this.getTimeNow();
     },
 
     methods:{

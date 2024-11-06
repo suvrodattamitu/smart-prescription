@@ -10,17 +10,28 @@ use Illuminate\Foundation\Validation\ValidationException;
 
 class CompanyController extends Controller
 {
-    public function allCompanies() {
-       
-        $searchTerm = $_REQUEST['q'];
+    public function allCompanies(Request $reqeust) {
+        $searchTerm = $reqeust->get('q');
+        $perPage = $reqeust->get('per_page');
+        $pageSize = $reqeust->get('page_size');
 
-        if ( $searchTerm ) {
-            $allCompanies = Company::where('name','like',"%$searchTerm%")->orWhere('description', 'like', "%$searchTerm%")->latest()->paginate(5);
-        } else {
-            $allCompanies = Company::latest()->paginate(5);
+        $query = Company::select('*');
+        if (!empty($searchTerm)) {
+            $query = Company::where('name','like',"%$searchTerm%")->orWhere('description', 'like', "%$searchTerm%");
         }
+
+        $total = $query->count();
+        $allCompanies = $query->offset($perPage * ($pageSize-1))->limit($perPage)->get();
         
-        return $allCompanies;
+        return response()->json([
+            'message'   => 'success',
+            'perPage' => $perPage,
+            'pageSize' => $pageSize,
+            'companies' => $allCompanies,
+            'total' => $total
+        ],200);
+
+        //return $allCompanies;
 
     }
 
