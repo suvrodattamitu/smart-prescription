@@ -75,16 +75,10 @@
                                                 <td v-if="patient.is_prescribed == 1"><a @click.prevent="prescribeNow(patient.id)" href="#" class="pull-left btn btn-success login-submit-cs" type="submit">Prescribed</a>
                                                 <td v-else><a @click.prevent="prescribeNow(patient.id)" href="#" class="pull-left btn btn-info login-submit-cs" type="submit">Prescribe</a>
                                                 <td><router-link :to="'/all-prescriptions/'+patient.id" class="btn btn-info">View</router-link>
-                                                <!-- <td><router-link :to="'/all-prescriptions/'+patient.id">view</router-link></td> -->
                                                  
-                                                    <!-- <a @click.prevent="prescribeNow(patient.id)" href="#" class="pull-left btn btn-info login-submit-cs" type="submit"><i class="fa fa-check-circle"></i> Prescribed</a> --></td>
                                                 <td>{{ patient.created_at | timeformat }}</td>
-                                                <td>
+                                                <td class="width-100">
                                                     <div class="inline-remember-me action-inliner">
-                                                        <!-- <a  @click.prevent="editPatient(patient.id)" href="#" class="pull-left btn btn-info login-submit-cs btn-space" type="submit"><i class="fa fa-pencil"></i></a>
-                                                        <a  @click.prevent="viwPatient(patient.id)" href="#" class="pull-left btn btn-success login-submit-cs btn-space" type="submit"><i class="fa fa-eye"></i></a>
-                                                        <a @click.prevent="deleteConfirmation(patient.id)" href="#" class="pull-left btn btn-danger login-submit-cs" type="submit"><i class="fa fa-trash"></i></a> -->
-
                                                         <button data-toggle="tooltip" title="Edit" class="pd-setting-ed" @click="editPatient(patient.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                                         <button data-toggle="tooltip" title="Thrash" class="pd-setting-ed" @click="viwPatient(patient.id)"><i class="fa fa-eye" aria-hidden="true"></i></button>
                                                         <button data-toggle="tooltip" title="Thrash" class="pd-setting-ed" @click="deleteConfirmation(patient.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>

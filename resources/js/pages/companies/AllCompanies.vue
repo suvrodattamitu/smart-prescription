@@ -5,12 +5,12 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="sparkline11-list custom-table-padding" v-if="companies && companies.length">
-                                <div class="row">
+                                <div class="row mb-10">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="sparkline11-hd">
                                             <div class="breadcome-heading">
                                                 <div role="search" class="sr-input-func">
-                                                    <input type="text" v-model="search" @keyup.enter="getAllCompanies" placeholder="Search..." class="search-int form-control" />
+                                                    <el-input type="text" v-model="search" @keyup.enter="getAllCompanies" placeholder="Search..." class="search-int" />
                                                     <a href="#"><i class="fa fa-search"></i></a>
                                                 </div>
                                             </div>
@@ -44,7 +44,7 @@
                                                     <td><span class="pie"> {{ company.name }} </span></td>
                                                     <td>{{ company.description | shortLength(50,"...")}}</td>
                                                     <td>{{ company.created_at  | timeformat}}</td>
-                                                    <td>
+                                                    <td class="width-100">
                                                         <div class="inline-remember-me action-inliner">
                                                             <button data-toggle="tooltip" title="Edit" class="pd-setting-ed" @click="editCompany(company.id)"><i class="color-success  fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                                             <button data-toggle="tooltip" title="Trash" class="pd-setting-ed" @click="deleteConfirmation(company.id)"><i class="color-danger fa fa-trash-o" aria-hidden="true"></i></button>
@@ -107,8 +107,7 @@
     </div>
 </template>
 
-<script>
-import _ from "lodash"
+<script type="text/babel">
 export default {
     data() {
         return {
@@ -118,10 +117,10 @@ export default {
             search: '',
             isLoading: false,
             fullPage: true,
-            currentPage: 1,
             total: 0,
+            currentPage: parseInt(this.$route.query.page || 1),
             pageSize: 0,
-            currentSize: 10
+            currentSize: parseInt(this.$route.query.paginate || 10)
         }
     },
 
@@ -131,11 +130,13 @@ export default {
         },
 
         handleSizeChange(val) {
+            this.$router.push(`/all-companies?page=${this.currentPage}&paginate=${val}`)
             this.currentSize = val;
             this.getAllCompanies();
         },
 
         handleCurrentChange(val) {
+            this.$router.push(`/all-companies?page=${val}&paginate=${this.currentSize}`)
             this.currentPage = val;
             this.getAllCompanies();
         },
@@ -143,9 +144,8 @@ export default {
         getAllCompanies( page = 1 ) {
             this.isLoading = true;
 
-            console.log(this.search)
             let that = this;
-            axios.get(`/companies?q=${this.search}&page_size=${this.currentPage}&per_page=${this.currentSize}`)
+            axios.get(`/companies?q=${this.search}&page=${this.currentPage}&paginate=${this.currentSize}`)
                 .then( (response) => {
                     if (response) {
                         that.companies = response.data.companies;

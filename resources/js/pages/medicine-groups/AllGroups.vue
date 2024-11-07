@@ -52,7 +52,7 @@
                                                 <td><span class="pie"> {{ group.name }} </span></td>
                                                 <td>{{ group.description | shortLength(50,"...")}}</td>
                                                 <td>{{ group.created_at | timeformat}}</td>
-                                                <td>
+                                                <td class="width-100">
                                                     <div class="inline-remember-me action-inliner">
                                                         <button data-toggle="tooltip" title="Edit" class="pd-setting-ed" @click="editGroup(group.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                                         <button data-toggle="tooltip" title="Trash" class="pd-setting-ed" @click="deleteConfirmation(group.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>

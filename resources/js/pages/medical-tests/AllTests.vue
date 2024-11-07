@@ -52,7 +52,7 @@
                                                 <td><span class="pie"> {{ test.name }} </span></td>
                                                 <td>{{ test.description | shortLength(50,"...")}}</td>
                                                 <td>{{ test.created_at  | timeformat}}</td>
-                                                <td>
+                                                <td class="width-100">
                                                     <div class="inline-remember-me action-inliner">                                                        
                                                         <button data-toggle="tooltip" title="Edit" class="pd-setting-ed" @click="editTest(test.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                                         <button data-toggle="tooltip" title="Trash" class="pd-setting-ed" @click="deleteConfirmation(test.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>

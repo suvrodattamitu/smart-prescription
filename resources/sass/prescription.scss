@@ -1,0 +1,105 @@
+.prescription {
+    width: 90%;
+    max-width: 1000px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-top: 6px solid #00bcd4;
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 2px solid #00bcd4;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .header h1 {
+        color: #007d9c;
+        font-size: 24px;
+        margin-bottom: 5px;
+    }
+    
+    .header p {
+        color: #555555;
+        font-size: 14px;
+    }
+    
+    .patient-info {
+        margin-bottom: 20px;
+        font-size: 16px;
+    }
+    
+    .patient-info p {
+        color: #333333;
+        margin-bottom: 8px;
+    }
+    
+    .details-box {
+        height: 50px;
+        border: 1px solid #00bcd4;
+        padding: 8px;
+        font-size: 16px;
+        color: #333333;
+        margin-top: 5px;
+    }
+    
+    .content {
+        display: flex;
+        gap: 20px;
+    }
+    
+    .sidebar {
+        width: 35%;
+        border-right: 2px solid #00bcd4;
+        padding-right: 20px;
+    }
+    
+    .sidebar h3 {
+        color: #007d9c;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    
+    .test-list, .suggestion-list {
+        list-style: none;
+    }
+    
+    .test-list li, .suggestion-list li {
+        font-size: 16px;
+        color: #333333;
+        padding: 5px 0;
+    }
+    
+    .prescription-details {
+        width: 65%;
+    }
+    
+    .prescription-details h2 {
+        color: #007d9c;
+        font-size: 20px;
+        border-bottom: 2px solid #00bcd4;
+        padding-bottom: 5px;
+        margin-bottom: 15px;
+    }
+    
+    .medication {
+        margin-bottom: 20px;
+    }
+    
+    .medication p {
+        font-size: 16px;
+        color: #333333;
+        margin-bottom: 5px;
+    }
+    
+    .footer {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 14px;
+        color: #666666;
+        border-top: 1px solid #ddd;
+        padding-top: 10px;
+    }
+}

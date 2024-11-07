@@ -61,7 +61,7 @@
                                             <td>{{ medicine.type.name }}</td>
                                             <td>{{ medicine.company.name }}</td>
                                             <td>{{ medicine.created_at | timeformat}}</td>
-                                            <td>
+                                            <td class="width-100">
                                                 <div class="inline-remember-me action-inliner">
                                                     <button data-toggle="tooltip" title="Edit" class="pd-setting-ed" @click="editMedicine(medicine.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                                     <button data-toggle="tooltip" title="Trash" class="pd-setting-ed" @click="deleteConfirmation(medicine.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
