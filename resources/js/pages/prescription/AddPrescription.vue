@@ -1,16 +1,5 @@
 <template>
-  <div>
-
-    <!-- loading -->
-    <v-loading 
-        :active.sync="isLoading" 
-        :is-full-page="fullPage"
-        :background-color="'#ffff'"
-        :color="'#007bff'"
-    >
-    </v-loading>
-
-
+  <div v-loading="isLoading" element-loading-text="Loading...">
     <div class="profile-details-hr">
       <div class="row mg-t-50 mg-b-30">
         <div class="col-lg-3 col-md-6 col-sm-12 col-xs-6">
@@ -84,8 +73,7 @@
             <p>
               <b>Sex</b>
               <br />
-              <span v-if="patient_details.gender == 0">Male</span>
-              <span v-else>Female</span>
+              <span>{{ patient_details.gender }}</span>
             </p>
           </div>
         </div>
@@ -97,7 +85,7 @@
             <p>
               <b>C_C</b>
               <br />
-              <span v-html="patient_details.c_c"></span>
+              <span v-html="prescription.c_c"></span>
             </p>
           </div>
         </div>
@@ -106,16 +94,16 @@
             <p>
               <b>On Exam</b>
               <br />
-              <span v-html="patient_details.on_exam"></span>
+              <span v-html="prescription.on_exam"></span>
             </p>
           </div>
         </div>
         <div class="col-lg-3 col-md-6 col-sm-12 col-xs-6">
           <div class="address-hr tb-sm-res-d-n dps-tb-ntn">
             <p>
-              <b>P_A_EXAM</b>
-              <br />
-              <span v-html="patient_details.p_a_exam"></span>
+              <b>PA EXAM</b>
+              <br/>
+              <span v-html="prescription.pa_exam"></span>
             </p>
           </div>
         </div>
@@ -426,13 +414,12 @@
 </template>
 
 <script>
-
 import _ from 'lodash';
-
 export default {
   data() {
     return {
       patient_details: {},
+      prescription: {},
       // medicine_types: [],
       tests:[],
       medical_tests_rows: [{ medical_test_id: "", description: "" }],
@@ -471,10 +458,19 @@ export default {
     getPatientDetails() {
       let that = this;
       this.isLoading = true;
-      axios.get("/patient-details/" + this.$route.params.id)
+      // axios.get("/patient-details/" + this.$route.params.id)
+      //   .then((response) => {
+      //     that.patient_details = response.data.patient_details;
+      //     that.isLoading = false;
+      //   });
+
+      axios.get("/prescription/" + this.$route.params.id)
         .then((response) => {
-          that.patient_details = response.data.patient_details;
-          that.isLoading = false;
+          if (response.data) {
+            that.prescription = response.data.prescription;
+            that.patient_details = response.data.prescription.patient;
+            that.isLoading = false;
+          }
         });
     },
 
@@ -515,25 +511,23 @@ export default {
       let that = this
       
       let data = {
+        'patient_id': this.patient_details.id,
         'medical_tests': this.medical_tests_rows,
         'medicine_details': this.medicine_details_rows,
         'suggestion': this.suggestion
       };
 
       this.isLoading = true;
-
-      axios
-        .post("/add-prescription/"+ this.$route.params.id, data)
-        .then(function (response) {
-            that.isLoading = false;
-            that.$router.push('/all-prescriptions/'+that.$route.params.id);
-            Toast.fire({
-                icon: 'success',
-                title: 'Prescription added successfully!!!'
-            })
-        })
-        .catch(function (error) {
+      axios.post("/add-prescription/" + this.$route.params.id, data)
+        .then( (response) => {
+            //that.$router.push('/all-prescriptions/' + that.$route.params.id);
+            that.$message({
+                type: 'success',
+                message: 'Prescription added successfully!!!'
+            });
+        }).catch((error) => {
           //that.errors = error.response.data.errors;
+        }).then(() => {
           that.isLoading = false;
         });
     },

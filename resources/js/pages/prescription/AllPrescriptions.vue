@@ -29,21 +29,23 @@
                             </div>
                             <br>
                             <h4>Prescription(s)</h4>
-                            <div class="add-product">
+                            <!-- <div class="add-product">
                                 <router-link :to="'/prescribe/'+this.$route.params.id">Add Prescription</router-link>
-                            </div>
+                            </div> -->
                             <div class="table-responsive">
                                 <table v-if="patient.prescriptions && patient.prescriptions.length">
                                     <tr>
                                         <th>Prescriptions</th>
+                                        <th>Prescribe</th>
                                         <th>Created At</th>
                                         <th>Actions</th>
                                         <th>Export</th>
                                         <th>Print</th>
                                     </tr>
 
-                                    <tr v-for="(prescription,index) in patient.prescriptions" :key="index">
+                                    <tr v-for="(prescription, index) in patient.prescriptions" :key="index">
                                         <td>Prescription No. {{ index+1 }}</td>
+                                        <td><router-link :to="'/prescribe/' + prescription.id">Prescribe</router-link></td>
                                         <td>{{ prescription.created_at | timeformat}}</td>
                                         
                                         <td class="width-100">
@@ -68,7 +70,7 @@
 
                                                 <div class="dropdown-menu" x-placement="right-start" style="z-index:999999;transform: translate3d(112px, 0px, 0px);top: 0px;">
                                                     <a class="dropdown-item" @click.prevent="Export2Doc('exportContent','.doc')">Microsoft Word(.doc)</a>
-                                                    <a class="dropdown-item" @click.prevent="Export2Pdf('exportPrescription','.pdf')">Pdf Document(.pdf)</a>
+                                                    <a class="dropdown-item" @click.prevent="preparePrescription(patient, prescription.id)">Pdf Document(.pdf)</a>
                                                     <a class="dropdown-item" @click.prevent="Export2Txt('exportContent','.txt')">Plain Text(.txt)</a>
                                                 </div>
                                             </div>
@@ -374,6 +376,19 @@ export default {
             }
             
             document.body.removeChild(downloadLink);
+        },
+
+        preparePrescription(patient, prescription_id) {
+            this.isLoading = true;
+
+            axios.get('/get-prescription-details/'+prescription_id)
+                .then((response) => {
+
+                }).catch((error) => {
+
+                }).then(() => {
+                    this.isLoading = false;
+                });
         },
 
         Export2Pdf(element,extension) {

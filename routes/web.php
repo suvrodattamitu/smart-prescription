@@ -64,8 +64,11 @@ Route::post('/update-header-footer','SmartPrescription\SettingsController@update
 
 
 //prescriptions 
-Route::get('/patient-details/{patient_id}','SmartPrescription\PrescriptionController@patientDetails');
-Route::post('/add-prescription/{patient_id}','SmartPrescription\PrescriptionController@addPrescription');
+// Route::get('/patient-details/{patient_id}','SmartPrescription\PrescriptionController@patientDetails');
+Route::get('/prescription/{prescription_id}','SmartPrescription\PrescriptionController@getPrescription');
+Route::post('/add-prescription/{prescription_id}','SmartPrescription\PrescriptionController@addPrescription');
+
+// Route::post('/add-prescription/{patient_id}','SmartPrescription\PrescriptionController@addPrescription');
 Route::delete('/prescription/{prescription_id}','SmartPrescription\PrescriptionController@deletePrescription');
 Route::post('/update-prescription/{prescription_id}','SmartPrescription\PrescriptionController@updatePrescription');
 

@@ -17,6 +17,9 @@ class CreatePrescriptionsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('patient_id')->index();
             $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
+            $table->string('c_c')->nullable();
+            $table->string('on_exam')->nullable();
+            $table->string('pa_exam')->nullable();
             $table->text('suggestion')->nullable();
             $table->timestamps();
         });
